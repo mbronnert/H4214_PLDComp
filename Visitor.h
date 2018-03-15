@@ -16,80 +16,79 @@ class Programme;
 class Visitor : public PLDCOMPBaseVisitor {
 
     virtual antlrcpp::Any visitAdd(PLDCOMPParser::AddContext *ctx) override {
-        Symbole s = ADD;
-        return s;
+        return (Symbole) ADD;
     }
 
     virtual antlrcpp::Any visitMoins(PLDCOMPParser::MoinsContext *ctx) override {
-        return visitChildren(ctx);
+        return (Symbole) MOINS;
     }
 
     virtual antlrcpp::Any visitMult(PLDCOMPParser::MultContext *ctx) override {
-        return visitChildren(ctx);
+        return (Symbole) MULT;
     }
 
     virtual antlrcpp::Any visitDiv(PLDCOMPParser::DivContext *ctx) override {
-        return visitChildren(ctx);
+        return (Symbole) DIV;
     }
 
     virtual antlrcpp::Any visitMod(PLDCOMPParser::ModContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) MOD;
     }
 
     virtual antlrcpp::Any visitPow(PLDCOMPParser::PowContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) POW;
     }
 
     virtual antlrcpp::Any visitAnd(PLDCOMPParser::AndContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) AND;
     }
 
     virtual antlrcpp::Any visitOr(PLDCOMPParser::OrContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) OR;
     }
 
     virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) EQUAL;
     }
 
     virtual antlrcpp::Any visitInfs(PLDCOMPParser::InfsContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) INFS;
     }
 
     virtual antlrcpp::Any visitInf(PLDCOMPParser::InfContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) INF;
     }
 
     virtual antlrcpp::Any visitSups(PLDCOMPParser::SupsContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) SUPS;
     }
 
     virtual antlrcpp::Any visitSup(PLDCOMPParser::SupContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) SUP;
     }
 
     virtual antlrcpp::Any visitDecg(PLDCOMPParser::DecgContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) DECG;
     }
 
     virtual antlrcpp::Any visitDecd(PLDCOMPParser::DecdContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) DECD;
     }
 
     virtual antlrcpp::Any visitEqualb(PLDCOMPParser::EqualbContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) EQUALB;
     }
 
     virtual antlrcpp::Any visitDiff(PLDCOMPParser::DiffContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) DIFF;
     }
 
     virtual antlrcpp::Any visitAndb(PLDCOMPParser::AndbContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) ANDB;
     }
 
     virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *ctx) override {
-        return visitChildren(ctx);
+      return (Symbole) ORB;
     }
 
     virtual antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) override {
@@ -133,8 +132,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     virtual antlrcpp::Any visitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) override {
-        cout<<"ici"<<endl;
-        return visitChildren(ctx);
+        return (Expression *) new ExprBin (visit(ctx->exp(0)), visit(ctx->op()), visit(ctx->exp(1)));
     }
 
     virtual antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) override {
@@ -183,11 +181,13 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     virtual antlrcpp::Any visitIf_statement(PLDCOMPParser::If_statementContext *ctx) override {
-        return visitChildren(ctx);
+      return visitChildren(ctx);
+        //return (If *) new If(visit(ctx->exp()));
     }
 
     virtual antlrcpp::Any visitWhile(PLDCOMPParser::WhileContext *ctx) override {
-        return visitChildren(ctx);
+      return visitChildren(ctx);
+        //return (While *) new While(visit(ctx->exp()));
     }
 
     virtual antlrcpp::Any visitValeur(PLDCOMPParser::ValeurContext *ctx) override {
@@ -195,12 +195,12 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     virtual antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
-        return (Declaration*) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
         cout<<"dans declaration"<<endl;
-        return (Declaration*) new Declaration(visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration(visit(ctx->type_variable()), ctx->NOMVAR()->getText()) ;
     }
 
     virtual antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
@@ -208,7 +208,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     virtual antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) override {
-        return (Declaration*) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitVoid(PLDCOMPParser::VoidContext *ctx) override {
@@ -229,15 +229,15 @@ class Visitor : public PLDCOMPBaseVisitor {
 
     virtual antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *ctx) override {
         cout<<"dans déclaration_variable"<<endl;
-        //Declaration * d = visitChildren(ctx);
         //cout << "ok" << endl;
-        list<Declaration*> declarations;
-        declarations.push_back(visitChildren(ctx));
+        //list<Declaration*> declarations;
+        //visitChildren(ctx);
+        //Declaration * d = ;
         cout << "ok";
         /*for(list<Declaration>::iterator i=declarations.begin(); i!=declarations.end() ; ++i) {
             cout << "Declaration x" << endl;
         }*/
-        return declarations;
+        return (Declaration*) visitChildren(ctx);//declarations;
     }
 
     virtual antlrcpp::Any visitBloc(PLDCOMPParser::BlocContext *ctx) override {

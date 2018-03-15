@@ -11,7 +11,6 @@ using namespace antlr4;
 using namespace std;
 
 int main () {
-    cout<< "coucou" << endl;
     ANTLRInputStream input ("char test;");
     PLDCOMPLexer lexer (&input);
 

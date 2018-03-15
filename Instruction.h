@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef Programme_h
 #define Programme_h
 
@@ -108,17 +110,21 @@ private:
 class Structure : public Instruction {
 public:
     Structure();
-    Structure(Expression exp);
 private:
-    Expression condition;
 };
 
 class If : public Structure {
 public:
     If();
+    If(Expression exp);
+private:
+    Expression condition;
 };
 
 class While : public Structure {
 public:
+    While(Expression exp);
     While();
+private:
+    Expression condition;
 };

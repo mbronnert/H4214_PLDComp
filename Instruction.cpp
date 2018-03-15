@@ -60,12 +60,16 @@ Affectation::Affectation(Variable v, Expression e) {
 Structure::Structure() {
 }
 
-Structure::Structure(Expression exp) {
-    condition = exp;
-}
-
 If::If() {
 }
 
+If::If(Expression exp) {
+
+}
+
 While::While() {
+}
+
+While::While(Expression exp) {
+  condition = exp;
 }
