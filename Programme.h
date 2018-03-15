@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include "Declaration.h"
+#include "Fonction.h"
 #include <list>
 
 using namespace std;

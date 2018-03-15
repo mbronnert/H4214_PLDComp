@@ -9,20 +9,20 @@ using namespace antlr4;
 using namespace std;
 
 int main () {
+    cout<< "coucou" << endl;
     ANTLRInputStream input ("char test;");
     PLDCOMPLexer lexer (&input);
-    
+
     CommonTokenStream token (&lexer);
-    
+
     PLDCOMPParser parser (&token);
     tree::ParseTree * tree = parser.programme();
     Visitor visitor;
-    
+
     int resultat = (int) visitor.visit(tree);
-    
+
     cout << resultat;
-    
-    
+
+
     return 0;
 }
-
