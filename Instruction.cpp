@@ -9,7 +9,7 @@ Break::Break() {
 Return::Return() {
 }
 
-Block::Block() {
+Bloc::Bloc() {
 }
 
 Expression::Expression() {
@@ -42,14 +42,40 @@ Caractere::Caractere(char v) {
 Variable::Variable() {
 }
 
-Variable::Variable(string n) {
+Variable::Variable(string n, Type t) {
     nom = n;
+    type = t;
 }
 
-Tableau::Tableau() {
+Tableau::Tableau(string n, Type t, int ta) : Variable(n, t) {
+  taille = ta;
+  initialise = false;
 }
 
-VariableSimple::VariableSimple() {
+Tableau::Tableau(string n, Type t, int ta, list <int> v) : Variable(n, t) {
+  taille = ta;
+  tabEntiers = v;
+  initialise = true;
+}
+
+Tableau::Tableau(string n, Type t, int ta, list <char> v) : Variable(n, t) {
+  taille = ta;
+  tabCaracteres = v;
+  initialise = true;
+}
+
+VariableSimple::VariableSimple(string n, Type t) : Variable(n, t) {
+  initialise = false;
+}
+
+VariableSimple::VariableSimple(string n, Type t, int v) : Variable(n, t) {
+  valeurEntiere = v;
+  initialise = true;
+}
+
+VariableSimple::VariableSimple(string n, Type t, char v) : Variable(n, t) {
+  valeurCaractere = v;
+  initialise = true;
 }
 
 Affectation::Affectation(Variable v, Expression e) {

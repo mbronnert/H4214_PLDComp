@@ -159,7 +159,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitConstante(PLDCOMPParser::ConstanteContext *ctx) override {
+  virtual antlrcpp::Any visitConstanteNb(PLDCOMPParser::ConstanteNbContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitConstanteCar(PLDCOMPParser::ConstanteCarContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -179,7 +183,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitValeur(PLDCOMPParser::ValeurContext *ctx) override {
+  virtual antlrcpp::Any visitTableauNombre(PLDCOMPParser::TableauNombreContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitTableauCaractere(PLDCOMPParser::TableauCaractereContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -207,11 +215,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDeclarationFoncionParams(PLDCOMPParser::DeclarationFoncionParamsContext *ctx) override {
+  virtual antlrcpp::Any visitDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDeclarationFoncion(PLDCOMPParser::DeclarationFoncionContext *ctx) override {
+  virtual antlrcpp::Any visitDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext *ctx) override {
     return visitChildren(ctx);
   }
 

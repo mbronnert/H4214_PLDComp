@@ -1,18 +1,19 @@
-#pragma once
-
-#ifndef Programme_h
-#define Programme_h
+#ifndef Instruction_h
+#define Instruction_h
 
 #include <stdio.h>
 #include <string>
 #include <list>
 
-#include "Parametre.h"
+//#include "Parametre.h"
+//#include "Fonction.h"
+
 
 using namespace std;
 
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, OUVREPAR, FERMEPAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PP, MM };
 
+enum Type {CHAR, INT32, INT64, VOID};
 
 class Instruction {
 public:
@@ -20,7 +21,6 @@ public:
 private:
 };
 
-#endif
 
 class Break : public Instruction {
 public:
@@ -32,9 +32,9 @@ public:
     Return();
 };
 
-class Block : public Instruction {
+class Bloc : public Instruction {
 public:
-    Block();
+    Bloc();
 };
 
 class Expression : public Instruction {
@@ -84,19 +84,32 @@ private:
 class Variable : public Expression {
 public:
     Variable();
-    Variable(string n);
-private:
+    Variable(string n, Type t);
+protected:
     string nom;
+    bool initialise;
+    Type type;
 };
 
 class Tableau : public Variable {
 public:
-    Tableau();
+    Tableau(string n, Type t, int ta);
+    Tableau(string n, Type t, int ta, list <int> v);
+    Tableau(string n, Type t, int ta, list <char> v);
+  private:
+    int taille;
+    list <int> tabEntiers;
+    list <char> tabCaracteres;
 };
 
 class VariableSimple : public Variable {
 public:
-    VariableSimple();
+    VariableSimple(string n, Type t);
+    VariableSimple(string n, Type t, int v);
+    VariableSimple(string n, Type t, char v);
+  private:
+    int valeurEntiere;
+    char valeurCaractere;
 };
 
 class Affectation : public Expression {
@@ -128,3 +141,5 @@ public:
 private:
     Expression condition;
 };
+
+#endif

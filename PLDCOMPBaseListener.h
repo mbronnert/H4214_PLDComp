@@ -124,8 +124,11 @@ public:
   virtual void enterStructure(PLDCOMPParser::StructureContext * /*ctx*/) override { }
   virtual void exitStructure(PLDCOMPParser::StructureContext * /*ctx*/) override { }
 
-  virtual void enterConstante(PLDCOMPParser::ConstanteContext * /*ctx*/) override { }
-  virtual void exitConstante(PLDCOMPParser::ConstanteContext * /*ctx*/) override { }
+  virtual void enterConstanteNb(PLDCOMPParser::ConstanteNbContext * /*ctx*/) override { }
+  virtual void exitConstanteNb(PLDCOMPParser::ConstanteNbContext * /*ctx*/) override { }
+
+  virtual void enterConstanteCar(PLDCOMPParser::ConstanteCarContext * /*ctx*/) override { }
+  virtual void exitConstanteCar(PLDCOMPParser::ConstanteCarContext * /*ctx*/) override { }
 
   virtual void enterType_variable(PLDCOMPParser::Type_variableContext * /*ctx*/) override { }
   virtual void exitType_variable(PLDCOMPParser::Type_variableContext * /*ctx*/) override { }
@@ -139,11 +142,23 @@ public:
   virtual void enterWhile(PLDCOMPParser::WhileContext * /*ctx*/) override { }
   virtual void exitWhile(PLDCOMPParser::WhileContext * /*ctx*/) override { }
 
-  virtual void enterValeur(PLDCOMPParser::ValeurContext * /*ctx*/) override { }
-  virtual void exitValeur(PLDCOMPParser::ValeurContext * /*ctx*/) override { }
+  virtual void enterTableauNombre(PLDCOMPParser::TableauNombreContext * /*ctx*/) override { }
+  virtual void exitTableauNombre(PLDCOMPParser::TableauNombreContext * /*ctx*/) override { }
 
-  virtual void enterDeclaration_type(PLDCOMPParser::Declaration_typeContext * /*ctx*/) override { }
-  virtual void exitDeclaration_type(PLDCOMPParser::Declaration_typeContext * /*ctx*/) override { }
+  virtual void enterTableauCaractere(PLDCOMPParser::TableauCaractereContext * /*ctx*/) override { }
+  virtual void exitTableauCaractere(PLDCOMPParser::TableauCaractereContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext * /*ctx*/) override { }
+  virtual void exitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext * /*ctx*/) override { }
+
+  virtual void enterDeclaration(PLDCOMPParser::DeclarationContext * /*ctx*/) override { }
+  virtual void exitDeclaration(PLDCOMPParser::DeclarationContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationTableau(PLDCOMPParser::DeclarationTableauContext * /*ctx*/) override { }
+  virtual void exitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext * /*ctx*/) override { }
+  virtual void exitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext * /*ctx*/) override { }
 
   virtual void enterVoid(PLDCOMPParser::VoidContext * /*ctx*/) override { }
   virtual void exitVoid(PLDCOMPParser::VoidContext * /*ctx*/) override { }
@@ -151,11 +166,11 @@ public:
   virtual void enterParametres(PLDCOMPParser::ParametresContext * /*ctx*/) override { }
   virtual void exitParametres(PLDCOMPParser::ParametresContext * /*ctx*/) override { }
 
-  virtual void enterDeclarationFoncionParams(PLDCOMPParser::DeclarationFoncionParamsContext * /*ctx*/) override { }
-  virtual void exitDeclarationFoncionParams(PLDCOMPParser::DeclarationFoncionParamsContext * /*ctx*/) override { }
+  virtual void enterDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext * /*ctx*/) override { }
+  virtual void exitDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext * /*ctx*/) override { }
 
-  virtual void enterDeclarationFoncion(PLDCOMPParser::DeclarationFoncionContext * /*ctx*/) override { }
-  virtual void exitDeclarationFoncion(PLDCOMPParser::DeclarationFoncionContext * /*ctx*/) override { }
+  virtual void enterDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext * /*ctx*/) override { }
+  virtual void exitDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext * /*ctx*/) override { }
 
   virtual void enterDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext * /*ctx*/) override { }
   virtual void exitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext * /*ctx*/) override { }

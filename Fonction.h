@@ -1,10 +1,3 @@
-//
-//  Fonction.hpp
-//  
-//
-//  Created by Mathilde Bronnert on 13/03/2018.
-//
-
 #ifndef Fonction_h
 #define Fonction_h
 
@@ -20,11 +13,13 @@ using namespace std;
 
 class Fonction {
     public:
-        Fonction(Type t, string n, list <Parametre> p);
+        Fonction(Type t, string n, list <Parametre> p, list <Declaration> d, Bloc b);
     private:
         Type typeRetour;
         string nom;
         list <Parametre> parametres;
+        list <Declaration> declarations;
+        Bloc bloc;
 };
 
 

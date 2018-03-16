@@ -3,7 +3,9 @@
 
 #include <stdio.h>
 #include <string>
-#include "Declaration.h"
+#include <list>
+
+#include "Instruction.h"
 
 using namespace std;
 

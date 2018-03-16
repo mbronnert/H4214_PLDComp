@@ -45,9 +45,10 @@ structure : if_statement
             | while_statement 
             ;
 
-constante : NOMBRE | CHAR # constante ;
+constante : NOMBRE # constanteNb
+          | CHAR # constanteCar ;
 
-type_variable : 'char' | 'int32_t' | 'int64_t' ; 
+type_variable : 'char' | 'int32_t' | 'int64_t' ;
 
 type_function : 'char' | 'int32_t' | 'int64_t' | 'void' ; 
 
@@ -57,7 +58,8 @@ if_statement : 'if' '(' exp ')' instruction
 
 while_statement : 'while' '(' exp ')' instruction # while ;
 
-val : constante ( ',' constante)* #valeur ;
+val : NOMBRE ( ',' NOMBRE)* # tableauNombre
+    | CHAR ( ',' CHAR)* # tableauCaractere ;
 
 declaration_type : type_variable NOMVAR '=' constante # declarationConstante
                   | type_variable NOMVAR # declaration
@@ -69,8 +71,8 @@ param : 'void' # void
         | type_variable NOMVAR (',' type_variable NOMVAR)* # parametres
         ;
 
-fonction : type_function NOMVAR '(' param ')' '{'declaration_variables bloc '}' # declarationFoncionParams
-           | type_function NOMVAR '(' ')' '{' declaration_variables bloc '}' # declarationFoncion ;
+fonction : type_function NOMVAR '(' param ')' '{'declaration_variables bloc '}' # declarationFonctionParams
+           | type_function NOMVAR '(' ')' '{' declaration_variables bloc '}' # declarationFonction ;
 
 declaration_variables : ( declaration_type ';' )* # declarationVariables ;
 

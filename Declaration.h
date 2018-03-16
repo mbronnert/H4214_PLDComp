@@ -1,19 +1,16 @@
 #ifndef Declaration_h
 #define Declaration_h
 
-#include <stdio.h>
-#include <string>
+#include "Instruction.h"
 
 using namespace std;
 
-enum Type {CHAR, INT32, INT64, VOID};
-
 class Declaration {
 public:
-    Declaration(Type t, string n);
+    Declaration(Type t, Variable * v);
 private:
     Type type;
-    string nom;
+    Variable * variable;
 };
 
 #endif

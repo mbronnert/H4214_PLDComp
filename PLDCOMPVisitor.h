@@ -91,7 +91,9 @@ public:
 
     virtual antlrcpp::Any visitStructure(PLDCOMPParser::StructureContext *context) = 0;
 
-    virtual antlrcpp::Any visitConstante(PLDCOMPParser::ConstanteContext *context) = 0;
+    virtual antlrcpp::Any visitConstanteNb(PLDCOMPParser::ConstanteNbContext *context) = 0;
+
+    virtual antlrcpp::Any visitConstanteCar(PLDCOMPParser::ConstanteCarContext *context) = 0;
 
     virtual antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *context) = 0;
 
@@ -101,7 +103,9 @@ public:
 
     virtual antlrcpp::Any visitWhile(PLDCOMPParser::WhileContext *context) = 0;
 
-    virtual antlrcpp::Any visitValeur(PLDCOMPParser::ValeurContext *context) = 0;
+    virtual antlrcpp::Any visitTableauNombre(PLDCOMPParser::TableauNombreContext *context) = 0;
+
+    virtual antlrcpp::Any visitTableauCaractere(PLDCOMPParser::TableauCaractereContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *context) = 0;
 
@@ -115,9 +119,9 @@ public:
 
     virtual antlrcpp::Any visitParametres(PLDCOMPParser::ParametresContext *context) = 0;
 
-    virtual antlrcpp::Any visitDeclarationFoncionParams(PLDCOMPParser::DeclarationFoncionParamsContext *context) = 0;
+    virtual antlrcpp::Any visitDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext *context) = 0;
 
-    virtual antlrcpp::Any visitDeclarationFoncion(PLDCOMPParser::DeclarationFoncionContext *context) = 0;
+    virtual antlrcpp::Any visitDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *context) = 0;
 
