@@ -2,7 +2,6 @@
 // Generated from PLDCOMP.g4 by ANTLR 4.7.1
 
 
-#include "PLDCOMPListener.h"
 #include "PLDCOMPVisitor.h"
 
 #include "PLDCOMPParser.h"
@@ -51,17 +50,6 @@ void PLDCOMPParser::OpContext::copyFrom(OpContext *ctx) {
 
 PLDCOMPParser::AddContext::AddContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::AddContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAdd(this);
-}
-void PLDCOMPParser::AddContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAdd(this);
-}
-
 antlrcpp::Any PLDCOMPParser::AddContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAdd(this);
@@ -71,17 +59,6 @@ antlrcpp::Any PLDCOMPParser::AddContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- InfContext ------------------------------------------------------------------
 
 PLDCOMPParser::InfContext::InfContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::InfContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterInf(this);
-}
-void PLDCOMPParser::InfContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitInf(this);
-}
 
 antlrcpp::Any PLDCOMPParser::InfContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -93,17 +70,6 @@ antlrcpp::Any PLDCOMPParser::InfContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::MultContext::MultContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::MultContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterMult(this);
-}
-void PLDCOMPParser::MultContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitMult(this);
-}
-
 antlrcpp::Any PLDCOMPParser::MultContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitMult(this);
@@ -113,17 +79,6 @@ antlrcpp::Any PLDCOMPParser::MultContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- ModContext ------------------------------------------------------------------
 
 PLDCOMPParser::ModContext::ModContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ModContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterMod(this);
-}
-void PLDCOMPParser::ModContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitMod(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ModContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -135,17 +90,6 @@ antlrcpp::Any PLDCOMPParser::ModContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::OrContext::OrContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::OrContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterOr(this);
-}
-void PLDCOMPParser::OrContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitOr(this);
-}
-
 antlrcpp::Any PLDCOMPParser::OrContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitOr(this);
@@ -155,17 +99,6 @@ antlrcpp::Any PLDCOMPParser::OrContext::accept(tree::ParseTreeVisitor *visitor) 
 //----------------- InfsContext ------------------------------------------------------------------
 
 PLDCOMPParser::InfsContext::InfsContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::InfsContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterInfs(this);
-}
-void PLDCOMPParser::InfsContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitInfs(this);
-}
 
 antlrcpp::Any PLDCOMPParser::InfsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -177,17 +110,6 @@ antlrcpp::Any PLDCOMPParser::InfsContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::EqualbContext::EqualbContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::EqualbContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterEqualb(this);
-}
-void PLDCOMPParser::EqualbContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitEqualb(this);
-}
-
 antlrcpp::Any PLDCOMPParser::EqualbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitEqualb(this);
@@ -197,17 +119,6 @@ antlrcpp::Any PLDCOMPParser::EqualbContext::accept(tree::ParseTreeVisitor *visit
 //----------------- AndbContext ------------------------------------------------------------------
 
 PLDCOMPParser::AndbContext::AndbContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::AndbContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAndb(this);
-}
-void PLDCOMPParser::AndbContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAndb(this);
-}
 
 antlrcpp::Any PLDCOMPParser::AndbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -219,17 +130,6 @@ antlrcpp::Any PLDCOMPParser::AndbContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::DiffContext::DiffContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DiffContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDiff(this);
-}
-void PLDCOMPParser::DiffContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDiff(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DiffContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDiff(this);
@@ -239,17 +139,6 @@ antlrcpp::Any PLDCOMPParser::DiffContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- DecgContext ------------------------------------------------------------------
 
 PLDCOMPParser::DecgContext::DecgContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::DecgContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDecg(this);
-}
-void PLDCOMPParser::DecgContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDecg(this);
-}
 
 antlrcpp::Any PLDCOMPParser::DecgContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -261,17 +150,6 @@ antlrcpp::Any PLDCOMPParser::DecgContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::DecdContext::DecdContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DecdContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDecd(this);
-}
-void PLDCOMPParser::DecdContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDecd(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DecdContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDecd(this);
@@ -281,17 +159,6 @@ antlrcpp::Any PLDCOMPParser::DecdContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- SupContext ------------------------------------------------------------------
 
 PLDCOMPParser::SupContext::SupContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::SupContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterSup(this);
-}
-void PLDCOMPParser::SupContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitSup(this);
-}
 
 antlrcpp::Any PLDCOMPParser::SupContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -303,17 +170,6 @@ antlrcpp::Any PLDCOMPParser::SupContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::DivContext::DivContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DivContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDiv(this);
-}
-void PLDCOMPParser::DivContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDiv(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DivContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDiv(this);
@@ -323,17 +179,6 @@ antlrcpp::Any PLDCOMPParser::DivContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- EqualContext ------------------------------------------------------------------
 
 PLDCOMPParser::EqualContext::EqualContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::EqualContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterEqual(this);
-}
-void PLDCOMPParser::EqualContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitEqual(this);
-}
 
 antlrcpp::Any PLDCOMPParser::EqualContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -345,17 +190,6 @@ antlrcpp::Any PLDCOMPParser::EqualContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::SupsContext::SupsContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::SupsContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterSups(this);
-}
-void PLDCOMPParser::SupsContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitSups(this);
-}
-
 antlrcpp::Any PLDCOMPParser::SupsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitSups(this);
@@ -365,17 +199,6 @@ antlrcpp::Any PLDCOMPParser::SupsContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- AndContext ------------------------------------------------------------------
 
 PLDCOMPParser::AndContext::AndContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::AndContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAnd(this);
-}
-void PLDCOMPParser::AndContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAnd(this);
-}
 
 antlrcpp::Any PLDCOMPParser::AndContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -387,17 +210,6 @@ antlrcpp::Any PLDCOMPParser::AndContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::MoinsContext::MoinsContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::MoinsContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterMoins(this);
-}
-void PLDCOMPParser::MoinsContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitMoins(this);
-}
-
 antlrcpp::Any PLDCOMPParser::MoinsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitMoins(this);
@@ -408,17 +220,6 @@ antlrcpp::Any PLDCOMPParser::MoinsContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::PowContext::PowContext(OpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::PowContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterPow(this);
-}
-void PLDCOMPParser::PowContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitPow(this);
-}
-
 antlrcpp::Any PLDCOMPParser::PowContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitPow(this);
@@ -428,17 +229,6 @@ antlrcpp::Any PLDCOMPParser::PowContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- OrbContext ------------------------------------------------------------------
 
 PLDCOMPParser::OrbContext::OrbContext(OpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::OrbContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterOrb(this);
-}
-void PLDCOMPParser::OrbContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitOrb(this);
-}
 
 antlrcpp::Any PLDCOMPParser::OrbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -646,17 +436,6 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpLvalueContext::lvalue() {
 
 PLDCOMPParser::ExpLvalueContext::ExpLvalueContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::ExpLvalueContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterExpLvalue(this);
-}
-void PLDCOMPParser::ExpLvalueContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitExpLvalue(this);
-}
-
 antlrcpp::Any PLDCOMPParser::ExpLvalueContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExpLvalue(this);
@@ -671,17 +450,6 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::PpexpContext::lvalue() {
 
 PLDCOMPParser::PpexpContext::PpexpContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::PpexpContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterPpexp(this);
-}
-void PLDCOMPParser::PpexpContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitPpexp(this);
-}
-
 antlrcpp::Any PLDCOMPParser::PpexpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitPpexp(this);
@@ -691,17 +459,6 @@ antlrcpp::Any PLDCOMPParser::PpexpContext::accept(tree::ParseTreeVisitor *visito
 //----------------- AppelGetcharContext ------------------------------------------------------------------
 
 PLDCOMPParser::AppelGetcharContext::AppelGetcharContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::AppelGetcharContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAppelGetchar(this);
-}
-void PLDCOMPParser::AppelGetcharContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAppelGetchar(this);
-}
 
 antlrcpp::Any PLDCOMPParser::AppelGetcharContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -717,17 +474,6 @@ tree::TerminalNode* PLDCOMPParser::ConstanteNombreContext::NOMBRE() {
 
 PLDCOMPParser::ConstanteNombreContext::ConstanteNombreContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::ConstanteNombreContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterConstanteNombre(this);
-}
-void PLDCOMPParser::ConstanteNombreContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitConstanteNombre(this);
-}
-
 antlrcpp::Any PLDCOMPParser::ConstanteNombreContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitConstanteNombre(this);
@@ -741,17 +487,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ParentheseContext::exp() {
 }
 
 PLDCOMPParser::ParentheseContext::ParentheseContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ParentheseContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterParenthese(this);
-}
-void PLDCOMPParser::ParentheseContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitParenthese(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ParentheseContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -767,17 +502,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::NonContext::exp() {
 
 PLDCOMPParser::NonContext::NonContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::NonContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterNon(this);
-}
-void PLDCOMPParser::NonContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitNon(this);
-}
-
 antlrcpp::Any PLDCOMPParser::NonContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitNon(this);
@@ -791,17 +515,6 @@ tree::TerminalNode* PLDCOMPParser::ConstanteCaractereContext::CHAR() {
 }
 
 PLDCOMPParser::ConstanteCaractereContext::ConstanteCaractereContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ConstanteCaractereContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterConstanteCaractere(this);
-}
-void PLDCOMPParser::ConstanteCaractereContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitConstanteCaractere(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ConstanteCaractereContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -825,17 +538,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::AppelDeFonctionContext::exp(size_t i) 
 
 PLDCOMPParser::AppelDeFonctionContext::AppelDeFonctionContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::AppelDeFonctionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAppelDeFonction(this);
-}
-void PLDCOMPParser::AppelDeFonctionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAppelDeFonction(this);
-}
-
 antlrcpp::Any PLDCOMPParser::AppelDeFonctionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAppelDeFonction(this);
@@ -849,17 +551,6 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::MmexpContext::lvalue() {
 }
 
 PLDCOMPParser::MmexpContext::MmexpContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::MmexpContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterMmexp(this);
-}
-void PLDCOMPParser::MmexpContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitMmexp(this);
-}
 
 antlrcpp::Any PLDCOMPParser::MmexpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -878,17 +569,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::AffectationContext::exp() {
 }
 
 PLDCOMPParser::AffectationContext::AffectationContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::AffectationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAffectation(this);
-}
-void PLDCOMPParser::AffectationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAffectation(this);
-}
 
 antlrcpp::Any PLDCOMPParser::AffectationContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -912,17 +592,6 @@ PLDCOMPParser::OpContext* PLDCOMPParser::OperateurBinaireContext::op() {
 
 PLDCOMPParser::OperateurBinaireContext::OperateurBinaireContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::OperateurBinaireContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterOperateurBinaire(this);
-}
-void PLDCOMPParser::OperateurBinaireContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitOperateurBinaire(this);
-}
-
 antlrcpp::Any PLDCOMPParser::OperateurBinaireContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitOperateurBinaire(this);
@@ -936,17 +605,6 @@ tree::TerminalNode* PLDCOMPParser::AppelPutcharContext::CHAR() {
 }
 
 PLDCOMPParser::AppelPutcharContext::AppelPutcharContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::AppelPutcharContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterAppelPutchar(this);
-}
-void PLDCOMPParser::AppelPutcharContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitAppelPutchar(this);
-}
 
 antlrcpp::Any PLDCOMPParser::AppelPutcharContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -962,17 +620,6 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpppContext::lvalue() {
 
 PLDCOMPParser::ExpppContext::ExpppContext(ExpContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::ExpppContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterExppp(this);
-}
-void PLDCOMPParser::ExpppContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitExppp(this);
-}
-
 antlrcpp::Any PLDCOMPParser::ExpppContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExppp(this);
@@ -986,17 +633,6 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpmmContext::lvalue() {
 }
 
 PLDCOMPParser::ExpmmContext::ExpmmContext(ExpContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ExpmmContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterExpmm(this);
-}
-void PLDCOMPParser::ExpmmContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitExpmm(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ExpmmContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1253,17 +889,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::TableauContext::exp() {
 
 PLDCOMPParser::TableauContext::TableauContext(LvalueContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::TableauContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterTableau(this);
-}
-void PLDCOMPParser::TableauContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitTableau(this);
-}
-
 antlrcpp::Any PLDCOMPParser::TableauContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitTableau(this);
@@ -1277,17 +902,6 @@ tree::TerminalNode* PLDCOMPParser::VariableContext::NOMVAR() {
 }
 
 PLDCOMPParser::VariableContext::VariableContext(LvalueContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::VariableContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterVariable(this);
-}
-void PLDCOMPParser::VariableContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitVariable(this);
-}
 
 antlrcpp::Any PLDCOMPParser::VariableContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1346,39 +960,43 @@ PLDCOMPParser::StructureContext::StructureContext(ParserRuleContext *parent, siz
   : ParserRuleContext(parent, invokingState) {
 }
 
-PLDCOMPParser::If_statementContext* PLDCOMPParser::StructureContext::if_statement() {
-  return getRuleContext<PLDCOMPParser::If_statementContext>(0);
-}
-
-PLDCOMPParser::While_statementContext* PLDCOMPParser::StructureContext::while_statement() {
-  return getRuleContext<PLDCOMPParser::While_statementContext>(0);
-}
-
 
 size_t PLDCOMPParser::StructureContext::getRuleIndex() const {
   return PLDCOMPParser::RuleStructure;
 }
 
-void PLDCOMPParser::StructureContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterStructure(this);
+void PLDCOMPParser::StructureContext::copyFrom(StructureContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
 }
 
-void PLDCOMPParser::StructureContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitStructure(this);
+//----------------- WhileStatementContext ------------------------------------------------------------------
+
+PLDCOMPParser::While_statementContext* PLDCOMPParser::WhileStatementContext::while_statement() {
+  return getRuleContext<PLDCOMPParser::While_statementContext>(0);
 }
 
+PLDCOMPParser::WhileStatementContext::WhileStatementContext(StructureContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any PLDCOMPParser::StructureContext::accept(tree::ParseTreeVisitor *visitor) {
+antlrcpp::Any PLDCOMPParser::WhileStatementContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
-    return parserVisitor->visitStructure(this);
+    return parserVisitor->visitWhileStatement(this);
   else
     return visitor->visitChildren(this);
 }
+//----------------- IfStatementContext ------------------------------------------------------------------
 
+PLDCOMPParser::If_statementContext* PLDCOMPParser::IfStatementContext::if_statement() {
+  return getRuleContext<PLDCOMPParser::If_statementContext>(0);
+}
+
+PLDCOMPParser::IfStatementContext::IfStatementContext(StructureContext *ctx) { copyFrom(ctx); }
+
+antlrcpp::Any PLDCOMPParser::IfStatementContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitIfStatement(this);
+  else
+    return visitor->visitChildren(this);
+}
 PLDCOMPParser::StructureContext* PLDCOMPParser::structure() {
   StructureContext *_localctx = _tracker.createInstance<StructureContext>(_ctx, getState());
   enterRule(_localctx, 6, PLDCOMPParser::RuleStructure);
@@ -1391,6 +1009,7 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::structure() {
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::T__33: {
+        _localctx = dynamic_cast<StructureContext *>(_tracker.createInstance<PLDCOMPParser::IfStatementContext>(_localctx));
         enterOuterAlt(_localctx, 1);
         setState(117);
         if_statement();
@@ -1398,6 +1017,7 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::structure() {
       }
 
       case PLDCOMPParser::T__35: {
+        _localctx = dynamic_cast<StructureContext *>(_tracker.createInstance<PLDCOMPParser::WhileStatementContext>(_localctx));
         enterOuterAlt(_localctx, 2);
         setState(118);
         while_statement();
@@ -1441,17 +1061,6 @@ tree::TerminalNode* PLDCOMPParser::ConstanteNbContext::NOMBRE() {
 
 PLDCOMPParser::ConstanteNbContext::ConstanteNbContext(ConstanteContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::ConstanteNbContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterConstanteNb(this);
-}
-void PLDCOMPParser::ConstanteNbContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitConstanteNb(this);
-}
-
 antlrcpp::Any PLDCOMPParser::ConstanteNbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitConstanteNb(this);
@@ -1465,17 +1074,6 @@ tree::TerminalNode* PLDCOMPParser::ConstanteCarContext::CHAR() {
 }
 
 PLDCOMPParser::ConstanteCarContext::ConstanteCarContext(ConstanteContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ConstanteCarContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterConstanteCar(this);
-}
-void PLDCOMPParser::ConstanteCarContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitConstanteCar(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ConstanteCarContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1535,19 +1133,6 @@ size_t PLDCOMPParser::Type_variableContext::getRuleIndex() const {
   return PLDCOMPParser::RuleType_variable;
 }
 
-void PLDCOMPParser::Type_variableContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterType_variable(this);
-}
-
-void PLDCOMPParser::Type_variableContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitType_variable(this);
-}
-
-
 antlrcpp::Any PLDCOMPParser::Type_variableContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitType_variable(this);
@@ -1599,19 +1184,6 @@ size_t PLDCOMPParser::Type_functionContext::getRuleIndex() const {
   return PLDCOMPParser::RuleType_function;
 }
 
-void PLDCOMPParser::Type_functionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterType_function(this);
-}
-
-void PLDCOMPParser::Type_functionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitType_function(this);
-}
-
-
 antlrcpp::Any PLDCOMPParser::Type_functionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitType_function(this);
@@ -1659,43 +1231,55 @@ PLDCOMPParser::If_statementContext::If_statementContext(ParserRuleContext *paren
   : ParserRuleContext(parent, invokingState) {
 }
 
-PLDCOMPParser::ExpContext* PLDCOMPParser::If_statementContext::exp() {
-  return getRuleContext<PLDCOMPParser::ExpContext>(0);
-}
-
-std::vector<PLDCOMPParser::InstructionContext *> PLDCOMPParser::If_statementContext::instruction() {
-  return getRuleContexts<PLDCOMPParser::InstructionContext>();
-}
-
-PLDCOMPParser::InstructionContext* PLDCOMPParser::If_statementContext::instruction(size_t i) {
-  return getRuleContext<PLDCOMPParser::InstructionContext>(i);
-}
-
 
 size_t PLDCOMPParser::If_statementContext::getRuleIndex() const {
   return PLDCOMPParser::RuleIf_statement;
 }
 
-void PLDCOMPParser::If_statementContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterIf_statement(this);
+void PLDCOMPParser::If_statementContext::copyFrom(If_statementContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
 }
 
-void PLDCOMPParser::If_statementContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitIf_statement(this);
+//----------------- IfContext ------------------------------------------------------------------
+
+PLDCOMPParser::ExpContext* PLDCOMPParser::IfContext::exp() {
+  return getRuleContext<PLDCOMPParser::ExpContext>(0);
 }
 
+PLDCOMPParser::InstructionContext* PLDCOMPParser::IfContext::instruction() {
+  return getRuleContext<PLDCOMPParser::InstructionContext>(0);
+}
 
-antlrcpp::Any PLDCOMPParser::If_statementContext::accept(tree::ParseTreeVisitor *visitor) {
+PLDCOMPParser::IfContext::IfContext(If_statementContext *ctx) { copyFrom(ctx); }
+
+antlrcpp::Any PLDCOMPParser::IfContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
-    return parserVisitor->visitIf_statement(this);
+    return parserVisitor->visitIf(this);
   else
     return visitor->visitChildren(this);
 }
+//----------------- IfElseContext ------------------------------------------------------------------
 
+PLDCOMPParser::ExpContext* PLDCOMPParser::IfElseContext::exp() {
+  return getRuleContext<PLDCOMPParser::ExpContext>(0);
+}
+
+std::vector<PLDCOMPParser::InstructionContext *> PLDCOMPParser::IfElseContext::instruction() {
+  return getRuleContexts<PLDCOMPParser::InstructionContext>();
+}
+
+PLDCOMPParser::InstructionContext* PLDCOMPParser::IfElseContext::instruction(size_t i) {
+  return getRuleContext<PLDCOMPParser::InstructionContext>(i);
+}
+
+PLDCOMPParser::IfElseContext::IfElseContext(If_statementContext *ctx) { copyFrom(ctx); }
+
+antlrcpp::Any PLDCOMPParser::IfElseContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitIfElse(this);
+  else
+    return visitor->visitChildren(this);
+}
 PLDCOMPParser::If_statementContext* PLDCOMPParser::if_statement() {
   If_statementContext *_localctx = _tracker.createInstance<If_statementContext>(_ctx, getState());
   enterRule(_localctx, 14, PLDCOMPParser::RuleIf_statement);
@@ -1708,6 +1292,7 @@ PLDCOMPParser::If_statementContext* PLDCOMPParser::if_statement() {
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
     case 1: {
+      _localctx = dynamic_cast<If_statementContext *>(_tracker.createInstance<PLDCOMPParser::IfContext>(_localctx));
       enterOuterAlt(_localctx, 1);
       setState(129);
       match(PLDCOMPParser::T__33);
@@ -1723,6 +1308,7 @@ PLDCOMPParser::If_statementContext* PLDCOMPParser::if_statement() {
     }
 
     case 2: {
+      _localctx = dynamic_cast<If_statementContext *>(_tracker.createInstance<PLDCOMPParser::IfElseContext>(_localctx));
       enterOuterAlt(_localctx, 2);
       setState(135);
       match(PLDCOMPParser::T__33);
@@ -1779,17 +1365,6 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::WhileContext::instruction() {
 }
 
 PLDCOMPParser::WhileContext::WhileContext(While_statementContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::WhileContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterWhile(this);
-}
-void PLDCOMPParser::WhileContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitWhile(this);
-}
 
 antlrcpp::Any PLDCOMPParser::WhileContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1855,17 +1430,6 @@ tree::TerminalNode* PLDCOMPParser::TableauNombreContext::NOMBRE(size_t i) {
 
 PLDCOMPParser::TableauNombreContext::TableauNombreContext(ValContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::TableauNombreContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterTableauNombre(this);
-}
-void PLDCOMPParser::TableauNombreContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitTableauNombre(this);
-}
-
 antlrcpp::Any PLDCOMPParser::TableauNombreContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitTableauNombre(this);
@@ -1883,17 +1447,6 @@ tree::TerminalNode* PLDCOMPParser::TableauCaractereContext::CHAR(size_t i) {
 }
 
 PLDCOMPParser::TableauCaractereContext::TableauCaractereContext(ValContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::TableauCaractereContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterTableauCaractere(this);
-}
-void PLDCOMPParser::TableauCaractereContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitTableauCaractere(this);
-}
 
 antlrcpp::Any PLDCOMPParser::TableauCaractereContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1998,17 +1551,6 @@ PLDCOMPParser::ConstanteContext* PLDCOMPParser::DeclarationConstanteContext::con
 
 PLDCOMPParser::DeclarationConstanteContext::DeclarationConstanteContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DeclarationConstanteContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationConstante(this);
-}
-void PLDCOMPParser::DeclarationConstanteContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationConstante(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DeclarationConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationConstante(this);
@@ -2031,17 +1573,6 @@ tree::TerminalNode* PLDCOMPParser::DeclarationTableauContext::NOMBRE() {
 
 PLDCOMPParser::DeclarationTableauContext::DeclarationTableauContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DeclarationTableauContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationTableau(this);
-}
-void PLDCOMPParser::DeclarationTableauContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationTableau(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DeclarationTableauContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationTableau(this);
@@ -2059,17 +1590,6 @@ tree::TerminalNode* PLDCOMPParser::DeclarationContext::NOMVAR() {
 }
 
 PLDCOMPParser::DeclarationContext::DeclarationContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::DeclarationContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclaration(this);
-}
-void PLDCOMPParser::DeclarationContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclaration(this);
-}
 
 antlrcpp::Any PLDCOMPParser::DeclarationContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2096,17 +1616,6 @@ PLDCOMPParser::ValContext* PLDCOMPParser::DeclarationTableauConstanteContext::va
 }
 
 PLDCOMPParser::DeclarationTableauConstanteContext::DeclarationTableauConstanteContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::DeclarationTableauConstanteContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationTableauConstante(this);
-}
-void PLDCOMPParser::DeclarationTableauConstanteContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationTableauConstante(this);
-}
 
 antlrcpp::Any PLDCOMPParser::DeclarationTableauConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2220,17 +1729,6 @@ void PLDCOMPParser::ParamContext::copyFrom(ParamContext *ctx) {
 
 PLDCOMPParser::VoidContext::VoidContext(ParamContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::VoidContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterVoid(this);
-}
-void PLDCOMPParser::VoidContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitVoid(this);
-}
-
 antlrcpp::Any PLDCOMPParser::VoidContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitVoid(this);
@@ -2256,17 +1754,6 @@ tree::TerminalNode* PLDCOMPParser::ParametresContext::NOMVAR(size_t i) {
 }
 
 PLDCOMPParser::ParametresContext::ParametresContext(ParamContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ParametresContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterParametres(this);
-}
-void PLDCOMPParser::ParametresContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitParametres(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ParametresContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2373,17 +1860,6 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::DeclarationFonctionParamsContext::blo
 
 PLDCOMPParser::DeclarationFonctionParamsContext::DeclarationFonctionParamsContext(FonctionContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DeclarationFonctionParamsContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationFonctionParams(this);
-}
-void PLDCOMPParser::DeclarationFonctionParamsContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationFonctionParams(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DeclarationFonctionParamsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationFonctionParams(this);
@@ -2409,17 +1885,6 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::DeclarationFonctionContext::bloc() {
 }
 
 PLDCOMPParser::DeclarationFonctionContext::DeclarationFonctionContext(FonctionContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::DeclarationFonctionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationFonction(this);
-}
-void PLDCOMPParser::DeclarationFonctionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationFonction(this);
-}
 
 antlrcpp::Any PLDCOMPParser::DeclarationFonctionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2523,17 +1988,6 @@ PLDCOMPParser::Declaration_typeContext* PLDCOMPParser::DeclarationVariablesConte
 
 PLDCOMPParser::DeclarationVariablesContext::DeclarationVariablesContext(Declaration_variablesContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::DeclarationVariablesContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterDeclarationVariables(this);
-}
-void PLDCOMPParser::DeclarationVariablesContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitDeclarationVariables(this);
-}
-
 antlrcpp::Any PLDCOMPParser::DeclarationVariablesContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationVariables(this);
@@ -2594,19 +2048,6 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::BlocContext::instruction(size_
 size_t PLDCOMPParser::BlocContext::getRuleIndex() const {
   return PLDCOMPParser::RuleBloc;
 }
-
-void PLDCOMPParser::BlocContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterBloc(this);
-}
-
-void PLDCOMPParser::BlocContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitBloc(this);
-}
-
 
 antlrcpp::Any PLDCOMPParser::BlocContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2683,17 +2124,6 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::BlocInstructionContext::bloc() {
 
 PLDCOMPParser::BlocInstructionContext::BlocInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::BlocInstructionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterBlocInstruction(this);
-}
-void PLDCOMPParser::BlocInstructionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitBlocInstruction(this);
-}
-
 antlrcpp::Any PLDCOMPParser::BlocInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitBlocInstruction(this);
@@ -2707,17 +2137,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ReturnInstructionContext::exp() {
 }
 
 PLDCOMPParser::ReturnInstructionContext::ReturnInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::ReturnInstructionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterReturnInstruction(this);
-}
-void PLDCOMPParser::ReturnInstructionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitReturnInstruction(this);
-}
 
 antlrcpp::Any PLDCOMPParser::ReturnInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2733,17 +2152,6 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ExpInstructionContext::exp() {
 
 PLDCOMPParser::ExpInstructionContext::ExpInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
 
-void PLDCOMPParser::ExpInstructionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterExpInstruction(this);
-}
-void PLDCOMPParser::ExpInstructionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitExpInstruction(this);
-}
-
 antlrcpp::Any PLDCOMPParser::ExpInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExpInstruction(this);
@@ -2753,17 +2161,6 @@ antlrcpp::Any PLDCOMPParser::ExpInstructionContext::accept(tree::ParseTreeVisito
 //----------------- BreakInstructionContext ------------------------------------------------------------------
 
 PLDCOMPParser::BreakInstructionContext::BreakInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::BreakInstructionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterBreakInstruction(this);
-}
-void PLDCOMPParser::BreakInstructionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitBreakInstruction(this);
-}
 
 antlrcpp::Any PLDCOMPParser::BreakInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2778,17 +2175,6 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::StructureInstructionContext::str
 }
 
 PLDCOMPParser::StructureInstructionContext::StructureInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
-
-void PLDCOMPParser::StructureInstructionContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterStructureInstruction(this);
-}
-void PLDCOMPParser::StructureInstructionContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitStructureInstruction(this);
-}
 
 antlrcpp::Any PLDCOMPParser::StructureInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2904,19 +2290,6 @@ PLDCOMPParser::FonctionContext* PLDCOMPParser::ProgrammeContext::fonction(size_t
 size_t PLDCOMPParser::ProgrammeContext::getRuleIndex() const {
   return PLDCOMPParser::RuleProgramme;
 }
-
-void PLDCOMPParser::ProgrammeContext::enterRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->enterProgramme(this);
-}
-
-void PLDCOMPParser::ProgrammeContext::exitRule(tree::ParseTreeListener *listener) {
-  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
-  if (parserListener != nullptr)
-    parserListener->exitProgramme(this);
-}
-
 
 antlrcpp::Any PLDCOMPParser::ProgrammeContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))

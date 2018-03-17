@@ -155,7 +155,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitStructure(PLDCOMPParser::StructureContext *ctx) override {
+  virtual antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -175,7 +179,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitIf_statement(PLDCOMPParser::If_statementContext *ctx) override {
+  virtual antlrcpp::Any visitIf(PLDCOMPParser::IfContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitIfElse(PLDCOMPParser::IfElseContext *ctx) override {
     return visitChildren(ctx);
   }
 

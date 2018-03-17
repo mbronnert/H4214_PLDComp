@@ -41,8 +41,8 @@ lvalue : NOMVAR # variable
         | NOMVAR '[' exp ']' # tableau
         ;
 
-structure : if_statement 
-            | while_statement 
+structure : if_statement # ifStatement
+            | while_statement # whileStatement
             ;
 
 constante : NOMBRE # constanteNb
@@ -52,8 +52,8 @@ type_variable : 'char' | 'int32_t' | 'int64_t' ;
 
 type_function : 'char' | 'int32_t' | 'int64_t' | 'void' ; 
 
-if_statement : 'if' '(' exp ')' instruction
-              | 'if' '(' exp ')' instruction 'else' instruction
+if_statement : 'if' '(' exp ')' instruction #if
+              | 'if' '(' exp ')' instruction 'else' instruction #ifElse
               ;
 
 while_statement : 'while' '(' exp ')' instruction # while ;

@@ -89,7 +89,9 @@ public:
 
     virtual antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *context) = 0;
 
-    virtual antlrcpp::Any visitStructure(PLDCOMPParser::StructureContext *context) = 0;
+    virtual antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *context) = 0;
+
+    virtual antlrcpp::Any visitWhileStatement(PLDCOMPParser::WhileStatementContext *context) = 0;
 
     virtual antlrcpp::Any visitConstanteNb(PLDCOMPParser::ConstanteNbContext *context) = 0;
 
@@ -99,7 +101,9 @@ public:
 
     virtual antlrcpp::Any visitType_function(PLDCOMPParser::Type_functionContext *context) = 0;
 
-    virtual antlrcpp::Any visitIf_statement(PLDCOMPParser::If_statementContext *context) = 0;
+    virtual antlrcpp::Any visitIf(PLDCOMPParser::IfContext *context) = 0;
+
+    virtual antlrcpp::Any visitIfElse(PLDCOMPParser::IfElseContext *context) = 0;
 
     virtual antlrcpp::Any visitWhile(PLDCOMPParser::WhileContext *context) = 0;
 

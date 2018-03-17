@@ -3,7 +3,7 @@
 Programme::Programme() {
 }
 
-Programme::Programme(list <Declaration> d, list <Fonction> f) {
+Programme::Programme(list <Declaration> * d, list <Fonction> * f) {
   declarations = d;
   fonctions = f;
 }

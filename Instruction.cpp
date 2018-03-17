@@ -6,7 +6,8 @@ Instruction::Instruction() {
 Break::Break() {
 }
 
-Return::Return() {
+Return::Return(Expression * e) {
+  exp = e;
 }
 
 Bloc::Bloc() {
@@ -24,13 +25,13 @@ AppelDeFonction::AppelDeFonction(string n, list <Expression> * p) {
     parametres = p;
 }
 
-ExprBin::ExprBin(Expression g, Expression d, Symbole s) {
+ExprBin::ExprBin(Expression * g, Expression * d, Symbole s) {
     gauche = g;
     droite = d;
     symbole = s;
 }
 
-ExprUnaire::ExprUnaire(Expression e, Symbole s) {
+ExprUnaire::ExprUnaire(Expression * e, Symbole s) {
     exp = e;
     symbole = s;
 }
@@ -82,7 +83,7 @@ VariableSimple::VariableSimple(string n, Type t, char v) : Variable(n, t) {
   initialise = true;
 }
 
-Affectation::Affectation(Variable v, Expression e) {
+Affectation::Affectation(Variable * v, Expression * e) {
     lValue = v;
     exp = e;
 }
@@ -93,13 +94,22 @@ Structure::Structure() {
 If::If() {
 }
 
-If::If(Expression exp) {
+If::If(Expression * exp, Instruction * i) {
+  condition = exp;
+  instruction = i;
+}
 
+IfElse::IfElse() {
+}
+
+IfElse::IfElse(Expression * exp, Instruction * i, Instruction * iElse) : If(exp, i) {
+  instructionElse = iElse;
 }
 
 While::While() {
 }
 
-While::While(Expression exp) {
+While::While(Expression * exp, Instruction * i) {
   condition = exp;
+  instruction = i;
 }

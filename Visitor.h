@@ -157,8 +157,12 @@ class Visitor : public PLDCOMPBaseVisitor {
         return visitChildren(ctx);
     }
 
-     antlrcpp::Any visitStructure(PLDCOMPParser::StructureContext *ctx) override {
-        return visitChildren(ctx);
+    virtual antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {
+      return (Structure *) visit(ctx->if_statement());
+    }
+
+    virtual antlrcpp::Any visitWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) override {
+      return (Structure *) visit(ctx->while_statement());
     }
 
     antlrcpp::Any visitConstanteNb(PLDCOMPParser::ConstanteNbContext *ctx) override {
@@ -173,30 +177,41 @@ class Visitor : public PLDCOMPBaseVisitor {
         cout<<"dans type_variable"<<endl;
         string type = ctx->getText();
 
-        if (type=="char"){
-            cout<<type<<endl;
+        if (type=="char")
             return CHAR;
-        }
         else if (type=="int_32")
           return INT32;
         else if (type=="int_64")
           return INT64;
         else
-          return false;
+          return false; // TODO: cas d'erreur
     }
 
      antlrcpp::Any visitType_function(PLDCOMPParser::Type_functionContext *ctx) override {
-        return visitChildren(ctx);
+       string type = ctx->getText();
+
+       if (type=="char")
+           return CHAR;
+       else if (type=="int_32")
+         return INT32;
+       else if (type=="int_64")
+         return INT64;
+       else if (type=="void")
+         return VOID;
+       else
+         return false;
     }
 
-     antlrcpp::Any visitIf_statement(PLDCOMPParser::If_statementContext *ctx) override {
-      return visitChildren(ctx);
-        //return (If *) new If(visit(ctx->exp()));
+    virtual antlrcpp::Any visitIf(PLDCOMPParser::IfContext *ctx) override {
+      return (If *) new If(visit(ctx->exp()), visit(ctx->instruction()));
+    }
+
+    virtual antlrcpp::Any visitIfElse(PLDCOMPParser::IfElseContext *ctx) override {
+      return (If *) new IfElse(visit(ctx->exp()), visit(ctx->instruction(0)), visit(ctx->instruction(1)));
     }
 
      antlrcpp::Any visitWhile(PLDCOMPParser::WhileContext *ctx) override {
-      return visitChildren(ctx);
-        //return (While *) new While(visit(ctx->exp()));
+       return (While *) new While(visit(ctx->exp()), visit(ctx->instruction()));
     }
 
     antlrcpp::Any visitTableauNombre(PLDCOMPParser::TableauNombreContext *ctx) override {
@@ -297,27 +312,27 @@ class Visitor : public PLDCOMPBaseVisitor {
        for(auto i=liste.begin();i!=liste.end();i++) {
           l->push_back(visit(*i));
        }
-       return (Bloc*) new Bloc(l);
+       return (Bloc *) new Bloc(l);
     }
 
      antlrcpp::Any visitBlocInstruction(PLDCOMPParser::BlocInstructionContext *ctx) override {
-        return visitChildren(ctx);
+        return (Instruction *) visit(ctx->bloc());
     }
 
      antlrcpp::Any visitBreakInstruction(PLDCOMPParser::BreakInstructionContext *ctx) override {
-        return visitChildren(ctx);
+        return (Instruction *) new Break();
     }
 
      antlrcpp::Any visitStructureInstruction(PLDCOMPParser::StructureInstructionContext *ctx) override {
-        return visitChildren(ctx);
+        return (Instruction *) visit(ctx->structure());
     }
 
      antlrcpp::Any visitReturnInstruction(PLDCOMPParser::ReturnInstructionContext *ctx) override {
-        return visitChildren(ctx);
+        return (Instruction *) new Return((Expression *) visit(ctx->exp()));
     }
 
      antlrcpp::Any visitExpInstruction(PLDCOMPParser::ExpInstructionContext *ctx) override {
-        return visitChildren(ctx);
+        return (Instruction *) visit(ctx->exp());
     }
 
      antlrcpp::Any visitProgramme(PLDCOMPParser::ProgrammeContext *ctx) override {

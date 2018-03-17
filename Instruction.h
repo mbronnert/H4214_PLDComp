@@ -12,8 +12,9 @@
 using namespace std;
 
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, OUVREPAR, FERMEPAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PP, MM };
-
 enum Type {CHAR, INT32, INT64, VOID};
+
+class Expression;
 
 class Instruction {
 public:
@@ -29,7 +30,9 @@ public:
 
 class Return : public Instruction {
 public:
-    Return();
+    Return(Expression * e);
+  private:
+    Expression * exp;
 };
 
 class Bloc : public Instruction {
@@ -55,18 +58,18 @@ private:
 
 class ExprBin : public Expression {
 public:
-    ExprBin(Expression g, Expression d, Symbole s);
+    ExprBin(Expression * g, Expression * d, Symbole s);
 private:
-    Expression gauche;
-    Expression droite;
+    Expression * gauche;
+    Expression * droite;
     Symbole symbole;
 };
 
 class ExprUnaire : public Expression {
 public:
-    ExprUnaire(Expression e, Symbole s);
+    ExprUnaire(Expression * e, Symbole s);
 private:
-    Expression exp;
+    Expression * exp;
     Symbole symbole;
 };
 
@@ -117,10 +120,10 @@ public:
 
 class Affectation : public Expression {
 public:
-    Affectation(Variable v, Expression e);
+    Affectation(Variable * v, Expression * e);
 private:
-    Variable lValue;
-    Expression exp;
+    Variable * lValue;
+    Expression * exp;
 };
 
 class Structure : public Instruction {
@@ -132,17 +135,27 @@ private:
 class If : public Structure {
 public:
     If();
-    If(Expression exp);
+    If(Expression * exp, Instruction * i);
+protected:
+    Expression * condition;
+    Instruction * instruction;
+};
+
+class IfElse : public If {
+public:
+  IfElse();
+  IfElse(Expression * exp, Instruction * i, Instruction * iElse);
 private:
-    Expression condition;
+  Instruction * instructionElse;
 };
 
 class While : public Structure {
 public:
-    While(Expression exp);
+    While(Expression * exp, Instruction * i);
     While();
 private:
-    Expression condition;
+    Expression * condition;
+    Instruction * instruction;
 };
 
 #endif
