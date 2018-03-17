@@ -35,6 +35,9 @@ public:
 class Bloc : public Instruction {
 public:
     Bloc();
+    Bloc(list<Instruction> * i);
+  private:
+    list <Instruction> * instructions;
 };
 
 class Expression : public Instruction {
@@ -44,10 +47,10 @@ public:
 
 class AppelDeFonction : public Expression {
 public:
-    AppelDeFonction(string n, list<Expression> param);
+    AppelDeFonction(string n, list<Expression> * param);
 private:
     string nom;
-    list <Expression> parametres;
+    list <Expression> * parametres;
 };
 
 class ExprBin : public Expression {
@@ -94,12 +97,12 @@ protected:
 class Tableau : public Variable {
 public:
     Tableau(string n, Type t, int ta);
-    Tableau(string n, Type t, int ta, list <int> v);
-    Tableau(string n, Type t, int ta, list <char> v);
+    Tableau(string n, Type t, int ta, list <int> * v);
+    Tableau(string n, Type t, int ta, list <char> * v);
   private:
     int taille;
-    list <int> tabEntiers;
-    list <char> tabCaracteres;
+    list <int> * tabEntiers;
+    list <char> * tabCaracteres;
 };
 
 class VariableSimple : public Variable {

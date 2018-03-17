@@ -8,6 +8,6 @@ Declaration::Declaration(Type t, Variable * v) {
 Type Declaration::getType(){
 	return type;
 }
-string Declaration::getNom(){
-	return nom;
+Variable * Declaration::getVariable(){
+	return variable;
 }

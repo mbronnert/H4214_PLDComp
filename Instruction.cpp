@@ -12,10 +12,14 @@ Return::Return() {
 Bloc::Bloc() {
 }
 
+Bloc::Bloc(list<Instruction> * i) {
+  instructions = i;
+}
+
 Expression::Expression() {
 }
 
-AppelDeFonction::AppelDeFonction(string n, list <Expression> p) {
+AppelDeFonction::AppelDeFonction(string n, list <Expression> * p) {
     nom = n;
     parametres = p;
 }
@@ -52,13 +56,13 @@ Tableau::Tableau(string n, Type t, int ta) : Variable(n, t) {
   initialise = false;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <int> v) : Variable(n, t) {
+Tableau::Tableau(string n, Type t, int ta, list <int> * v) : Variable(n, t) {
   taille = ta;
   tabEntiers = v;
   initialise = true;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <char> v) : Variable(n, t) {
+Tableau::Tableau(string n, Type t, int ta, list <char> * v) : Variable(n, t) {
   taille = ta;
   tabCaracteres = v;
   initialise = true;
