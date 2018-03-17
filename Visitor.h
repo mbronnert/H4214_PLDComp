@@ -93,43 +93,50 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
      antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) override {
-        return visitChildren(ctx);
+        return visit(ctx->lvalue());
     }
 
-     antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *ctx) override {
-        return visitChildren(ctx);
+     antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *ctx) override { //TODO: pb
+       return (Expression *) new ExprUnaire(visit(ctx->lvalue()), (Symbole) PPEXP);
     }
 
      antlrcpp::Any visitAppelGetchar(PLDCOMPParser::AppelGetcharContext *ctx) override {
-        return visitChildren(ctx);
+       list<Expression> * l = new list<Expression>;
+        return (Expression *) new AppelDeFonction("getchar", l);
     }
 
      antlrcpp::Any visitConstanteNombre(PLDCOMPParser::ConstanteNombreContext *ctx) override {
-        return visitChildren(ctx);
+        return (Expression *) new Nombre((int) stoi(ctx->NOMBRE()->getText()));
     }
 
      antlrcpp::Any visitParenthese(PLDCOMPParser::ParentheseContext *ctx) override {
-        return visitChildren(ctx);
+        return (Expression *) new ExprUnaire(visit(ctx->exp()), (Symbole) PAR);
     }
 
      antlrcpp::Any visitNon(PLDCOMPParser::NonContext *ctx) override {
-        return visitChildren(ctx);
+        return (Expression *) new ExprUnaire(visit(ctx->exp()), (Symbole) NON);
     }
 
      antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *ctx) override {
-        return visitChildren(ctx);
+        return (Expression *) new Caractere((char) ctx->CHAR()->getText()[0]);
     }
 
      antlrcpp::Any visitAppelDeFonction(PLDCOMPParser::AppelDeFonctionContext *ctx) override {
-        return visitChildren(ctx);
+       list<Expression> * l = new list<Expression>;
+       auto liste = ctx->exp();
+
+       for(auto i=liste.begin();i!=liste.end();i++) {
+          l->push_back(visit(*i));
+       }
+        return (Expression *) new AppelDeFonction((string) ctx->NOMVAR()->getText(), l);
     }
 
      antlrcpp::Any visitMmexp(PLDCOMPParser::MmexpContext *ctx) override {
-        return visitChildren(ctx);
+       return (Expression *) new ExprUnaire(visit(ctx->lvalue()), (Symbole) MMEXP);
     }
 
      antlrcpp::Any visitAffectation(PLDCOMPParser::AffectationContext *ctx) override {
-        return visitChildren(ctx);
+        return (Expression *) new Affectation(visit(ctx->lvalue()), visit(ctx->exp()));
     }
 
      antlrcpp::Any visitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) override {
@@ -137,31 +144,32 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
      antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) override {
-        return visitChildren(ctx);
+       list<Expression> * l = new list<Expression>;
+       l->push_back((Expression) Caractere((char) ctx->CHAR()->getText()[0]));
+        return (Expression *) new AppelDeFonction("putchar", l);
     }
 
      antlrcpp::Any visitExppp(PLDCOMPParser::ExpppContext *ctx) override {
-        return visitChildren(ctx);
+       return (Expression *) new ExprUnaire(visit(ctx->lvalue()), (Symbole) EXPPP);
     }
 
      antlrcpp::Any visitExpmm(PLDCOMPParser::ExpmmContext *ctx) override {
-        return visitChildren(ctx);
+       return (Expression *) new ExprUnaire(visit(ctx->lvalue()), (Symbole) EXPMM);
     }
 
      antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *ctx) override {
-        cout<<"dans visit_variable"<<endl;
-        return visitChildren(ctx);
+        return (string) ctx->NOMVAR()->getText();
     }
 
-     antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *ctx) override {
-        return visitChildren(ctx);
+     antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *ctx) override { //TODO: récupérer le numéro d'accès de la case
+        return (string) ctx->NOMVAR()->getText();
     }
 
-    virtual antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {
+    antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {
       return (Structure *) visit(ctx->if_statement());
     }
 
-    virtual antlrcpp::Any visitWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) override {
+    antlrcpp::Any visitWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) override {
       return (Structure *) visit(ctx->while_statement());
     }
 
@@ -215,7 +223,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitTableauNombre(PLDCOMPParser::TableauNombreContext *ctx) override {
-      list<int> * l;
+      list<int> * l = new list<int>();
 
       for(int i=0;/*TODO: condition d'arret ?*/;i++) {
          l->push_back((int) stoi(ctx->NOMBRE(i)->getText()));
@@ -224,7 +232,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitTableauCaractere(PLDCOMPParser::TableauCaractereContext *ctx) override {
-      list<char> * l;
+      list<char> * l = new list<char>();
 
       for(int i=0;/*TODO: condition d'arret ?*/;i++) {
          l->push_back((char) stoi(ctx->CHAR(i)->getText()));
@@ -296,13 +304,13 @@ class Visitor : public PLDCOMPBaseVisitor {
 
      antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *ctx) override {
         cout<<"dans déclaration_variable"<<endl;
-        list<Declaration*> * l = new list<Declaration*>();
+        list<Declaration> * l = new list<Declaration>();
         auto liste = ctx->declaration_type();
 
         for(auto i=liste.begin();i!=liste.end();i++) {
            l->push_back(visit(*i));
         }
-        return (list<Declaration *> *) l;
+        return (list<Declaration> *) l;
     }
 
      antlrcpp::Any visitBloc(PLDCOMPParser::BlocContext *ctx) override {
@@ -337,9 +345,13 @@ class Visitor : public PLDCOMPBaseVisitor {
 
      antlrcpp::Any visitProgramme(PLDCOMPParser::ProgrammeContext *ctx) override {
         cout << "Dans programme" << endl;
-        list<Declaration *> * l = visit(ctx->declaration_variables());
-        cout<<"prog"<<endl;
-        return 1;
+        list<Fonction> * l = new list<Fonction>();
+        auto liste = ctx->fonction();
+
+        for(auto i=liste.begin();i!=liste.end();i++) {
+           l->push_back(visit(*i));
+        }
+        return (Programme *) new Programme(visit(ctx->declaration_variables()), l);
     }
 
 
