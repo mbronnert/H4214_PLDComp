@@ -126,7 +126,7 @@ class Visitor : public PLDCOMPBaseVisitor {
        auto liste = ctx->exp();
 
        for(auto i=liste.begin();i!=liste.end();i++) {
-          l->push_back(visit(*i));
+          l->push_back((Expression) visit(*i));
        }
         return (Expression *) new AppelDeFonction((string) ctx->NOMVAR()->getText(), l);
     }
@@ -184,7 +184,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
         //cout<<"dans type_variable"<<endl;
         string type = ctx->getText();
-
+        cout<< type <<endl;
         if (type=="char")
             return CHAR;
         else if (type=="int_32")
@@ -255,6 +255,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
+        cout << ctx->NOMVAR()->getText() <<endl;
         return (Declaration *) new Declaration (visit(ctx->type_variable()), new VariableSimple(ctx->NOMVAR()->getText(), visit(ctx->type_variable())));
     }
 
@@ -307,8 +308,9 @@ class Visitor : public PLDCOMPBaseVisitor {
         auto liste = ctx->declaration_type();
 
         for(auto i=liste.begin();i!=liste.end();i++) {
-           l->push_back(visit(*i));
-        }
+           l->push_back((Declaration) visit(*i));
+        }  
+
         return (list<Declaration> *) l;
     }
 
@@ -317,7 +319,7 @@ class Visitor : public PLDCOMPBaseVisitor {
        auto liste = ctx->instruction();
 
        for(auto i=liste.begin();i!=liste.end();i++) {
-          l->push_back(visit(*i));
+          l->push_back((Instruction) visit(*i));
        }
        return (Bloc *) new Bloc(l);
     }
@@ -343,12 +345,12 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitProgramme(PLDCOMPParser::ProgrammeContext *ctx) override {
-        cout << "-> Start Program" << endl;
+        //cout << "-> Start Program" << endl;
         list<Fonction> * l = new list<Fonction>();
         auto liste = ctx->fonction();
 
         for(auto i=liste.begin();i!=liste.end();i++) {
-           l->push_back(visit(*i));
+           l->push_back((Fonction) visit(*i));
         }
         return (Programme *) new Programme(visit(ctx->declaration_variables()), l);
     }

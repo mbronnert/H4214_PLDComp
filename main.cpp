@@ -11,7 +11,7 @@ using namespace antlr4;
 using namespace std;
 
 int main () {
-    ANTLRInputStream input ("int_32 test[3]={2, 5, 1};\r\nint main() {char ok; 1+1;}");
+    ANTLRInputStream input ("void main() { char a; }");
     PLDCOMPLexer lexer (&input);
 
     CommonTokenStream token (&lexer);

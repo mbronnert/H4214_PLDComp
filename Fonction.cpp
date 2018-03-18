@@ -21,12 +21,12 @@ void Fonction::affiche() {
     cout<< "-> Fonction { typeRetour :" << typeRetour << ", nom : " << nom << " }" << endl;
     if(!parametres->empty()){
         for(auto i = parametres->begin(); i != parametres->end(); ++i) {
-            (*i).affiche();
+            (i)->affiche();
         }
     }      
     if(!declarations->empty()){
         for(auto i = declarations->begin(); i != declarations->end(); ++i) {
-            (*i).affiche();
+            (i)->affiche();
         }
     }
     bloc->affiche();

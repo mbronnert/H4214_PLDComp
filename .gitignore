@@ -1,4 +1,5 @@
 exe
+.DS_Store
 .idea/
 gen/
 antlr4-cpp-runtime-4/
