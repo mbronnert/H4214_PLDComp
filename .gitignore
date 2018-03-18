@@ -1,3 +1,4 @@
 exe
-antlr4-cpp-runtime-4/*
-antlr4-cpp-runtime-4
+.idea/
+gen/
+antlr4-cpp-runtime-4/

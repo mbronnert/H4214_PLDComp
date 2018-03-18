@@ -12,12 +12,15 @@ using namespace std;
 
 
 class Programme {
-public:
-    Programme();
-    Programme(list <Declaration> * d, list <Fonction> * f);
-private:
-  list <Declaration> * declarations;
-  list <Fonction> * fonctions;
+    public:
+        Programme();
+        Programme(list <Declaration> * d, list <Fonction> * f);
+        void affiche();
+        list <Declaration> * getDeclarations();
+        list <Fonction> * getFonctions();
+    private:
+	    list <Declaration> * declarations;
+	    list <Fonction> * fonctions;
 };
 
 #endif

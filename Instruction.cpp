@@ -1,49 +1,166 @@
 #include "Instruction.h"
+#include <iostream>
 
+/* Instruction */
 Instruction::Instruction() {
 }
 
+Instruction * Instruction::getInstruction() {
+    return instruction;
+}
+
+void Instruction::affiche() {
+    cout << "-> Instruction " << endl;
+    instruction->affiche();
+}
+
+/* Break */
 Break::Break() {
 }
 
+/* Return */
 Return::Return(Expression * e) {
-  exp = e;
+    exp = e;
 }
 
+Expression * Return::getExpression() {
+    return exp;
+}
+
+void Return::affiche() {
+    cout << "-> Return " << endl;
+    exp->affiche();
+}
+
+/* Block */
 Bloc::Bloc() {
 }
 
 Bloc::Bloc(list<Instruction> * i) {
-  instructions = i;
+    instructions = i;
 }
 
+list <Instruction> * Bloc::getInstructions() {
+  return instructions;
+}
+
+void Bloc::affiche() {
+    cout << "-> Start Bloc " << endl;
+    if(!instructions->empty()){
+        for(auto i = instructions->begin(); i != instructions->end(); ++i) {
+            (*i).affiche();
+        }
+    }  
+    cout << "-> End Bloc" << endl;
+}
+
+/* Expression */
 Expression::Expression() {
 }
 
+Expression * Expression::getExpression() {
+    return exp;
+}
+
+void Expression::affiche() {
+    cout << "- Expression" << endl;
+    exp->affiche();
+}
+
+/* Appel De Fonction */
 AppelDeFonction::AppelDeFonction(string n, list <Expression> * p) {
     nom = n;
     parametres = p;
 }
 
+string AppelDeFonction::getNom() {
+    return nom;
+}
+
+list <Expression> * AppelDeFonction::getParametres() {
+    return parametres;
+}
+
+void AppelDeFonction::affiche() {
+    cout<<"-> AppelDeFonction { nom :"<< nom << " }" <<endl;
+    if(!parametres->empty()){
+        for(auto i = parametres->begin(); i != parametres->end(); ++i) {
+            (*i).affiche();
+        }
+    }  
+}
+
+/* Expression Binaire */
 ExprBin::ExprBin(Expression * g, Expression * d, Symbole s) {
     gauche = g;
     droite = d;
     symbole = s;
 }
 
+Expression * ExprBin::getGauche() {
+    return gauche;
+}
+
+Expression * ExprBin::getDroite() {
+    return droite;
+}
+
+Symbole ExprBin::getSymbole() {
+    return symbole;
+}
+
+void ExprBin::affiche() {
+    gauche->affiche();
+    cout << "-> Expression Binaire : " << symbole << endl;
+    droite->affiche();
+}
+
+/* Expression unaire */
 ExprUnaire::ExprUnaire(Expression * e, Symbole s) {
     exp = e;
     symbole = s;
 }
 
+Expression * ExprUnaire::getExpression() {
+    return exp;
+}
+
+Symbole ExprUnaire::getSymbole() {
+    return symbole;
+}
+
+void ExprUnaire::affiche() {
+    cout << "-> Expression Unaire : " << symbole << endl;
+    exp->affiche();
+}
+
+/* Nombre */
 Nombre::Nombre(int v) {
     valeur = v;
 }
 
+int Nombre::getValeur() {
+    return valeur;
+}
+
+void Nombre::affiche() {
+    cout << "-> Nombre : " << valeur << endl;
+}
+
+/* Caractère */
 Caractere::Caractere(char v) {
     valeur = v;
 }
 
+int Caractere::getValeur() {
+    return valeur;
+}
+
+void Caractere::affiche() {
+    cout << "-> Caractere : " << valeur << endl;
+}
+
+/* Variable */
 Variable::Variable() {
 }
 
@@ -52,23 +169,53 @@ Variable::Variable(string n, Type t) {
     type = t;
 }
 
+Type Variable::getType() {
+    return type;
+}
+
+string Variable::getNom() {
+    return nom;
+}
+
+void Variable::affiche() {
+    cout << "-> Variable { type :" << type << ", nom : " << nom << " }" << endl;
+}
+
+/* Tableau */
 Tableau::Tableau(string n, Type t, int ta) : Variable(n, t) {
-  taille = ta;
-  initialise = false;
+    taille = ta;
+    initialise = false;
 }
 
 Tableau::Tableau(string n, Type t, int ta, list <int> * v) : Variable(n, t) {
-  taille = ta;
-  tabEntiers = v;
-  initialise = true;
+    taille = ta;
+    tabEntiers = v;
+    initialise = true;
 }
 
 Tableau::Tableau(string n, Type t, int ta, list <char> * v) : Variable(n, t) {
-  taille = ta;
-  tabCaracteres = v;
-  initialise = true;
+    taille = ta;
+    tabCaracteres = v;
+    initialise = true;
 }
 
+int Tableau::getTaille() {
+    return taille;
+}
+
+list <int> * Tableau::getTabEntiers(){
+    return tabEntiers;
+}
+
+list <char> * Tableau::getTabCaracteres() {
+    return tabCaracteres;
+}
+
+void Tableau::affiche() {
+    cout << "-> Tableau { taille :" << taille << " }" << endl; 
+}
+
+/* Variable Simple */
 VariableSimple::VariableSimple(string n, Type t) : Variable(n, t) {
   initialise = false;
 }
@@ -83,14 +230,48 @@ VariableSimple::VariableSimple(string n, Type t, char v) : Variable(n, t) {
   initialise = true;
 }
 
+int VariableSimple::getValeurEntiere(){
+    return valeurEntiere;
+}
+
+char VariableSimple::getValeurCaractere(){
+    return valeurCaractere;
+}
+
+void VariableSimple::affiche() {
+    if(!valeurEntiere)
+      cout << "-> Variable Simple (Entiere) : " << valeurEntiere << endl;     
+    if(!valeurCaractere)
+      cout << "-> Variable Simple (Caractere) : " << valeurCaractere << endl; 
+}
+
+/* Affectation */
 Affectation::Affectation(Variable * v, Expression * e) {
     lValue = v;
     exp = e;
 }
 
+Variable * Affectation::getLValue() {
+    return lValue;
+}
+
+Expression * Affectation::getExpression() {
+    return exp;
+}
+
+void Affectation::affiche() {
+    cout << "-> Affectation " << endl;
+    cout << "-> Variable "<< endl;
+    lValue->affiche();
+    cout << "-> Expression "<< endl;
+    exp->affiche();
+}
+
+/* Structure */
 Structure::Structure() {
 }
 
+/* IF/ELSE */
 If::If() {
 }
 
@@ -99,17 +280,56 @@ If::If(Expression * exp, Instruction * i) {
   instruction = i;
 }
 
+Expression * If::getCondition() {
+    return condition;
+}
+
+Instruction * If::getInstruction() {
+    return instruction;
+}
+
+void If::affiche() {
+    cout << "-> If " << endl;
+    condition->affiche();
+    instruction->affiche();
+}
+
 IfElse::IfElse() {
 }
 
 IfElse::IfElse(Expression * exp, Instruction * i, Instruction * iElse) : If(exp, i) {
-  instructionElse = iElse;
+    instructionElse = iElse;
 }
 
+Instruction * IfElse::getInstructionElse() {
+    return instructionElse;
+}
+
+void IfElse::affiche() {
+    cout << "-> IfElse " << endl;
+    instructionElse->affiche();
+}
+
+/* WHILE */
 While::While() {
 }
 
 While::While(Expression * exp, Instruction * i) {
-  condition = exp;
-  instruction = i;
+    condition = exp;
+    instruction = i;
 }
+
+Expression * While::getCondition() {
+    return condition;
+}
+
+Instruction * While::getInstruction() {
+    return instruction;
+}
+
+void While::affiche() {
+    cout << "-> While " << endl;
+    condition->affiche();
+    instruction->affiche();
+}
+
