@@ -86,7 +86,7 @@ class ExprUnaire : public Expression {
         Expression * getExpression();
         Symbole getSymbole();
     private:
-        Expression * exp;
+        Expression * exp; //TODO: c'est pas plutot une variable ?
         Symbole symbole;
 };
 

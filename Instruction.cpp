@@ -50,7 +50,7 @@ void Bloc::affiche() {
         for(auto i = instructions->begin(); i != instructions->end(); ++i) {
             (*i).affiche();
         }
-    }  
+    }
     cout << "-> End Bloc" << endl;
 }
 
@@ -87,7 +87,7 @@ void AppelDeFonction::affiche() {
         for(auto i = parametres->begin(); i != parametres->end(); ++i) {
             (*i).affiche();
         }
-    }  
+    }
 }
 
 /* Expression Binaire */
@@ -212,7 +212,7 @@ list <char> * Tableau::getTabCaracteres() {
 }
 
 void Tableau::affiche() {
-    cout << "-> Tableau { taille :" << taille << " }" << endl; 
+    cout << "-> Tableau { taille :" << taille << " }" << endl;
 }
 
 /* Variable Simple */
@@ -240,9 +240,9 @@ char VariableSimple::getValeurCaractere(){
 
 void VariableSimple::affiche() {
     if(!valeurEntiere)
-      cout << "-> Variable Simple (Entiere) : " << valeurEntiere << endl;     
+      cout << "-> Variable Simple (Entiere) : " << valeurEntiere << endl;
     if(!valeurCaractere)
-      cout << "-> Variable Simple (Caractere) : " << valeurCaractere << endl; 
+      cout << "-> Variable Simple (Caractere) : " << valeurCaractere << endl;
 }
 
 /* Affectation */
@@ -332,4 +332,3 @@ void While::affiche() {
     condition->affiche();
     instruction->affiche();
 }
-
