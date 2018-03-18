@@ -186,9 +186,9 @@ class Visitor : public PLDCOMPBaseVisitor {
         string type = ctx->getText();
         if (type=="char")
         return (Type) CHAR;
-        else if (type=="int_32")
+        else if (type=="int32_t")
         return (Type) INT32;
-        else if (type=="int_64")
+        else if (type=="int64_t")
         return (Type) INT64;
         else
         return false; // TODO: cas d'erreur
@@ -199,9 +199,9 @@ class Visitor : public PLDCOMPBaseVisitor {
 
         if (type=="char")
         return (Type) CHAR;
-        else if (type=="int_32")
+        else if (type=="int32_t")
         return (Type) INT32;
-        else if (type=="int_64")
+        else if (type=="int64_t")
         return (Type) INT64;
         else if (type=="void")
         return (Type) VOID;
@@ -301,7 +301,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *ctx) override {
-        list<Declaration> * l = new list<Declaration>();
+    list<Declaration> * l = new list<Declaration>();
         auto liste = ctx->declaration_type();
 
         for(auto i=liste.begin();i!=liste.end();i++) {

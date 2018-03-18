@@ -55,9 +55,46 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/19_OperatorLeftShift.c",
     baseURL + "validPrograms/20_OperatorRightShift.c",
     baseURL + "validPrograms/21_OperatorIncPost.c",
-    baseURL + "validPrograms/22_OperatorIncPre.c"
-    //TODO : ajouter les 37 autres, j'ai eu la flemme
+    baseURL + "validPrograms/22_OperatorIncPre.c",
+    baseURL + "validPrograms/23_OperatorDecPost.c",
+    baseURL + "validPrograms/24_OperatorDecPre.c",
+    baseURL + "validPrograms/25_OperatorNot.c",
+    baseURL + "validPrograms/26_OperatorXor.c",
+    baseURL + "validPrograms/27_OperatorComp.c",
+    baseURL + "validPrograms/28_OperatorPlusAssign.c",
+    baseURL + "validPrograms/29_OperatorMinusAssign.c",
+    baseURL + "validPrograms/30_OperatorMultAssign.c",
+    baseURL + "validPrograms/31_OperatorDivAssign.c",
+    baseURL + "validPrograms/32_OperatorModAssign.c",
+    baseURL + "validPrograms/33_OperatorBitAndAssign.c",
+    baseURL + "validPrograms/34_OperatorBitOrAssign.c",
+    baseURL + "validPrograms/35_OperatorBitXorAssign.c",
+    baseURL + "validPrograms/36_OperatorComma.c",
+    baseURL + "validPrograms/37_Par.c",
+    baseURL + "validPrograms/38_ArithmeticExpression.c",
+    baseURL + "validPrograms/39_ArithmeticExpressionWithPar.c",
+    baseURL + "validPrograms/40_If.c",
+    baseURL + "validPrograms/41_IfElse.c",
+    baseURL + "validPrograms/42_While.c",
+    baseURL + "validPrograms/44_IfElseIf.c",
+    baseURL + "validPrograms/46_ArrayDec.c",
+    baseURL + "validPrograms/47_ArrayUse.c",
+    baseURL + "validPrograms/49_ArrayFibo.c",
+    baseURL + "validPrograms/50_CharConst.c",
+    baseURL + "validPrograms/51_CharConstSpecial.c",
+    baseURL + "validPrograms/52_Int64Dec.c",
+    baseURL + "validPrograms/53_FunctionCallPutChar.c",
+    baseURL + "validPrograms/54_FunctionCallCustom.c",
+    baseURL + "validPrograms/55_Return.c",
+    baseURL + "validPrograms/56_ArrayAsParam.c",
+    baseURL + "validPrograms/57_VarInitialization.c",
+    baseURL + "validPrograms/58_MultipleVarDeclarations.c",
+    baseURL + "validPrograms/59_MixedDeclarationsInitializations.c",
 };
+
+
+
+
 
 tree::ParseTree * treeInitialization (string cppCode) {
     ANTLRInputStream input (cppCode);
@@ -136,7 +173,6 @@ void validProgramsTests () {
 
         ifstream file(validProgramsFiles[i]);
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
-
         ANTLRInputStream input (content);
         PLDCOMPLexer lexer (&input);
         CommonTokenStream token (&lexer);
@@ -152,7 +188,7 @@ void validProgramsTests () {
 
 
 int main () {
-    /*ANTLRInputStream input ("char test; void main(){ char a;}");
+    /*ANTLRInputStream input ("int32_t main() {int32_t a;}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
@@ -161,7 +197,7 @@ int main () {
 
     Programme * prog = (Programme *) visitor.visit(tree);
 
-    prog->affiche();*/
+    //prog->affiche();*/
 
     lexErrorTests();
     syntaxErrorTests();
