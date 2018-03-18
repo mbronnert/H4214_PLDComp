@@ -11,7 +11,7 @@ Instruction * Instruction::getInstruction() {
 
 void Instruction::affiche() {
     cout << "-> Instruction " << endl;
-    instruction->affiche();
+    //instruction->affiche();
 }
 
 /* Break */
@@ -135,6 +135,9 @@ void ExprUnaire::affiche() {
 }
 
 /* Nombre */
+Nombre::Nombre() {
+}
+
 Nombre::Nombre(int v) {
     valeur = v;
 }
@@ -148,6 +151,9 @@ void Nombre::affiche() {
 }
 
 /* Caractère */
+Caractere::Caractere() {
+}
+
 Caractere::Caractere(char v) {
     valeur = v;
 }
@@ -187,13 +193,13 @@ Tableau::Tableau(string n, Type t, int ta) : Variable(n, t) {
     initialise = false;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <int> * v) : Variable(n, t) {
+Tableau::Tableau(string n, Type t, int ta, list <Nombre> * v) : Variable(n, t) {
     taille = ta;
-    tabEntiers = v;
+    tabNombres = v;
     initialise = true;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <char> * v) : Variable(n, t) {
+Tableau::Tableau(string n, Type t, int ta, list <Caractere> * v) : Variable(n, t) {
     taille = ta;
     tabCaracteres = v;
     initialise = true;
@@ -203,11 +209,11 @@ int Tableau::getTaille() {
     return taille;
 }
 
-list <int> * Tableau::getTabEntiers(){
-    return tabEntiers;
+list <Nombre> * Tableau::getTabNombres(){
+    return tabNombres;
 }
 
-list <char> * Tableau::getTabCaracteres() {
+list <Caractere> * Tableau::getTabCaracteres() {
     return tabCaracteres;
 }
 
@@ -220,29 +226,29 @@ VariableSimple::VariableSimple(string n, Type t) : Variable(n, t) {
   initialise = false;
 }
 
-VariableSimple::VariableSimple(string n, Type t, int v) : Variable(n, t) {
-  valeurEntiere = v;
+VariableSimple::VariableSimple(string n, Type t, Nombre v) : Variable(n, t) {
+  nombre = v;
   initialise = true;
 }
 
-VariableSimple::VariableSimple(string n, Type t, char v) : Variable(n, t) {
-  valeurCaractere = v;
+VariableSimple::VariableSimple(string n, Type t, Caractere v) : Variable(n, t) {
+  caractere = v;
   initialise = true;
 }
 
-int VariableSimple::getValeurEntiere(){
-    return valeurEntiere;
+Nombre VariableSimple::getNombre(){
+    return nombre;
 }
 
-char VariableSimple::getValeurCaractere(){
-    return valeurCaractere;
+Caractere VariableSimple::getCaractere(){
+    return caractere;
 }
 
 void VariableSimple::affiche() {
-    if(!valeurEntiere)
-      cout << "-> Variable Simple (Entiere) : " << valeurEntiere << endl;
-    if(!valeurCaractere)
-      cout << "-> Variable Simple (Caractere) : " << valeurCaractere << endl;
+    if(nombre.getValeur())
+      cout << "-> Variable Simple (Entiere) : " << nombre.getValeur() << endl;
+    if(!caractere.getValeur())
+      cout << "-> Variable Simple (Caractere) : " << caractere.getValeur() << endl;
 }
 
 /* Affectation */

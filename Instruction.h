@@ -92,6 +92,7 @@ class ExprUnaire : public Expression {
 
 class Nombre : public Expression {
     public:
+      Nombre();
         Nombre(int v);
         void affiche();
         int getValeur();
@@ -101,6 +102,7 @@ class Nombre : public Expression {
 
 class Caractere : public Expression {
     public:
+      Caractere();
         Caractere(char v);
         void affiche();
         int getValeur();
@@ -124,29 +126,29 @@ class Variable : public Expression {
 class Tableau : public Variable {
     public:
         Tableau(string n, Type t, int ta);
-        Tableau(string n, Type t, int ta, list <int> * v);
-        Tableau(string n, Type t, int ta, list <char> * v);
+        Tableau(string n, Type t, int ta, list <Nombre> * v);
+        Tableau(string n, Type t, int ta, list <Caractere> * v);
         int getTaille();
-        list <int> * getTabEntiers();
-        list <char> * getTabCaracteres();
+        list <Nombre> * getTabNombres();
+        list <Caractere> * getTabCaracteres();
         void affiche();
       private:
         int taille;
-        list <int> * tabEntiers;
-        list <char> * tabCaracteres;
+        list <Nombre> * tabNombres;
+        list <Caractere> * tabCaracteres;
 };
 
 class VariableSimple : public Variable {
     public:
         VariableSimple(string n, Type t);
-        VariableSimple(string n, Type t, int v);
-        VariableSimple(string n, Type t, char v);
-        int getValeurEntiere();
-        char getValeurCaractere();
+        VariableSimple(string n, Type t, Nombre v);
+        VariableSimple(string n, Type t, Caractere v);
+        Nombre getNombre();
+        Caractere getCaractere();
         void affiche();
       private:
-        int valeurEntiere;
-        char valeurCaractere;
+        Nombre nombre;
+        Caractere caractere;
 };
 
 class Affectation : public Expression {
