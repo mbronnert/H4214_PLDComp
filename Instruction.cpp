@@ -47,8 +47,8 @@ list <Instruction> * Bloc::getInstructions() {
 void Bloc::affiche() {
     cout << "-> Start Bloc " << endl;
     if(!instructions->empty()){
-        for(auto i = instructions->begin(); i != instructions->end(); ++i) {
-            (*i).affiche();
+        for(auto i = instructions->begin(); i != instructions->end(); i++) {
+            i->affiche();
         }
     }
     cout << "-> End Bloc" << endl;
@@ -84,8 +84,8 @@ list <Expression> * AppelDeFonction::getParametres() {
 void AppelDeFonction::affiche() {
     cout<<"-> AppelDeFonction { nom :"<< nom << " }" <<endl;
     if(!parametres->empty()){
-        for(auto i = parametres->begin(); i != parametres->end(); ++i) {
-            (*i).affiche();
+        for(auto i = parametres->begin(); i != parametres->end(); i++) {
+            i->affiche();
         }
     }
 }
