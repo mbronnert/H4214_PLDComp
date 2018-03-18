@@ -19,7 +19,7 @@ public:
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
     T__38 = 39, T__39 = 40, T__40 = 41, NOMVAR = 42, NOMBRE = 43, CHAR = 44, 
-    COMMENT = 45, WS = 46
+    COMMENT = 45, WS = 46, INCLUDE = 47
   };
 
   PLDCOMPLexer(antlr4::CharStream *input);
