@@ -181,8 +181,9 @@ void validProgramsTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
+
+        prog->affiche();
         cout << endl;
-        //prog->affiche();
     }
 }
 
@@ -199,10 +200,10 @@ int main () {
 
     //prog->affiche();*/
 
-    lexErrorTests();
-    syntaxErrorTests();
+    // lexErrorTests();
+    // syntaxErrorTests();
     validProgramsTests();
-    semanticErrorTests();
+    // semanticErrorTests();
 
     return 0;
 }

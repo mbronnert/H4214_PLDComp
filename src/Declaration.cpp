@@ -1,6 +1,8 @@
 #include <iostream>
 #include "Declaration.h"
 
+const char* enType[] =  { "char", "int32_t", "int64_t", "void" };
+
 Declaration::Declaration(Type t, Variable * v) {
     type = t;
     variable = v;
@@ -15,5 +17,6 @@ Variable * Declaration::getVariable(){
 }
 
 void Declaration::affiche() {
-	cout << "-> Declaration { type :" << type << ", variable : " << variable << " }" << endl;
+	cout << "declarationVariables" << endl;
+	cout << enType[type] << " " << getVariable()->getNom() << ";"<< endl;
 }

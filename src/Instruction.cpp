@@ -10,7 +10,7 @@ Instruction * Instruction::getInstruction() {
 }
 
 void Instruction::affiche() {
-    cout << "-> Instruction " << endl;
+    cout << "Instruction " << endl;
     //instruction->affiche();
 }
 
@@ -28,7 +28,7 @@ Expression * Return::getExpression() {
 }
 
 void Return::affiche() {
-    cout << "-> Return " << endl;
+    cout << "Return " << endl;
     exp->affiche();
 }
 
@@ -45,13 +45,13 @@ list <Instruction> * Bloc::getInstructions() {
 }
 
 void Bloc::affiche() {
-    cout << "-> Start Bloc " << endl;
+    cout << "{ " << endl;
     if(!instructions->empty()){
         for(auto i = instructions->begin(); i != instructions->end(); i++) {
             i->affiche();
         }
     }
-    cout << "-> End Bloc" << endl;
+    cout << "} " << endl;
 }
 
 /* Expression */
@@ -63,7 +63,7 @@ Expression * Expression::getExpression() {
 }
 
 void Expression::affiche() {
-    cout << "- Expression" << endl;
+    cout << "Expression" << endl;
     exp->affiche();
 }
 
@@ -82,7 +82,8 @@ list <Expression> * AppelDeFonction::getParametres() {
 }
 
 void AppelDeFonction::affiche() {
-    cout<<"-> AppelDeFonction { nom :"<< nom << " }" <<endl;
+    cout << "AppelDeFonction" << endl;
+    cout << nom <<endl;
     if(!parametres->empty()){
         for(auto i = parametres->begin(); i != parametres->end(); i++) {
             i->affiche();
@@ -111,7 +112,7 @@ Symbole ExprBin::getSymbole() {
 
 void ExprBin::affiche() {
     gauche->affiche();
-    cout << "-> Expression Binaire : " << symbole << endl;
+    cout << "Expression Binaire : " << symbole << endl;
     droite->affiche();
 }
 
@@ -130,7 +131,7 @@ Symbole ExprUnaire::getSymbole() {
 }
 
 void ExprUnaire::affiche() {
-    cout << "-> Expression Unaire : " << symbole << endl;
+    cout << "Expression Unaire : " << symbole << endl;
     exp->affiche();
 }
 
@@ -147,7 +148,8 @@ int Nombre::getValeur() {
 }
 
 void Nombre::affiche() {
-    cout << "-> Nombre : " << valeur << endl;
+    cout << "Nombre" << endl;
+    cout << valeur << endl;
 }
 
 /* Caractère */
@@ -163,7 +165,8 @@ int Caractere::getValeur() {
 }
 
 void Caractere::affiche() {
-    cout << "-> Caractere : " << valeur << endl;
+    cout << "Caractere"<< endl;
+    cout << valeur << endl;
 }
 
 /* Variable */
@@ -184,7 +187,8 @@ string Variable::getNom() {
 }
 
 void Variable::affiche() {
-    cout << "-> Variable { type :" << type << ", nom : " << nom << " }" << endl;
+    cout << "Variable" << endl;
+    cout << type << nom << endl;
 }
 
 /* Tableau */
@@ -218,7 +222,7 @@ list <Caractere> * Tableau::getTabCaracteres() {
 }
 
 void Tableau::affiche() {
-    cout << "-> Tableau { taille :" << taille << " }" << endl;
+    cout << "Tableau [" << taille << "]" << endl;
 }
 
 /* Variable Simple */
@@ -246,9 +250,9 @@ Caractere VariableSimple::getCaractere(){
 
 void VariableSimple::affiche() {
     if(nombre.getValeur())
-      cout << "-> Variable Simple (Entiere) : " << nombre.getValeur() << endl;
+      cout << nombre.getValeur() << endl;
     if(!caractere.getValeur())
-      cout << "-> Variable Simple (Caractere) : " << caractere.getValeur() << endl;
+      cout << caractere.getValeur() << endl;
 }
 
 /* Affectation */
@@ -266,10 +270,10 @@ Expression * Affectation::getExpression() {
 }
 
 void Affectation::affiche() {
-    cout << "-> Affectation " << endl;
-    cout << "-> Variable "<< endl;
+    cout << "Affectation " << endl;
+    cout << "Variable "<< endl;
     lValue->affiche();
-    cout << "-> Expression "<< endl;
+    cout << "Expression "<< endl;
     exp->affiche();
 }
 
@@ -295,7 +299,7 @@ Instruction * If::getInstruction() {
 }
 
 void If::affiche() {
-    cout << "-> If " << endl;
+    cout << "If " << endl;
     condition->affiche();
     instruction->affiche();
 }
@@ -312,7 +316,7 @@ Instruction * IfElse::getInstructionElse() {
 }
 
 void IfElse::affiche() {
-    cout << "-> IfElse " << endl;
+    cout << "IfElse " << endl;
     instructionElse->affiche();
 }
 
@@ -334,7 +338,7 @@ Instruction * While::getInstruction() {
 }
 
 void While::affiche() {
-    cout << "-> While " << endl;
+    cout << "While " << endl;
     condition->affiche();
     instruction->affiche();
 }

@@ -9,6 +9,8 @@
 #include <iostream>
 #include <list>
 
+const char* emType[] =  { "char", "int32_t", "int64_t", "void" };
+
 Fonction::Fonction(Type t, string n, list <Parametre> * p, list <Declaration> * d, Bloc * b) {
     typeRetour = t;
     nom = n;
@@ -18,12 +20,18 @@ Fonction::Fonction(Type t, string n, list <Parametre> * p, list <Declaration> * 
 }
 
 void Fonction::affiche() {
-    cout<< "-> Fonction { typeRetour :" << typeRetour << ", nom : " << nom << " }" << endl;
+    cout << "declarationFonction" << endl;
+    cout << emType[typeRetour] << " " << nom << endl;
+
     if(!parametres->empty()){
+        cout << "(" << endl;
         for(auto i = parametres->begin(); i != parametres->end(); i++) {
             i->affiche();
         }
-    }      
+        cout << ")" << endl;
+    }else{
+       cout << "()" << endl;
+    }     
     if(!declarations->empty()){
         for(auto i = declarations->begin(); i != declarations->end(); i++) {
             i->affiche();
