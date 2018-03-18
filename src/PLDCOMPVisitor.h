@@ -37,6 +37,22 @@ public:
 
     virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *context) = 0;
 
+    virtual antlrcpp::Any visitAddeq(PLDCOMPParser::AddeqContext *context) = 0;
+
+    virtual antlrcpp::Any visitMoinseq(PLDCOMPParser::MoinseqContext *context) = 0;
+
+    virtual antlrcpp::Any visitMulteq(PLDCOMPParser::MulteqContext *context) = 0;
+
+    virtual antlrcpp::Any visitDiveq(PLDCOMPParser::DiveqContext *context) = 0;
+
+    virtual antlrcpp::Any visitModeq(PLDCOMPParser::ModeqContext *context) = 0;
+
+    virtual antlrcpp::Any visitAndeq(PLDCOMPParser::AndeqContext *context) = 0;
+
+    virtual antlrcpp::Any visitOreq(PLDCOMPParser::OreqContext *context) = 0;
+
+    virtual antlrcpp::Any visitXoreq(PLDCOMPParser::XoreqContext *context) = 0;
+
     virtual antlrcpp::Any visitInfs(PLDCOMPParser::InfsContext *context) = 0;
 
     virtual antlrcpp::Any visitInf(PLDCOMPParser::InfContext *context) = 0;
@@ -59,7 +75,11 @@ public:
 
     virtual antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *context) = 0;
 
+    virtual antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *context) = 0;
+
     virtual antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *context) = 0;
+
+    virtual antlrcpp::Any visitInvert(PLDCOMPParser::InvertContext *context) = 0;
 
     virtual antlrcpp::Any visitAppelGetchar(PLDCOMPParser::AppelGetcharContext *context) = 0;
 

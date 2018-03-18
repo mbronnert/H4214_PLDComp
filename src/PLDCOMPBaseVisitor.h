@@ -51,6 +51,38 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitAddeq(PLDCOMPParser::AddeqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitMoinseq(PLDCOMPParser::MoinseqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitMulteq(PLDCOMPParser::MulteqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDiveq(PLDCOMPParser::DiveqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitModeq(PLDCOMPParser::ModeqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAndeq(PLDCOMPParser::AndeqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitOreq(PLDCOMPParser::OreqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitXoreq(PLDCOMPParser::XoreqContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitInfs(PLDCOMPParser::InfsContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -95,7 +127,15 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitInvert(PLDCOMPParser::InvertContext *ctx) override {
     return visitChildren(ctx);
   }
 

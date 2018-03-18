@@ -92,8 +92,48 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Symbole) ORB;
     }
 
+    antlrcpp::Any visitAddeq(PLDCOMPParser::AddeqContext *ctx) override {
+        return (Symbole) ADDEQ;
+    }
+
+    antlrcpp::Any visitMoinseq(PLDCOMPParser::MoinseqContext *ctx) override {
+        return (Symbole) MOINSEQ;
+    }
+
+    antlrcpp::Any visitMulteq(PLDCOMPParser::MulteqContext *ctx) override {
+        return (Symbole) MULTEQ;
+    }
+
+    antlrcpp::Any visitDiveq(PLDCOMPParser::DiveqContext *ctx) override {
+        return (Symbole) DIVEQ;
+    }
+
+    antlrcpp::Any visitModeq(PLDCOMPParser::ModeqContext *ctx) override {
+        return (Symbole) MODEQ;
+    }
+
+    antlrcpp::Any visitAndeq(PLDCOMPParser::AndeqContext *ctx) override {
+        return (Symbole) ANDEQ;
+    }
+
+    antlrcpp::Any visitOreq(PLDCOMPParser::OreqContext *ctx) override {
+        return (Symbole) OREQ;
+    }
+
+    antlrcpp::Any visitXoreq(PLDCOMPParser::XoreqContext *ctx) override {
+        return (Symbole) XOREQ;
+    }
+
     antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) override {
         return (Expression *) visit(ctx->lvalue());
+    }
+
+    antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *ctx) override {
+        return (Expression *) new ExprUnaire((Expression *) visit(ctx->exp()), (Symbole) NEGATION);
+    }
+
+    antlrcpp::Any visitInvert(PLDCOMPParser::InvertContext *ctx) override {
+        return (Expression *) new ExprUnaire((Expression *) visit(ctx->exp()), (Symbole) INVERT);
     }
 
     antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *ctx) override {

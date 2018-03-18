@@ -18,8 +18,9 @@ public:
     T__20 = 21, T__21 = 22, T__22 = 23, T__23 = 24, T__24 = 25, T__25 = 26, 
     T__26 = 27, T__27 = 28, T__28 = 29, T__29 = 30, T__30 = 31, T__31 = 32, 
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
-    T__38 = 39, T__39 = 40, T__40 = 41, NOMVAR = 42, NOMBRE = 43, CHAR = 44, 
-    COMMENT = 45, WS = 46, INCLUDE = 47
+    T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
+    T__44 = 45, T__45 = 46, T__46 = 47, T__47 = 48, T__48 = 49, T__49 = 50, 
+    NOMVAR = 51, NOMBRE = 52, CHAR = 53, COMMENT = 54, WS = 55, INCLUDE = 56
   };
 
   enum {
@@ -71,20 +72,6 @@ public:
    
   };
 
-  class  AddContext : public OpContext {
-  public:
-    AddContext(OpContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  InfContext : public OpContext {
-  public:
-    InfContext(OpContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   class  MultContext : public OpContext {
   public:
     MultContext(OpContext *ctx);
@@ -99,23 +86,9 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  OrContext : public OpContext {
-  public:
-    OrContext(OpContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   class  InfsContext : public OpContext {
   public:
     InfsContext(OpContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  EqualbContext : public OpContext {
-  public:
-    EqualbContext(OpContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -127,9 +100,23 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  DiffContext : public OpContext {
+  class  AddeqContext : public OpContext {
   public:
-    DiffContext(OpContext *ctx);
+    AddeqContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  XoreqContext : public OpContext {
+  public:
+    XoreqContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  AndeqContext : public OpContext {
+  public:
+    AndeqContext(OpContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -148,6 +135,13 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  DiveqContext : public OpContext {
+  public:
+    DiveqContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  SupContext : public OpContext {
   public:
     SupContext(OpContext *ctx);
@@ -162,16 +156,16 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  EqualContext : public OpContext {
+  class  SupsContext : public OpContext {
   public:
-    EqualContext(OpContext *ctx);
+    SupsContext(OpContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  SupsContext : public OpContext {
+  class  MoinseqContext : public OpContext {
   public:
-    SupsContext(OpContext *ctx);
+    MoinseqContext(OpContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -183,13 +177,6 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  MoinsContext : public OpContext {
-  public:
-    MoinsContext(OpContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   class  PowContext : public OpContext {
   public:
     PowContext(OpContext *ctx);
@@ -197,9 +184,79 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  ModeqContext : public OpContext {
+  public:
+    ModeqContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  OrbContext : public OpContext {
   public:
     OrbContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  AddContext : public OpContext {
+  public:
+    AddContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  InfContext : public OpContext {
+  public:
+    InfContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  OrContext : public OpContext {
+  public:
+    OrContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  EqualbContext : public OpContext {
+  public:
+    EqualbContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  DiffContext : public OpContext {
+  public:
+    DiffContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  EqualContext : public OpContext {
+  public:
+    EqualContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  MoinsContext : public OpContext {
+  public:
+    MoinsContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  OreqContext : public OpContext {
+  public:
+    OreqContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  MulteqContext : public OpContext {
+  public:
+    MulteqContext(OpContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -227,11 +284,27 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  NegationContext : public ExpContext {
+  public:
+    NegationContext(ExpContext *ctx);
+
+    ExpContext *exp();
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  PpexpContext : public ExpContext {
   public:
     PpexpContext(ExpContext *ctx);
 
     LvalueContext *lvalue();
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  InvertContext : public ExpContext {
+  public:
+    InvertContext(ExpContext *ctx);
+
+    ExpContext *exp();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
