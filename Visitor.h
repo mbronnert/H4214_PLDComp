@@ -183,7 +183,6 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
-        cout<<"dans type_variable"<<endl;
         string type = ctx->getText();
         if (type=="char")
             return (Type) CHAR;
@@ -244,10 +243,10 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
        Type type = visit(ctx->type_variable());
        if (type==CHAR) {
-         return (Declaration) Declaration(type, new VariableSimple(ctx->NOMVAR()->getText(), visit(ctx->type_variable()), (Caractere) Caractere((char) visit(ctx->constante()))));
+         return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (Caractere) Caractere((char) visit(ctx->constante()))));
        }
        else if (type==INT32 || type==INT64) {
-         return (Declaration) Declaration(type, new VariableSimple(ctx->NOMVAR()->getText(), visit(ctx->type_variable()), (Nombre) Nombre((int) visit(ctx->constante()))));
+         return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (Nombre) Nombre((int) visit(ctx->constante()))));
        }
        else {
          return NULL; //TODO : réfléchir à ça : cas d'erreur
@@ -255,22 +254,20 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
-      cout << "dans declaration"<<endl;
-        cout << ctx->NOMVAR()->getText() <<endl;
-        return (Declaration) Declaration((Type) visit(ctx->type_variable()), new VariableSimple(ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable())));
+        return (Declaration) Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable())));
     }
 
     antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
-       return (Declaration) Declaration((Type) visit(ctx->type_variable()), new Tableau(ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (int) stoi(ctx->NOMBRE()->getText())));
+       return (Declaration) Declaration((Type) visit(ctx->type_variable()), new Tableau((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (int) stoi(ctx->NOMBRE()->getText())));
     }
 
     antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) override {
        Type type = (Type) visit(ctx->type_variable());
        if (type==CHAR) {
-         return (Declaration) Declaration(type, new Tableau(ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Caractere>*) visit(ctx->val())));
+         return (Declaration) Declaration(type, new Tableau((string) ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Caractere>*) visit(ctx->val())));
        }
        else if (type==INT32 || type==INT64) {
-         return (Declaration) Declaration(type, new Tableau(ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Nombre>*) visit(ctx->val())));
+         return (Declaration) Declaration(type, new Tableau((string) ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Nombre>*) visit(ctx->val())));
        }
        else {
          return NULL; //TODO : réfléchir à ça : cas d'erreur
@@ -288,23 +285,22 @@ class Visitor : public PLDCOMPBaseVisitor {
        int cpt = 0;
 
        for(auto i=liste.begin();i!=liste.end();i++) {
-          l->push_back((Parametre) Parametre((Type) visit(*i), ctx->NOMVAR(cpt)->getText()));
+          l->push_back((Parametre) Parametre((Type) visit(*i), (string) ctx->NOMVAR(cpt)->getText()));
           cpt++;
        }
        return (list<Parametre> *) l;
     }
 
     antlrcpp::Any visitDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext *ctx) override {
-      return (Fonction) Fonction((Type) visit(ctx->type_function()), ctx->NOMVAR()->getText(), visit(ctx->param()), visit(ctx->declaration_variables()), visit(ctx->bloc()));
+      return (Fonction) Fonction((Type) visit(ctx->type_function()), (string) ctx->NOMVAR()->getText(), (list<Parametre> *) visit(ctx->param()), (list<Declaration> *) visit(ctx->declaration_variables()), (Bloc *) visit(ctx->bloc()));
     }
 
     antlrcpp::Any visitDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext *ctx) override {
       list<Parametre> * param = new list<Parametre>();
-      return (Fonction) Fonction((Type) visit(ctx->type_function()), ctx->NOMVAR()->getText(), param, visit(ctx->declaration_variables()), visit(ctx->bloc()));
+      return (Fonction) Fonction((Type) visit(ctx->type_function()), (string) ctx->NOMVAR()->getText(), (list<Parametre> *) param, (list<Declaration> *) visit(ctx->declaration_variables()), (Bloc *) visit(ctx->bloc()));
     }
 
     antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *ctx) override {
-        cout<<"dans déclaration_variable"<<endl;
         list<Declaration> * l = new list<Declaration>();
         auto liste = ctx->declaration_type();
 
@@ -348,7 +344,6 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitProgramme(PLDCOMPParser::ProgrammeContext *ctx) override {
-        cout << "-> Start Program" << endl;
         list<Fonction> * l = new list<Fonction>();
         auto liste = ctx->fonction();
 
