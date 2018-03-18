@@ -20,9 +20,9 @@ int main () {
     tree::ParseTree * tree = parser.programme();
     Visitor visitor;
 
-    int resultat = (int) visitor.visit(tree);
+    Programme * prog = (Programme *) visitor.visit(tree);
 
-    cout << resultat;
+    prog->affiche();
 
 
     return 0;

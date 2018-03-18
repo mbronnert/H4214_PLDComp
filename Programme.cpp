@@ -11,8 +11,14 @@ Programme::Programme(list <Declaration> * d, list <Fonction> * f) {
 
 void Programme::affiche() {
 	cout << "Début Programme" << endl;
-	// TODO
-	cout << "Fin Programme" << endl;
+
+  for(auto i=declarations->begin();i!=declarations->end();i++) {
+     i->affiche();
+  }
+  for(auto i=fonctions->begin();i!=fonctions->end();i++) {
+     i->affiche();
+  }
+  cout << "Fin Programme" << endl;
 }
 
 list <Declaration> * Programme::getDeclarations() {
