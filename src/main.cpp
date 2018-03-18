@@ -55,7 +55,21 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/19_OperatorLeftShift.c",
     baseURL + "validPrograms/20_OperatorRightShift.c",
     baseURL + "validPrograms/21_OperatorIncPost.c",
-    baseURL + "validPrograms/22_OperatorIncPre.c"
+    baseURL + "validPrograms/22_OperatorIncPre.c",
+    baseURL + "validPrograms/23_OperatorDecPost.c",
+    baseURL + "validPrograms/24_OperatorDecPre.c",
+    baseURL + "validPrograms/25_OperatorNot.c",
+    baseURL + "validPrograms/26_OperatorXor.c",
+    baseURL + "validPrograms/27_OperatorComp.c",
+    baseURL + "validPrograms/28_OperatorPlusAssign.c",
+    baseURL + "validPrograms/29_OperatorMinusAssign.c",
+    baseURL + "validPrograms/30_OperatorMultAssign.c",
+    baseURL + "validPrograms/31_OperatorDivAssign.c",
+    baseURL + "validPrograms/32_OperatorModAssign.c",
+    baseURL + "validPrograms/33_OperatorBitAndAssign.c",
+    baseURL + "validPrograms/34_OperatorBitOrAssign.c",
+    baseURL + "validPrograms/35_OperatorBitXorAssign.c",
+    baseURL + "validPrograms/36_OperatorComma.c"
     //TODO : ajouter les 37 autres, j'ai eu la flemme
 };
 
@@ -145,14 +159,15 @@ void validProgramsTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
+        
+        prog->affiche();
         cout << endl;
-        //prog->affiche();
     }
 }
 
 
 int main () {
-    /*ANTLRInputStream input ("char test; void main(){ char a;}");
+    /*ANTLRInputStream input ("int32_t main(){ int32_t a;}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
@@ -163,10 +178,10 @@ int main () {
 
     prog->affiche();*/
 
-    lexErrorTests();
-    syntaxErrorTests();
+    // lexErrorTests();
+    // syntaxErrorTests();
     validProgramsTests();
-    semanticErrorTests();
+    // semanticErrorTests();
 
     return 0;
 }

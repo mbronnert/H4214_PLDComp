@@ -10,7 +10,7 @@ Programme::Programme(list <Declaration> * d, list <Fonction> * f) {
 }
 
 void Programme::affiche() {
-	cout << "-> Start Program" << endl;
+	cout << "---------- Start Program ----------" << endl;
 
      for(auto i=declarations->begin();i!=declarations->end();i++) {
         i->affiche();
@@ -18,7 +18,7 @@ void Programme::affiche() {
      for(auto i=fonctions->begin();i!=fonctions->end();i++) {
         i->affiche();
      }
-     cout << "-> End Program" << endl;
+     cout << "---------- End Program ----------" << endl;
 }
 
 list <Declaration> * Programme::getDeclarations() {
