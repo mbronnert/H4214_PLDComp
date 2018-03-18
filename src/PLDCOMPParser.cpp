@@ -2374,8 +2374,7 @@ std::vector<std::string> PLDCOMPParser::_literalNames = {
   "'<='", "'>'", "'>='", "'<<'", "'>>'", "'=='", "'!='", "'&&'", "'||'", 
   "'('", "')'", "'!'", "'++'", "'--'", "','", "'putchar'", "'getchar'", 
   "'['", "']'", "'char'", "'int32_t'", "'int64_t'", "'void'", "'if'", "'else'", 
-  "'while'", "'{'", "'}'", "';'", "'break'", "'return'", "", "", "", "", 
-  "", "'#'"
+  "'while'", "'{'", "'}'", "';'", "'break'", "'return'"
 };
 
 std::vector<std::string> PLDCOMPParser::_symbolicNames = {

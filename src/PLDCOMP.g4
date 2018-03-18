@@ -92,7 +92,7 @@ NOMBRE : [0-9]+ ;
 CHAR : '\''.'\'' ;
 COMMENT: '/*' . *? '*/'-> skip ;
 WS : [ \t\r\n]+ -> skip ;
-INCLUDE : '#' ->skip;
+INCLUDE : '#' ~[\r\n]* -> skip;
 
 
 
