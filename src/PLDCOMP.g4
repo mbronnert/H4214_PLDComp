@@ -101,8 +101,9 @@ programme : declaration_variables fonction* ;
 
 NOMVAR : [a-zA-Z][a-zA-Z0-9]* ;
 NOMBRE : [0-9]+ ;
-CHAR : '\''.'\'' ;
+CHAR : '\'' ((~'\'')|'\\'~'\'') '\'';
 COMMENT: '/*' . *? '*/'-> skip ;
+LINECOMMENT: '//' ~[\r\n]* -> skip;
 WS : [ \t\r\n]+ -> skip ;
 INCLUDE : '#' ~[\r\n]* -> skip;
 

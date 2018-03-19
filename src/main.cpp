@@ -81,7 +81,7 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/47_ArrayUse.c",
     //baseURL + "validPrograms/49_ArrayFibo.c", TODO: Monsieur on a dit pas de for
     baseURL + "validPrograms/50_CharConst.c",
-    //baseURL + "validPrograms/51_CharConstSpecial.c",
+    baseURL + "validPrograms/51_CharConstSpecial.c",
     baseURL + "validPrograms/52_Int64Dec.c",
     baseURL + "validPrograms/53_FunctionCallPutChar.c",
     baseURL + "validPrograms/54_FunctionCallCustom.c",
