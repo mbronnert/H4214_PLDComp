@@ -73,6 +73,8 @@ public:
 
     virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *context) = 0;
 
+    virtual antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *context) = 0;
+
     virtual antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *context) = 0;
 
     virtual antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *context) = 0;

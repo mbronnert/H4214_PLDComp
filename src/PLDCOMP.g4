@@ -27,6 +27,7 @@ op : '+'    # add
           | '!='  # diff
           | '&&'  # andb
           | '||'  # orb
+          | ','	# comma
           ;
 
 exp : exp op exp  # operateurBinaire

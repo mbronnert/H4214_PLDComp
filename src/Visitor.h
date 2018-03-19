@@ -124,6 +124,10 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Symbole) XOREQ;
     }
 
+    antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *ctx) override {
+        return (Symbole) COMMA;
+    }
+
     antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) override {
         Variable * var = (Variable *) visit(ctx->lvalue());
         return (Expression *) var;
@@ -373,7 +377,6 @@ class Visitor : public PLDCOMPBaseVisitor {
                 declarations->push_back((Declaration) (*it));
             }
         }
-
         return (list<Declaration> *) declarations;
     }
 

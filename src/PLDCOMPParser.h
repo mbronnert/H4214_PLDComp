@@ -240,6 +240,13 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  CommaContext : public OpContext {
+  public:
+    CommaContext(OpContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  MoinsContext : public OpContext {
   public:
     MoinsContext(OpContext *ctx);
