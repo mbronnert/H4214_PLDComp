@@ -9,15 +9,12 @@ class Declaration {
     public:
         Declaration();
         Declaration(Type t, Variable * v);
-        Declaration(Type t, list<Variable *> * lv);
         Type getType();
         Variable * getVariable();
-        list<Variable *> * getListVariable();
         void affiche();
     protected:
         Type type;
         Variable * variable;
-        list<Variable *> * lvar;
 };
 
 class DeclarationTableau : public Declaration {
