@@ -9,6 +9,14 @@ op : '+'    # add
           | '&'   # and
           | '|'   # or
           | '='   # equal
+          | '+='   # addeq
+          | '-='   # moinseq
+          | '*='   # multeq
+          | '/='   # diveq
+          | '%='   # modeq
+          | '&='   # andeq
+          | '|='   # oreq
+          | '^='   # xoreq
           | '<'   # infs
           | '<='  # inf
           | '>'   # sups
@@ -24,6 +32,8 @@ op : '+'    # add
 exp : exp op exp  # operateurBinaire
             | '(' exp ')' # parenthese        
             | '!' exp  # non
+            | '-' exp  # negation
+            | '~' exp  # invert
             | lvalue '++' # exppp
             | lvalue '--' # expmm
             | '++' lvalue # ppexp
