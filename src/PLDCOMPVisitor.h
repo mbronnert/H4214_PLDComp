@@ -135,6 +135,8 @@ public:
 
     virtual antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *context) = 0;
 
+    virtual antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *context) = 0;
+
     virtual antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *context) = 0;

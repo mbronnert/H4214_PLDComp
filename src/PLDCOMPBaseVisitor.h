@@ -247,6 +247,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
     return visitChildren(ctx);
   }

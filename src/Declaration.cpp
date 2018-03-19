@@ -8,12 +8,21 @@ Declaration::Declaration(Type t, Variable * v) {
     variable = v;
 }
 
+Declaration::Declaration(Type t, list<Variable*> * lv) {
+    type = t;
+    lvar = lv;
+}
+
 Type Declaration::getType(){
 	return type;
 }
 
 Variable * Declaration::getVariable(){
 	return variable;
+}
+
+list<Variable *> * Declaration::getListVariable() {
+	return lvar;
 }
 
 void Declaration::affiche() {

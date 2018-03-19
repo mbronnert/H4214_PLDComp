@@ -303,6 +303,17 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Declaration) Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) ctx->NOMVAR()->getText()));
     }
 
+    antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *ctx) override {
+        list<Variable *> * l = new list<Variable *>();
+        auto liste = ctx->NOMVAR(); //TODO : init liste à modifier
+
+        for(auto i=liste.begin();i!=liste.end();i++) {
+            l->push_back((Variable *) visit(*i));
+        }
+
+        return (Declaration) Declaration((Type) visit(ctx->type_variable()), (list<Variable *> *) l);
+    }
+
     antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
         return (Declaration) DeclarationTableau((Type) visit(ctx->type_variable()), new Tableau((string) ctx->NOMVAR()->getText()), (int) stoi(ctx->NOMBRE()->getText()));
     }
