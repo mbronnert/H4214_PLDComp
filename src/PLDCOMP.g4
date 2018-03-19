@@ -71,8 +71,8 @@ while_statement : 'while' '(' exp ')' instruction # while ;
 val : NOMBRE ( ',' NOMBRE)* # tableauNombre
     | CHAR ( ',' CHAR)* # tableauCaractere ;
 
-declaration_type : type_variable NOMVAR '=' constante # declarationConstante
-                  | type_variable NOMVAR # declaration
+declaration_type : type_variable NOMVAR '=' constante (',' NOMVAR '=' constante)* # declarationConstante
+                  | type_variable NOMVAR (',' NOMVAR)* # declaration
                   | type_variable NOMVAR '[' NOMBRE ']' # declarationTableau
                   | type_variable NOMVAR '[' NOMBRE ']' '=' '{' val '}' # declarationTableauConstante
                   ;

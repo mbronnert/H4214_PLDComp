@@ -200,10 +200,10 @@ int main () {
 
     //prog->affiche();*/
 
-    //lexErrorTests();
-    // syntaxErrorTests();
+    lexErrorTests();
+    syntaxErrorTests();
     validProgramsTests();
-    // semanticErrorTests();
+    //semanticErrorTests();
 
     return 0;
 }

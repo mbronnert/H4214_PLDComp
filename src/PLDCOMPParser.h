@@ -635,8 +635,10 @@ public:
     DeclarationConstanteContext(Declaration_typeContext *ctx);
 
     Type_variableContext *type_variable();
-    antlr4::tree::TerminalNode *NOMVAR();
-    ConstanteContext *constante();
+    std::vector<antlr4::tree::TerminalNode *> NOMVAR();
+    antlr4::tree::TerminalNode* NOMVAR(size_t i);
+    std::vector<ConstanteContext *> constante();
+    ConstanteContext* constante(size_t i);
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
@@ -655,7 +657,8 @@ public:
     DeclarationContext(Declaration_typeContext *ctx);
 
     Type_variableContext *type_variable();
-    antlr4::tree::TerminalNode *NOMVAR();
+    std::vector<antlr4::tree::TerminalNode *> NOMVAR();
+    antlr4::tree::TerminalNode* NOMVAR(size_t i);
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
