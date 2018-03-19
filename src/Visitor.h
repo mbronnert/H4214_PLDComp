@@ -189,7 +189,8 @@ class Visitor : public PLDCOMPBaseVisitor {
 
     antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) override {
         list<Expression> * l = new list<Expression>();
-        l->push_back((Expression) Caractere((char) ctx->CHAR()->getText()[0]));
+        Expression * expr = (Expression *) visit(ctx->exp());
+        l->push_back((Expression) *expr);
         return (Expression *) new AppelDeFonction("putchar", l);
     }
 
@@ -220,11 +221,11 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitConstanteNb(PLDCOMPParser::ConstanteNbContext *ctx) override {
-        return (Expression *) new Nombre((int) stoi(ctx->NOMBRE()->getText()));
+        return (Nombre *) new Nombre((int) stoi(ctx->NOMBRE()->getText()));
     }
 
     antlrcpp::Any visitConstanteCar(PLDCOMPParser::ConstanteCarContext *ctx) override {
-        return (Expression *) new Caractere((char) ctx->CHAR()->getText()[0]);
+        return (Caractere *) new Caractere((char) ctx->CHAR()->getText()[0]);
     }
 
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
@@ -288,10 +289,10 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
         Type type = visit(ctx->type_variable());
         if (type==CHAR) {
-            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Caractere) Caractere((char) visit(ctx->constante()))));
+            return (Declaration) Declaration((Type) type, (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Caractere *) visit(ctx->constante())));
         }
         else if (type==INT32 || type==INT64) {
-            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Nombre) Nombre((int) visit(ctx->constante()))));
+            return (Declaration) Declaration((Type) type, (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Nombre *) visit(ctx->constante())));
         }
         else {
             return NULL; //TODO : réfléchir à ça : cas d'erreur
@@ -368,7 +369,8 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitBlocInstruction(PLDCOMPParser::BlocInstructionContext *ctx) override {
-        return (Instruction *) visit(ctx->bloc());
+        Bloc * bloc = (Bloc *) visit(ctx->bloc());
+        return (Instruction *) bloc;
     }
 
     antlrcpp::Any visitBreakInstruction(PLDCOMPParser::BreakInstructionContext *ctx) override {

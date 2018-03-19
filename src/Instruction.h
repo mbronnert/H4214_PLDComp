@@ -139,14 +139,14 @@ class Tableau : public Variable {
 class VariableSimple : public Variable {
     public:
         VariableSimple(string n);
-        VariableSimple(string n, Nombre v);
-        VariableSimple(string n, Caractere v);
-        Nombre getNombre();
-        Caractere getCaractere();
+        VariableSimple(string n, Nombre * v);
+        VariableSimple(string n, Caractere * v);
+        Nombre * getNombre();
+        Caractere * getCaractere();
         void affiche();
       private:
-        Nombre nombre;
-        Caractere caractere;
+        Nombre * nombre;
+        Caractere * caractere;
 };
 
 class Affectation : public Expression {

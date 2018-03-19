@@ -43,7 +43,7 @@ exp : exp op exp  # operateurBinaire
             | CHAR # constanteCaractere
             | lvalue # expLvalue
             | NOMVAR '(' exp (',' exp )* ')' # appelDeFonction
-            | 'putchar' '(' CHAR ')' # appelPutchar
+            | 'putchar' '(' exp ')' # appelPutchar
             | 'getchar' '(' ')' # appelGetchar
             ;
 

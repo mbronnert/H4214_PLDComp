@@ -388,7 +388,7 @@ public:
   public:
     AppelPutcharContext(ExpContext *ctx);
 
-    antlr4::tree::TerminalNode *CHAR();
+    ExpContext *exp();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 

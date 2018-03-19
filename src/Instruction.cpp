@@ -222,29 +222,29 @@ VariableSimple::VariableSimple(string n) : Variable(n) {
   initialise = false;
 }
 
-VariableSimple::VariableSimple(string n, Nombre v) : Variable(n) {
+VariableSimple::VariableSimple(string n, Nombre * v) : Variable(n) {
   nombre = v;
   initialise = true;
 }
 
-VariableSimple::VariableSimple(string n, Caractere v) : Variable(n) {
+VariableSimple::VariableSimple(string n, Caractere * v) : Variable(n) {
   caractere = v;
   initialise = true;
 }
 
-Nombre VariableSimple::getNombre(){
+Nombre * VariableSimple::getNombre(){
     return nombre;
 }
 
-Caractere VariableSimple::getCaractere(){
+Caractere * VariableSimple::getCaractere(){
     return caractere;
 }
 
 void VariableSimple::affiche() {
-    if(nombre.getValeur())
-      cout << nombre.getValeur() << endl;
-    if(!caractere.getValeur())
-      cout << caractere.getValeur() << endl;
+    if(nombre->getValeur())
+      cout << nombre->getValeur() << endl;
+    if(!caractere->getValeur())
+      cout << caractere->getValeur() << endl;
 }
 
 /* Affectation */
