@@ -113,36 +113,34 @@ class Caractere : public Expression {
 class Variable : public Expression {
     public:
         Variable();
-        Variable(string n, Type t);
-        Type getType();
+        Variable(string n);
         string getNom();
         void affiche();
     protected:
         string nom;
         bool initialise;
-        Type type;
 };
 
 class Tableau : public Variable {
     public:
-        Tableau(string n, Type t, int ta);
-        Tableau(string n, Type t, int ta, list <Nombre> * v);
-        Tableau(string n, Type t, int ta, list <Caractere> * v);
-        int getTaille();
+        Tableau(string n);
+        Tableau(string n, Expression * c);
+        Tableau(string n, list <Nombre> * v);
+        Tableau(string n, list <Caractere> * v);
         list <Nombre> * getTabNombres();
         list <Caractere> * getTabCaracteres();
         void affiche();
       private:
-        int taille;
         list <Nombre> * tabNombres;
         list <Caractere> * tabCaracteres;
+        Expression * caseAccedee;
 };
 
 class VariableSimple : public Variable {
     public:
-        VariableSimple(string n, Type t);
-        VariableSimple(string n, Type t, Nombre v);
-        VariableSimple(string n, Type t, Caractere v);
+        VariableSimple(string n);
+        VariableSimple(string n, Nombre v);
+        VariableSimple(string n, Caractere v);
         Nombre getNombre();
         Caractere getCaractere();
         void affiche();

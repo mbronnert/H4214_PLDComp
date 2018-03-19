@@ -173,13 +173,8 @@ void Caractere::affiche() {
 Variable::Variable() {
 }
 
-Variable::Variable(string n, Type t) {
+Variable::Variable(string n) {
     nom = n;
-    type = t;
-}
-
-Type Variable::getType() {
-    return type;
 }
 
 string Variable::getNom() {
@@ -188,29 +183,26 @@ string Variable::getNom() {
 
 void Variable::affiche() {
     cout << "Variable" << endl;
-    cout << type << nom << endl;
+    cout << nom << endl;
 }
 
 /* Tableau */
-Tableau::Tableau(string n, Type t, int ta) : Variable(n, t) {
-    taille = ta;
+Tableau::Tableau(string n) : Variable(n) {
     initialise = false;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <Nombre> * v) : Variable(n, t) {
-    taille = ta;
+Tableau::Tableau(string n, Expression * c) : Variable(n) {
+    caseAccedee = c;
+}
+
+Tableau::Tableau(string n, list <Nombre> * v) : Variable(n) {
     tabNombres = v;
     initialise = true;
 }
 
-Tableau::Tableau(string n, Type t, int ta, list <Caractere> * v) : Variable(n, t) {
-    taille = ta;
+Tableau::Tableau(string n, list <Caractere> * v) : Variable(n) {
     tabCaracteres = v;
     initialise = true;
-}
-
-int Tableau::getTaille() {
-    return taille;
 }
 
 list <Nombre> * Tableau::getTabNombres(){
@@ -222,20 +214,20 @@ list <Caractere> * Tableau::getTabCaracteres() {
 }
 
 void Tableau::affiche() {
-    cout << "Tableau [" << taille << "]" << endl;
+    cout << "Tableau [" << caseAccedee << "]" << endl;
 }
 
 /* Variable Simple */
-VariableSimple::VariableSimple(string n, Type t) : Variable(n, t) {
+VariableSimple::VariableSimple(string n) : Variable(n) {
   initialise = false;
 }
 
-VariableSimple::VariableSimple(string n, Type t, Nombre v) : Variable(n, t) {
+VariableSimple::VariableSimple(string n, Nombre v) : Variable(n) {
   nombre = v;
   initialise = true;
 }
 
-VariableSimple::VariableSimple(string n, Type t, Caractere v) : Variable(n, t) {
+VariableSimple::VariableSimple(string n, Caractere v) : Variable(n) {
   caractere = v;
   initialise = true;
 }

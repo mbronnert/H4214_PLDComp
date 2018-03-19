@@ -159,11 +159,11 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *ctx) override {
-        return (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText(), CHAR);//TODO: virer le type d'une variable, et le laisser seulement à sa déclaration ?
+        return (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText());
     }
 
     antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *ctx) override {
-        return (Variable *) new Tableau((string) ctx->NOMVAR()->getText(), CHAR, 10);//TODO: idem + ajouter la case accéder en attribut d'une variable ?
+        return (Variable *) new Tableau((string) ctx->NOMVAR()->getText(), (Expression *) visit(ctx->exp()));
     }
 
     antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {
@@ -243,10 +243,10 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
         Type type = visit(ctx->type_variable());
         if (type==CHAR) {
-            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (Caractere) Caractere((char) visit(ctx->constante()))));
+            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Caractere) Caractere((char) visit(ctx->constante()))));
         }
         else if (type==INT32 || type==INT64) {
-            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (Nombre) Nombre((int) visit(ctx->constante()))));
+            return (Declaration) Declaration(type, new VariableSimple((string) ctx->NOMVAR()->getText(), (Nombre) Nombre((int) visit(ctx->constante()))));
         }
         else {
             return NULL; //TODO : réfléchir à ça : cas d'erreur
@@ -254,20 +254,20 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
-        return (Declaration) Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable())));
+        return (Declaration) Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) ctx->NOMVAR()->getText()));
     }
 
     antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
-        return (Declaration) Declaration((Type) visit(ctx->type_variable()), new Tableau((string) ctx->NOMVAR()->getText(), (Type) visit(ctx->type_variable()), (int) stoi(ctx->NOMBRE()->getText())));
+        return (Declaration) DeclarationTableau((Type) visit(ctx->type_variable()), new Tableau((string) ctx->NOMVAR()->getText()), (int) stoi(ctx->NOMBRE()->getText()));
     }
 
     antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) override {
         Type type = (Type) visit(ctx->type_variable());
         if (type==CHAR) {
-            return (Declaration) Declaration(type, new Tableau((string) ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Caractere>*) visit(ctx->val())));
+            return (Declaration) DeclarationTableau(type, new Tableau((string) ctx->NOMVAR()->getText(), (list<Caractere>*) visit(ctx->val())), (int) stoi(ctx->NOMBRE()->getText()));
         }
         else if (type==INT32 || type==INT64) {
-            return (Declaration) Declaration(type, new Tableau((string) ctx->NOMVAR()->getText(), type, (int) stoi(ctx->NOMBRE()->getText()), (list<Nombre>*) visit(ctx->val())));
+            return (Declaration) DeclarationTableau(type, new Tableau((string) ctx->NOMVAR()->getText(), (list<Nombre>*) visit(ctx->val())), (int) stoi(ctx->NOMBRE()->getText()));
         }
         else {
             return NULL; //TODO : réfléchir à ça : cas d'erreur
