@@ -1,3 +1,7 @@
 exe
-antlr4-cpp-runtime-4/*
-antlr4-cpp-runtime-4
+.DS_Store
+.idea/
+gen/
+antlr4-cpp-runtime-4/
+antlr/
+Tests/
