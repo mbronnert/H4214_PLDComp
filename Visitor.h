@@ -6,6 +6,7 @@
 #include "Declaration.h"
 #include "Fonction.h"
 #include "Programme.h"
+#include <typeinfo>
 
 #include <list>
 
@@ -195,20 +196,20 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     virtual antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
-        return (Declaration*) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
         cout<<"dans declaration"<<endl;
-        return (Declaration*) new Declaration(visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) override {
-        return (Declaration*) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) override {
-        return (Declaration*) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
+        return (Declaration *) new Declaration (visit(ctx->type_variable()), ctx->NOMVAR()->getText());
     }
 
     virtual antlrcpp::Any visitVoid(PLDCOMPParser::VoidContext *ctx) override {
@@ -229,15 +230,17 @@ class Visitor : public PLDCOMPBaseVisitor {
 
     virtual antlrcpp::Any visitDeclarationVariables(PLDCOMPParser::DeclarationVariablesContext *ctx) override {
         cout<<"dans déclaration_variable"<<endl;
-        //Declaration * d = visitChildren(ctx);
+        return visitChildren(ctx);
         //cout << "ok" << endl;
-        list<Declaration*> declarations;
-        declarations.push_back(visitChildren(ctx));
-        cout << "ok";
+        //list<Declaration *> declarations;
+
+        //declarations.push_back(visitChildren(ctx));
+      //  cout << "ok" << endl;
         /*for(list<Declaration>::iterator i=declarations.begin(); i!=declarations.end() ; ++i) {
             cout << "Declaration x" << endl;
         }*/
-        return declarations;
+        //Declaration * d =new Declaration();
+        //return d;
     }
 
     virtual antlrcpp::Any visitBloc(PLDCOMPParser::BlocContext *ctx) override {
@@ -266,7 +269,9 @@ class Visitor : public PLDCOMPBaseVisitor {
 
     virtual antlrcpp::Any visitProgramme(PLDCOMPParser::ProgrammeContext *ctx) override {
         cout << "Dans programme" << endl;
-        return visitChildren(ctx);//(Programme*) new Programme(visit(ctx->declaration_variables()), null);
+        visitChildren(ctx);
+        cout <<"Prog" << endl;
+        return 1;//(Programme*) new Programme(visit(ctx->declaration_variables()), null);
     }
 
 

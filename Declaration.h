@@ -10,6 +10,7 @@ enum Type {CHAR, INT32, INT64, VOID};
 
 class Declaration {
 public:
+  Declaration(){};
     Declaration(Type t, string n);
 private:
     Type type;
