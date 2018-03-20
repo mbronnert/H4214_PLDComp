@@ -182,7 +182,7 @@ void validProgramsTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
 
-        //prog->affiche();
+        prog->affiche();
         cout << endl;
     }
 }
