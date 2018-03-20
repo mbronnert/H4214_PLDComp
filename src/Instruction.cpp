@@ -115,7 +115,7 @@ Symbole ExprUnaire::getSymbole() {
 
 void ExprUnaire::affiche() {
     switch (symbole) {
-        case PPEXP | MMEXP | INVERT | NEGATION: {
+        case PPEXP | MMEXP: {
             expression->affiche();
             cout << symbole;
         }

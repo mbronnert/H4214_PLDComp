@@ -72,12 +72,25 @@ while_statement : 'while' '(' exp ')' instruction # while ;
 val : NOMBRE ( ',' NOMBRE)* # tableauNombre
     | CHAR ( ',' CHAR)* # tableauCaractere ;
 
-declaration_type : type_variable NOMVAR '=' constante # declarationConstante
-                  | type_variable NOMVAR # declaration
-                  | type_variable NOMVAR (',' NOMVAR)+ # declarationMult
+declaration_type :  entier declaration_int_generale (',' declaration_int_generale)* # declarationIntMult
+				  | 'char' declaration_char_generale (',' declaration_char_generale)* # declarationCharMult
                   | type_variable NOMVAR '[' NOMBRE ']' # declarationTableau
                   | type_variable NOMVAR '[' NOMBRE ']' '=' '{' val '}' # declarationTableauConstante
                   ;
+
+entier :  'int32_t' # int32
+		| 'int64_t' # int64
+		;
+
+declaration_int_generale : NOMVAR # declarationIntSimple
+					| NOMVAR '=' constante #declarationIntConstante
+					;
+
+declaration_char_generale : NOMVAR # declarationCharSimple
+					| NOMVAR '=' constante #declarationCharConstante
+					;
+
+
 
 param : 'void' # void
         | type_variable NOMVAR (',' type_variable NOMVAR)* # parametres

@@ -133,15 +133,25 @@ public:
 
     virtual antlrcpp::Any visitTableauCaractere(PLDCOMPParser::TableauCaractereContext *context) = 0;
 
-    virtual antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *context) = 0;
+    virtual antlrcpp::Any visitDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext *context) = 0;
 
-    virtual antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *context) = 0;
-
-    virtual antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *context) = 0;
+    virtual antlrcpp::Any visitDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *context) = 0;
 
     virtual antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *context) = 0;
+
+    virtual antlrcpp::Any visitInt32(PLDCOMPParser::Int32Context *context) = 0;
+
+    virtual antlrcpp::Any visitInt64(PLDCOMPParser::Int64Context *context) = 0;
+
+    virtual antlrcpp::Any visitDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext *context) = 0;
+
+    virtual antlrcpp::Any visitDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext *context) = 0;
+
+    virtual antlrcpp::Any visitDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext *context) = 0;
+
+    virtual antlrcpp::Any visitDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext *context) = 0;
 
     virtual antlrcpp::Any visitVoid(PLDCOMPParser::VoidContext *context) = 0;
 

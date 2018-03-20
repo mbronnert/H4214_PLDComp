@@ -290,31 +290,40 @@ class Visitor : public PLDCOMPBaseVisitor {
 
     }
 
-    antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
-        Type type = visit(ctx->type_variable());
-        list<Declaration*> * declarations = new list<Declaration*>();
-
-        if (type==CHAR) {
-            declarations->push_back((Declaration*) new Declaration((Type) type, (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Caractere *) visit(ctx->constante()))));
-        }
-        else if (type==INT32 || type==INT64) {
-            declarations->push_back((Declaration*) new Declaration((Type) type, (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Nombre *) visit(ctx->constante()))));
-        }
-        return (list<Declaration*> *) declarations;
+    antlrcpp::Any visitDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext *ctx) override {
+        return (VariableSimple *) new VariableSimple((string) ctx->NOMVAR()->getText());
     }
 
-    antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
-        list<Declaration*> * declarations = new list<Declaration*>();
-        declarations->push_back((Declaration*) new Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) ctx->NOMVAR()->getText())));
-        return (list<Declaration*> *) declarations;
+    antlrcpp::Any visitDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext *ctx) override {
+        return (VariableSimple *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Nombre *) visit(ctx->constante()));
     }
 
-    antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *ctx) override {
+    antlrcpp::Any visitDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext *ctx) override {
+        return (VariableSimple *) new VariableSimple((string) ctx->NOMVAR()->getText());
+    }
+
+    antlrcpp::Any visitDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext *ctx) override {
+        return (VariableSimple *) new VariableSimple((string) ctx->NOMVAR()->getText(), (Caractere *) visit(ctx->constante()));
+    }
+
+
+    antlrcpp::Any visitDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext *ctx) override {
         list<Declaration*> * declarations = new list<Declaration*>();
-        auto l = ctx->NOMVAR();
+        auto l = ctx->declaration_int_generale();
 
         for(auto i=l.begin();i!=l.end();i++) {
-            declarations->push_back((Declaration*) new Declaration((Type) visit(ctx->type_variable()), new VariableSimple((string) (*i)->getText())));
+            declarations->push_back((Declaration *) new Declaration((Type) visit(ctx->entier()), (VariableSimple *) visit(*i)));
+        }
+
+        return (list<Declaration*> *) declarations;
+    }
+
+    antlrcpp::Any visitDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext *ctx) override {
+        list<Declaration*> * declarations = new list<Declaration*>();
+        auto l = ctx->declaration_char_generale();
+
+        for(auto i=l.begin();i!=l.end();i++) {
+            declarations->push_back((Declaration *) new Declaration((Type) CHAR, (VariableSimple *) visit(*i)));
         }
 
         return (list<Declaration*> *) declarations;
@@ -338,6 +347,14 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (list<Declaration*> *) declarations;
     }
 
+    antlrcpp::Any visitInt32(PLDCOMPParser::Int32Context *ctx) override {
+      return (Type) INT32;
+    }
+
+    antlrcpp::Any visitInt64(PLDCOMPParser::Int64Context *ctx) override {
+      return (Type) INT64;
+    }
+
     antlrcpp::Any visitVoid(PLDCOMPParser::VoidContext *ctx) override {
         list<Parametre*> * param = new list<Parametre*>();
         return (list<Parametre*> *) param;
@@ -356,10 +373,12 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitDeclarationFonctionParams(PLDCOMPParser::DeclarationFonctionParamsContext *ctx) override {
+        //return (Fonction *) new Fonction((Type) VOID, (string) "test", (list<Parametre*> *) new list<Parametre*>, (list<Declaration*> *) new list<Declaration*>, (Bloc*) new Bloc());
         return (Fonction *) new Fonction((Type) visit(ctx->type_function()), (string) ctx->NOMVAR()->getText(), (list<Parametre*> *) visit(ctx->param()), (list<Declaration*> *) visit(ctx->declaration_variables()), (Bloc *) visit(ctx->bloc()));
     }
 
     antlrcpp::Any visitDeclarationFonction(PLDCOMPParser::DeclarationFonctionContext *ctx) override {
+        //return (Fonction *) new Fonction((Type) VOID, (string) "test", (list<Parametre*> *) new list<Parametre*>, (list<Declaration*> *) new list<Declaration*>, (Bloc*) new Bloc());
         list<Parametre*> * param = new list<Parametre*>();
         return (Fonction *) new Fonction((Type) visit(ctx->type_function()), (string) ctx->NOMVAR()->getText(), (list<Parametre*> *) param, (list<Declaration*> *) visit(ctx->declaration_variables()), (Bloc *) visit(ctx->bloc()));
     }
