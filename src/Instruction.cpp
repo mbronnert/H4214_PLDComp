@@ -182,13 +182,13 @@ string Variable::getNom() {
     return nom;
 }
 
+void Variable::setInitialise(bool i) {
+    initialise = i;
+}
+
 /* Tableau */
 Tableau::Tableau(string n) : Variable(n) {
     initialise = false;
-}
-
-Tableau::Tableau(string n, Expression * c) : Variable(n) {
-    caseAccedee = c;
 }
 
 Tableau::Tableau(string n, list <Nombre*> * v) : Variable(n) {
@@ -210,11 +210,7 @@ list <Caractere*> * Tableau::getTabCaracteres() {
 }
 
 void Tableau::affiche() {
-    cout << nom<<"[";
-    if (caseAccedee) {
-        cout << caseAccedee;
-    }
-    cout << "]";
+    cout << nom<<"[]";
 }
 
 /* Variable Simple */
@@ -251,13 +247,66 @@ void VariableSimple::affiche() {
     }
 }
 
+/* AppelDeVariable */
+
+AppelDeVariable::AppelDeVariable() {
+}
+
+AppelDeVariable::AppelDeVariable(string n) {
+    nom = n;
+}
+
+string AppelDeVariable::getNom() {
+    return nom;
+}
+
+/* AppelDeTableau */
+AppelDeTableau::AppelDeTableau(string n) : AppelDeVariable(n) {
+}
+
+AppelDeTableau::AppelDeTableau(string n, Expression * c) : AppelDeVariable(n) {
+    caseAccedee = c;
+}
+
+list <Nombre*> * AppelDeTableau::getTabNombres(){
+    return tabNombres;
+}
+
+list <Caractere*> * AppelDeTableau::getTabCaracteres() {
+    return tabCaracteres;
+}
+
+void AppelDeTableau::affiche() {
+    cout << nom<<"[";
+    if (caseAccedee) {
+        cout << caseAccedee;
+    }
+    cout << "]";
+}
+
+/* AppelDeVariable Simple */
+AppelDeVariableSimple::AppelDeVariableSimple(string n) : AppelDeVariable(n) {
+}
+
+Nombre * AppelDeVariableSimple::getNombre(){
+    return nombre;
+}
+
+Caractere * AppelDeVariableSimple::getCaractere(){
+    return caractere;
+}
+
+void AppelDeVariableSimple::affiche() {
+    cout << nom;
+}
+
 /* Affectation */
-Affectation::Affectation(Variable * v, Expression * e) {
+Affectation::Affectation(AppelDeVariable * v, Expression * e) {
     lValue = v;
     expression = e;
 }
 
-Variable * Affectation::getLValue() {
+AppelDeVariable * Affectation::getLValue() {
     return lValue;
 }
 

@@ -129,7 +129,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) override {
-        Variable * var = (Variable *) visit(ctx->lvalue());
+        AppelDeVariable * var = (AppelDeVariable *) visit(ctx->lvalue());
         return (Expression *) var;
     }
 
@@ -142,7 +142,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *ctx) override {
-        Variable * var = (Variable *) visit(ctx->lvalue());
+        AppelDeVariable * var = (AppelDeVariable *) visit(ctx->lvalue());
         return (Expression *) new ExprUnaire((Expression *) var, (Symbole) PPEXP);
     }
 
@@ -178,12 +178,12 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitMmexp(PLDCOMPParser::MmexpContext *ctx) override {
-        Variable * var = (Variable *) visit(ctx->lvalue());
+        AppelDeVariable * var = (AppelDeVariable *) visit(ctx->lvalue());
         return (Expression *) new ExprUnaire((Expression *) var, (Symbole) MMEXP);
     }
 
     antlrcpp::Any visitAffectation(PLDCOMPParser::AffectationContext *ctx) override {
-        return (Expression *) new Affectation((Variable *) visit(ctx->lvalue()), (Expression *) visit(ctx->exp()));
+        return (Expression *) new Affectation((AppelDeVariable *) visit(ctx->lvalue()), (Expression *) visit(ctx->exp()));
     }
 
     antlrcpp::Any visitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) override {
@@ -197,21 +197,21 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitExppp(PLDCOMPParser::ExpppContext *ctx) override {
-        Variable * var = (Variable *) visit(ctx->lvalue());
+        AppelDeVariable * var = (AppelDeVariable *) visit(ctx->lvalue());
         return (Expression *) new ExprUnaire((Expression *) var, (Symbole) EXPPP);
     }
 
     antlrcpp::Any visitExpmm(PLDCOMPParser::ExpmmContext *ctx) override {
-        Variable * var = (Variable *) visit(ctx->lvalue());
+        AppelDeVariable * var = (AppelDeVariable *) visit(ctx->lvalue());
         return (Expression *) new ExprUnaire((Expression *) var, (Symbole) EXPMM);
     }
 
     antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *ctx) override {
-        return (Variable *) new VariableSimple((string) ctx->NOMVAR()->getText());
+        return (AppelDeVariable *) new AppelDeVariableSimple((string) ctx->NOMVAR()->getText());
     }
 
     antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *ctx) override {
-        return (Variable *) new Tableau((string) ctx->NOMVAR()->getText(), (Expression *) visit(ctx->exp()));
+        return (AppelDeVariable *) new AppelDeTableau((string) ctx->NOMVAR()->getText(), (Expression *) visit(ctx->exp()));
     }
 
     antlrcpp::Any visitIfStatement(PLDCOMPParser::IfStatementContext *ctx) override {

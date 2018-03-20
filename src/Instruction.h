@@ -114,6 +114,7 @@ class Variable : public Expression {
         Variable(string n);
         string getNom();
         virtual void affiche() = 0;
+        void setInitialise(bool i);
     protected:
         string nom;
         bool initialise;
@@ -122,7 +123,6 @@ class Variable : public Expression {
 class Tableau : public Variable {
     public:
         Tableau(string n);
-        Tableau(string n, Expression * c);
         Tableau(string n, list <Nombre*> * v);
         Tableau(string n, list <Caractere*> * v);
         list <Nombre*> * getTabNombres();
@@ -131,7 +131,6 @@ class Tableau : public Variable {
       private:
         list <Nombre*> * tabNombres;
         list <Caractere*> * tabCaracteres;
-        Expression * caseAccedee;
 };
 
 class VariableSimple : public Variable {
@@ -147,14 +146,49 @@ class VariableSimple : public Variable {
         Caractere * caractere;
 };
 
+class AppelDeVariable : public Expression {
+    public:
+        AppelDeVariable();
+        AppelDeVariable(string n);
+        string getNom();
+        virtual void affiche() = 0;
+    protected:
+        string nom;
+};
+
+class AppelDeTableau : public AppelDeVariable {
+    public:
+        AppelDeTableau(string n);
+        AppelDeTableau(string n, Expression * c);
+        list <Nombre*> * getTabNombres();
+        list <Caractere*> * getTabCaracteres();
+        void affiche();
+      private:
+        list <Nombre*> * tabNombres;
+        list <Caractere*> * tabCaracteres;
+        Expression * caseAccedee;
+};
+
+class AppelDeVariableSimple : public AppelDeVariable {
+    public:
+        AppelDeVariableSimple(string n);
+        Nombre * getNombre();
+        Caractere * getCaractere();
+        void affiche();
+      private:
+        Nombre * nombre;
+        Caractere * caractere;
+};
+
+
 class Affectation : public Expression {
     public:
-        Affectation(Variable * v, Expression * e);
-        Variable * getLValue();
+        Affectation(AppelDeVariable * v, Expression * e);
+        AppelDeVariable * getLValue();
         void affiche();
         Expression * getExpression();
     private:
-        Variable * lValue;
+        AppelDeVariable * lValue;
         Expression * expression;
 };
 
