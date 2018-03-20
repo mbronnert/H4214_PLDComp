@@ -186,6 +186,10 @@ void Variable::setInitialise(bool i) {
     initialise = i;
 }
 
+bool Variable::getInitialise () {
+    return initialise;
+}
+
 /* Tableau */
 Tableau::Tableau(string n) : Variable(n) {
     initialise = false;

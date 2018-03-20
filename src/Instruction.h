@@ -115,6 +115,7 @@ class Variable : public Expression {
         string getNom();
         virtual void affiche() = 0;
         void setInitialise(bool i);
+        bool getInitialise();
     protected:
         string nom;
         bool initialise;

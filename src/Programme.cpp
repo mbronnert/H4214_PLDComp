@@ -9,6 +9,41 @@ Programme::Programme(list <Declaration*> * d, list <Fonction*> * f) {
   fonctions = f;
 }
 
+bool Programme::verStatiqueDec(){
+    bool valide = true;
+    bool valideInter = false;
+    Declaration * dec;
+    string nom;
+
+    //Check des variables globales
+    /*for(auto i=declarations.begin();i!=declarations.end();i++){
+      valideInter = false;
+      dec=*i;
+      //modifier le getVariable (le bool va être dans la declaration)
+      if(!dec.getVariable().getInitialise()){
+        nom = dec.getVariable().getNom();
+        //Check dans les autres variables globales
+        for(auto j=i;j!=declarations.end()&&!valideInter;j++){
+          //Check dans declarations
+        }
+        //Check dans les fonctions
+
+        if(!valideInter){
+          valide = false;
+          break;
+        }
+      }
+    }
+    //Check des variables de fonction
+
+
+    if(!valide){
+      cerr<<"La variable "<< <<" n'est pas affectée ni utilisée."<<endl;
+      return valide;
+    }*/
+    return valide;
+}
+
 void Programme::affiche() {
 	cout << "---------- Start Program ----------" << endl;
 
