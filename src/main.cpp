@@ -122,7 +122,7 @@ void lexErrorTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
         cout << endl;
-        //prog->affiche();
+        prog->affiche();
     }
 }
 
@@ -162,7 +162,7 @@ void syntaxErrorTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
         cout << endl;
-        //prog->affiche();
+        prog->affiche();
     }
 }
 
@@ -202,7 +202,7 @@ int main () {
 
     lexErrorTests();
     syntaxErrorTests();
-    validProgramsTests();
+    //validProgramsTests();
     //semanticErrorTests();
 
     return 0;

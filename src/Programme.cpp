@@ -12,12 +12,12 @@ Programme::Programme(list <Declaration*> * d, list <Fonction*> * f) {
 void Programme::affiche() {
 	cout << "---------- Start Program ----------" << endl;
 
-     /*for(auto i=declarations->begin();i!=declarations->end();i++) {
-        *i->affiche();
+     for(auto i=declarations->begin();i!=declarations->end();i++) {
+        (*i)->affiche();
      }
      for(auto i=fonctions->begin();i!=fonctions->end();i++) {
-        *i->affiche();
-    }*/
+        (*i)->affiche();
+    }
      cout << "---------- End Program ----------" << endl;
 }
 
