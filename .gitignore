@@ -3,3 +3,5 @@ exe
 .idea/
 gen/
 antlr4-cpp-runtime-4/
+antlr/
+Tests/

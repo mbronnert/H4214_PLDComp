@@ -20,7 +20,8 @@ public:
     T__32 = 33, T__33 = 34, T__34 = 35, T__35 = 36, T__36 = 37, T__37 = 38, 
     T__38 = 39, T__39 = 40, T__40 = 41, T__41 = 42, T__42 = 43, T__43 = 44, 
     T__44 = 45, T__45 = 46, T__46 = 47, T__47 = 48, T__48 = 49, T__49 = 50, 
-    NOMVAR = 51, NOMBRE = 52, CHAR = 53, COMMENT = 54, WS = 55, INCLUDE = 56
+    NOMVAR = 51, NOMBRE = 52, CHAR = 53, COMMENT = 54, LINECOMMENT = 55, 
+    WS = 56, INCLUDE = 57
   };
 
   enum {
