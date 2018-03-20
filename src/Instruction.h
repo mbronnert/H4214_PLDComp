@@ -107,6 +107,7 @@ class Variable : public Expression {
         Variable(string n);
         string getNom();
         void affiche();
+        bool getInitialise();
     protected:
         string nom;
         bool initialise;

@@ -158,6 +158,10 @@ string Variable::getNom() {
     return nom;
 }
 
+bool Variable::getInitialise(){
+    return initialise;
+}
+
 void Variable::affiche() {
     cout << "Variable" << endl;
     cout << nom << endl;

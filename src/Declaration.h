@@ -11,6 +11,8 @@ class Declaration {
         Declaration(Type t, Variable * v);
         Type getType();
         Variable * getVariable();
+        //Ajouter une fonction qui vérifie si le nom passé en paramètre est identique
+        //à celui de la variable et si elle est affectée.
         void affiche();
     protected:
         Type type;

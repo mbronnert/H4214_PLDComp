@@ -15,6 +15,7 @@ class Programme {
     public:
         Programme();
         Programme(list <Declaration*> * d, list <Fonction*> * f);
+        bool verStatiqueDec();
         void affiche();
         list <Declaration*> * getDeclarations();
         list <Fonction*> * getFonctions();
@@ -22,5 +23,7 @@ class Programme {
 	    list <Declaration*> * declarations;
 	    list <Fonction*> * fonctions;
 };
+
+
 
 #endif
