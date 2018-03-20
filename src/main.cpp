@@ -122,7 +122,7 @@ void lexErrorTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
         cout << endl;
-        //prog->affiche();
+        prog->affiche();
     }
 }
 
@@ -182,7 +182,7 @@ void validProgramsTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
 
-        prog->affiche();
+        //prog->affiche();
         cout << endl;
     }
 }

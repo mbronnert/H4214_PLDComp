@@ -9,7 +9,6 @@
 #include <iostream>
 #include <list>
 
-const char* emType[] =  { "char", "int32_t", "int64_t", "void" };
 
 Fonction::Fonction(Type t, string n, list <Parametre*> * p, list <Declaration*> * d, Bloc * b) {
     typeRetour = t;
@@ -20,24 +19,23 @@ Fonction::Fonction(Type t, string n, list <Parametre*> * p, list <Declaration*> 
 }
 
 void Fonction::affiche() {
-    cout << "declarationFonction" << endl;
-    cout << emType[typeRetour] << " " << nom << endl;
+    cout << "declarationFonction : ";
+    cout << typeEtiquettes[typeRetour] << " " << nom << "(";
 
-    /*if(!parametres->empty()){
-        cout << "(" << endl;
-        for(auto i = parametres->begin(); i != parametres->end(); i++) {
-            *i->affiche();
-        }
-        cout << ")" << endl;
-    }else{
-       cout << "()" << endl;
+    //if(!parametres->empty()){
+    for(auto i = parametres->begin(); i != parametres->end(); i++) {
+        (*i)->affiche();
+        cout <<", ";
     }
-    if(!declarations->empty()){
-        for(auto i = declarations->begin(); i != declarations->end(); i++) {
-            *i->affiche();
-        }
+    cout << ") {" << endl;
+    //}
+    //if(!declarations->empty()){
+    for(auto i = declarations->begin(); i != declarations->end(); i++) {
+        (*i)->affiche();
     }
-    bloc->affiche();*/
+    //}
+    bloc->affiche();
+    cout << endl << "}" << endl;
 }
 
 Type Fonction::getTypeRetour() {

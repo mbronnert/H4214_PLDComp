@@ -8,19 +8,25 @@
 using namespace std;
 
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, PAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PPEXP, MMEXP, EXPPP, EXPMM, XOREQ, OREQ, ANDEQ, MODEQ, DIVEQ, MULTEQ, MOINSEQ, ADDEQ, INVERT, NEGATION, COMMA };
+const string symbolesEtiquettes[] = {"+", "*", "-", "/", "%", "()", "<", "≤", ">", "≥", "!", "==", "!=", "&&", "||", "&", "|", "^",
+                                    "<<", ">>", "=", "++", "--", "++", "--", "|=", "&=", "%=", "/=", "*=", "-=", "+=", "!", "!", ","};
+
 enum Type {CHAR, INT32, INT64, VOID};
+const string typeEtiquettes[] =  { "char", "int32_t", "int64_t", "void" };
 
 class Expression;
 
 class Instruction {
     public:
         Instruction();
+        virtual void affiche() = 0;
 };
 
 
 class Break : public Instruction {
     public:
         Break();
+        void affiche();
 };
 
 class Return : public Instruction {
@@ -44,6 +50,7 @@ class Bloc : public Instruction {
 class Expression : public Instruction {
     public:
         Expression();
+        virtual void affiche() = 0;
 };
 
 class AppelDeFonction : public Expression {
@@ -149,19 +156,20 @@ class Affectation : public Expression {
         Expression * getExpression();
     private:
         Variable * lValue;
-        Expression * exp;
+        Expression * expression;
 };
 
 class Structure : public Instruction {
     public:
         Structure();
+        virtual void affiche() = 0;
     private:
 };
 
 class If : public Structure {
     public:
         If();
-        If(Expression * exp, Instruction * i);
+        If(Expression * e, Instruction * i);
         Expression * getCondition();
         Instruction * getInstruction();
         void affiche();
@@ -173,7 +181,7 @@ class If : public Structure {
 class IfElse : public If {
     public:
         IfElse();
-        IfElse(Expression * exp, Instruction * i, Instruction * iElse);
+        IfElse(Expression * e, Instruction * i, Instruction * iElse);
         Instruction * getInstructionElse();
         void affiche();
     private:
@@ -182,7 +190,7 @@ class IfElse : public If {
 
 class While : public Structure {
     public:
-        While(Expression * exp, Instruction * i);
+        While(Expression * e, Instruction * i);
         While();
         Expression * getCondition();
         Instruction * getInstruction();

@@ -9,13 +9,18 @@ Instruction::Instruction() {
 Break::Break() {
 }
 
+void Break::affiche() {
+    cout << "Break";
+}
+
 /* Return */
 Return::Return(Expression * e) {
     expression = e;
 }
 
 void Return::affiche() {
-    cout << "Return " << endl;
+    cout << "Return ";
+    expression->affiche();
 }
 
 /* Block */
@@ -31,13 +36,12 @@ list <Instruction*> * Bloc::getInstructions() {
 }
 
 void Bloc::affiche() {
-    cout << "{ " << endl;
-    /*if(!instructions->empty()){
-        for(auto i = instructions->begin(); i != instructions->end(); i++) {
-            i->affiche();
-        }
-    }*/
-    cout << "} " << endl;
+    //if(!instructions->empty()){
+    for(auto i = instructions->begin(); i != instructions->end(); i++) {
+        (*i)->affiche();
+        cout << " ;" << endl;
+    }
+    //}
 }
 
 /* Expression */
@@ -60,12 +64,14 @@ list <Expression*> * AppelDeFonction::getParametres() {
 
 void AppelDeFonction::affiche() {
     cout << "AppelDeFonction" << endl;
-    cout << nom <<endl;
-    /*if(!parametres->empty()){
-        for(auto i = parametres->begin(); i != parametres->end(); i++) {
-            *i->affiche();
-        }
-    }*/
+    cout << nom << "(";
+    //if(!parametres->empty()){
+    for(auto i = parametres->begin(); i != parametres->end(); i++) {
+        (*i)->affiche();
+        cout << ", ";
+    }
+    cout << ")";
+    //}
 }
 
 /* Expression Binaire */
@@ -88,9 +94,9 @@ Symbole ExprBin::getSymbole() {
 }
 
 void ExprBin::affiche() {
-    //gauche->affiche();
-    cout << "Expression Binaire : " << symbole << endl;
-    //droite->affiche();
+    gauche->affiche();
+    cout << " " << symbolesEtiquettes[symbole] << " ";
+    droite->affiche();
 }
 
 /* Expression unaire */
@@ -108,8 +114,28 @@ Symbole ExprUnaire::getSymbole() {
 }
 
 void ExprUnaire::affiche() {
-    cout << "Expression Unaire : " << symbole << endl;
-    //expression->affiche();
+    switch (symbole) {
+        case PPEXP | MMEXP: {
+            expression->affiche();
+            cout << symbole;
+        }
+        case EXPPP | EXPMM: {
+            cout << symbole;
+            expression->affiche();
+        }
+        case PAR : {
+            cout << "(";
+            expression->affiche();
+            cout << ")";
+        }
+        default :
+        {
+            cout << symbole;
+            expression->affiche();
+        }
+    }
+
+    //
 }
 
 /* Nombre */
@@ -125,8 +151,7 @@ int Nombre::getValeur() {
 }
 
 void Nombre::affiche() {
-    cout << "Nombre" << endl;
-    cout << valeur << endl;
+    cout << valeur;
 }
 
 /* Caractère */
@@ -142,8 +167,7 @@ int Caractere::getValeur() {
 }
 
 void Caractere::affiche() {
-    cout << "Caractere"<< endl;
-    cout << valeur << endl;
+    cout << "Caractere : " << valeur;
 }
 
 /* Variable */
@@ -195,7 +219,11 @@ list <Caractere*> * Tableau::getTabCaracteres() {
 }
 
 void Tableau::affiche() {
-    cout << "Tableau [" << caseAccedee << "]" << endl;
+    cout << nom<<"[";
+    if (caseAccedee) {
+        cout << caseAccedee;
+    }
+    cout << "]";
 }
 
 /* Variable Simple */
@@ -222,16 +250,20 @@ Caractere * VariableSimple::getCaractere(){
 }
 
 void VariableSimple::affiche() {
-    if(nombre->getValeur())
-      cout << nombre->getValeur() << endl;
-    if(!caractere->getValeur())
-      cout << caractere->getValeur() << endl;
+    cout << nom;
+    if (initialise) {
+        cout << " = ";
+        if(nombre->getValeur())
+          cout << nombre->getValeur() << endl;
+        if(!caractere->getValeur())
+          cout << caractere->getValeur() << endl;
+    }
 }
 
 /* Affectation */
 Affectation::Affectation(Variable * v, Expression * e) {
     lValue = v;
-    exp = e;
+    expression = e;
 }
 
 Variable * Affectation::getLValue() {
@@ -239,15 +271,13 @@ Variable * Affectation::getLValue() {
 }
 
 Expression * Affectation::getExpression() {
-    return exp;
+    return expression;
 }
 
 void Affectation::affiche() {
-    cout << "Affectation " << endl;
-    cout << "Variable "<< endl;
-    //lValue->affiche();
-    cout << "Expression "<< endl;
-    //exp->affiche();
+    lValue->affiche();
+    cout << " = ";
+    expression->affiche();
 }
 
 /* Structure */
@@ -258,8 +288,8 @@ Structure::Structure() {
 If::If() {
 }
 
-If::If(Expression * exp, Instruction * i) {
-  condition = exp;
+If::If(Expression * e, Instruction * i) {
+  condition = e;
   instruction = i;
 }
 
@@ -272,15 +302,17 @@ Instruction * If::getInstruction() {
 }
 
 void If::affiche() {
-    cout << "If " << endl;
-    //condition->affiche();
-    //instruction->affiche();
+    cout << "if (";
+    condition->affiche();
+    cout << ") ";
+    instruction->affiche();
+    cout << endl;
 }
 
 IfElse::IfElse() {
 }
 
-IfElse::IfElse(Expression * exp, Instruction * i, Instruction * iElse) : If(exp, i) {
+IfElse::IfElse(Expression * e, Instruction * i, Instruction * iElse) : If(e, i) {
     instructionElse = iElse;
 }
 
@@ -289,16 +321,17 @@ Instruction * IfElse::getInstructionElse() {
 }
 
 void IfElse::affiche() {
-    cout << "IfElse " << endl;
-    //instructionElse->affiche();
+    cout << "else ";
+    instructionElse->affiche();
+    cout << endl;
 }
 
 /* WHILE */
 While::While() {
 }
 
-While::While(Expression * exp, Instruction * i) {
-    condition = exp;
+While::While(Expression * e, Instruction * i) {
+    condition = e;
     instruction = i;
 }
 
@@ -311,7 +344,9 @@ Instruction * While::getInstruction() {
 }
 
 void While::affiche() {
-    cout << "While " << endl;
-    //condition->affiche();
-    //instruction->affiche();
+    cout << "while (" << endl;
+    condition->affiche();
+    cout << ") ";
+    instruction->affiche();
+    cout << endl;
 }

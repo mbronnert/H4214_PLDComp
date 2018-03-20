@@ -43,6 +43,30 @@ public:
   virtual void enterEqual(PLDCOMPParser::EqualContext * /*ctx*/) override { }
   virtual void exitEqual(PLDCOMPParser::EqualContext * /*ctx*/) override { }
 
+  virtual void enterAddeq(PLDCOMPParser::AddeqContext * /*ctx*/) override { }
+  virtual void exitAddeq(PLDCOMPParser::AddeqContext * /*ctx*/) override { }
+
+  virtual void enterMoinseq(PLDCOMPParser::MoinseqContext * /*ctx*/) override { }
+  virtual void exitMoinseq(PLDCOMPParser::MoinseqContext * /*ctx*/) override { }
+
+  virtual void enterMulteq(PLDCOMPParser::MulteqContext * /*ctx*/) override { }
+  virtual void exitMulteq(PLDCOMPParser::MulteqContext * /*ctx*/) override { }
+
+  virtual void enterDiveq(PLDCOMPParser::DiveqContext * /*ctx*/) override { }
+  virtual void exitDiveq(PLDCOMPParser::DiveqContext * /*ctx*/) override { }
+
+  virtual void enterModeq(PLDCOMPParser::ModeqContext * /*ctx*/) override { }
+  virtual void exitModeq(PLDCOMPParser::ModeqContext * /*ctx*/) override { }
+
+  virtual void enterAndeq(PLDCOMPParser::AndeqContext * /*ctx*/) override { }
+  virtual void exitAndeq(PLDCOMPParser::AndeqContext * /*ctx*/) override { }
+
+  virtual void enterOreq(PLDCOMPParser::OreqContext * /*ctx*/) override { }
+  virtual void exitOreq(PLDCOMPParser::OreqContext * /*ctx*/) override { }
+
+  virtual void enterXoreq(PLDCOMPParser::XoreqContext * /*ctx*/) override { }
+  virtual void exitXoreq(PLDCOMPParser::XoreqContext * /*ctx*/) override { }
+
   virtual void enterInfs(PLDCOMPParser::InfsContext * /*ctx*/) override { }
   virtual void exitInfs(PLDCOMPParser::InfsContext * /*ctx*/) override { }
 
@@ -73,11 +97,20 @@ public:
   virtual void enterOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
   virtual void exitOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
 
+  virtual void enterComma(PLDCOMPParser::CommaContext * /*ctx*/) override { }
+  virtual void exitComma(PLDCOMPParser::CommaContext * /*ctx*/) override { }
+
   virtual void enterExpLvalue(PLDCOMPParser::ExpLvalueContext * /*ctx*/) override { }
   virtual void exitExpLvalue(PLDCOMPParser::ExpLvalueContext * /*ctx*/) override { }
 
+  virtual void enterNegation(PLDCOMPParser::NegationContext * /*ctx*/) override { }
+  virtual void exitNegation(PLDCOMPParser::NegationContext * /*ctx*/) override { }
+
   virtual void enterPpexp(PLDCOMPParser::PpexpContext * /*ctx*/) override { }
   virtual void exitPpexp(PLDCOMPParser::PpexpContext * /*ctx*/) override { }
+
+  virtual void enterInvert(PLDCOMPParser::InvertContext * /*ctx*/) override { }
+  virtual void exitInvert(PLDCOMPParser::InvertContext * /*ctx*/) override { }
 
   virtual void enterAppelGetchar(PLDCOMPParser::AppelGetcharContext * /*ctx*/) override { }
   virtual void exitAppelGetchar(PLDCOMPParser::AppelGetcharContext * /*ctx*/) override { }
@@ -121,8 +154,11 @@ public:
   virtual void enterTableau(PLDCOMPParser::TableauContext * /*ctx*/) override { }
   virtual void exitTableau(PLDCOMPParser::TableauContext * /*ctx*/) override { }
 
-  virtual void enterStructure(PLDCOMPParser::StructureContext * /*ctx*/) override { }
-  virtual void exitStructure(PLDCOMPParser::StructureContext * /*ctx*/) override { }
+  virtual void enterIfStatement(PLDCOMPParser::IfStatementContext * /*ctx*/) override { }
+  virtual void exitIfStatement(PLDCOMPParser::IfStatementContext * /*ctx*/) override { }
+
+  virtual void enterWhileStatement(PLDCOMPParser::WhileStatementContext * /*ctx*/) override { }
+  virtual void exitWhileStatement(PLDCOMPParser::WhileStatementContext * /*ctx*/) override { }
 
   virtual void enterConstanteNb(PLDCOMPParser::ConstanteNbContext * /*ctx*/) override { }
   virtual void exitConstanteNb(PLDCOMPParser::ConstanteNbContext * /*ctx*/) override { }
@@ -136,8 +172,11 @@ public:
   virtual void enterType_function(PLDCOMPParser::Type_functionContext * /*ctx*/) override { }
   virtual void exitType_function(PLDCOMPParser::Type_functionContext * /*ctx*/) override { }
 
-  virtual void enterIf_statement(PLDCOMPParser::If_statementContext * /*ctx*/) override { }
-  virtual void exitIf_statement(PLDCOMPParser::If_statementContext * /*ctx*/) override { }
+  virtual void enterIf(PLDCOMPParser::IfContext * /*ctx*/) override { }
+  virtual void exitIf(PLDCOMPParser::IfContext * /*ctx*/) override { }
+
+  virtual void enterIfElse(PLDCOMPParser::IfElseContext * /*ctx*/) override { }
+  virtual void exitIfElse(PLDCOMPParser::IfElseContext * /*ctx*/) override { }
 
   virtual void enterWhile(PLDCOMPParser::WhileContext * /*ctx*/) override { }
   virtual void exitWhile(PLDCOMPParser::WhileContext * /*ctx*/) override { }
@@ -148,17 +187,35 @@ public:
   virtual void enterTableauCaractere(PLDCOMPParser::TableauCaractereContext * /*ctx*/) override { }
   virtual void exitTableauCaractere(PLDCOMPParser::TableauCaractereContext * /*ctx*/) override { }
 
-  virtual void enterDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext * /*ctx*/) override { }
-  virtual void exitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext * /*ctx*/) override { }
+  virtual void enterDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext * /*ctx*/) override { }
+  virtual void exitDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext * /*ctx*/) override { }
 
-  virtual void enterDeclaration(PLDCOMPParser::DeclarationContext * /*ctx*/) override { }
-  virtual void exitDeclaration(PLDCOMPParser::DeclarationContext * /*ctx*/) override { }
+  virtual void enterDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext * /*ctx*/) override { }
+  virtual void exitDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext * /*ctx*/) override { }
 
   virtual void enterDeclarationTableau(PLDCOMPParser::DeclarationTableauContext * /*ctx*/) override { }
   virtual void exitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext * /*ctx*/) override { }
 
   virtual void enterDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext * /*ctx*/) override { }
   virtual void exitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext * /*ctx*/) override { }
+
+  virtual void enterInt32(PLDCOMPParser::Int32Context * /*ctx*/) override { }
+  virtual void exitInt32(PLDCOMPParser::Int32Context * /*ctx*/) override { }
+
+  virtual void enterInt64(PLDCOMPParser::Int64Context * /*ctx*/) override { }
+  virtual void exitInt64(PLDCOMPParser::Int64Context * /*ctx*/) override { }
+
+  virtual void enterDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext * /*ctx*/) override { }
+  virtual void exitDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext * /*ctx*/) override { }
+  virtual void exitDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext * /*ctx*/) override { }
+  virtual void exitDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext * /*ctx*/) override { }
+
+  virtual void enterDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext * /*ctx*/) override { }
+  virtual void exitDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext * /*ctx*/) override { }
 
   virtual void enterVoid(PLDCOMPParser::VoidContext * /*ctx*/) override { }
   virtual void exitVoid(PLDCOMPParser::VoidContext * /*ctx*/) override { }

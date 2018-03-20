@@ -243,15 +243,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) override {
+  virtual antlrcpp::Any visitDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext *ctx) override {
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitDeclaration(PLDCOMPParser::DeclarationContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitDeclarationMult(PLDCOMPParser::DeclarationMultContext *ctx) override {
+  virtual antlrcpp::Any visitDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -260,6 +256,30 @@ public:
   }
 
   virtual antlrcpp::Any visitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitInt32(PLDCOMPParser::Int32Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitInt64(PLDCOMPParser::Int64Context *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext *ctx) override {
     return visitChildren(ctx);
   }
 
