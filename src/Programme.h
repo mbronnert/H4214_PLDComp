@@ -14,13 +14,13 @@ using namespace std;
 class Programme {
     public:
         Programme();
-        Programme(list <Declaration> * d, list <Fonction> * f);
+        Programme(list <Declaration*> * d, list <Fonction*> * f);
         void affiche();
-        list <Declaration> * getDeclarations();
-        list <Fonction> * getFonctions();
+        list <Declaration*> * getDeclarations();
+        list <Fonction*> * getFonctions();
     private:
-	    list <Declaration> * declarations;
-	    list <Fonction> * fonctions;
+	    list <Declaration*> * declarations;
+	    list <Fonction*> * fonctions;
 };
 
 #endif

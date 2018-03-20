@@ -5,52 +5,38 @@
 Instruction::Instruction() {
 }
 
-Instruction * Instruction::getInstruction() {
-    return instruction;
-}
-
-void Instruction::affiche() {
-    cout << "Instruction " << endl;
-    //instruction->affiche();
-}
-
 /* Break */
 Break::Break() {
 }
 
 /* Return */
 Return::Return(Expression * e) {
-    exp = e;
-}
-
-Expression * Return::getExpression() {
-    return exp;
+    expression = e;
 }
 
 void Return::affiche() {
     cout << "Return " << endl;
-    exp->affiche();
 }
 
 /* Block */
 Bloc::Bloc() {
 }
 
-Bloc::Bloc(list<Instruction> * i) {
+Bloc::Bloc(list<Instruction*> * i) {
     instructions = i;
 }
 
-list <Instruction> * Bloc::getInstructions() {
+list <Instruction*> * Bloc::getInstructions() {
   return instructions;
 }
 
 void Bloc::affiche() {
     cout << "{ " << endl;
-    if(!instructions->empty()){
+    /*if(!instructions->empty()){
         for(auto i = instructions->begin(); i != instructions->end(); i++) {
             i->affiche();
         }
-    }
+    }*/
     cout << "} " << endl;
 }
 
@@ -58,17 +44,8 @@ void Bloc::affiche() {
 Expression::Expression() {
 }
 
-Expression * Expression::getExpression() {
-    return exp;
-}
-
-void Expression::affiche() {
-    cout << "Expression" << endl;
-    exp->affiche();
-}
-
 /* Appel De Fonction */
-AppelDeFonction::AppelDeFonction(string n, list <Expression> * p) {
+AppelDeFonction::AppelDeFonction(string n, list <Expression*> * p) {
     nom = n;
     parametres = p;
 }
@@ -77,18 +54,18 @@ string AppelDeFonction::getNom() {
     return nom;
 }
 
-list <Expression> * AppelDeFonction::getParametres() {
+list <Expression*> * AppelDeFonction::getParametres() {
     return parametres;
 }
 
 void AppelDeFonction::affiche() {
     cout << "AppelDeFonction" << endl;
     cout << nom <<endl;
-    if(!parametres->empty()){
+    /*if(!parametres->empty()){
         for(auto i = parametres->begin(); i != parametres->end(); i++) {
-            i->affiche();
+            *i->affiche();
         }
-    }
+    }*/
 }
 
 /* Expression Binaire */
@@ -111,19 +88,19 @@ Symbole ExprBin::getSymbole() {
 }
 
 void ExprBin::affiche() {
-    gauche->affiche();
+    //gauche->affiche();
     cout << "Expression Binaire : " << symbole << endl;
-    droite->affiche();
+    //droite->affiche();
 }
 
 /* Expression unaire */
 ExprUnaire::ExprUnaire(Expression * e, Symbole s) {
-    exp = e;
+    expression = e;
     symbole = s;
 }
 
 Expression * ExprUnaire::getExpression() {
-    return exp;
+    return expression;
 }
 
 Symbole ExprUnaire::getSymbole() {
@@ -132,7 +109,7 @@ Symbole ExprUnaire::getSymbole() {
 
 void ExprUnaire::affiche() {
     cout << "Expression Unaire : " << symbole << endl;
-    exp->affiche();
+    //expression->affiche();
 }
 
 /* Nombre */
@@ -195,21 +172,21 @@ Tableau::Tableau(string n, Expression * c) : Variable(n) {
     caseAccedee = c;
 }
 
-Tableau::Tableau(string n, list <Nombre> * v) : Variable(n) {
+Tableau::Tableau(string n, list <Nombre*> * v) : Variable(n) {
     tabNombres = v;
     initialise = true;
 }
 
-Tableau::Tableau(string n, list <Caractere> * v) : Variable(n) {
+Tableau::Tableau(string n, list <Caractere*> * v) : Variable(n) {
     tabCaracteres = v;
     initialise = true;
 }
 
-list <Nombre> * Tableau::getTabNombres(){
+list <Nombre*> * Tableau::getTabNombres(){
     return tabNombres;
 }
 
-list <Caractere> * Tableau::getTabCaracteres() {
+list <Caractere*> * Tableau::getTabCaracteres() {
     return tabCaracteres;
 }
 
@@ -264,9 +241,9 @@ Expression * Affectation::getExpression() {
 void Affectation::affiche() {
     cout << "Affectation " << endl;
     cout << "Variable "<< endl;
-    lValue->affiche();
+    //lValue->affiche();
     cout << "Expression "<< endl;
-    exp->affiche();
+    //exp->affiche();
 }
 
 /* Structure */
@@ -292,8 +269,8 @@ Instruction * If::getInstruction() {
 
 void If::affiche() {
     cout << "If " << endl;
-    condition->affiche();
-    instruction->affiche();
+    //condition->affiche();
+    //instruction->affiche();
 }
 
 IfElse::IfElse() {
@@ -309,7 +286,7 @@ Instruction * IfElse::getInstructionElse() {
 
 void IfElse::affiche() {
     cout << "IfElse " << endl;
-    instructionElse->affiche();
+    //instructionElse->affiche();
 }
 
 /* WHILE */
@@ -331,6 +308,6 @@ Instruction * While::getInstruction() {
 
 void While::affiche() {
     cout << "While " << endl;
-    condition->affiche();
-    instruction->affiche();
+    //condition->affiche();
+    //instruction->affiche();
 }

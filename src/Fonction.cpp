@@ -11,7 +11,7 @@
 
 const char* emType[] =  { "char", "int32_t", "int64_t", "void" };
 
-Fonction::Fonction(Type t, string n, list <Parametre> * p, list <Declaration> * d, Bloc * b) {
+Fonction::Fonction(Type t, string n, list <Parametre*> * p, list <Declaration*> * d, Bloc * b) {
     typeRetour = t;
     nom = n;
     parametres = p;
@@ -23,21 +23,21 @@ void Fonction::affiche() {
     cout << "declarationFonction" << endl;
     cout << emType[typeRetour] << " " << nom << endl;
 
-    if(!parametres->empty()){
+    /*if(!parametres->empty()){
         cout << "(" << endl;
         for(auto i = parametres->begin(); i != parametres->end(); i++) {
-            i->affiche();
+            *i->affiche();
         }
         cout << ")" << endl;
     }else{
        cout << "()" << endl;
-    }     
+    }
     if(!declarations->empty()){
         for(auto i = declarations->begin(); i != declarations->end(); i++) {
-            i->affiche();
+            *i->affiche();
         }
     }
-    bloc->affiche();
+    bloc->affiche();*/
 }
 
 Type Fonction::getTypeRetour() {
@@ -48,11 +48,11 @@ string Fonction::getNom() {
 	return nom;
 }
 
-list<Parametre> * Fonction::getParametres() {
+list<Parametre*> * Fonction::getParametres() {
 	return parametres;
 }
 
-list<Declaration> * Fonction::getDeclarations() {
+list<Declaration*> * Fonction::getDeclarations() {
 	return declarations;
 }
 

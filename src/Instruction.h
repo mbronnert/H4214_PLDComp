@@ -15,10 +15,6 @@ class Expression;
 class Instruction {
     public:
         Instruction();
-        void affiche();
-        Instruction * getInstruction();
-    private:
-        Instruction * instruction;
 };
 
 
@@ -31,39 +27,34 @@ class Return : public Instruction {
     public:
         Return(Expression * e);
         void affiche();
-        Expression * getExpression();
     private:
-        Expression * exp;
+        Expression * expression;
 };
 
 class Bloc : public Instruction {
     public:
         Bloc();
-        Bloc(list<Instruction> * i);
-        list <Instruction> * getInstructions();
+        Bloc(list<Instruction*> * i);
+        list <Instruction*> * getInstructions();
         void affiche();
       private:
-        list <Instruction> * instructions;
+        list <Instruction*> * instructions;
 };
 
 class Expression : public Instruction {
     public:
         Expression();
-        void affiche();
-        Expression * getExpression();
-    private:
-        Expression * exp;
 };
 
 class AppelDeFonction : public Expression {
     public:
-        AppelDeFonction(string n, list<Expression> * param);
+        AppelDeFonction(string n, list<Expression*> * param);
         string getNom();
         void affiche();
-        list <Expression> * getParametres();
+        list <Expression*> * getParametres();
     private:
         string nom;
-        list <Expression> * parametres;
+        list <Expression*> * parametres;
 };
 
 class ExprBin : public Expression {
@@ -86,7 +77,7 @@ class ExprUnaire : public Expression {
         Expression * getExpression();
         Symbole getSymbole();
     private:
-        Expression * exp; //TODO: c'est pas plutot une variable ?
+        Expression * expression; //TODO: c'est pas plutot une variable ?
         Symbole symbole;
 };
 
@@ -125,14 +116,14 @@ class Tableau : public Variable {
     public:
         Tableau(string n);
         Tableau(string n, Expression * c);
-        Tableau(string n, list <Nombre> * v);
-        Tableau(string n, list <Caractere> * v);
-        list <Nombre> * getTabNombres();
-        list <Caractere> * getTabCaracteres();
+        Tableau(string n, list <Nombre*> * v);
+        Tableau(string n, list <Caractere*> * v);
+        list <Nombre*> * getTabNombres();
+        list <Caractere*> * getTabCaracteres();
         void affiche();
       private:
-        list <Nombre> * tabNombres;
-        list <Caractere> * tabCaracteres;
+        list <Nombre*> * tabNombres;
+        list <Caractere*> * tabCaracteres;
         Expression * caseAccedee;
 };
 
