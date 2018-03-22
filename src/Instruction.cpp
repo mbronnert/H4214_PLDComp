@@ -15,9 +15,6 @@ void Break::affiche() {
     cout << "Break";
 }
 
-void Break::affiche() {
-    cout << "Break";
-}
 
 /* Return */
 Return::Return(Expression * e) {
