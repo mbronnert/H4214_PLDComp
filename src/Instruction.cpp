@@ -15,6 +15,10 @@ void Break::affiche() {
     cout << "Break";
 }
 
+void Break::affiche() {
+    cout << "Break";
+}
+
 /* Return */
 Return::Return(Expression * e) {
     expression = e;
@@ -279,6 +283,7 @@ void Variable::setInitialise(bool i) {
 
 bool Variable::getInitialise () {
     return initialise;
+
 }
 
 void Variable::resolutionPortee(list<string> *pileVariable, map<std::string,Declaration *> *mapVariable, list<string> *pileFonction) {
@@ -312,6 +317,7 @@ void Variable::resolutionPortee(list<string> *pileVariable, map<std::string,Decl
         cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
         exit(2);
     }
+
 }
 
 /* Tableau */

@@ -15,6 +15,7 @@ class Declaration {
         Type getType();
         Variable * getVariable();
         void setNomVariable(string nom);
+
         //Ajouter une fonction qui vérifie si le nom passé en paramètre est identique
         //à celui de la variable et si elle est affectée.
         void affiche();
