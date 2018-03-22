@@ -181,15 +181,16 @@ void validProgramsTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-
-        prog->affiche();
+		
+        //prog->affiche();
+        //prog->resolutionPortee();
         cout << endl;
     }
 }
 
 
 int main () {
-    /*ANTLRInputStream input ("int32_t main() {int32_t a;}");
+    /*ANTLRInputStream input ("void main() {amm(a);}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
@@ -198,7 +199,8 @@ int main () {
 
     Programme * prog = (Programme *) visitor.visit(tree);
 
-    //prog->affiche();*/
+    prog->affiche();
+    prog->resolutionPortee();*/
 
     lexErrorTests();
     syntaxErrorTests();

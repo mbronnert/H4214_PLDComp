@@ -1,5 +1,8 @@
 #include "Parametre.h"
 #include <iostream>
+#include <list>
+#include <map>
+
 
 Parametre::Parametre(Type t, string n) {
     type = t;
@@ -17,3 +20,6 @@ Type Parametre::getType() {
 string Parametre::getNom() {
 	return nom;
 }
+
+
+

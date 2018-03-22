@@ -41,6 +41,30 @@ public:
   virtual void enterEqual(PLDCOMPParser::EqualContext *ctx) = 0;
   virtual void exitEqual(PLDCOMPParser::EqualContext *ctx) = 0;
 
+  virtual void enterAddeq(PLDCOMPParser::AddeqContext *ctx) = 0;
+  virtual void exitAddeq(PLDCOMPParser::AddeqContext *ctx) = 0;
+
+  virtual void enterMoinseq(PLDCOMPParser::MoinseqContext *ctx) = 0;
+  virtual void exitMoinseq(PLDCOMPParser::MoinseqContext *ctx) = 0;
+
+  virtual void enterMulteq(PLDCOMPParser::MulteqContext *ctx) = 0;
+  virtual void exitMulteq(PLDCOMPParser::MulteqContext *ctx) = 0;
+
+  virtual void enterDiveq(PLDCOMPParser::DiveqContext *ctx) = 0;
+  virtual void exitDiveq(PLDCOMPParser::DiveqContext *ctx) = 0;
+
+  virtual void enterModeq(PLDCOMPParser::ModeqContext *ctx) = 0;
+  virtual void exitModeq(PLDCOMPParser::ModeqContext *ctx) = 0;
+
+  virtual void enterAndeq(PLDCOMPParser::AndeqContext *ctx) = 0;
+  virtual void exitAndeq(PLDCOMPParser::AndeqContext *ctx) = 0;
+
+  virtual void enterOreq(PLDCOMPParser::OreqContext *ctx) = 0;
+  virtual void exitOreq(PLDCOMPParser::OreqContext *ctx) = 0;
+
+  virtual void enterXoreq(PLDCOMPParser::XoreqContext *ctx) = 0;
+  virtual void exitXoreq(PLDCOMPParser::XoreqContext *ctx) = 0;
+
   virtual void enterInfs(PLDCOMPParser::InfsContext *ctx) = 0;
   virtual void exitInfs(PLDCOMPParser::InfsContext *ctx) = 0;
 
@@ -71,11 +95,20 @@ public:
   virtual void enterOrb(PLDCOMPParser::OrbContext *ctx) = 0;
   virtual void exitOrb(PLDCOMPParser::OrbContext *ctx) = 0;
 
+  virtual void enterComma(PLDCOMPParser::CommaContext *ctx) = 0;
+  virtual void exitComma(PLDCOMPParser::CommaContext *ctx) = 0;
+
   virtual void enterExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) = 0;
   virtual void exitExpLvalue(PLDCOMPParser::ExpLvalueContext *ctx) = 0;
 
+  virtual void enterNegation(PLDCOMPParser::NegationContext *ctx) = 0;
+  virtual void exitNegation(PLDCOMPParser::NegationContext *ctx) = 0;
+
   virtual void enterPpexp(PLDCOMPParser::PpexpContext *ctx) = 0;
   virtual void exitPpexp(PLDCOMPParser::PpexpContext *ctx) = 0;
+
+  virtual void enterInvert(PLDCOMPParser::InvertContext *ctx) = 0;
+  virtual void exitInvert(PLDCOMPParser::InvertContext *ctx) = 0;
 
   virtual void enterAppelGetchar(PLDCOMPParser::AppelGetcharContext *ctx) = 0;
   virtual void exitAppelGetchar(PLDCOMPParser::AppelGetcharContext *ctx) = 0;
@@ -119,8 +152,11 @@ public:
   virtual void enterTableau(PLDCOMPParser::TableauContext *ctx) = 0;
   virtual void exitTableau(PLDCOMPParser::TableauContext *ctx) = 0;
 
-  virtual void enterStructure(PLDCOMPParser::StructureContext *ctx) = 0;
-  virtual void exitStructure(PLDCOMPParser::StructureContext *ctx) = 0;
+  virtual void enterIfStatement(PLDCOMPParser::IfStatementContext *ctx) = 0;
+  virtual void exitIfStatement(PLDCOMPParser::IfStatementContext *ctx) = 0;
+
+  virtual void enterWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) = 0;
+  virtual void exitWhileStatement(PLDCOMPParser::WhileStatementContext *ctx) = 0;
 
   virtual void enterConstanteNb(PLDCOMPParser::ConstanteNbContext *ctx) = 0;
   virtual void exitConstanteNb(PLDCOMPParser::ConstanteNbContext *ctx) = 0;
@@ -134,8 +170,11 @@ public:
   virtual void enterType_function(PLDCOMPParser::Type_functionContext *ctx) = 0;
   virtual void exitType_function(PLDCOMPParser::Type_functionContext *ctx) = 0;
 
-  virtual void enterIf_statement(PLDCOMPParser::If_statementContext *ctx) = 0;
-  virtual void exitIf_statement(PLDCOMPParser::If_statementContext *ctx) = 0;
+  virtual void enterIf(PLDCOMPParser::IfContext *ctx) = 0;
+  virtual void exitIf(PLDCOMPParser::IfContext *ctx) = 0;
+
+  virtual void enterIfElse(PLDCOMPParser::IfElseContext *ctx) = 0;
+  virtual void exitIfElse(PLDCOMPParser::IfElseContext *ctx) = 0;
 
   virtual void enterWhile(PLDCOMPParser::WhileContext *ctx) = 0;
   virtual void exitWhile(PLDCOMPParser::WhileContext *ctx) = 0;
@@ -146,17 +185,35 @@ public:
   virtual void enterTableauCaractere(PLDCOMPParser::TableauCaractereContext *ctx) = 0;
   virtual void exitTableauCaractere(PLDCOMPParser::TableauCaractereContext *ctx) = 0;
 
-  virtual void enterDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) = 0;
-  virtual void exitDeclarationConstante(PLDCOMPParser::DeclarationConstanteContext *ctx) = 0;
+  virtual void enterDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext *ctx) = 0;
+  virtual void exitDeclarationIntMult(PLDCOMPParser::DeclarationIntMultContext *ctx) = 0;
 
-  virtual void enterDeclaration(PLDCOMPParser::DeclarationContext *ctx) = 0;
-  virtual void exitDeclaration(PLDCOMPParser::DeclarationContext *ctx) = 0;
+  virtual void enterDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext *ctx) = 0;
+  virtual void exitDeclarationCharMult(PLDCOMPParser::DeclarationCharMultContext *ctx) = 0;
 
   virtual void enterDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) = 0;
   virtual void exitDeclarationTableau(PLDCOMPParser::DeclarationTableauContext *ctx) = 0;
 
   virtual void enterDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) = 0;
   virtual void exitDeclarationTableauConstante(PLDCOMPParser::DeclarationTableauConstanteContext *ctx) = 0;
+
+  virtual void enterInt32(PLDCOMPParser::Int32Context *ctx) = 0;
+  virtual void exitInt32(PLDCOMPParser::Int32Context *ctx) = 0;
+
+  virtual void enterInt64(PLDCOMPParser::Int64Context *ctx) = 0;
+  virtual void exitInt64(PLDCOMPParser::Int64Context *ctx) = 0;
+
+  virtual void enterDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext *ctx) = 0;
+  virtual void exitDeclarationIntSimple(PLDCOMPParser::DeclarationIntSimpleContext *ctx) = 0;
+
+  virtual void enterDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext *ctx) = 0;
+  virtual void exitDeclarationIntConstante(PLDCOMPParser::DeclarationIntConstanteContext *ctx) = 0;
+
+  virtual void enterDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext *ctx) = 0;
+  virtual void exitDeclarationCharSimple(PLDCOMPParser::DeclarationCharSimpleContext *ctx) = 0;
+
+  virtual void enterDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext *ctx) = 0;
+  virtual void exitDeclarationCharConstante(PLDCOMPParser::DeclarationCharConstanteContext *ctx) = 0;
 
   virtual void enterVoid(PLDCOMPParser::VoidContext *ctx) = 0;
   virtual void exitVoid(PLDCOMPParser::VoidContext *ctx) = 0;

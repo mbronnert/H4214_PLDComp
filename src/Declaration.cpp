@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Declaration.h"
 
-const char* enType[] =  { "char", "int32_t", "int64_t", "void" };
 
 Declaration::Declaration(Type t, Variable * v) {
     type = t;
@@ -16,9 +15,15 @@ Variable * Declaration::getVariable(){
 	return variable;
 }
 
+void Declaration::setNomVariable(string nom){
+	variable->setNom(nom);
+}
+
 void Declaration::affiche() {
-	cout << "declarationVariables" << endl;
-	cout << enType[type] << " " << getVariable()->getNom() << ";"<< endl;
+	cout << "declaration : ";
+	cout << typeEtiquettes[type] << " ";
+    variable->affiche();
+    cout << ";"<< endl;
 }
 
 DeclarationTableau::DeclarationTableau (Type t, Variable * v, int ta) : Declaration(t,v) {

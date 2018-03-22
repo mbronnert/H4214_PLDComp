@@ -2,6 +2,7 @@
 // Generated from PLDCOMP.g4 by ANTLR 4.7.1
 
 
+#include "PLDCOMPListener.h"
 #include "PLDCOMPVisitor.h"
 
 #include "PLDCOMPParser.h"
@@ -50,6 +51,17 @@ void PLDCOMPParser::OpContext::copyFrom(OpContext *ctx) {
 
 PLDCOMPParser::MultContext::MultContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::MultContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMult(this);
+}
+void PLDCOMPParser::MultContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMult(this);
+}
+
 antlrcpp::Any PLDCOMPParser::MultContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitMult(this);
@@ -59,6 +71,17 @@ antlrcpp::Any PLDCOMPParser::MultContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- ModContext ------------------------------------------------------------------
 
 PLDCOMPParser::ModContext::ModContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ModContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMod(this);
+}
+void PLDCOMPParser::ModContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMod(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ModContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -70,6 +93,17 @@ antlrcpp::Any PLDCOMPParser::ModContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::InfsContext::InfsContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::InfsContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInfs(this);
+}
+void PLDCOMPParser::InfsContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInfs(this);
+}
+
 antlrcpp::Any PLDCOMPParser::InfsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitInfs(this);
@@ -79,6 +113,17 @@ antlrcpp::Any PLDCOMPParser::InfsContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- AndbContext ------------------------------------------------------------------
 
 PLDCOMPParser::AndbContext::AndbContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::AndbContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAndb(this);
+}
+void PLDCOMPParser::AndbContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAndb(this);
+}
 
 antlrcpp::Any PLDCOMPParser::AndbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -90,6 +135,17 @@ antlrcpp::Any PLDCOMPParser::AndbContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::AddeqContext::AddeqContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::AddeqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAddeq(this);
+}
+void PLDCOMPParser::AddeqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAddeq(this);
+}
+
 antlrcpp::Any PLDCOMPParser::AddeqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAddeq(this);
@@ -99,6 +155,17 @@ antlrcpp::Any PLDCOMPParser::AddeqContext::accept(tree::ParseTreeVisitor *visito
 //----------------- XoreqContext ------------------------------------------------------------------
 
 PLDCOMPParser::XoreqContext::XoreqContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::XoreqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterXoreq(this);
+}
+void PLDCOMPParser::XoreqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitXoreq(this);
+}
 
 antlrcpp::Any PLDCOMPParser::XoreqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -110,6 +177,17 @@ antlrcpp::Any PLDCOMPParser::XoreqContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::AndeqContext::AndeqContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::AndeqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAndeq(this);
+}
+void PLDCOMPParser::AndeqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAndeq(this);
+}
+
 antlrcpp::Any PLDCOMPParser::AndeqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAndeq(this);
@@ -119,6 +197,17 @@ antlrcpp::Any PLDCOMPParser::AndeqContext::accept(tree::ParseTreeVisitor *visito
 //----------------- DecgContext ------------------------------------------------------------------
 
 PLDCOMPParser::DecgContext::DecgContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DecgContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDecg(this);
+}
+void PLDCOMPParser::DecgContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDecg(this);
+}
 
 antlrcpp::Any PLDCOMPParser::DecgContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -130,6 +219,17 @@ antlrcpp::Any PLDCOMPParser::DecgContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::DecdContext::DecdContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DecdContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDecd(this);
+}
+void PLDCOMPParser::DecdContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDecd(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DecdContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDecd(this);
@@ -139,6 +239,17 @@ antlrcpp::Any PLDCOMPParser::DecdContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- DiveqContext ------------------------------------------------------------------
 
 PLDCOMPParser::DiveqContext::DiveqContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DiveqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDiveq(this);
+}
+void PLDCOMPParser::DiveqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDiveq(this);
+}
 
 antlrcpp::Any PLDCOMPParser::DiveqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -150,6 +261,17 @@ antlrcpp::Any PLDCOMPParser::DiveqContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::SupContext::SupContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::SupContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterSup(this);
+}
+void PLDCOMPParser::SupContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitSup(this);
+}
+
 antlrcpp::Any PLDCOMPParser::SupContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitSup(this);
@@ -159,6 +281,17 @@ antlrcpp::Any PLDCOMPParser::SupContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- DivContext ------------------------------------------------------------------
 
 PLDCOMPParser::DivContext::DivContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DivContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDiv(this);
+}
+void PLDCOMPParser::DivContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDiv(this);
+}
 
 antlrcpp::Any PLDCOMPParser::DivContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -170,6 +303,17 @@ antlrcpp::Any PLDCOMPParser::DivContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::SupsContext::SupsContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::SupsContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterSups(this);
+}
+void PLDCOMPParser::SupsContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitSups(this);
+}
+
 antlrcpp::Any PLDCOMPParser::SupsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitSups(this);
@@ -179,6 +323,17 @@ antlrcpp::Any PLDCOMPParser::SupsContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- MoinseqContext ------------------------------------------------------------------
 
 PLDCOMPParser::MoinseqContext::MoinseqContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::MoinseqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMoinseq(this);
+}
+void PLDCOMPParser::MoinseqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMoinseq(this);
+}
 
 antlrcpp::Any PLDCOMPParser::MoinseqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -190,6 +345,17 @@ antlrcpp::Any PLDCOMPParser::MoinseqContext::accept(tree::ParseTreeVisitor *visi
 
 PLDCOMPParser::AndContext::AndContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::AndContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAnd(this);
+}
+void PLDCOMPParser::AndContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAnd(this);
+}
+
 antlrcpp::Any PLDCOMPParser::AndContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAnd(this);
@@ -199,6 +365,17 @@ antlrcpp::Any PLDCOMPParser::AndContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- PowContext ------------------------------------------------------------------
 
 PLDCOMPParser::PowContext::PowContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::PowContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterPow(this);
+}
+void PLDCOMPParser::PowContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitPow(this);
+}
 
 antlrcpp::Any PLDCOMPParser::PowContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -210,6 +387,17 @@ antlrcpp::Any PLDCOMPParser::PowContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::ModeqContext::ModeqContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ModeqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterModeq(this);
+}
+void PLDCOMPParser::ModeqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitModeq(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ModeqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitModeq(this);
@@ -219,6 +407,17 @@ antlrcpp::Any PLDCOMPParser::ModeqContext::accept(tree::ParseTreeVisitor *visito
 //----------------- OrbContext ------------------------------------------------------------------
 
 PLDCOMPParser::OrbContext::OrbContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::OrbContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterOrb(this);
+}
+void PLDCOMPParser::OrbContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitOrb(this);
+}
 
 antlrcpp::Any PLDCOMPParser::OrbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -230,6 +429,17 @@ antlrcpp::Any PLDCOMPParser::OrbContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::AddContext::AddContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::AddContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAdd(this);
+}
+void PLDCOMPParser::AddContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAdd(this);
+}
+
 antlrcpp::Any PLDCOMPParser::AddContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAdd(this);
@@ -239,6 +449,17 @@ antlrcpp::Any PLDCOMPParser::AddContext::accept(tree::ParseTreeVisitor *visitor)
 //----------------- InfContext ------------------------------------------------------------------
 
 PLDCOMPParser::InfContext::InfContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::InfContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInf(this);
+}
+void PLDCOMPParser::InfContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInf(this);
+}
 
 antlrcpp::Any PLDCOMPParser::InfContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -250,6 +471,17 @@ antlrcpp::Any PLDCOMPParser::InfContext::accept(tree::ParseTreeVisitor *visitor)
 
 PLDCOMPParser::OrContext::OrContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::OrContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterOr(this);
+}
+void PLDCOMPParser::OrContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitOr(this);
+}
+
 antlrcpp::Any PLDCOMPParser::OrContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitOr(this);
@@ -259,6 +491,17 @@ antlrcpp::Any PLDCOMPParser::OrContext::accept(tree::ParseTreeVisitor *visitor) 
 //----------------- EqualbContext ------------------------------------------------------------------
 
 PLDCOMPParser::EqualbContext::EqualbContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::EqualbContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterEqualb(this);
+}
+void PLDCOMPParser::EqualbContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitEqualb(this);
+}
 
 antlrcpp::Any PLDCOMPParser::EqualbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -270,6 +513,17 @@ antlrcpp::Any PLDCOMPParser::EqualbContext::accept(tree::ParseTreeVisitor *visit
 
 PLDCOMPParser::DiffContext::DiffContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DiffContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDiff(this);
+}
+void PLDCOMPParser::DiffContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDiff(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DiffContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDiff(this);
@@ -279,6 +533,17 @@ antlrcpp::Any PLDCOMPParser::DiffContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- EqualContext ------------------------------------------------------------------
 
 PLDCOMPParser::EqualContext::EqualContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::EqualContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterEqual(this);
+}
+void PLDCOMPParser::EqualContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitEqual(this);
+}
 
 antlrcpp::Any PLDCOMPParser::EqualContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -290,6 +555,17 @@ antlrcpp::Any PLDCOMPParser::EqualContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::CommaContext::CommaContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::CommaContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterComma(this);
+}
+void PLDCOMPParser::CommaContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitComma(this);
+}
+
 antlrcpp::Any PLDCOMPParser::CommaContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitComma(this);
@@ -299,6 +575,17 @@ antlrcpp::Any PLDCOMPParser::CommaContext::accept(tree::ParseTreeVisitor *visito
 //----------------- MoinsContext ------------------------------------------------------------------
 
 PLDCOMPParser::MoinsContext::MoinsContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::MoinsContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMoins(this);
+}
+void PLDCOMPParser::MoinsContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMoins(this);
+}
 
 antlrcpp::Any PLDCOMPParser::MoinsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -310,6 +597,17 @@ antlrcpp::Any PLDCOMPParser::MoinsContext::accept(tree::ParseTreeVisitor *visito
 
 PLDCOMPParser::OreqContext::OreqContext(OpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::OreqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterOreq(this);
+}
+void PLDCOMPParser::OreqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitOreq(this);
+}
+
 antlrcpp::Any PLDCOMPParser::OreqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitOreq(this);
@@ -319,6 +617,17 @@ antlrcpp::Any PLDCOMPParser::OreqContext::accept(tree::ParseTreeVisitor *visitor
 //----------------- MulteqContext ------------------------------------------------------------------
 
 PLDCOMPParser::MulteqContext::MulteqContext(OpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::MulteqContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMulteq(this);
+}
+void PLDCOMPParser::MulteqContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMulteq(this);
+}
 
 antlrcpp::Any PLDCOMPParser::MulteqContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -334,13 +643,13 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
     exitRule();
   });
   try {
-    setState(62);
+    setState(68);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::T__0: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::AddContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(34);
+        setState(40);
         match(PLDCOMPParser::T__0);
         break;
       }
@@ -348,7 +657,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__1: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::MoinsContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(35);
+        setState(41);
         match(PLDCOMPParser::T__1);
         break;
       }
@@ -356,7 +665,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__2: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::MultContext>(_localctx));
         enterOuterAlt(_localctx, 3);
-        setState(36);
+        setState(42);
         match(PLDCOMPParser::T__2);
         break;
       }
@@ -364,7 +673,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__3: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::DivContext>(_localctx));
         enterOuterAlt(_localctx, 4);
-        setState(37);
+        setState(43);
         match(PLDCOMPParser::T__3);
         break;
       }
@@ -372,7 +681,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__4: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::ModContext>(_localctx));
         enterOuterAlt(_localctx, 5);
-        setState(38);
+        setState(44);
         match(PLDCOMPParser::T__4);
         break;
       }
@@ -380,7 +689,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__5: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::PowContext>(_localctx));
         enterOuterAlt(_localctx, 6);
-        setState(39);
+        setState(45);
         match(PLDCOMPParser::T__5);
         break;
       }
@@ -388,7 +697,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__6: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::AndContext>(_localctx));
         enterOuterAlt(_localctx, 7);
-        setState(40);
+        setState(46);
         match(PLDCOMPParser::T__6);
         break;
       }
@@ -396,7 +705,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__7: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::OrContext>(_localctx));
         enterOuterAlt(_localctx, 8);
-        setState(41);
+        setState(47);
         match(PLDCOMPParser::T__7);
         break;
       }
@@ -404,7 +713,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__8: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::EqualContext>(_localctx));
         enterOuterAlt(_localctx, 9);
-        setState(42);
+        setState(48);
         match(PLDCOMPParser::T__8);
         break;
       }
@@ -412,7 +721,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__9: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::AddeqContext>(_localctx));
         enterOuterAlt(_localctx, 10);
-        setState(43);
+        setState(49);
         match(PLDCOMPParser::T__9);
         break;
       }
@@ -420,7 +729,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__10: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::MoinseqContext>(_localctx));
         enterOuterAlt(_localctx, 11);
-        setState(44);
+        setState(50);
         match(PLDCOMPParser::T__10);
         break;
       }
@@ -428,7 +737,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__11: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::MulteqContext>(_localctx));
         enterOuterAlt(_localctx, 12);
-        setState(45);
+        setState(51);
         match(PLDCOMPParser::T__11);
         break;
       }
@@ -436,7 +745,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__12: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::DiveqContext>(_localctx));
         enterOuterAlt(_localctx, 13);
-        setState(46);
+        setState(52);
         match(PLDCOMPParser::T__12);
         break;
       }
@@ -444,7 +753,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__13: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::ModeqContext>(_localctx));
         enterOuterAlt(_localctx, 14);
-        setState(47);
+        setState(53);
         match(PLDCOMPParser::T__13);
         break;
       }
@@ -452,7 +761,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__14: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::AndeqContext>(_localctx));
         enterOuterAlt(_localctx, 15);
-        setState(48);
+        setState(54);
         match(PLDCOMPParser::T__14);
         break;
       }
@@ -460,7 +769,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__15: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::OreqContext>(_localctx));
         enterOuterAlt(_localctx, 16);
-        setState(49);
+        setState(55);
         match(PLDCOMPParser::T__15);
         break;
       }
@@ -468,7 +777,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__16: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::XoreqContext>(_localctx));
         enterOuterAlt(_localctx, 17);
-        setState(50);
+        setState(56);
         match(PLDCOMPParser::T__16);
         break;
       }
@@ -476,7 +785,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__17: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::InfsContext>(_localctx));
         enterOuterAlt(_localctx, 18);
-        setState(51);
+        setState(57);
         match(PLDCOMPParser::T__17);
         break;
       }
@@ -484,7 +793,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__18: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::InfContext>(_localctx));
         enterOuterAlt(_localctx, 19);
-        setState(52);
+        setState(58);
         match(PLDCOMPParser::T__18);
         break;
       }
@@ -492,7 +801,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__19: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::SupsContext>(_localctx));
         enterOuterAlt(_localctx, 20);
-        setState(53);
+        setState(59);
         match(PLDCOMPParser::T__19);
         break;
       }
@@ -500,7 +809,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__20: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::SupContext>(_localctx));
         enterOuterAlt(_localctx, 21);
-        setState(54);
+        setState(60);
         match(PLDCOMPParser::T__20);
         break;
       }
@@ -508,7 +817,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__21: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::DecgContext>(_localctx));
         enterOuterAlt(_localctx, 22);
-        setState(55);
+        setState(61);
         match(PLDCOMPParser::T__21);
         break;
       }
@@ -516,7 +825,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__22: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::DecdContext>(_localctx));
         enterOuterAlt(_localctx, 23);
-        setState(56);
+        setState(62);
         match(PLDCOMPParser::T__22);
         break;
       }
@@ -524,7 +833,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__23: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::EqualbContext>(_localctx));
         enterOuterAlt(_localctx, 24);
-        setState(57);
+        setState(63);
         match(PLDCOMPParser::T__23);
         break;
       }
@@ -532,7 +841,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__24: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::DiffContext>(_localctx));
         enterOuterAlt(_localctx, 25);
-        setState(58);
+        setState(64);
         match(PLDCOMPParser::T__24);
         break;
       }
@@ -540,7 +849,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__25: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::AndbContext>(_localctx));
         enterOuterAlt(_localctx, 26);
-        setState(59);
+        setState(65);
         match(PLDCOMPParser::T__25);
         break;
       }
@@ -548,7 +857,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__26: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::OrbContext>(_localctx));
         enterOuterAlt(_localctx, 27);
-        setState(60);
+        setState(66);
         match(PLDCOMPParser::T__26);
         break;
       }
@@ -556,7 +865,7 @@ PLDCOMPParser::OpContext* PLDCOMPParser::op() {
       case PLDCOMPParser::T__27: {
         _localctx = dynamic_cast<OpContext *>(_tracker.createInstance<PLDCOMPParser::CommaContext>(_localctx));
         enterOuterAlt(_localctx, 28);
-        setState(61);
+        setState(67);
         match(PLDCOMPParser::T__27);
         break;
       }
@@ -598,6 +907,17 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpLvalueContext::lvalue() {
 
 PLDCOMPParser::ExpLvalueContext::ExpLvalueContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ExpLvalueContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterExpLvalue(this);
+}
+void PLDCOMPParser::ExpLvalueContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitExpLvalue(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ExpLvalueContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExpLvalue(this);
@@ -611,6 +931,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::NegationContext::exp() {
 }
 
 PLDCOMPParser::NegationContext::NegationContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::NegationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterNegation(this);
+}
+void PLDCOMPParser::NegationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitNegation(this);
+}
 
 antlrcpp::Any PLDCOMPParser::NegationContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -626,6 +957,17 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::PpexpContext::lvalue() {
 
 PLDCOMPParser::PpexpContext::PpexpContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::PpexpContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterPpexp(this);
+}
+void PLDCOMPParser::PpexpContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitPpexp(this);
+}
+
 antlrcpp::Any PLDCOMPParser::PpexpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitPpexp(this);
@@ -640,6 +982,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::InvertContext::exp() {
 
 PLDCOMPParser::InvertContext::InvertContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::InvertContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInvert(this);
+}
+void PLDCOMPParser::InvertContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInvert(this);
+}
+
 antlrcpp::Any PLDCOMPParser::InvertContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitInvert(this);
@@ -649,6 +1002,17 @@ antlrcpp::Any PLDCOMPParser::InvertContext::accept(tree::ParseTreeVisitor *visit
 //----------------- AppelGetcharContext ------------------------------------------------------------------
 
 PLDCOMPParser::AppelGetcharContext::AppelGetcharContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::AppelGetcharContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAppelGetchar(this);
+}
+void PLDCOMPParser::AppelGetcharContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAppelGetchar(this);
+}
 
 antlrcpp::Any PLDCOMPParser::AppelGetcharContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -664,6 +1028,17 @@ tree::TerminalNode* PLDCOMPParser::ConstanteNombreContext::NOMBRE() {
 
 PLDCOMPParser::ConstanteNombreContext::ConstanteNombreContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ConstanteNombreContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterConstanteNombre(this);
+}
+void PLDCOMPParser::ConstanteNombreContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitConstanteNombre(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ConstanteNombreContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitConstanteNombre(this);
@@ -677,6 +1052,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ParentheseContext::exp() {
 }
 
 PLDCOMPParser::ParentheseContext::ParentheseContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ParentheseContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterParenthese(this);
+}
+void PLDCOMPParser::ParentheseContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitParenthese(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ParentheseContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -692,6 +1078,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::NonContext::exp() {
 
 PLDCOMPParser::NonContext::NonContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::NonContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterNon(this);
+}
+void PLDCOMPParser::NonContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitNon(this);
+}
+
 antlrcpp::Any PLDCOMPParser::NonContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitNon(this);
@@ -705,6 +1102,17 @@ tree::TerminalNode* PLDCOMPParser::ConstanteCaractereContext::CHAR() {
 }
 
 PLDCOMPParser::ConstanteCaractereContext::ConstanteCaractereContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ConstanteCaractereContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterConstanteCaractere(this);
+}
+void PLDCOMPParser::ConstanteCaractereContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitConstanteCaractere(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ConstanteCaractereContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -728,6 +1136,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::AppelDeFonctionContext::exp(size_t i) 
 
 PLDCOMPParser::AppelDeFonctionContext::AppelDeFonctionContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::AppelDeFonctionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAppelDeFonction(this);
+}
+void PLDCOMPParser::AppelDeFonctionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAppelDeFonction(this);
+}
+
 antlrcpp::Any PLDCOMPParser::AppelDeFonctionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitAppelDeFonction(this);
@@ -741,6 +1160,17 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::MmexpContext::lvalue() {
 }
 
 PLDCOMPParser::MmexpContext::MmexpContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::MmexpContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterMmexp(this);
+}
+void PLDCOMPParser::MmexpContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitMmexp(this);
+}
 
 antlrcpp::Any PLDCOMPParser::MmexpContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -759,6 +1189,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::AffectationContext::exp() {
 }
 
 PLDCOMPParser::AffectationContext::AffectationContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::AffectationContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAffectation(this);
+}
+void PLDCOMPParser::AffectationContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAffectation(this);
+}
 
 antlrcpp::Any PLDCOMPParser::AffectationContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -782,6 +1223,17 @@ PLDCOMPParser::OpContext* PLDCOMPParser::OperateurBinaireContext::op() {
 
 PLDCOMPParser::OperateurBinaireContext::OperateurBinaireContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::OperateurBinaireContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterOperateurBinaire(this);
+}
+void PLDCOMPParser::OperateurBinaireContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitOperateurBinaire(this);
+}
+
 antlrcpp::Any PLDCOMPParser::OperateurBinaireContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitOperateurBinaire(this);
@@ -795,6 +1247,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::AppelPutcharContext::exp() {
 }
 
 PLDCOMPParser::AppelPutcharContext::AppelPutcharContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::AppelPutcharContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterAppelPutchar(this);
+}
+void PLDCOMPParser::AppelPutcharContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitAppelPutchar(this);
+}
 
 antlrcpp::Any PLDCOMPParser::AppelPutcharContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -810,6 +1273,17 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpppContext::lvalue() {
 
 PLDCOMPParser::ExpppContext::ExpppContext(ExpContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ExpppContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterExppp(this);
+}
+void PLDCOMPParser::ExpppContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitExppp(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ExpppContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExppp(this);
@@ -823,6 +1297,17 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::ExpmmContext::lvalue() {
 }
 
 PLDCOMPParser::ExpmmContext::ExpmmContext(ExpContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ExpmmContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterExpmm(this);
+}
+void PLDCOMPParser::ExpmmContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitExpmm(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ExpmmContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -851,7 +1336,7 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
   try {
     size_t alt;
     enterOuterAlt(_localctx, 1);
-    setState(112);
+    setState(118);
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 2, _ctx)) {
     case 1: {
@@ -859,11 +1344,11 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _ctx = _localctx;
       previousContext = _localctx;
 
-      setState(65);
+      setState(71);
       match(PLDCOMPParser::T__28);
-      setState(66);
+      setState(72);
       exp(0);
-      setState(67);
+      setState(73);
       match(PLDCOMPParser::T__29);
       break;
     }
@@ -872,9 +1357,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<NonContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(69);
+      setState(75);
       match(PLDCOMPParser::T__30);
-      setState(70);
+      setState(76);
       exp(14);
       break;
     }
@@ -883,9 +1368,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<NegationContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(71);
+      setState(77);
       match(PLDCOMPParser::T__1);
-      setState(72);
+      setState(78);
       exp(13);
       break;
     }
@@ -894,9 +1379,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<InvertContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(73);
+      setState(79);
       match(PLDCOMPParser::T__31);
-      setState(74);
+      setState(80);
       exp(12);
       break;
     }
@@ -905,9 +1390,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<ExpppContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(75);
+      setState(81);
       lvalue();
-      setState(76);
+      setState(82);
       match(PLDCOMPParser::T__32);
       break;
     }
@@ -916,9 +1401,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<ExpmmContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(78);
+      setState(84);
       lvalue();
-      setState(79);
+      setState(85);
       match(PLDCOMPParser::T__33);
       break;
     }
@@ -927,9 +1412,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<PpexpContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(81);
+      setState(87);
       match(PLDCOMPParser::T__32);
-      setState(82);
+      setState(88);
       lvalue();
       break;
     }
@@ -938,9 +1423,9 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<MmexpContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(83);
+      setState(89);
       match(PLDCOMPParser::T__33);
-      setState(84);
+      setState(90);
       lvalue();
       break;
     }
@@ -949,11 +1434,11 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<AffectationContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(85);
+      setState(91);
       lvalue();
-      setState(86);
+      setState(92);
       match(PLDCOMPParser::T__8);
-      setState(87);
+      setState(93);
       exp(7);
       break;
     }
@@ -962,7 +1447,7 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<ConstanteNombreContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(89);
+      setState(95);
       match(PLDCOMPParser::NOMBRE);
       break;
     }
@@ -971,7 +1456,7 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<ConstanteCaractereContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(90);
+      setState(96);
       match(PLDCOMPParser::CHAR);
       break;
     }
@@ -980,7 +1465,7 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<ExpLvalueContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(91);
+      setState(97);
       lvalue();
       break;
     }
@@ -989,25 +1474,25 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<AppelDeFonctionContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(92);
+      setState(98);
       match(PLDCOMPParser::NOMVAR);
-      setState(93);
-      match(PLDCOMPParser::T__28);
-      setState(94);
-      exp(0);
       setState(99);
+      match(PLDCOMPParser::T__28);
+      setState(100);
+      exp(0);
+      setState(105);
       _errHandler->sync(this);
       _la = _input->LA(1);
       while (_la == PLDCOMPParser::T__27) {
-        setState(95);
-        match(PLDCOMPParser::T__27);
-        setState(96);
-        exp(0);
         setState(101);
+        match(PLDCOMPParser::T__27);
+        setState(102);
+        exp(0);
+        setState(107);
         _errHandler->sync(this);
         _la = _input->LA(1);
       }
-      setState(102);
+      setState(108);
       match(PLDCOMPParser::T__29);
       break;
     }
@@ -1016,13 +1501,13 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<AppelPutcharContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(104);
+      setState(110);
       match(PLDCOMPParser::T__34);
-      setState(105);
+      setState(111);
       match(PLDCOMPParser::T__28);
-      setState(106);
+      setState(112);
       exp(0);
-      setState(107);
+      setState(113);
       match(PLDCOMPParser::T__29);
       break;
     }
@@ -1031,18 +1516,18 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
       _localctx = _tracker.createInstance<AppelGetcharContext>(_localctx);
       _ctx = _localctx;
       previousContext = _localctx;
-      setState(109);
+      setState(115);
       match(PLDCOMPParser::T__35);
-      setState(110);
+      setState(116);
       match(PLDCOMPParser::T__28);
-      setState(111);
+      setState(117);
       match(PLDCOMPParser::T__29);
       break;
     }
 
     }
     _ctx->stop = _input->LT(-1);
-    setState(120);
+    setState(126);
     _errHandler->sync(this);
     alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
@@ -1053,15 +1538,15 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::exp(int precedence) {
         auto newContext = _tracker.createInstance<OperateurBinaireContext>(_tracker.createInstance<ExpContext>(parentContext, parentState));
         _localctx = newContext;
         pushNewRecursionContext(newContext, startState, RuleExp);
-        setState(114);
+        setState(120);
 
         if (!(precpred(_ctx, 16))) throw FailedPredicateException(this, "precpred(_ctx, 16)");
-        setState(115);
+        setState(121);
         op();
-        setState(116);
+        setState(122);
         exp(17); 
       }
-      setState(122);
+      setState(128);
       _errHandler->sync(this);
       alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 3, _ctx);
     }
@@ -1101,6 +1586,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::TableauContext::exp() {
 
 PLDCOMPParser::TableauContext::TableauContext(LvalueContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::TableauContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterTableau(this);
+}
+void PLDCOMPParser::TableauContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitTableau(this);
+}
+
 antlrcpp::Any PLDCOMPParser::TableauContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitTableau(this);
@@ -1114,6 +1610,17 @@ tree::TerminalNode* PLDCOMPParser::VariableContext::NOMVAR() {
 }
 
 PLDCOMPParser::VariableContext::VariableContext(LvalueContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::VariableContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterVariable(this);
+}
+void PLDCOMPParser::VariableContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitVariable(this);
+}
 
 antlrcpp::Any PLDCOMPParser::VariableContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1129,13 +1636,13 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::lvalue() {
     exitRule();
   });
   try {
-    setState(129);
+    setState(135);
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 4, _ctx)) {
     case 1: {
       _localctx = dynamic_cast<LvalueContext *>(_tracker.createInstance<PLDCOMPParser::VariableContext>(_localctx));
       enterOuterAlt(_localctx, 1);
-      setState(123);
+      setState(129);
       match(PLDCOMPParser::NOMVAR);
       break;
     }
@@ -1143,13 +1650,13 @@ PLDCOMPParser::LvalueContext* PLDCOMPParser::lvalue() {
     case 2: {
       _localctx = dynamic_cast<LvalueContext *>(_tracker.createInstance<PLDCOMPParser::TableauContext>(_localctx));
       enterOuterAlt(_localctx, 2);
-      setState(124);
+      setState(130);
       match(PLDCOMPParser::NOMVAR);
-      setState(125);
+      setState(131);
       match(PLDCOMPParser::T__36);
-      setState(126);
+      setState(132);
       exp(0);
-      setState(127);
+      setState(133);
       match(PLDCOMPParser::T__37);
       break;
     }
@@ -1189,6 +1696,17 @@ PLDCOMPParser::While_statementContext* PLDCOMPParser::WhileStatementContext::whi
 
 PLDCOMPParser::WhileStatementContext::WhileStatementContext(StructureContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::WhileStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterWhileStatement(this);
+}
+void PLDCOMPParser::WhileStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitWhileStatement(this);
+}
+
 antlrcpp::Any PLDCOMPParser::WhileStatementContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitWhileStatement(this);
@@ -1202,6 +1720,17 @@ PLDCOMPParser::If_statementContext* PLDCOMPParser::IfStatementContext::if_statem
 }
 
 PLDCOMPParser::IfStatementContext::IfStatementContext(StructureContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::IfStatementContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterIfStatement(this);
+}
+void PLDCOMPParser::IfStatementContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitIfStatement(this);
+}
 
 antlrcpp::Any PLDCOMPParser::IfStatementContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1217,13 +1746,13 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::structure() {
     exitRule();
   });
   try {
-    setState(133);
+    setState(139);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::T__42: {
         _localctx = dynamic_cast<StructureContext *>(_tracker.createInstance<PLDCOMPParser::IfStatementContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(131);
+        setState(137);
         if_statement();
         break;
       }
@@ -1231,7 +1760,7 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::structure() {
       case PLDCOMPParser::T__44: {
         _localctx = dynamic_cast<StructureContext *>(_tracker.createInstance<PLDCOMPParser::WhileStatementContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(132);
+        setState(138);
         while_statement();
         break;
       }
@@ -1273,6 +1802,17 @@ tree::TerminalNode* PLDCOMPParser::ConstanteNbContext::NOMBRE() {
 
 PLDCOMPParser::ConstanteNbContext::ConstanteNbContext(ConstanteContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ConstanteNbContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterConstanteNb(this);
+}
+void PLDCOMPParser::ConstanteNbContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitConstanteNb(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ConstanteNbContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitConstanteNb(this);
@@ -1286,6 +1826,17 @@ tree::TerminalNode* PLDCOMPParser::ConstanteCarContext::CHAR() {
 }
 
 PLDCOMPParser::ConstanteCarContext::ConstanteCarContext(ConstanteContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ConstanteCarContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterConstanteCar(this);
+}
+void PLDCOMPParser::ConstanteCarContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitConstanteCar(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ConstanteCarContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -1301,13 +1852,13 @@ PLDCOMPParser::ConstanteContext* PLDCOMPParser::constante() {
     exitRule();
   });
   try {
-    setState(137);
+    setState(143);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::NOMBRE: {
         _localctx = dynamic_cast<ConstanteContext *>(_tracker.createInstance<PLDCOMPParser::ConstanteNbContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(135);
+        setState(141);
         match(PLDCOMPParser::NOMBRE);
         break;
       }
@@ -1315,7 +1866,7 @@ PLDCOMPParser::ConstanteContext* PLDCOMPParser::constante() {
       case PLDCOMPParser::CHAR: {
         _localctx = dynamic_cast<ConstanteContext *>(_tracker.createInstance<PLDCOMPParser::ConstanteCarContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(136);
+        setState(142);
         match(PLDCOMPParser::CHAR);
         break;
       }
@@ -1345,6 +1896,19 @@ size_t PLDCOMPParser::Type_variableContext::getRuleIndex() const {
   return PLDCOMPParser::RuleType_variable;
 }
 
+void PLDCOMPParser::Type_variableContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterType_variable(this);
+}
+
+void PLDCOMPParser::Type_variableContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitType_variable(this);
+}
+
+
 antlrcpp::Any PLDCOMPParser::Type_variableContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitType_variable(this);
@@ -1362,7 +1926,7 @@ PLDCOMPParser::Type_variableContext* PLDCOMPParser::type_variable() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(139);
+    setState(145);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & ((1ULL << PLDCOMPParser::T__38)
@@ -1396,6 +1960,19 @@ size_t PLDCOMPParser::Type_functionContext::getRuleIndex() const {
   return PLDCOMPParser::RuleType_function;
 }
 
+void PLDCOMPParser::Type_functionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterType_function(this);
+}
+
+void PLDCOMPParser::Type_functionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitType_function(this);
+}
+
+
 antlrcpp::Any PLDCOMPParser::Type_functionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitType_function(this);
@@ -1413,7 +1990,7 @@ PLDCOMPParser::Type_functionContext* PLDCOMPParser::type_function() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(141);
+    setState(147);
     _la = _input->LA(1);
     if (!((((_la & ~ 0x3fULL) == 0) &&
       ((1ULL << _la) & ((1ULL << PLDCOMPParser::T__38)
@@ -1464,6 +2041,17 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::IfContext::instruction() {
 
 PLDCOMPParser::IfContext::IfContext(If_statementContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::IfContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterIf(this);
+}
+void PLDCOMPParser::IfContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitIf(this);
+}
+
 antlrcpp::Any PLDCOMPParser::IfContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitIf(this);
@@ -1486,6 +2074,17 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::IfElseContext::instruction(siz
 
 PLDCOMPParser::IfElseContext::IfElseContext(If_statementContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::IfElseContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterIfElse(this);
+}
+void PLDCOMPParser::IfElseContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitIfElse(this);
+}
+
 antlrcpp::Any PLDCOMPParser::IfElseContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitIfElse(this);
@@ -1500,28 +2099,12 @@ PLDCOMPParser::If_statementContext* PLDCOMPParser::if_statement() {
     exitRule();
   });
   try {
-    setState(157);
+    setState(163);
     _errHandler->sync(this);
     switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 7, _ctx)) {
     case 1: {
       _localctx = dynamic_cast<If_statementContext *>(_tracker.createInstance<PLDCOMPParser::IfContext>(_localctx));
       enterOuterAlt(_localctx, 1);
-      setState(143);
-      match(PLDCOMPParser::T__42);
-      setState(144);
-      match(PLDCOMPParser::T__28);
-      setState(145);
-      exp(0);
-      setState(146);
-      match(PLDCOMPParser::T__29);
-      setState(147);
-      instruction();
-      break;
-    }
-
-    case 2: {
-      _localctx = dynamic_cast<If_statementContext *>(_tracker.createInstance<PLDCOMPParser::IfElseContext>(_localctx));
-      enterOuterAlt(_localctx, 2);
       setState(149);
       match(PLDCOMPParser::T__42);
       setState(150);
@@ -1532,9 +2115,25 @@ PLDCOMPParser::If_statementContext* PLDCOMPParser::if_statement() {
       match(PLDCOMPParser::T__29);
       setState(153);
       instruction();
-      setState(154);
-      match(PLDCOMPParser::T__43);
+      break;
+    }
+
+    case 2: {
+      _localctx = dynamic_cast<If_statementContext *>(_tracker.createInstance<PLDCOMPParser::IfElseContext>(_localctx));
+      enterOuterAlt(_localctx, 2);
       setState(155);
+      match(PLDCOMPParser::T__42);
+      setState(156);
+      match(PLDCOMPParser::T__28);
+      setState(157);
+      exp(0);
+      setState(158);
+      match(PLDCOMPParser::T__29);
+      setState(159);
+      instruction();
+      setState(160);
+      match(PLDCOMPParser::T__43);
+      setState(161);
       instruction();
       break;
     }
@@ -1578,6 +2177,17 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::WhileContext::instruction() {
 
 PLDCOMPParser::WhileContext::WhileContext(While_statementContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::WhileContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterWhile(this);
+}
+void PLDCOMPParser::WhileContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitWhile(this);
+}
+
 antlrcpp::Any PLDCOMPParser::WhileContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitWhile(this);
@@ -1594,15 +2204,15 @@ PLDCOMPParser::While_statementContext* PLDCOMPParser::while_statement() {
   try {
     _localctx = dynamic_cast<While_statementContext *>(_tracker.createInstance<PLDCOMPParser::WhileContext>(_localctx));
     enterOuterAlt(_localctx, 1);
-    setState(159);
+    setState(165);
     match(PLDCOMPParser::T__44);
-    setState(160);
+    setState(166);
     match(PLDCOMPParser::T__28);
-    setState(161);
+    setState(167);
     exp(0);
-    setState(162);
+    setState(168);
     match(PLDCOMPParser::T__29);
-    setState(163);
+    setState(169);
     instruction();
    
   }
@@ -1642,6 +2252,17 @@ tree::TerminalNode* PLDCOMPParser::TableauNombreContext::NOMBRE(size_t i) {
 
 PLDCOMPParser::TableauNombreContext::TableauNombreContext(ValContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::TableauNombreContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterTableauNombre(this);
+}
+void PLDCOMPParser::TableauNombreContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitTableauNombre(this);
+}
+
 antlrcpp::Any PLDCOMPParser::TableauNombreContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitTableauNombre(this);
@@ -1660,6 +2281,17 @@ tree::TerminalNode* PLDCOMPParser::TableauCaractereContext::CHAR(size_t i) {
 
 PLDCOMPParser::TableauCaractereContext::TableauCaractereContext(ValContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::TableauCaractereContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterTableauCaractere(this);
+}
+void PLDCOMPParser::TableauCaractereContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitTableauCaractere(this);
+}
+
 antlrcpp::Any PLDCOMPParser::TableauCaractereContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitTableauCaractere(this);
@@ -1675,23 +2307,23 @@ PLDCOMPParser::ValContext* PLDCOMPParser::val() {
     exitRule();
   });
   try {
-    setState(181);
+    setState(187);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::NOMBRE: {
         _localctx = dynamic_cast<ValContext *>(_tracker.createInstance<PLDCOMPParser::TableauNombreContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(165);
+        setState(171);
         match(PLDCOMPParser::NOMBRE);
-        setState(170);
+        setState(176);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while (_la == PLDCOMPParser::T__27) {
-          setState(166);
-          match(PLDCOMPParser::T__27);
-          setState(167);
-          match(PLDCOMPParser::NOMBRE);
           setState(172);
+          match(PLDCOMPParser::T__27);
+          setState(173);
+          match(PLDCOMPParser::NOMBRE);
+          setState(178);
           _errHandler->sync(this);
           _la = _input->LA(1);
         }
@@ -1701,17 +2333,17 @@ PLDCOMPParser::ValContext* PLDCOMPParser::val() {
       case PLDCOMPParser::CHAR: {
         _localctx = dynamic_cast<ValContext *>(_tracker.createInstance<PLDCOMPParser::TableauCaractereContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(173);
+        setState(179);
         match(PLDCOMPParser::CHAR);
-        setState(178);
+        setState(184);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while (_la == PLDCOMPParser::T__27) {
-          setState(174);
-          match(PLDCOMPParser::T__27);
-          setState(175);
-          match(PLDCOMPParser::CHAR);
           setState(180);
+          match(PLDCOMPParser::T__27);
+          setState(181);
+          match(PLDCOMPParser::CHAR);
+          setState(186);
           _errHandler->sync(this);
           _la = _input->LA(1);
         }
@@ -1747,47 +2379,65 @@ void PLDCOMPParser::Declaration_typeContext::copyFrom(Declaration_typeContext *c
   ParserRuleContext::copyFrom(ctx);
 }
 
-//----------------- DeclarationConstanteContext ------------------------------------------------------------------
+//----------------- DeclarationCharMultContext ------------------------------------------------------------------
 
-PLDCOMPParser::Type_variableContext* PLDCOMPParser::DeclarationConstanteContext::type_variable() {
-  return getRuleContext<PLDCOMPParser::Type_variableContext>(0);
+std::vector<PLDCOMPParser::Declaration_char_generaleContext *> PLDCOMPParser::DeclarationCharMultContext::declaration_char_generale() {
+  return getRuleContexts<PLDCOMPParser::Declaration_char_generaleContext>();
 }
 
-tree::TerminalNode* PLDCOMPParser::DeclarationConstanteContext::NOMVAR() {
-  return getToken(PLDCOMPParser::NOMVAR, 0);
+PLDCOMPParser::Declaration_char_generaleContext* PLDCOMPParser::DeclarationCharMultContext::declaration_char_generale(size_t i) {
+  return getRuleContext<PLDCOMPParser::Declaration_char_generaleContext>(i);
 }
 
-PLDCOMPParser::ConstanteContext* PLDCOMPParser::DeclarationConstanteContext::constante() {
-  return getRuleContext<PLDCOMPParser::ConstanteContext>(0);
+PLDCOMPParser::DeclarationCharMultContext::DeclarationCharMultContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DeclarationCharMultContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationCharMult(this);
+}
+void PLDCOMPParser::DeclarationCharMultContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationCharMult(this);
 }
 
-PLDCOMPParser::DeclarationConstanteContext::DeclarationConstanteContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
-
-antlrcpp::Any PLDCOMPParser::DeclarationConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
+antlrcpp::Any PLDCOMPParser::DeclarationCharMultContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
-    return parserVisitor->visitDeclarationConstante(this);
+    return parserVisitor->visitDeclarationCharMult(this);
   else
     return visitor->visitChildren(this);
 }
-//----------------- DeclarationMultContext ------------------------------------------------------------------
+//----------------- DeclarationIntMultContext ------------------------------------------------------------------
 
-PLDCOMPParser::Type_variableContext* PLDCOMPParser::DeclarationMultContext::type_variable() {
-  return getRuleContext<PLDCOMPParser::Type_variableContext>(0);
+PLDCOMPParser::EntierContext* PLDCOMPParser::DeclarationIntMultContext::entier() {
+  return getRuleContext<PLDCOMPParser::EntierContext>(0);
 }
 
-std::vector<tree::TerminalNode *> PLDCOMPParser::DeclarationMultContext::NOMVAR() {
-  return getTokens(PLDCOMPParser::NOMVAR);
+std::vector<PLDCOMPParser::Declaration_int_generaleContext *> PLDCOMPParser::DeclarationIntMultContext::declaration_int_generale() {
+  return getRuleContexts<PLDCOMPParser::Declaration_int_generaleContext>();
 }
 
-tree::TerminalNode* PLDCOMPParser::DeclarationMultContext::NOMVAR(size_t i) {
-  return getToken(PLDCOMPParser::NOMVAR, i);
+PLDCOMPParser::Declaration_int_generaleContext* PLDCOMPParser::DeclarationIntMultContext::declaration_int_generale(size_t i) {
+  return getRuleContext<PLDCOMPParser::Declaration_int_generaleContext>(i);
 }
 
-PLDCOMPParser::DeclarationMultContext::DeclarationMultContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
+PLDCOMPParser::DeclarationIntMultContext::DeclarationIntMultContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
 
-antlrcpp::Any PLDCOMPParser::DeclarationMultContext::accept(tree::ParseTreeVisitor *visitor) {
+void PLDCOMPParser::DeclarationIntMultContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationIntMult(this);
+}
+void PLDCOMPParser::DeclarationIntMultContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationIntMult(this);
+}
+
+antlrcpp::Any PLDCOMPParser::DeclarationIntMultContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
-    return parserVisitor->visitDeclarationMult(this);
+    return parserVisitor->visitDeclarationIntMult(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1807,27 +2457,20 @@ tree::TerminalNode* PLDCOMPParser::DeclarationTableauContext::NOMBRE() {
 
 PLDCOMPParser::DeclarationTableauContext::DeclarationTableauContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DeclarationTableauContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationTableau(this);
+}
+void PLDCOMPParser::DeclarationTableauContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationTableau(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DeclarationTableauContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationTableau(this);
-  else
-    return visitor->visitChildren(this);
-}
-//----------------- DeclarationContext ------------------------------------------------------------------
-
-PLDCOMPParser::Type_variableContext* PLDCOMPParser::DeclarationContext::type_variable() {
-  return getRuleContext<PLDCOMPParser::Type_variableContext>(0);
-}
-
-tree::TerminalNode* PLDCOMPParser::DeclarationContext::NOMVAR() {
-  return getToken(PLDCOMPParser::NOMVAR, 0);
-}
-
-PLDCOMPParser::DeclarationContext::DeclarationContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
-
-antlrcpp::Any PLDCOMPParser::DeclarationContext::accept(tree::ParseTreeVisitor *visitor) {
-  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
-    return parserVisitor->visitDeclaration(this);
   else
     return visitor->visitChildren(this);
 }
@@ -1851,6 +2494,17 @@ PLDCOMPParser::ValContext* PLDCOMPParser::DeclarationTableauConstanteContext::va
 
 PLDCOMPParser::DeclarationTableauConstanteContext::DeclarationTableauConstanteContext(Declaration_typeContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DeclarationTableauConstanteContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationTableauConstante(this);
+}
+void PLDCOMPParser::DeclarationTableauConstanteContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationTableauConstante(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DeclarationTableauConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationTableauConstante(this);
@@ -1866,92 +2520,412 @@ PLDCOMPParser::Declaration_typeContext* PLDCOMPParser::declaration_type() {
     exitRule();
   });
   try {
-    setState(215);
+    setState(223);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 12, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 13, _ctx)) {
     case 1: {
-      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationConstanteContext>(_localctx));
+      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationIntMultContext>(_localctx));
       enterOuterAlt(_localctx, 1);
-      setState(183);
-      type_variable();
-      setState(184);
-      match(PLDCOMPParser::NOMVAR);
-      setState(185);
-      match(PLDCOMPParser::T__8);
-      setState(186);
-      constante();
+      setState(189);
+      entier();
+      setState(190);
+      declaration_int_generale();
+      setState(195);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+      while (_la == PLDCOMPParser::T__27) {
+        setState(191);
+        match(PLDCOMPParser::T__27);
+        setState(192);
+        declaration_int_generale();
+        setState(197);
+        _errHandler->sync(this);
+        _la = _input->LA(1);
+      }
       break;
     }
 
     case 2: {
-      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationContext>(_localctx));
+      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationCharMultContext>(_localctx));
       enterOuterAlt(_localctx, 2);
-      setState(188);
-      type_variable();
-      setState(189);
-      match(PLDCOMPParser::NOMVAR);
+      setState(198);
+      match(PLDCOMPParser::T__38);
+      setState(199);
+      declaration_char_generale();
+      setState(204);
+      _errHandler->sync(this);
+      _la = _input->LA(1);
+      while (_la == PLDCOMPParser::T__27) {
+        setState(200);
+        match(PLDCOMPParser::T__27);
+        setState(201);
+        declaration_char_generale();
+        setState(206);
+        _errHandler->sync(this);
+        _la = _input->LA(1);
+      }
       break;
     }
 
     case 3: {
-      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationMultContext>(_localctx));
+      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationTableauContext>(_localctx));
       enterOuterAlt(_localctx, 3);
-      setState(191);
+      setState(207);
       type_variable();
-      setState(192);
+      setState(208);
       match(PLDCOMPParser::NOMVAR);
-      setState(195); 
-      _errHandler->sync(this);
-      _la = _input->LA(1);
-      do {
-        setState(193);
-        match(PLDCOMPParser::T__27);
-        setState(194);
-        match(PLDCOMPParser::NOMVAR);
-        setState(197); 
-        _errHandler->sync(this);
-        _la = _input->LA(1);
-      } while (_la == PLDCOMPParser::T__27);
+      setState(209);
+      match(PLDCOMPParser::T__36);
+      setState(210);
+      match(PLDCOMPParser::NOMBRE);
+      setState(211);
+      match(PLDCOMPParser::T__37);
       break;
     }
 
     case 4: {
-      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationTableauContext>(_localctx));
+      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationTableauConstanteContext>(_localctx));
       enterOuterAlt(_localctx, 4);
-      setState(199);
+      setState(213);
       type_variable();
-      setState(200);
+      setState(214);
       match(PLDCOMPParser::NOMVAR);
-      setState(201);
+      setState(215);
       match(PLDCOMPParser::T__36);
-      setState(202);
+      setState(216);
       match(PLDCOMPParser::NOMBRE);
-      setState(203);
+      setState(217);
       match(PLDCOMPParser::T__37);
+      setState(218);
+      match(PLDCOMPParser::T__8);
+      setState(219);
+      match(PLDCOMPParser::T__45);
+      setState(220);
+      val();
+      setState(221);
+      match(PLDCOMPParser::T__46);
       break;
     }
 
-    case 5: {
-      _localctx = dynamic_cast<Declaration_typeContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationTableauConstanteContext>(_localctx));
-      enterOuterAlt(_localctx, 5);
-      setState(205);
-      type_variable();
-      setState(206);
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- EntierContext ------------------------------------------------------------------
+
+PLDCOMPParser::EntierContext::EntierContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t PLDCOMPParser::EntierContext::getRuleIndex() const {
+  return PLDCOMPParser::RuleEntier;
+}
+
+void PLDCOMPParser::EntierContext::copyFrom(EntierContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
+}
+
+//----------------- Int32Context ------------------------------------------------------------------
+
+PLDCOMPParser::Int32Context::Int32Context(EntierContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::Int32Context::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInt32(this);
+}
+void PLDCOMPParser::Int32Context::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInt32(this);
+}
+
+antlrcpp::Any PLDCOMPParser::Int32Context::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitInt32(this);
+  else
+    return visitor->visitChildren(this);
+}
+//----------------- Int64Context ------------------------------------------------------------------
+
+PLDCOMPParser::Int64Context::Int64Context(EntierContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::Int64Context::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterInt64(this);
+}
+void PLDCOMPParser::Int64Context::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitInt64(this);
+}
+
+antlrcpp::Any PLDCOMPParser::Int64Context::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitInt64(this);
+  else
+    return visitor->visitChildren(this);
+}
+PLDCOMPParser::EntierContext* PLDCOMPParser::entier() {
+  EntierContext *_localctx = _tracker.createInstance<EntierContext>(_ctx, getState());
+  enterRule(_localctx, 22, PLDCOMPParser::RuleEntier);
+
+  auto onExit = finally([=] {
+    exitRule();
+  });
+  try {
+    setState(227);
+    _errHandler->sync(this);
+    switch (_input->LA(1)) {
+      case PLDCOMPParser::T__39: {
+        _localctx = dynamic_cast<EntierContext *>(_tracker.createInstance<PLDCOMPParser::Int32Context>(_localctx));
+        enterOuterAlt(_localctx, 1);
+        setState(225);
+        match(PLDCOMPParser::T__39);
+        break;
+      }
+
+      case PLDCOMPParser::T__40: {
+        _localctx = dynamic_cast<EntierContext *>(_tracker.createInstance<PLDCOMPParser::Int64Context>(_localctx));
+        enterOuterAlt(_localctx, 2);
+        setState(226);
+        match(PLDCOMPParser::T__40);
+        break;
+      }
+
+    default:
+      throw NoViableAltException(this);
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- Declaration_int_generaleContext ------------------------------------------------------------------
+
+PLDCOMPParser::Declaration_int_generaleContext::Declaration_int_generaleContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t PLDCOMPParser::Declaration_int_generaleContext::getRuleIndex() const {
+  return PLDCOMPParser::RuleDeclaration_int_generale;
+}
+
+void PLDCOMPParser::Declaration_int_generaleContext::copyFrom(Declaration_int_generaleContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
+}
+
+//----------------- DeclarationIntSimpleContext ------------------------------------------------------------------
+
+tree::TerminalNode* PLDCOMPParser::DeclarationIntSimpleContext::NOMVAR() {
+  return getToken(PLDCOMPParser::NOMVAR, 0);
+}
+
+PLDCOMPParser::DeclarationIntSimpleContext::DeclarationIntSimpleContext(Declaration_int_generaleContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DeclarationIntSimpleContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationIntSimple(this);
+}
+void PLDCOMPParser::DeclarationIntSimpleContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationIntSimple(this);
+}
+
+antlrcpp::Any PLDCOMPParser::DeclarationIntSimpleContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitDeclarationIntSimple(this);
+  else
+    return visitor->visitChildren(this);
+}
+//----------------- DeclarationIntConstanteContext ------------------------------------------------------------------
+
+tree::TerminalNode* PLDCOMPParser::DeclarationIntConstanteContext::NOMVAR() {
+  return getToken(PLDCOMPParser::NOMVAR, 0);
+}
+
+PLDCOMPParser::ConstanteContext* PLDCOMPParser::DeclarationIntConstanteContext::constante() {
+  return getRuleContext<PLDCOMPParser::ConstanteContext>(0);
+}
+
+PLDCOMPParser::DeclarationIntConstanteContext::DeclarationIntConstanteContext(Declaration_int_generaleContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DeclarationIntConstanteContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationIntConstante(this);
+}
+void PLDCOMPParser::DeclarationIntConstanteContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationIntConstante(this);
+}
+
+antlrcpp::Any PLDCOMPParser::DeclarationIntConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitDeclarationIntConstante(this);
+  else
+    return visitor->visitChildren(this);
+}
+PLDCOMPParser::Declaration_int_generaleContext* PLDCOMPParser::declaration_int_generale() {
+  Declaration_int_generaleContext *_localctx = _tracker.createInstance<Declaration_int_generaleContext>(_ctx, getState());
+  enterRule(_localctx, 24, PLDCOMPParser::RuleDeclaration_int_generale);
+
+  auto onExit = finally([=] {
+    exitRule();
+  });
+  try {
+    setState(233);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx)) {
+    case 1: {
+      _localctx = dynamic_cast<Declaration_int_generaleContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationIntSimpleContext>(_localctx));
+      enterOuterAlt(_localctx, 1);
+      setState(229);
       match(PLDCOMPParser::NOMVAR);
-      setState(207);
-      match(PLDCOMPParser::T__36);
-      setState(208);
-      match(PLDCOMPParser::NOMBRE);
-      setState(209);
-      match(PLDCOMPParser::T__37);
-      setState(210);
+      break;
+    }
+
+    case 2: {
+      _localctx = dynamic_cast<Declaration_int_generaleContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationIntConstanteContext>(_localctx));
+      enterOuterAlt(_localctx, 2);
+      setState(230);
+      match(PLDCOMPParser::NOMVAR);
+      setState(231);
       match(PLDCOMPParser::T__8);
-      setState(211);
-      match(PLDCOMPParser::T__45);
-      setState(212);
-      val();
-      setState(213);
-      match(PLDCOMPParser::T__46);
+      setState(232);
+      constante();
+      break;
+    }
+
+    }
+   
+  }
+  catch (RecognitionException &e) {
+    _errHandler->reportError(this, e);
+    _localctx->exception = std::current_exception();
+    _errHandler->recover(this, _localctx->exception);
+  }
+
+  return _localctx;
+}
+
+//----------------- Declaration_char_generaleContext ------------------------------------------------------------------
+
+PLDCOMPParser::Declaration_char_generaleContext::Declaration_char_generaleContext(ParserRuleContext *parent, size_t invokingState)
+  : ParserRuleContext(parent, invokingState) {
+}
+
+
+size_t PLDCOMPParser::Declaration_char_generaleContext::getRuleIndex() const {
+  return PLDCOMPParser::RuleDeclaration_char_generale;
+}
+
+void PLDCOMPParser::Declaration_char_generaleContext::copyFrom(Declaration_char_generaleContext *ctx) {
+  ParserRuleContext::copyFrom(ctx);
+}
+
+//----------------- DeclarationCharSimpleContext ------------------------------------------------------------------
+
+tree::TerminalNode* PLDCOMPParser::DeclarationCharSimpleContext::NOMVAR() {
+  return getToken(PLDCOMPParser::NOMVAR, 0);
+}
+
+PLDCOMPParser::DeclarationCharSimpleContext::DeclarationCharSimpleContext(Declaration_char_generaleContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DeclarationCharSimpleContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationCharSimple(this);
+}
+void PLDCOMPParser::DeclarationCharSimpleContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationCharSimple(this);
+}
+
+antlrcpp::Any PLDCOMPParser::DeclarationCharSimpleContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitDeclarationCharSimple(this);
+  else
+    return visitor->visitChildren(this);
+}
+//----------------- DeclarationCharConstanteContext ------------------------------------------------------------------
+
+tree::TerminalNode* PLDCOMPParser::DeclarationCharConstanteContext::NOMVAR() {
+  return getToken(PLDCOMPParser::NOMVAR, 0);
+}
+
+PLDCOMPParser::ConstanteContext* PLDCOMPParser::DeclarationCharConstanteContext::constante() {
+  return getRuleContext<PLDCOMPParser::ConstanteContext>(0);
+}
+
+PLDCOMPParser::DeclarationCharConstanteContext::DeclarationCharConstanteContext(Declaration_char_generaleContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::DeclarationCharConstanteContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationCharConstante(this);
+}
+void PLDCOMPParser::DeclarationCharConstanteContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationCharConstante(this);
+}
+
+antlrcpp::Any PLDCOMPParser::DeclarationCharConstanteContext::accept(tree::ParseTreeVisitor *visitor) {
+  if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
+    return parserVisitor->visitDeclarationCharConstante(this);
+  else
+    return visitor->visitChildren(this);
+}
+PLDCOMPParser::Declaration_char_generaleContext* PLDCOMPParser::declaration_char_generale() {
+  Declaration_char_generaleContext *_localctx = _tracker.createInstance<Declaration_char_generaleContext>(_ctx, getState());
+  enterRule(_localctx, 26, PLDCOMPParser::RuleDeclaration_char_generale);
+
+  auto onExit = finally([=] {
+    exitRule();
+  });
+  try {
+    setState(239);
+    _errHandler->sync(this);
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx)) {
+    case 1: {
+      _localctx = dynamic_cast<Declaration_char_generaleContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationCharSimpleContext>(_localctx));
+      enterOuterAlt(_localctx, 1);
+      setState(235);
+      match(PLDCOMPParser::NOMVAR);
+      break;
+    }
+
+    case 2: {
+      _localctx = dynamic_cast<Declaration_char_generaleContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationCharConstanteContext>(_localctx));
+      enterOuterAlt(_localctx, 2);
+      setState(236);
+      match(PLDCOMPParser::NOMVAR);
+      setState(237);
+      match(PLDCOMPParser::T__8);
+      setState(238);
+      constante();
       break;
     }
 
@@ -1986,6 +2960,17 @@ void PLDCOMPParser::ParamContext::copyFrom(ParamContext *ctx) {
 
 PLDCOMPParser::VoidContext::VoidContext(ParamContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::VoidContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterVoid(this);
+}
+void PLDCOMPParser::VoidContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitVoid(this);
+}
+
 antlrcpp::Any PLDCOMPParser::VoidContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitVoid(this);
@@ -2012,6 +2997,17 @@ tree::TerminalNode* PLDCOMPParser::ParametresContext::NOMVAR(size_t i) {
 
 PLDCOMPParser::ParametresContext::ParametresContext(ParamContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ParametresContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterParametres(this);
+}
+void PLDCOMPParser::ParametresContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitParametres(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ParametresContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitParametres(this);
@@ -2020,20 +3016,20 @@ antlrcpp::Any PLDCOMPParser::ParametresContext::accept(tree::ParseTreeVisitor *v
 }
 PLDCOMPParser::ParamContext* PLDCOMPParser::param() {
   ParamContext *_localctx = _tracker.createInstance<ParamContext>(_ctx, getState());
-  enterRule(_localctx, 22, PLDCOMPParser::RuleParam);
+  enterRule(_localctx, 28, PLDCOMPParser::RuleParam);
   size_t _la = 0;
 
   auto onExit = finally([=] {
     exitRule();
   });
   try {
-    setState(229);
+    setState(253);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::T__41: {
         _localctx = dynamic_cast<ParamContext *>(_tracker.createInstance<PLDCOMPParser::VoidContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(217);
+        setState(241);
         match(PLDCOMPParser::T__41);
         break;
       }
@@ -2043,21 +3039,21 @@ PLDCOMPParser::ParamContext* PLDCOMPParser::param() {
       case PLDCOMPParser::T__40: {
         _localctx = dynamic_cast<ParamContext *>(_tracker.createInstance<PLDCOMPParser::ParametresContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(218);
+        setState(242);
         type_variable();
-        setState(219);
+        setState(243);
         match(PLDCOMPParser::NOMVAR);
-        setState(226);
+        setState(250);
         _errHandler->sync(this);
         _la = _input->LA(1);
         while (_la == PLDCOMPParser::T__27) {
-          setState(220);
+          setState(244);
           match(PLDCOMPParser::T__27);
-          setState(221);
+          setState(245);
           type_variable();
-          setState(222);
+          setState(246);
           match(PLDCOMPParser::NOMVAR);
-          setState(228);
+          setState(252);
           _errHandler->sync(this);
           _la = _input->LA(1);
         }
@@ -2117,6 +3113,17 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::DeclarationFonctionParamsContext::blo
 
 PLDCOMPParser::DeclarationFonctionParamsContext::DeclarationFonctionParamsContext(FonctionContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DeclarationFonctionParamsContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationFonctionParams(this);
+}
+void PLDCOMPParser::DeclarationFonctionParamsContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationFonctionParams(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DeclarationFonctionParamsContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationFonctionParams(this);
@@ -2143,6 +3150,17 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::DeclarationFonctionContext::bloc() {
 
 PLDCOMPParser::DeclarationFonctionContext::DeclarationFonctionContext(FonctionContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DeclarationFonctionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationFonction(this);
+}
+void PLDCOMPParser::DeclarationFonctionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationFonction(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DeclarationFonctionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationFonction(this);
@@ -2151,35 +3169,35 @@ antlrcpp::Any PLDCOMPParser::DeclarationFonctionContext::accept(tree::ParseTreeV
 }
 PLDCOMPParser::FonctionContext* PLDCOMPParser::fonction() {
   FonctionContext *_localctx = _tracker.createInstance<FonctionContext>(_ctx, getState());
-  enterRule(_localctx, 24, PLDCOMPParser::RuleFonction);
+  enterRule(_localctx, 30, PLDCOMPParser::RuleFonction);
 
   auto onExit = finally([=] {
     exitRule();
   });
   try {
-    setState(250);
+    setState(274);
     _errHandler->sync(this);
-    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 15, _ctx)) {
+    switch (getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 19, _ctx)) {
     case 1: {
       _localctx = dynamic_cast<FonctionContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationFonctionParamsContext>(_localctx));
       enterOuterAlt(_localctx, 1);
-      setState(231);
+      setState(255);
       type_function();
-      setState(232);
+      setState(256);
       match(PLDCOMPParser::NOMVAR);
-      setState(233);
+      setState(257);
       match(PLDCOMPParser::T__28);
-      setState(234);
+      setState(258);
       param();
-      setState(235);
+      setState(259);
       match(PLDCOMPParser::T__29);
-      setState(236);
+      setState(260);
       match(PLDCOMPParser::T__45);
-      setState(237);
+      setState(261);
       declaration_variables();
-      setState(238);
+      setState(262);
       bloc();
-      setState(239);
+      setState(263);
       match(PLDCOMPParser::T__46);
       break;
     }
@@ -2187,21 +3205,21 @@ PLDCOMPParser::FonctionContext* PLDCOMPParser::fonction() {
     case 2: {
       _localctx = dynamic_cast<FonctionContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationFonctionContext>(_localctx));
       enterOuterAlt(_localctx, 2);
-      setState(241);
+      setState(265);
       type_function();
-      setState(242);
+      setState(266);
       match(PLDCOMPParser::NOMVAR);
-      setState(243);
+      setState(267);
       match(PLDCOMPParser::T__28);
-      setState(244);
+      setState(268);
       match(PLDCOMPParser::T__29);
-      setState(245);
+      setState(269);
       match(PLDCOMPParser::T__45);
-      setState(246);
+      setState(270);
       declaration_variables();
-      setState(247);
+      setState(271);
       bloc();
-      setState(248);
+      setState(272);
       match(PLDCOMPParser::T__46);
       break;
     }
@@ -2245,6 +3263,17 @@ PLDCOMPParser::Declaration_typeContext* PLDCOMPParser::DeclarationVariablesConte
 
 PLDCOMPParser::DeclarationVariablesContext::DeclarationVariablesContext(Declaration_variablesContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::DeclarationVariablesContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterDeclarationVariables(this);
+}
+void PLDCOMPParser::DeclarationVariablesContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitDeclarationVariables(this);
+}
+
 antlrcpp::Any PLDCOMPParser::DeclarationVariablesContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitDeclarationVariables(this);
@@ -2253,7 +3282,7 @@ antlrcpp::Any PLDCOMPParser::DeclarationVariablesContext::accept(tree::ParseTree
 }
 PLDCOMPParser::Declaration_variablesContext* PLDCOMPParser::declaration_variables() {
   Declaration_variablesContext *_localctx = _tracker.createInstance<Declaration_variablesContext>(_ctx, getState());
-  enterRule(_localctx, 26, PLDCOMPParser::RuleDeclaration_variables);
+  enterRule(_localctx, 32, PLDCOMPParser::RuleDeclaration_variables);
 
   auto onExit = finally([=] {
     exitRule();
@@ -2262,19 +3291,19 @@ PLDCOMPParser::Declaration_variablesContext* PLDCOMPParser::declaration_variable
     size_t alt;
     _localctx = dynamic_cast<Declaration_variablesContext *>(_tracker.createInstance<PLDCOMPParser::DeclarationVariablesContext>(_localctx));
     enterOuterAlt(_localctx, 1);
-    setState(257);
+    setState(281);
     _errHandler->sync(this);
-    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
+    alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx);
     while (alt != 2 && alt != atn::ATN::INVALID_ALT_NUMBER) {
       if (alt == 1) {
-        setState(252);
+        setState(276);
         declaration_type();
-        setState(253);
+        setState(277);
         match(PLDCOMPParser::T__47); 
       }
-      setState(259);
+      setState(283);
       _errHandler->sync(this);
-      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 16, _ctx);
+      alt = getInterpreter<atn::ParserATNSimulator>()->adaptivePredict(_input, 20, _ctx);
     }
    
   }
@@ -2306,6 +3335,19 @@ size_t PLDCOMPParser::BlocContext::getRuleIndex() const {
   return PLDCOMPParser::RuleBloc;
 }
 
+void PLDCOMPParser::BlocContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterBloc(this);
+}
+
+void PLDCOMPParser::BlocContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitBloc(this);
+}
+
+
 antlrcpp::Any PLDCOMPParser::BlocContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitBloc(this);
@@ -2315,7 +3357,7 @@ antlrcpp::Any PLDCOMPParser::BlocContext::accept(tree::ParseTreeVisitor *visitor
 
 PLDCOMPParser::BlocContext* PLDCOMPParser::bloc() {
   BlocContext *_localctx = _tracker.createInstance<BlocContext>(_ctx, getState());
-  enterRule(_localctx, 28, PLDCOMPParser::RuleBloc);
+  enterRule(_localctx, 34, PLDCOMPParser::RuleBloc);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -2323,7 +3365,7 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::bloc() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(263);
+    setState(287);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
@@ -2343,9 +3385,9 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::bloc() {
       | (1ULL << PLDCOMPParser::NOMVAR)
       | (1ULL << PLDCOMPParser::NOMBRE)
       | (1ULL << PLDCOMPParser::CHAR))) != 0)) {
-      setState(260);
+      setState(284);
       instruction();
-      setState(265);
+      setState(289);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
@@ -2383,6 +3425,17 @@ PLDCOMPParser::BlocContext* PLDCOMPParser::BlocInstructionContext::bloc() {
 
 PLDCOMPParser::BlocInstructionContext::BlocInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::BlocInstructionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterBlocInstruction(this);
+}
+void PLDCOMPParser::BlocInstructionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitBlocInstruction(this);
+}
+
 antlrcpp::Any PLDCOMPParser::BlocInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitBlocInstruction(this);
@@ -2396,6 +3449,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ReturnInstructionContext::exp() {
 }
 
 PLDCOMPParser::ReturnInstructionContext::ReturnInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::ReturnInstructionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterReturnInstruction(this);
+}
+void PLDCOMPParser::ReturnInstructionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitReturnInstruction(this);
+}
 
 antlrcpp::Any PLDCOMPParser::ReturnInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2411,6 +3475,17 @@ PLDCOMPParser::ExpContext* PLDCOMPParser::ExpInstructionContext::exp() {
 
 PLDCOMPParser::ExpInstructionContext::ExpInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::ExpInstructionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterExpInstruction(this);
+}
+void PLDCOMPParser::ExpInstructionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitExpInstruction(this);
+}
+
 antlrcpp::Any PLDCOMPParser::ExpInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitExpInstruction(this);
@@ -2420,6 +3495,17 @@ antlrcpp::Any PLDCOMPParser::ExpInstructionContext::accept(tree::ParseTreeVisito
 //----------------- BreakInstructionContext ------------------------------------------------------------------
 
 PLDCOMPParser::BreakInstructionContext::BreakInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
+
+void PLDCOMPParser::BreakInstructionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterBreakInstruction(this);
+}
+void PLDCOMPParser::BreakInstructionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitBreakInstruction(this);
+}
 
 antlrcpp::Any PLDCOMPParser::BreakInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
@@ -2435,6 +3521,17 @@ PLDCOMPParser::StructureContext* PLDCOMPParser::StructureInstructionContext::str
 
 PLDCOMPParser::StructureInstructionContext::StructureInstructionContext(InstructionContext *ctx) { copyFrom(ctx); }
 
+void PLDCOMPParser::StructureInstructionContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterStructureInstruction(this);
+}
+void PLDCOMPParser::StructureInstructionContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitStructureInstruction(this);
+}
+
 antlrcpp::Any PLDCOMPParser::StructureInstructionContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitStructureInstruction(this);
@@ -2443,23 +3540,23 @@ antlrcpp::Any PLDCOMPParser::StructureInstructionContext::accept(tree::ParseTree
 }
 PLDCOMPParser::InstructionContext* PLDCOMPParser::instruction() {
   InstructionContext *_localctx = _tracker.createInstance<InstructionContext>(_ctx, getState());
-  enterRule(_localctx, 30, PLDCOMPParser::RuleInstruction);
+  enterRule(_localctx, 36, PLDCOMPParser::RuleInstruction);
 
   auto onExit = finally([=] {
     exitRule();
   });
   try {
-    setState(280);
+    setState(304);
     _errHandler->sync(this);
     switch (_input->LA(1)) {
       case PLDCOMPParser::T__45: {
         _localctx = dynamic_cast<InstructionContext *>(_tracker.createInstance<PLDCOMPParser::BlocInstructionContext>(_localctx));
         enterOuterAlt(_localctx, 1);
-        setState(266);
+        setState(290);
         match(PLDCOMPParser::T__45);
-        setState(267);
+        setState(291);
         bloc();
-        setState(268);
+        setState(292);
         match(PLDCOMPParser::T__46);
         break;
       }
@@ -2467,9 +3564,9 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::instruction() {
       case PLDCOMPParser::T__48: {
         _localctx = dynamic_cast<InstructionContext *>(_tracker.createInstance<PLDCOMPParser::BreakInstructionContext>(_localctx));
         enterOuterAlt(_localctx, 2);
-        setState(270);
+        setState(294);
         match(PLDCOMPParser::T__48);
-        setState(271);
+        setState(295);
         match(PLDCOMPParser::T__47);
         break;
       }
@@ -2478,7 +3575,7 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::instruction() {
       case PLDCOMPParser::T__44: {
         _localctx = dynamic_cast<InstructionContext *>(_tracker.createInstance<PLDCOMPParser::StructureInstructionContext>(_localctx));
         enterOuterAlt(_localctx, 3);
-        setState(272);
+        setState(296);
         structure();
         break;
       }
@@ -2486,11 +3583,11 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::instruction() {
       case PLDCOMPParser::T__49: {
         _localctx = dynamic_cast<InstructionContext *>(_tracker.createInstance<PLDCOMPParser::ReturnInstructionContext>(_localctx));
         enterOuterAlt(_localctx, 4);
-        setState(273);
+        setState(297);
         match(PLDCOMPParser::T__49);
-        setState(274);
+        setState(298);
         exp(0);
-        setState(275);
+        setState(299);
         match(PLDCOMPParser::T__47);
         break;
       }
@@ -2508,9 +3605,9 @@ PLDCOMPParser::InstructionContext* PLDCOMPParser::instruction() {
       case PLDCOMPParser::CHAR: {
         _localctx = dynamic_cast<InstructionContext *>(_tracker.createInstance<PLDCOMPParser::ExpInstructionContext>(_localctx));
         enterOuterAlt(_localctx, 5);
-        setState(277);
+        setState(301);
         exp(0);
-        setState(278);
+        setState(302);
         match(PLDCOMPParser::T__47);
         break;
       }
@@ -2552,6 +3649,19 @@ size_t PLDCOMPParser::ProgrammeContext::getRuleIndex() const {
   return PLDCOMPParser::RuleProgramme;
 }
 
+void PLDCOMPParser::ProgrammeContext::enterRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->enterProgramme(this);
+}
+
+void PLDCOMPParser::ProgrammeContext::exitRule(tree::ParseTreeListener *listener) {
+  auto parserListener = dynamic_cast<PLDCOMPListener *>(listener);
+  if (parserListener != nullptr)
+    parserListener->exitProgramme(this);
+}
+
+
 antlrcpp::Any PLDCOMPParser::ProgrammeContext::accept(tree::ParseTreeVisitor *visitor) {
   if (auto parserVisitor = dynamic_cast<PLDCOMPVisitor*>(visitor))
     return parserVisitor->visitProgramme(this);
@@ -2561,7 +3671,7 @@ antlrcpp::Any PLDCOMPParser::ProgrammeContext::accept(tree::ParseTreeVisitor *vi
 
 PLDCOMPParser::ProgrammeContext* PLDCOMPParser::programme() {
   ProgrammeContext *_localctx = _tracker.createInstance<ProgrammeContext>(_ctx, getState());
-  enterRule(_localctx, 32, PLDCOMPParser::RuleProgramme);
+  enterRule(_localctx, 38, PLDCOMPParser::RuleProgramme);
   size_t _la = 0;
 
   auto onExit = finally([=] {
@@ -2569,9 +3679,9 @@ PLDCOMPParser::ProgrammeContext* PLDCOMPParser::programme() {
   });
   try {
     enterOuterAlt(_localctx, 1);
-    setState(282);
+    setState(306);
     declaration_variables();
-    setState(286);
+    setState(310);
     _errHandler->sync(this);
     _la = _input->LA(1);
     while ((((_la & ~ 0x3fULL) == 0) &&
@@ -2579,9 +3689,9 @@ PLDCOMPParser::ProgrammeContext* PLDCOMPParser::programme() {
       | (1ULL << PLDCOMPParser::T__39)
       | (1ULL << PLDCOMPParser::T__40)
       | (1ULL << PLDCOMPParser::T__41))) != 0)) {
-      setState(283);
+      setState(307);
       fonction();
-      setState(288);
+      setState(312);
       _errHandler->sync(this);
       _la = _input->LA(1);
     }
@@ -2626,8 +3736,9 @@ std::vector<uint16_t> PLDCOMPParser::_serializedATN;
 
 std::vector<std::string> PLDCOMPParser::_ruleNames = {
   "op", "exp", "lvalue", "structure", "constante", "type_variable", "type_function", 
-  "if_statement", "while_statement", "val", "declaration_type", "param", 
-  "fonction", "declaration_variables", "bloc", "instruction", "programme"
+  "if_statement", "while_statement", "val", "declaration_type", "entier", 
+  "declaration_int_generale", "declaration_char_generale", "param", "fonction", 
+  "declaration_variables", "bloc", "instruction", "programme"
 };
 
 std::vector<std::string> PLDCOMPParser::_literalNames = {
@@ -2666,212 +3777,229 @@ PLDCOMPParser::Initializer::Initializer() {
 
   _serializedATN = {
     0x3, 0x608b, 0xa72a, 0x8133, 0xb9ed, 0x417c, 0x3be7, 0x7786, 0x5964, 
-    0x3, 0x3b, 0x124, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
+    0x3, 0x3b, 0x13c, 0x4, 0x2, 0x9, 0x2, 0x4, 0x3, 0x9, 0x3, 0x4, 0x4, 
     0x9, 0x4, 0x4, 0x5, 0x9, 0x5, 0x4, 0x6, 0x9, 0x6, 0x4, 0x7, 0x9, 0x7, 
     0x4, 0x8, 0x9, 0x8, 0x4, 0x9, 0x9, 0x9, 0x4, 0xa, 0x9, 0xa, 0x4, 0xb, 
     0x9, 0xb, 0x4, 0xc, 0x9, 0xc, 0x4, 0xd, 0x9, 0xd, 0x4, 0xe, 0x9, 0xe, 
     0x4, 0xf, 0x9, 0xf, 0x4, 0x10, 0x9, 0x10, 0x4, 0x11, 0x9, 0x11, 0x4, 
-    0x12, 0x9, 0x12, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 
-    0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 
-    0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 
-    0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 
-    0x2, 0x3, 0x2, 0x5, 0x2, 0x41, 0xa, 0x2, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
+    0x12, 0x9, 0x12, 0x4, 0x13, 0x9, 0x13, 0x4, 0x14, 0x9, 0x14, 0x4, 0x15, 
+    0x9, 0x15, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 
+    0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 
+    0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 
+    0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 0x3, 0x2, 
+    0x3, 0x2, 0x5, 0x2, 0x47, 0xa, 0x2, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
     0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
     0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
     0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
     0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
-    0x3, 0x3, 0x3, 0x3, 0x7, 0x3, 0x64, 0xa, 0x3, 0xc, 0x3, 0xe, 0x3, 0x67, 
-    0xb, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
-    0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x5, 0x3, 0x73, 0xa, 0x3, 0x3, 
-    0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x7, 0x3, 0x79, 0xa, 0x3, 0xc, 0x3, 
-    0xe, 0x3, 0x7c, 0xb, 0x3, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 
-    0x4, 0x3, 0x4, 0x5, 0x4, 0x84, 0xa, 0x4, 0x3, 0x5, 0x3, 0x5, 0x5, 0x5, 
-    0x88, 0xa, 0x5, 0x3, 0x6, 0x3, 0x6, 0x5, 0x6, 0x8c, 0xa, 0x6, 0x3, 0x7, 
-    0x3, 0x7, 0x3, 0x8, 0x3, 0x8, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 
-    0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 
-    0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x5, 0x9, 0xa0, 0xa, 0x9, 0x3, 0xa, 0x3, 
-    0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xb, 0x3, 0xb, 0x3, 
-    0xb, 0x7, 0xb, 0xab, 0xa, 0xb, 0xc, 0xb, 0xe, 0xb, 0xae, 0xb, 0xb, 0x3, 
-    0xb, 0x3, 0xb, 0x3, 0xb, 0x7, 0xb, 0xb3, 0xa, 0xb, 0xc, 0xb, 0xe, 0xb, 
-    0xb6, 0xb, 0xb, 0x5, 0xb, 0xb8, 0xa, 0xb, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 
-    0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 
-    0x3, 0xc, 0x3, 0xc, 0x6, 0xc, 0xc6, 0xa, 0xc, 0xd, 0xc, 0xe, 0xc, 0xc7, 
-    0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 
-    0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 
-    0x3, 0xc, 0x3, 0xc, 0x5, 0xc, 0xda, 0xa, 0xc, 0x3, 0xd, 0x3, 0xd, 0x3, 
-    0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x3, 0xd, 0x7, 0xd, 0xe3, 0xa, 0xd, 
-    0xc, 0xd, 0xe, 0xd, 0xe6, 0xb, 0xd, 0x5, 0xd, 0xe8, 0xa, 0xd, 0x3, 0xe, 
-    0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 
-    0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 
-    0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x3, 0xe, 0x5, 0xe, 0xfd, 0xa, 0xe, 0x3, 
-    0xf, 0x3, 0xf, 0x3, 0xf, 0x7, 0xf, 0x102, 0xa, 0xf, 0xc, 0xf, 0xe, 0xf, 
-    0x105, 0xb, 0xf, 0x3, 0x10, 0x7, 0x10, 0x108, 0xa, 0x10, 0xc, 0x10, 
-    0xe, 0x10, 0x10b, 0xb, 0x10, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 
+    0x3, 0x3, 0x3, 0x7, 0x3, 0x6a, 0xa, 0x3, 0xc, 0x3, 0xe, 0x3, 0x6d, 0xb, 
+    0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 
+    0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x5, 0x3, 0x79, 0xa, 0x3, 0x3, 0x3, 
+    0x3, 0x3, 0x3, 0x3, 0x3, 0x3, 0x7, 0x3, 0x7f, 0xa, 0x3, 0xc, 0x3, 0xe, 
+    0x3, 0x82, 0xb, 0x3, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 0x3, 0x4, 
+    0x3, 0x4, 0x5, 0x4, 0x8a, 0xa, 0x4, 0x3, 0x5, 0x3, 0x5, 0x5, 0x5, 0x8e, 
+    0xa, 0x5, 0x3, 0x6, 0x3, 0x6, 0x5, 0x6, 0x92, 0xa, 0x6, 0x3, 0x7, 0x3, 
+    0x7, 0x3, 0x8, 0x3, 0x8, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 
+    0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 0x9, 0x3, 
+    0x9, 0x3, 0x9, 0x3, 0x9, 0x5, 0x9, 0xa6, 0xa, 0x9, 0x3, 0xa, 0x3, 0xa, 
+    0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xa, 0x3, 0xb, 0x3, 0xb, 0x3, 0xb, 
+    0x7, 0xb, 0xb1, 0xa, 0xb, 0xc, 0xb, 0xe, 0xb, 0xb4, 0xb, 0xb, 0x3, 0xb, 
+    0x3, 0xb, 0x3, 0xb, 0x7, 0xb, 0xb9, 0xa, 0xb, 0xc, 0xb, 0xe, 0xb, 0xbc, 
+    0xb, 0xb, 0x5, 0xb, 0xbe, 0xa, 0xb, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 
+    0xc, 0x7, 0xc, 0xc4, 0xa, 0xc, 0xc, 0xc, 0xe, 0xc, 0xc7, 0xb, 0xc, 0x3, 
+    0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x7, 0xc, 0xcd, 0xa, 0xc, 0xc, 0xc, 
+    0xe, 0xc, 0xd0, 0xb, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 
+    0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 
+    0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x3, 0xc, 0x5, 0xc, 0xe2, 0xa, 0xc, 
+    0x3, 0xd, 0x3, 0xd, 0x5, 0xd, 0xe6, 0xa, 0xd, 0x3, 0xe, 0x3, 0xe, 0x3, 
+    0xe, 0x3, 0xe, 0x5, 0xe, 0xec, 0xa, 0xe, 0x3, 0xf, 0x3, 0xf, 0x3, 0xf, 
+    0x3, 0xf, 0x5, 0xf, 0xf2, 0xa, 0xf, 0x3, 0x10, 0x3, 0x10, 0x3, 0x10, 
+    0x3, 0x10, 0x3, 0x10, 0x3, 0x10, 0x3, 0x10, 0x7, 0x10, 0xfb, 0xa, 0x10, 
+    0xc, 0x10, 0xe, 0x10, 0xfe, 0xb, 0x10, 0x5, 0x10, 0x100, 0xa, 0x10, 
     0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 
-    0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x5, 0x11, 0x11b, 0xa, 0x11, 
-    0x3, 0x12, 0x3, 0x12, 0x7, 0x12, 0x11f, 0xa, 0x12, 0xc, 0x12, 0xe, 0x12, 
-    0x122, 0xb, 0x12, 0x3, 0x12, 0x2, 0x3, 0x4, 0x13, 0x2, 0x4, 0x6, 0x8, 
-    0xa, 0xc, 0xe, 0x10, 0x12, 0x14, 0x16, 0x18, 0x1a, 0x1c, 0x1e, 0x20, 
-    0x22, 0x2, 0x4, 0x3, 0x2, 0x29, 0x2b, 0x3, 0x2, 0x29, 0x2c, 0x2, 0x153, 
-    0x2, 0x40, 0x3, 0x2, 0x2, 0x2, 0x4, 0x72, 0x3, 0x2, 0x2, 0x2, 0x6, 0x83, 
-    0x3, 0x2, 0x2, 0x2, 0x8, 0x87, 0x3, 0x2, 0x2, 0x2, 0xa, 0x8b, 0x3, 0x2, 
-    0x2, 0x2, 0xc, 0x8d, 0x3, 0x2, 0x2, 0x2, 0xe, 0x8f, 0x3, 0x2, 0x2, 0x2, 
-    0x10, 0x9f, 0x3, 0x2, 0x2, 0x2, 0x12, 0xa1, 0x3, 0x2, 0x2, 0x2, 0x14, 
-    0xb7, 0x3, 0x2, 0x2, 0x2, 0x16, 0xd9, 0x3, 0x2, 0x2, 0x2, 0x18, 0xe7, 
-    0x3, 0x2, 0x2, 0x2, 0x1a, 0xfc, 0x3, 0x2, 0x2, 0x2, 0x1c, 0x103, 0x3, 
-    0x2, 0x2, 0x2, 0x1e, 0x109, 0x3, 0x2, 0x2, 0x2, 0x20, 0x11a, 0x3, 0x2, 
-    0x2, 0x2, 0x22, 0x11c, 0x3, 0x2, 0x2, 0x2, 0x24, 0x41, 0x7, 0x3, 0x2, 
-    0x2, 0x25, 0x41, 0x7, 0x4, 0x2, 0x2, 0x26, 0x41, 0x7, 0x5, 0x2, 0x2, 
-    0x27, 0x41, 0x7, 0x6, 0x2, 0x2, 0x28, 0x41, 0x7, 0x7, 0x2, 0x2, 0x29, 
-    0x41, 0x7, 0x8, 0x2, 0x2, 0x2a, 0x41, 0x7, 0x9, 0x2, 0x2, 0x2b, 0x41, 
-    0x7, 0xa, 0x2, 0x2, 0x2c, 0x41, 0x7, 0xb, 0x2, 0x2, 0x2d, 0x41, 0x7, 
-    0xc, 0x2, 0x2, 0x2e, 0x41, 0x7, 0xd, 0x2, 0x2, 0x2f, 0x41, 0x7, 0xe, 
-    0x2, 0x2, 0x30, 0x41, 0x7, 0xf, 0x2, 0x2, 0x31, 0x41, 0x7, 0x10, 0x2, 
-    0x2, 0x32, 0x41, 0x7, 0x11, 0x2, 0x2, 0x33, 0x41, 0x7, 0x12, 0x2, 0x2, 
-    0x34, 0x41, 0x7, 0x13, 0x2, 0x2, 0x35, 0x41, 0x7, 0x14, 0x2, 0x2, 0x36, 
-    0x41, 0x7, 0x15, 0x2, 0x2, 0x37, 0x41, 0x7, 0x16, 0x2, 0x2, 0x38, 0x41, 
-    0x7, 0x17, 0x2, 0x2, 0x39, 0x41, 0x7, 0x18, 0x2, 0x2, 0x3a, 0x41, 0x7, 
-    0x19, 0x2, 0x2, 0x3b, 0x41, 0x7, 0x1a, 0x2, 0x2, 0x3c, 0x41, 0x7, 0x1b, 
-    0x2, 0x2, 0x3d, 0x41, 0x7, 0x1c, 0x2, 0x2, 0x3e, 0x41, 0x7, 0x1d, 0x2, 
-    0x2, 0x3f, 0x41, 0x7, 0x1e, 0x2, 0x2, 0x40, 0x24, 0x3, 0x2, 0x2, 0x2, 
-    0x40, 0x25, 0x3, 0x2, 0x2, 0x2, 0x40, 0x26, 0x3, 0x2, 0x2, 0x2, 0x40, 
-    0x27, 0x3, 0x2, 0x2, 0x2, 0x40, 0x28, 0x3, 0x2, 0x2, 0x2, 0x40, 0x29, 
-    0x3, 0x2, 0x2, 0x2, 0x40, 0x2a, 0x3, 0x2, 0x2, 0x2, 0x40, 0x2b, 0x3, 
-    0x2, 0x2, 0x2, 0x40, 0x2c, 0x3, 0x2, 0x2, 0x2, 0x40, 0x2d, 0x3, 0x2, 
-    0x2, 0x2, 0x40, 0x2e, 0x3, 0x2, 0x2, 0x2, 0x40, 0x2f, 0x3, 0x2, 0x2, 
-    0x2, 0x40, 0x30, 0x3, 0x2, 0x2, 0x2, 0x40, 0x31, 0x3, 0x2, 0x2, 0x2, 
-    0x40, 0x32, 0x3, 0x2, 0x2, 0x2, 0x40, 0x33, 0x3, 0x2, 0x2, 0x2, 0x40, 
-    0x34, 0x3, 0x2, 0x2, 0x2, 0x40, 0x35, 0x3, 0x2, 0x2, 0x2, 0x40, 0x36, 
-    0x3, 0x2, 0x2, 0x2, 0x40, 0x37, 0x3, 0x2, 0x2, 0x2, 0x40, 0x38, 0x3, 
-    0x2, 0x2, 0x2, 0x40, 0x39, 0x3, 0x2, 0x2, 0x2, 0x40, 0x3a, 0x3, 0x2, 
-    0x2, 0x2, 0x40, 0x3b, 0x3, 0x2, 0x2, 0x2, 0x40, 0x3c, 0x3, 0x2, 0x2, 
-    0x2, 0x40, 0x3d, 0x3, 0x2, 0x2, 0x2, 0x40, 0x3e, 0x3, 0x2, 0x2, 0x2, 
-    0x40, 0x3f, 0x3, 0x2, 0x2, 0x2, 0x41, 0x3, 0x3, 0x2, 0x2, 0x2, 0x42, 
-    0x43, 0x8, 0x3, 0x1, 0x2, 0x43, 0x44, 0x7, 0x1f, 0x2, 0x2, 0x44, 0x45, 
-    0x5, 0x4, 0x3, 0x2, 0x45, 0x46, 0x7, 0x20, 0x2, 0x2, 0x46, 0x73, 0x3, 
-    0x2, 0x2, 0x2, 0x47, 0x48, 0x7, 0x21, 0x2, 0x2, 0x48, 0x73, 0x5, 0x4, 
-    0x3, 0x10, 0x49, 0x4a, 0x7, 0x4, 0x2, 0x2, 0x4a, 0x73, 0x5, 0x4, 0x3, 
-    0xf, 0x4b, 0x4c, 0x7, 0x22, 0x2, 0x2, 0x4c, 0x73, 0x5, 0x4, 0x3, 0xe, 
-    0x4d, 0x4e, 0x5, 0x6, 0x4, 0x2, 0x4e, 0x4f, 0x7, 0x23, 0x2, 0x2, 0x4f, 
-    0x73, 0x3, 0x2, 0x2, 0x2, 0x50, 0x51, 0x5, 0x6, 0x4, 0x2, 0x51, 0x52, 
-    0x7, 0x24, 0x2, 0x2, 0x52, 0x73, 0x3, 0x2, 0x2, 0x2, 0x53, 0x54, 0x7, 
-    0x23, 0x2, 0x2, 0x54, 0x73, 0x5, 0x6, 0x4, 0x2, 0x55, 0x56, 0x7, 0x24, 
-    0x2, 0x2, 0x56, 0x73, 0x5, 0x6, 0x4, 0x2, 0x57, 0x58, 0x5, 0x6, 0x4, 
-    0x2, 0x58, 0x59, 0x7, 0xb, 0x2, 0x2, 0x59, 0x5a, 0x5, 0x4, 0x3, 0x9, 
-    0x5a, 0x73, 0x3, 0x2, 0x2, 0x2, 0x5b, 0x73, 0x7, 0x36, 0x2, 0x2, 0x5c, 
-    0x73, 0x7, 0x37, 0x2, 0x2, 0x5d, 0x73, 0x5, 0x6, 0x4, 0x2, 0x5e, 0x5f, 
-    0x7, 0x35, 0x2, 0x2, 0x5f, 0x60, 0x7, 0x1f, 0x2, 0x2, 0x60, 0x65, 0x5, 
-    0x4, 0x3, 0x2, 0x61, 0x62, 0x7, 0x1e, 0x2, 0x2, 0x62, 0x64, 0x5, 0x4, 
-    0x3, 0x2, 0x63, 0x61, 0x3, 0x2, 0x2, 0x2, 0x64, 0x67, 0x3, 0x2, 0x2, 
-    0x2, 0x65, 0x63, 0x3, 0x2, 0x2, 0x2, 0x65, 0x66, 0x3, 0x2, 0x2, 0x2, 
-    0x66, 0x68, 0x3, 0x2, 0x2, 0x2, 0x67, 0x65, 0x3, 0x2, 0x2, 0x2, 0x68, 
-    0x69, 0x7, 0x20, 0x2, 0x2, 0x69, 0x73, 0x3, 0x2, 0x2, 0x2, 0x6a, 0x6b, 
-    0x7, 0x25, 0x2, 0x2, 0x6b, 0x6c, 0x7, 0x1f, 0x2, 0x2, 0x6c, 0x6d, 0x5, 
-    0x4, 0x3, 0x2, 0x6d, 0x6e, 0x7, 0x20, 0x2, 0x2, 0x6e, 0x73, 0x3, 0x2, 
-    0x2, 0x2, 0x6f, 0x70, 0x7, 0x26, 0x2, 0x2, 0x70, 0x71, 0x7, 0x1f, 0x2, 
-    0x2, 0x71, 0x73, 0x7, 0x20, 0x2, 0x2, 0x72, 0x42, 0x3, 0x2, 0x2, 0x2, 
-    0x72, 0x47, 0x3, 0x2, 0x2, 0x2, 0x72, 0x49, 0x3, 0x2, 0x2, 0x2, 0x72, 
-    0x4b, 0x3, 0x2, 0x2, 0x2, 0x72, 0x4d, 0x3, 0x2, 0x2, 0x2, 0x72, 0x50, 
-    0x3, 0x2, 0x2, 0x2, 0x72, 0x53, 0x3, 0x2, 0x2, 0x2, 0x72, 0x55, 0x3, 
-    0x2, 0x2, 0x2, 0x72, 0x57, 0x3, 0x2, 0x2, 0x2, 0x72, 0x5b, 0x3, 0x2, 
-    0x2, 0x2, 0x72, 0x5c, 0x3, 0x2, 0x2, 0x2, 0x72, 0x5d, 0x3, 0x2, 0x2, 
-    0x2, 0x72, 0x5e, 0x3, 0x2, 0x2, 0x2, 0x72, 0x6a, 0x3, 0x2, 0x2, 0x2, 
-    0x72, 0x6f, 0x3, 0x2, 0x2, 0x2, 0x73, 0x7a, 0x3, 0x2, 0x2, 0x2, 0x74, 
-    0x75, 0xc, 0x12, 0x2, 0x2, 0x75, 0x76, 0x5, 0x2, 0x2, 0x2, 0x76, 0x77, 
-    0x5, 0x4, 0x3, 0x13, 0x77, 0x79, 0x3, 0x2, 0x2, 0x2, 0x78, 0x74, 0x3, 
-    0x2, 0x2, 0x2, 0x79, 0x7c, 0x3, 0x2, 0x2, 0x2, 0x7a, 0x78, 0x3, 0x2, 
-    0x2, 0x2, 0x7a, 0x7b, 0x3, 0x2, 0x2, 0x2, 0x7b, 0x5, 0x3, 0x2, 0x2, 
-    0x2, 0x7c, 0x7a, 0x3, 0x2, 0x2, 0x2, 0x7d, 0x84, 0x7, 0x35, 0x2, 0x2, 
-    0x7e, 0x7f, 0x7, 0x35, 0x2, 0x2, 0x7f, 0x80, 0x7, 0x27, 0x2, 0x2, 0x80, 
-    0x81, 0x5, 0x4, 0x3, 0x2, 0x81, 0x82, 0x7, 0x28, 0x2, 0x2, 0x82, 0x84, 
-    0x3, 0x2, 0x2, 0x2, 0x83, 0x7d, 0x3, 0x2, 0x2, 0x2, 0x83, 0x7e, 0x3, 
-    0x2, 0x2, 0x2, 0x84, 0x7, 0x3, 0x2, 0x2, 0x2, 0x85, 0x88, 0x5, 0x10, 
-    0x9, 0x2, 0x86, 0x88, 0x5, 0x12, 0xa, 0x2, 0x87, 0x85, 0x3, 0x2, 0x2, 
-    0x2, 0x87, 0x86, 0x3, 0x2, 0x2, 0x2, 0x88, 0x9, 0x3, 0x2, 0x2, 0x2, 
-    0x89, 0x8c, 0x7, 0x36, 0x2, 0x2, 0x8a, 0x8c, 0x7, 0x37, 0x2, 0x2, 0x8b, 
-    0x89, 0x3, 0x2, 0x2, 0x2, 0x8b, 0x8a, 0x3, 0x2, 0x2, 0x2, 0x8c, 0xb, 
-    0x3, 0x2, 0x2, 0x2, 0x8d, 0x8e, 0x9, 0x2, 0x2, 0x2, 0x8e, 0xd, 0x3, 
-    0x2, 0x2, 0x2, 0x8f, 0x90, 0x9, 0x3, 0x2, 0x2, 0x90, 0xf, 0x3, 0x2, 
-    0x2, 0x2, 0x91, 0x92, 0x7, 0x2d, 0x2, 0x2, 0x92, 0x93, 0x7, 0x1f, 0x2, 
-    0x2, 0x93, 0x94, 0x5, 0x4, 0x3, 0x2, 0x94, 0x95, 0x7, 0x20, 0x2, 0x2, 
-    0x95, 0x96, 0x5, 0x20, 0x11, 0x2, 0x96, 0xa0, 0x3, 0x2, 0x2, 0x2, 0x97, 
-    0x98, 0x7, 0x2d, 0x2, 0x2, 0x98, 0x99, 0x7, 0x1f, 0x2, 0x2, 0x99, 0x9a, 
-    0x5, 0x4, 0x3, 0x2, 0x9a, 0x9b, 0x7, 0x20, 0x2, 0x2, 0x9b, 0x9c, 0x5, 
-    0x20, 0x11, 0x2, 0x9c, 0x9d, 0x7, 0x2e, 0x2, 0x2, 0x9d, 0x9e, 0x5, 0x20, 
-    0x11, 0x2, 0x9e, 0xa0, 0x3, 0x2, 0x2, 0x2, 0x9f, 0x91, 0x3, 0x2, 0x2, 
-    0x2, 0x9f, 0x97, 0x3, 0x2, 0x2, 0x2, 0xa0, 0x11, 0x3, 0x2, 0x2, 0x2, 
-    0xa1, 0xa2, 0x7, 0x2f, 0x2, 0x2, 0xa2, 0xa3, 0x7, 0x1f, 0x2, 0x2, 0xa3, 
-    0xa4, 0x5, 0x4, 0x3, 0x2, 0xa4, 0xa5, 0x7, 0x20, 0x2, 0x2, 0xa5, 0xa6, 
-    0x5, 0x20, 0x11, 0x2, 0xa6, 0x13, 0x3, 0x2, 0x2, 0x2, 0xa7, 0xac, 0x7, 
-    0x36, 0x2, 0x2, 0xa8, 0xa9, 0x7, 0x1e, 0x2, 0x2, 0xa9, 0xab, 0x7, 0x36, 
-    0x2, 0x2, 0xaa, 0xa8, 0x3, 0x2, 0x2, 0x2, 0xab, 0xae, 0x3, 0x2, 0x2, 
-    0x2, 0xac, 0xaa, 0x3, 0x2, 0x2, 0x2, 0xac, 0xad, 0x3, 0x2, 0x2, 0x2, 
-    0xad, 0xb8, 0x3, 0x2, 0x2, 0x2, 0xae, 0xac, 0x3, 0x2, 0x2, 0x2, 0xaf, 
-    0xb4, 0x7, 0x37, 0x2, 0x2, 0xb0, 0xb1, 0x7, 0x1e, 0x2, 0x2, 0xb1, 0xb3, 
-    0x7, 0x37, 0x2, 0x2, 0xb2, 0xb0, 0x3, 0x2, 0x2, 0x2, 0xb3, 0xb6, 0x3, 
-    0x2, 0x2, 0x2, 0xb4, 0xb2, 0x3, 0x2, 0x2, 0x2, 0xb4, 0xb5, 0x3, 0x2, 
-    0x2, 0x2, 0xb5, 0xb8, 0x3, 0x2, 0x2, 0x2, 0xb6, 0xb4, 0x3, 0x2, 0x2, 
-    0x2, 0xb7, 0xa7, 0x3, 0x2, 0x2, 0x2, 0xb7, 0xaf, 0x3, 0x2, 0x2, 0x2, 
-    0xb8, 0x15, 0x3, 0x2, 0x2, 0x2, 0xb9, 0xba, 0x5, 0xc, 0x7, 0x2, 0xba, 
-    0xbb, 0x7, 0x35, 0x2, 0x2, 0xbb, 0xbc, 0x7, 0xb, 0x2, 0x2, 0xbc, 0xbd, 
-    0x5, 0xa, 0x6, 0x2, 0xbd, 0xda, 0x3, 0x2, 0x2, 0x2, 0xbe, 0xbf, 0x5, 
-    0xc, 0x7, 0x2, 0xbf, 0xc0, 0x7, 0x35, 0x2, 0x2, 0xc0, 0xda, 0x3, 0x2, 
-    0x2, 0x2, 0xc1, 0xc2, 0x5, 0xc, 0x7, 0x2, 0xc2, 0xc5, 0x7, 0x35, 0x2, 
-    0x2, 0xc3, 0xc4, 0x7, 0x1e, 0x2, 0x2, 0xc4, 0xc6, 0x7, 0x35, 0x2, 0x2, 
-    0xc5, 0xc3, 0x3, 0x2, 0x2, 0x2, 0xc6, 0xc7, 0x3, 0x2, 0x2, 0x2, 0xc7, 
-    0xc5, 0x3, 0x2, 0x2, 0x2, 0xc7, 0xc8, 0x3, 0x2, 0x2, 0x2, 0xc8, 0xda, 
-    0x3, 0x2, 0x2, 0x2, 0xc9, 0xca, 0x5, 0xc, 0x7, 0x2, 0xca, 0xcb, 0x7, 
-    0x35, 0x2, 0x2, 0xcb, 0xcc, 0x7, 0x27, 0x2, 0x2, 0xcc, 0xcd, 0x7, 0x36, 
-    0x2, 0x2, 0xcd, 0xce, 0x7, 0x28, 0x2, 0x2, 0xce, 0xda, 0x3, 0x2, 0x2, 
-    0x2, 0xcf, 0xd0, 0x5, 0xc, 0x7, 0x2, 0xd0, 0xd1, 0x7, 0x35, 0x2, 0x2, 
-    0xd1, 0xd2, 0x7, 0x27, 0x2, 0x2, 0xd2, 0xd3, 0x7, 0x36, 0x2, 0x2, 0xd3, 
-    0xd4, 0x7, 0x28, 0x2, 0x2, 0xd4, 0xd5, 0x7, 0xb, 0x2, 0x2, 0xd5, 0xd6, 
-    0x7, 0x30, 0x2, 0x2, 0xd6, 0xd7, 0x5, 0x14, 0xb, 0x2, 0xd7, 0xd8, 0x7, 
-    0x31, 0x2, 0x2, 0xd8, 0xda, 0x3, 0x2, 0x2, 0x2, 0xd9, 0xb9, 0x3, 0x2, 
-    0x2, 0x2, 0xd9, 0xbe, 0x3, 0x2, 0x2, 0x2, 0xd9, 0xc1, 0x3, 0x2, 0x2, 
-    0x2, 0xd9, 0xc9, 0x3, 0x2, 0x2, 0x2, 0xd9, 0xcf, 0x3, 0x2, 0x2, 0x2, 
-    0xda, 0x17, 0x3, 0x2, 0x2, 0x2, 0xdb, 0xe8, 0x7, 0x2c, 0x2, 0x2, 0xdc, 
-    0xdd, 0x5, 0xc, 0x7, 0x2, 0xdd, 0xe4, 0x7, 0x35, 0x2, 0x2, 0xde, 0xdf, 
-    0x7, 0x1e, 0x2, 0x2, 0xdf, 0xe0, 0x5, 0xc, 0x7, 0x2, 0xe0, 0xe1, 0x7, 
-    0x35, 0x2, 0x2, 0xe1, 0xe3, 0x3, 0x2, 0x2, 0x2, 0xe2, 0xde, 0x3, 0x2, 
-    0x2, 0x2, 0xe3, 0xe6, 0x3, 0x2, 0x2, 0x2, 0xe4, 0xe2, 0x3, 0x2, 0x2, 
-    0x2, 0xe4, 0xe5, 0x3, 0x2, 0x2, 0x2, 0xe5, 0xe8, 0x3, 0x2, 0x2, 0x2, 
-    0xe6, 0xe4, 0x3, 0x2, 0x2, 0x2, 0xe7, 0xdb, 0x3, 0x2, 0x2, 0x2, 0xe7, 
-    0xdc, 0x3, 0x2, 0x2, 0x2, 0xe8, 0x19, 0x3, 0x2, 0x2, 0x2, 0xe9, 0xea, 
-    0x5, 0xe, 0x8, 0x2, 0xea, 0xeb, 0x7, 0x35, 0x2, 0x2, 0xeb, 0xec, 0x7, 
-    0x1f, 0x2, 0x2, 0xec, 0xed, 0x5, 0x18, 0xd, 0x2, 0xed, 0xee, 0x7, 0x20, 
-    0x2, 0x2, 0xee, 0xef, 0x7, 0x30, 0x2, 0x2, 0xef, 0xf0, 0x5, 0x1c, 0xf, 
-    0x2, 0xf0, 0xf1, 0x5, 0x1e, 0x10, 0x2, 0xf1, 0xf2, 0x7, 0x31, 0x2, 0x2, 
-    0xf2, 0xfd, 0x3, 0x2, 0x2, 0x2, 0xf3, 0xf4, 0x5, 0xe, 0x8, 0x2, 0xf4, 
-    0xf5, 0x7, 0x35, 0x2, 0x2, 0xf5, 0xf6, 0x7, 0x1f, 0x2, 0x2, 0xf6, 0xf7, 
-    0x7, 0x20, 0x2, 0x2, 0xf7, 0xf8, 0x7, 0x30, 0x2, 0x2, 0xf8, 0xf9, 0x5, 
-    0x1c, 0xf, 0x2, 0xf9, 0xfa, 0x5, 0x1e, 0x10, 0x2, 0xfa, 0xfb, 0x7, 0x31, 
-    0x2, 0x2, 0xfb, 0xfd, 0x3, 0x2, 0x2, 0x2, 0xfc, 0xe9, 0x3, 0x2, 0x2, 
-    0x2, 0xfc, 0xf3, 0x3, 0x2, 0x2, 0x2, 0xfd, 0x1b, 0x3, 0x2, 0x2, 0x2, 
-    0xfe, 0xff, 0x5, 0x16, 0xc, 0x2, 0xff, 0x100, 0x7, 0x32, 0x2, 0x2, 0x100, 
-    0x102, 0x3, 0x2, 0x2, 0x2, 0x101, 0xfe, 0x3, 0x2, 0x2, 0x2, 0x102, 0x105, 
-    0x3, 0x2, 0x2, 0x2, 0x103, 0x101, 0x3, 0x2, 0x2, 0x2, 0x103, 0x104, 
-    0x3, 0x2, 0x2, 0x2, 0x104, 0x1d, 0x3, 0x2, 0x2, 0x2, 0x105, 0x103, 0x3, 
-    0x2, 0x2, 0x2, 0x106, 0x108, 0x5, 0x20, 0x11, 0x2, 0x107, 0x106, 0x3, 
-    0x2, 0x2, 0x2, 0x108, 0x10b, 0x3, 0x2, 0x2, 0x2, 0x109, 0x107, 0x3, 
-    0x2, 0x2, 0x2, 0x109, 0x10a, 0x3, 0x2, 0x2, 0x2, 0x10a, 0x1f, 0x3, 0x2, 
-    0x2, 0x2, 0x10b, 0x109, 0x3, 0x2, 0x2, 0x2, 0x10c, 0x10d, 0x7, 0x30, 
-    0x2, 0x2, 0x10d, 0x10e, 0x5, 0x1e, 0x10, 0x2, 0x10e, 0x10f, 0x7, 0x31, 
-    0x2, 0x2, 0x10f, 0x11b, 0x3, 0x2, 0x2, 0x2, 0x110, 0x111, 0x7, 0x33, 
-    0x2, 0x2, 0x111, 0x11b, 0x7, 0x32, 0x2, 0x2, 0x112, 0x11b, 0x5, 0x8, 
-    0x5, 0x2, 0x113, 0x114, 0x7, 0x34, 0x2, 0x2, 0x114, 0x115, 0x5, 0x4, 
-    0x3, 0x2, 0x115, 0x116, 0x7, 0x32, 0x2, 0x2, 0x116, 0x11b, 0x3, 0x2, 
-    0x2, 0x2, 0x117, 0x118, 0x5, 0x4, 0x3, 0x2, 0x118, 0x119, 0x7, 0x32, 
-    0x2, 0x2, 0x119, 0x11b, 0x3, 0x2, 0x2, 0x2, 0x11a, 0x10c, 0x3, 0x2, 
-    0x2, 0x2, 0x11a, 0x110, 0x3, 0x2, 0x2, 0x2, 0x11a, 0x112, 0x3, 0x2, 
-    0x2, 0x2, 0x11a, 0x113, 0x3, 0x2, 0x2, 0x2, 0x11a, 0x117, 0x3, 0x2, 
-    0x2, 0x2, 0x11b, 0x21, 0x3, 0x2, 0x2, 0x2, 0x11c, 0x120, 0x5, 0x1c, 
-    0xf, 0x2, 0x11d, 0x11f, 0x5, 0x1a, 0xe, 0x2, 0x11e, 0x11d, 0x3, 0x2, 
-    0x2, 0x2, 0x11f, 0x122, 0x3, 0x2, 0x2, 0x2, 0x120, 0x11e, 0x3, 0x2, 
-    0x2, 0x2, 0x120, 0x121, 0x3, 0x2, 0x2, 0x2, 0x121, 0x23, 0x3, 0x2, 0x2, 
-    0x2, 0x122, 0x120, 0x3, 0x2, 0x2, 0x2, 0x16, 0x40, 0x65, 0x72, 0x7a, 
-    0x83, 0x87, 0x8b, 0x9f, 0xac, 0xb4, 0xb7, 0xc7, 0xd9, 0xe4, 0xe7, 0xfc, 
-    0x103, 0x109, 0x11a, 0x120, 
+    0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 
+    0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x3, 0x11, 0x5, 
+    0x11, 0x115, 0xa, 0x11, 0x3, 0x12, 0x3, 0x12, 0x3, 0x12, 0x7, 0x12, 
+    0x11a, 0xa, 0x12, 0xc, 0x12, 0xe, 0x12, 0x11d, 0xb, 0x12, 0x3, 0x13, 
+    0x7, 0x13, 0x120, 0xa, 0x13, 0xc, 0x13, 0xe, 0x13, 0x123, 0xb, 0x13, 
+    0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 
+    0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 0x3, 0x14, 
+    0x3, 0x14, 0x5, 0x14, 0x133, 0xa, 0x14, 0x3, 0x15, 0x3, 0x15, 0x7, 0x15, 
+    0x137, 0xa, 0x15, 0xc, 0x15, 0xe, 0x15, 0x13a, 0xb, 0x15, 0x3, 0x15, 
+    0x2, 0x3, 0x4, 0x16, 0x2, 0x4, 0x6, 0x8, 0xa, 0xc, 0xe, 0x10, 0x12, 
+    0x14, 0x16, 0x18, 0x1a, 0x1c, 0x1e, 0x20, 0x22, 0x24, 0x26, 0x28, 0x2, 
+    0x4, 0x3, 0x2, 0x29, 0x2b, 0x3, 0x2, 0x29, 0x2c, 0x2, 0x16b, 0x2, 0x46, 
+    0x3, 0x2, 0x2, 0x2, 0x4, 0x78, 0x3, 0x2, 0x2, 0x2, 0x6, 0x89, 0x3, 0x2, 
+    0x2, 0x2, 0x8, 0x8d, 0x3, 0x2, 0x2, 0x2, 0xa, 0x91, 0x3, 0x2, 0x2, 0x2, 
+    0xc, 0x93, 0x3, 0x2, 0x2, 0x2, 0xe, 0x95, 0x3, 0x2, 0x2, 0x2, 0x10, 
+    0xa5, 0x3, 0x2, 0x2, 0x2, 0x12, 0xa7, 0x3, 0x2, 0x2, 0x2, 0x14, 0xbd, 
+    0x3, 0x2, 0x2, 0x2, 0x16, 0xe1, 0x3, 0x2, 0x2, 0x2, 0x18, 0xe5, 0x3, 
+    0x2, 0x2, 0x2, 0x1a, 0xeb, 0x3, 0x2, 0x2, 0x2, 0x1c, 0xf1, 0x3, 0x2, 
+    0x2, 0x2, 0x1e, 0xff, 0x3, 0x2, 0x2, 0x2, 0x20, 0x114, 0x3, 0x2, 0x2, 
+    0x2, 0x22, 0x11b, 0x3, 0x2, 0x2, 0x2, 0x24, 0x121, 0x3, 0x2, 0x2, 0x2, 
+    0x26, 0x132, 0x3, 0x2, 0x2, 0x2, 0x28, 0x134, 0x3, 0x2, 0x2, 0x2, 0x2a, 
+    0x47, 0x7, 0x3, 0x2, 0x2, 0x2b, 0x47, 0x7, 0x4, 0x2, 0x2, 0x2c, 0x47, 
+    0x7, 0x5, 0x2, 0x2, 0x2d, 0x47, 0x7, 0x6, 0x2, 0x2, 0x2e, 0x47, 0x7, 
+    0x7, 0x2, 0x2, 0x2f, 0x47, 0x7, 0x8, 0x2, 0x2, 0x30, 0x47, 0x7, 0x9, 
+    0x2, 0x2, 0x31, 0x47, 0x7, 0xa, 0x2, 0x2, 0x32, 0x47, 0x7, 0xb, 0x2, 
+    0x2, 0x33, 0x47, 0x7, 0xc, 0x2, 0x2, 0x34, 0x47, 0x7, 0xd, 0x2, 0x2, 
+    0x35, 0x47, 0x7, 0xe, 0x2, 0x2, 0x36, 0x47, 0x7, 0xf, 0x2, 0x2, 0x37, 
+    0x47, 0x7, 0x10, 0x2, 0x2, 0x38, 0x47, 0x7, 0x11, 0x2, 0x2, 0x39, 0x47, 
+    0x7, 0x12, 0x2, 0x2, 0x3a, 0x47, 0x7, 0x13, 0x2, 0x2, 0x3b, 0x47, 0x7, 
+    0x14, 0x2, 0x2, 0x3c, 0x47, 0x7, 0x15, 0x2, 0x2, 0x3d, 0x47, 0x7, 0x16, 
+    0x2, 0x2, 0x3e, 0x47, 0x7, 0x17, 0x2, 0x2, 0x3f, 0x47, 0x7, 0x18, 0x2, 
+    0x2, 0x40, 0x47, 0x7, 0x19, 0x2, 0x2, 0x41, 0x47, 0x7, 0x1a, 0x2, 0x2, 
+    0x42, 0x47, 0x7, 0x1b, 0x2, 0x2, 0x43, 0x47, 0x7, 0x1c, 0x2, 0x2, 0x44, 
+    0x47, 0x7, 0x1d, 0x2, 0x2, 0x45, 0x47, 0x7, 0x1e, 0x2, 0x2, 0x46, 0x2a, 
+    0x3, 0x2, 0x2, 0x2, 0x46, 0x2b, 0x3, 0x2, 0x2, 0x2, 0x46, 0x2c, 0x3, 
+    0x2, 0x2, 0x2, 0x46, 0x2d, 0x3, 0x2, 0x2, 0x2, 0x46, 0x2e, 0x3, 0x2, 
+    0x2, 0x2, 0x46, 0x2f, 0x3, 0x2, 0x2, 0x2, 0x46, 0x30, 0x3, 0x2, 0x2, 
+    0x2, 0x46, 0x31, 0x3, 0x2, 0x2, 0x2, 0x46, 0x32, 0x3, 0x2, 0x2, 0x2, 
+    0x46, 0x33, 0x3, 0x2, 0x2, 0x2, 0x46, 0x34, 0x3, 0x2, 0x2, 0x2, 0x46, 
+    0x35, 0x3, 0x2, 0x2, 0x2, 0x46, 0x36, 0x3, 0x2, 0x2, 0x2, 0x46, 0x37, 
+    0x3, 0x2, 0x2, 0x2, 0x46, 0x38, 0x3, 0x2, 0x2, 0x2, 0x46, 0x39, 0x3, 
+    0x2, 0x2, 0x2, 0x46, 0x3a, 0x3, 0x2, 0x2, 0x2, 0x46, 0x3b, 0x3, 0x2, 
+    0x2, 0x2, 0x46, 0x3c, 0x3, 0x2, 0x2, 0x2, 0x46, 0x3d, 0x3, 0x2, 0x2, 
+    0x2, 0x46, 0x3e, 0x3, 0x2, 0x2, 0x2, 0x46, 0x3f, 0x3, 0x2, 0x2, 0x2, 
+    0x46, 0x40, 0x3, 0x2, 0x2, 0x2, 0x46, 0x41, 0x3, 0x2, 0x2, 0x2, 0x46, 
+    0x42, 0x3, 0x2, 0x2, 0x2, 0x46, 0x43, 0x3, 0x2, 0x2, 0x2, 0x46, 0x44, 
+    0x3, 0x2, 0x2, 0x2, 0x46, 0x45, 0x3, 0x2, 0x2, 0x2, 0x47, 0x3, 0x3, 
+    0x2, 0x2, 0x2, 0x48, 0x49, 0x8, 0x3, 0x1, 0x2, 0x49, 0x4a, 0x7, 0x1f, 
+    0x2, 0x2, 0x4a, 0x4b, 0x5, 0x4, 0x3, 0x2, 0x4b, 0x4c, 0x7, 0x20, 0x2, 
+    0x2, 0x4c, 0x79, 0x3, 0x2, 0x2, 0x2, 0x4d, 0x4e, 0x7, 0x21, 0x2, 0x2, 
+    0x4e, 0x79, 0x5, 0x4, 0x3, 0x10, 0x4f, 0x50, 0x7, 0x4, 0x2, 0x2, 0x50, 
+    0x79, 0x5, 0x4, 0x3, 0xf, 0x51, 0x52, 0x7, 0x22, 0x2, 0x2, 0x52, 0x79, 
+    0x5, 0x4, 0x3, 0xe, 0x53, 0x54, 0x5, 0x6, 0x4, 0x2, 0x54, 0x55, 0x7, 
+    0x23, 0x2, 0x2, 0x55, 0x79, 0x3, 0x2, 0x2, 0x2, 0x56, 0x57, 0x5, 0x6, 
+    0x4, 0x2, 0x57, 0x58, 0x7, 0x24, 0x2, 0x2, 0x58, 0x79, 0x3, 0x2, 0x2, 
+    0x2, 0x59, 0x5a, 0x7, 0x23, 0x2, 0x2, 0x5a, 0x79, 0x5, 0x6, 0x4, 0x2, 
+    0x5b, 0x5c, 0x7, 0x24, 0x2, 0x2, 0x5c, 0x79, 0x5, 0x6, 0x4, 0x2, 0x5d, 
+    0x5e, 0x5, 0x6, 0x4, 0x2, 0x5e, 0x5f, 0x7, 0xb, 0x2, 0x2, 0x5f, 0x60, 
+    0x5, 0x4, 0x3, 0x9, 0x60, 0x79, 0x3, 0x2, 0x2, 0x2, 0x61, 0x79, 0x7, 
+    0x36, 0x2, 0x2, 0x62, 0x79, 0x7, 0x37, 0x2, 0x2, 0x63, 0x79, 0x5, 0x6, 
+    0x4, 0x2, 0x64, 0x65, 0x7, 0x35, 0x2, 0x2, 0x65, 0x66, 0x7, 0x1f, 0x2, 
+    0x2, 0x66, 0x6b, 0x5, 0x4, 0x3, 0x2, 0x67, 0x68, 0x7, 0x1e, 0x2, 0x2, 
+    0x68, 0x6a, 0x5, 0x4, 0x3, 0x2, 0x69, 0x67, 0x3, 0x2, 0x2, 0x2, 0x6a, 
+    0x6d, 0x3, 0x2, 0x2, 0x2, 0x6b, 0x69, 0x3, 0x2, 0x2, 0x2, 0x6b, 0x6c, 
+    0x3, 0x2, 0x2, 0x2, 0x6c, 0x6e, 0x3, 0x2, 0x2, 0x2, 0x6d, 0x6b, 0x3, 
+    0x2, 0x2, 0x2, 0x6e, 0x6f, 0x7, 0x20, 0x2, 0x2, 0x6f, 0x79, 0x3, 0x2, 
+    0x2, 0x2, 0x70, 0x71, 0x7, 0x25, 0x2, 0x2, 0x71, 0x72, 0x7, 0x1f, 0x2, 
+    0x2, 0x72, 0x73, 0x5, 0x4, 0x3, 0x2, 0x73, 0x74, 0x7, 0x20, 0x2, 0x2, 
+    0x74, 0x79, 0x3, 0x2, 0x2, 0x2, 0x75, 0x76, 0x7, 0x26, 0x2, 0x2, 0x76, 
+    0x77, 0x7, 0x1f, 0x2, 0x2, 0x77, 0x79, 0x7, 0x20, 0x2, 0x2, 0x78, 0x48, 
+    0x3, 0x2, 0x2, 0x2, 0x78, 0x4d, 0x3, 0x2, 0x2, 0x2, 0x78, 0x4f, 0x3, 
+    0x2, 0x2, 0x2, 0x78, 0x51, 0x3, 0x2, 0x2, 0x2, 0x78, 0x53, 0x3, 0x2, 
+    0x2, 0x2, 0x78, 0x56, 0x3, 0x2, 0x2, 0x2, 0x78, 0x59, 0x3, 0x2, 0x2, 
+    0x2, 0x78, 0x5b, 0x3, 0x2, 0x2, 0x2, 0x78, 0x5d, 0x3, 0x2, 0x2, 0x2, 
+    0x78, 0x61, 0x3, 0x2, 0x2, 0x2, 0x78, 0x62, 0x3, 0x2, 0x2, 0x2, 0x78, 
+    0x63, 0x3, 0x2, 0x2, 0x2, 0x78, 0x64, 0x3, 0x2, 0x2, 0x2, 0x78, 0x70, 
+    0x3, 0x2, 0x2, 0x2, 0x78, 0x75, 0x3, 0x2, 0x2, 0x2, 0x79, 0x80, 0x3, 
+    0x2, 0x2, 0x2, 0x7a, 0x7b, 0xc, 0x12, 0x2, 0x2, 0x7b, 0x7c, 0x5, 0x2, 
+    0x2, 0x2, 0x7c, 0x7d, 0x5, 0x4, 0x3, 0x13, 0x7d, 0x7f, 0x3, 0x2, 0x2, 
+    0x2, 0x7e, 0x7a, 0x3, 0x2, 0x2, 0x2, 0x7f, 0x82, 0x3, 0x2, 0x2, 0x2, 
+    0x80, 0x7e, 0x3, 0x2, 0x2, 0x2, 0x80, 0x81, 0x3, 0x2, 0x2, 0x2, 0x81, 
+    0x5, 0x3, 0x2, 0x2, 0x2, 0x82, 0x80, 0x3, 0x2, 0x2, 0x2, 0x83, 0x8a, 
+    0x7, 0x35, 0x2, 0x2, 0x84, 0x85, 0x7, 0x35, 0x2, 0x2, 0x85, 0x86, 0x7, 
+    0x27, 0x2, 0x2, 0x86, 0x87, 0x5, 0x4, 0x3, 0x2, 0x87, 0x88, 0x7, 0x28, 
+    0x2, 0x2, 0x88, 0x8a, 0x3, 0x2, 0x2, 0x2, 0x89, 0x83, 0x3, 0x2, 0x2, 
+    0x2, 0x89, 0x84, 0x3, 0x2, 0x2, 0x2, 0x8a, 0x7, 0x3, 0x2, 0x2, 0x2, 
+    0x8b, 0x8e, 0x5, 0x10, 0x9, 0x2, 0x8c, 0x8e, 0x5, 0x12, 0xa, 0x2, 0x8d, 
+    0x8b, 0x3, 0x2, 0x2, 0x2, 0x8d, 0x8c, 0x3, 0x2, 0x2, 0x2, 0x8e, 0x9, 
+    0x3, 0x2, 0x2, 0x2, 0x8f, 0x92, 0x7, 0x36, 0x2, 0x2, 0x90, 0x92, 0x7, 
+    0x37, 0x2, 0x2, 0x91, 0x8f, 0x3, 0x2, 0x2, 0x2, 0x91, 0x90, 0x3, 0x2, 
+    0x2, 0x2, 0x92, 0xb, 0x3, 0x2, 0x2, 0x2, 0x93, 0x94, 0x9, 0x2, 0x2, 
+    0x2, 0x94, 0xd, 0x3, 0x2, 0x2, 0x2, 0x95, 0x96, 0x9, 0x3, 0x2, 0x2, 
+    0x96, 0xf, 0x3, 0x2, 0x2, 0x2, 0x97, 0x98, 0x7, 0x2d, 0x2, 0x2, 0x98, 
+    0x99, 0x7, 0x1f, 0x2, 0x2, 0x99, 0x9a, 0x5, 0x4, 0x3, 0x2, 0x9a, 0x9b, 
+    0x7, 0x20, 0x2, 0x2, 0x9b, 0x9c, 0x5, 0x26, 0x14, 0x2, 0x9c, 0xa6, 0x3, 
+    0x2, 0x2, 0x2, 0x9d, 0x9e, 0x7, 0x2d, 0x2, 0x2, 0x9e, 0x9f, 0x7, 0x1f, 
+    0x2, 0x2, 0x9f, 0xa0, 0x5, 0x4, 0x3, 0x2, 0xa0, 0xa1, 0x7, 0x20, 0x2, 
+    0x2, 0xa1, 0xa2, 0x5, 0x26, 0x14, 0x2, 0xa2, 0xa3, 0x7, 0x2e, 0x2, 0x2, 
+    0xa3, 0xa4, 0x5, 0x26, 0x14, 0x2, 0xa4, 0xa6, 0x3, 0x2, 0x2, 0x2, 0xa5, 
+    0x97, 0x3, 0x2, 0x2, 0x2, 0xa5, 0x9d, 0x3, 0x2, 0x2, 0x2, 0xa6, 0x11, 
+    0x3, 0x2, 0x2, 0x2, 0xa7, 0xa8, 0x7, 0x2f, 0x2, 0x2, 0xa8, 0xa9, 0x7, 
+    0x1f, 0x2, 0x2, 0xa9, 0xaa, 0x5, 0x4, 0x3, 0x2, 0xaa, 0xab, 0x7, 0x20, 
+    0x2, 0x2, 0xab, 0xac, 0x5, 0x26, 0x14, 0x2, 0xac, 0x13, 0x3, 0x2, 0x2, 
+    0x2, 0xad, 0xb2, 0x7, 0x36, 0x2, 0x2, 0xae, 0xaf, 0x7, 0x1e, 0x2, 0x2, 
+    0xaf, 0xb1, 0x7, 0x36, 0x2, 0x2, 0xb0, 0xae, 0x3, 0x2, 0x2, 0x2, 0xb1, 
+    0xb4, 0x3, 0x2, 0x2, 0x2, 0xb2, 0xb0, 0x3, 0x2, 0x2, 0x2, 0xb2, 0xb3, 
+    0x3, 0x2, 0x2, 0x2, 0xb3, 0xbe, 0x3, 0x2, 0x2, 0x2, 0xb4, 0xb2, 0x3, 
+    0x2, 0x2, 0x2, 0xb5, 0xba, 0x7, 0x37, 0x2, 0x2, 0xb6, 0xb7, 0x7, 0x1e, 
+    0x2, 0x2, 0xb7, 0xb9, 0x7, 0x37, 0x2, 0x2, 0xb8, 0xb6, 0x3, 0x2, 0x2, 
+    0x2, 0xb9, 0xbc, 0x3, 0x2, 0x2, 0x2, 0xba, 0xb8, 0x3, 0x2, 0x2, 0x2, 
+    0xba, 0xbb, 0x3, 0x2, 0x2, 0x2, 0xbb, 0xbe, 0x3, 0x2, 0x2, 0x2, 0xbc, 
+    0xba, 0x3, 0x2, 0x2, 0x2, 0xbd, 0xad, 0x3, 0x2, 0x2, 0x2, 0xbd, 0xb5, 
+    0x3, 0x2, 0x2, 0x2, 0xbe, 0x15, 0x3, 0x2, 0x2, 0x2, 0xbf, 0xc0, 0x5, 
+    0x18, 0xd, 0x2, 0xc0, 0xc5, 0x5, 0x1a, 0xe, 0x2, 0xc1, 0xc2, 0x7, 0x1e, 
+    0x2, 0x2, 0xc2, 0xc4, 0x5, 0x1a, 0xe, 0x2, 0xc3, 0xc1, 0x3, 0x2, 0x2, 
+    0x2, 0xc4, 0xc7, 0x3, 0x2, 0x2, 0x2, 0xc5, 0xc3, 0x3, 0x2, 0x2, 0x2, 
+    0xc5, 0xc6, 0x3, 0x2, 0x2, 0x2, 0xc6, 0xe2, 0x3, 0x2, 0x2, 0x2, 0xc7, 
+    0xc5, 0x3, 0x2, 0x2, 0x2, 0xc8, 0xc9, 0x7, 0x29, 0x2, 0x2, 0xc9, 0xce, 
+    0x5, 0x1c, 0xf, 0x2, 0xca, 0xcb, 0x7, 0x1e, 0x2, 0x2, 0xcb, 0xcd, 0x5, 
+    0x1c, 0xf, 0x2, 0xcc, 0xca, 0x3, 0x2, 0x2, 0x2, 0xcd, 0xd0, 0x3, 0x2, 
+    0x2, 0x2, 0xce, 0xcc, 0x3, 0x2, 0x2, 0x2, 0xce, 0xcf, 0x3, 0x2, 0x2, 
+    0x2, 0xcf, 0xe2, 0x3, 0x2, 0x2, 0x2, 0xd0, 0xce, 0x3, 0x2, 0x2, 0x2, 
+    0xd1, 0xd2, 0x5, 0xc, 0x7, 0x2, 0xd2, 0xd3, 0x7, 0x35, 0x2, 0x2, 0xd3, 
+    0xd4, 0x7, 0x27, 0x2, 0x2, 0xd4, 0xd5, 0x7, 0x36, 0x2, 0x2, 0xd5, 0xd6, 
+    0x7, 0x28, 0x2, 0x2, 0xd6, 0xe2, 0x3, 0x2, 0x2, 0x2, 0xd7, 0xd8, 0x5, 
+    0xc, 0x7, 0x2, 0xd8, 0xd9, 0x7, 0x35, 0x2, 0x2, 0xd9, 0xda, 0x7, 0x27, 
+    0x2, 0x2, 0xda, 0xdb, 0x7, 0x36, 0x2, 0x2, 0xdb, 0xdc, 0x7, 0x28, 0x2, 
+    0x2, 0xdc, 0xdd, 0x7, 0xb, 0x2, 0x2, 0xdd, 0xde, 0x7, 0x30, 0x2, 0x2, 
+    0xde, 0xdf, 0x5, 0x14, 0xb, 0x2, 0xdf, 0xe0, 0x7, 0x31, 0x2, 0x2, 0xe0, 
+    0xe2, 0x3, 0x2, 0x2, 0x2, 0xe1, 0xbf, 0x3, 0x2, 0x2, 0x2, 0xe1, 0xc8, 
+    0x3, 0x2, 0x2, 0x2, 0xe1, 0xd1, 0x3, 0x2, 0x2, 0x2, 0xe1, 0xd7, 0x3, 
+    0x2, 0x2, 0x2, 0xe2, 0x17, 0x3, 0x2, 0x2, 0x2, 0xe3, 0xe6, 0x7, 0x2a, 
+    0x2, 0x2, 0xe4, 0xe6, 0x7, 0x2b, 0x2, 0x2, 0xe5, 0xe3, 0x3, 0x2, 0x2, 
+    0x2, 0xe5, 0xe4, 0x3, 0x2, 0x2, 0x2, 0xe6, 0x19, 0x3, 0x2, 0x2, 0x2, 
+    0xe7, 0xec, 0x7, 0x35, 0x2, 0x2, 0xe8, 0xe9, 0x7, 0x35, 0x2, 0x2, 0xe9, 
+    0xea, 0x7, 0xb, 0x2, 0x2, 0xea, 0xec, 0x5, 0xa, 0x6, 0x2, 0xeb, 0xe7, 
+    0x3, 0x2, 0x2, 0x2, 0xeb, 0xe8, 0x3, 0x2, 0x2, 0x2, 0xec, 0x1b, 0x3, 
+    0x2, 0x2, 0x2, 0xed, 0xf2, 0x7, 0x35, 0x2, 0x2, 0xee, 0xef, 0x7, 0x35, 
+    0x2, 0x2, 0xef, 0xf0, 0x7, 0xb, 0x2, 0x2, 0xf0, 0xf2, 0x5, 0xa, 0x6, 
+    0x2, 0xf1, 0xed, 0x3, 0x2, 0x2, 0x2, 0xf1, 0xee, 0x3, 0x2, 0x2, 0x2, 
+    0xf2, 0x1d, 0x3, 0x2, 0x2, 0x2, 0xf3, 0x100, 0x7, 0x2c, 0x2, 0x2, 0xf4, 
+    0xf5, 0x5, 0xc, 0x7, 0x2, 0xf5, 0xfc, 0x7, 0x35, 0x2, 0x2, 0xf6, 0xf7, 
+    0x7, 0x1e, 0x2, 0x2, 0xf7, 0xf8, 0x5, 0xc, 0x7, 0x2, 0xf8, 0xf9, 0x7, 
+    0x35, 0x2, 0x2, 0xf9, 0xfb, 0x3, 0x2, 0x2, 0x2, 0xfa, 0xf6, 0x3, 0x2, 
+    0x2, 0x2, 0xfb, 0xfe, 0x3, 0x2, 0x2, 0x2, 0xfc, 0xfa, 0x3, 0x2, 0x2, 
+    0x2, 0xfc, 0xfd, 0x3, 0x2, 0x2, 0x2, 0xfd, 0x100, 0x3, 0x2, 0x2, 0x2, 
+    0xfe, 0xfc, 0x3, 0x2, 0x2, 0x2, 0xff, 0xf3, 0x3, 0x2, 0x2, 0x2, 0xff, 
+    0xf4, 0x3, 0x2, 0x2, 0x2, 0x100, 0x1f, 0x3, 0x2, 0x2, 0x2, 0x101, 0x102, 
+    0x5, 0xe, 0x8, 0x2, 0x102, 0x103, 0x7, 0x35, 0x2, 0x2, 0x103, 0x104, 
+    0x7, 0x1f, 0x2, 0x2, 0x104, 0x105, 0x5, 0x1e, 0x10, 0x2, 0x105, 0x106, 
+    0x7, 0x20, 0x2, 0x2, 0x106, 0x107, 0x7, 0x30, 0x2, 0x2, 0x107, 0x108, 
+    0x5, 0x22, 0x12, 0x2, 0x108, 0x109, 0x5, 0x24, 0x13, 0x2, 0x109, 0x10a, 
+    0x7, 0x31, 0x2, 0x2, 0x10a, 0x115, 0x3, 0x2, 0x2, 0x2, 0x10b, 0x10c, 
+    0x5, 0xe, 0x8, 0x2, 0x10c, 0x10d, 0x7, 0x35, 0x2, 0x2, 0x10d, 0x10e, 
+    0x7, 0x1f, 0x2, 0x2, 0x10e, 0x10f, 0x7, 0x20, 0x2, 0x2, 0x10f, 0x110, 
+    0x7, 0x30, 0x2, 0x2, 0x110, 0x111, 0x5, 0x22, 0x12, 0x2, 0x111, 0x112, 
+    0x5, 0x24, 0x13, 0x2, 0x112, 0x113, 0x7, 0x31, 0x2, 0x2, 0x113, 0x115, 
+    0x3, 0x2, 0x2, 0x2, 0x114, 0x101, 0x3, 0x2, 0x2, 0x2, 0x114, 0x10b, 
+    0x3, 0x2, 0x2, 0x2, 0x115, 0x21, 0x3, 0x2, 0x2, 0x2, 0x116, 0x117, 0x5, 
+    0x16, 0xc, 0x2, 0x117, 0x118, 0x7, 0x32, 0x2, 0x2, 0x118, 0x11a, 0x3, 
+    0x2, 0x2, 0x2, 0x119, 0x116, 0x3, 0x2, 0x2, 0x2, 0x11a, 0x11d, 0x3, 
+    0x2, 0x2, 0x2, 0x11b, 0x119, 0x3, 0x2, 0x2, 0x2, 0x11b, 0x11c, 0x3, 
+    0x2, 0x2, 0x2, 0x11c, 0x23, 0x3, 0x2, 0x2, 0x2, 0x11d, 0x11b, 0x3, 0x2, 
+    0x2, 0x2, 0x11e, 0x120, 0x5, 0x26, 0x14, 0x2, 0x11f, 0x11e, 0x3, 0x2, 
+    0x2, 0x2, 0x120, 0x123, 0x3, 0x2, 0x2, 0x2, 0x121, 0x11f, 0x3, 0x2, 
+    0x2, 0x2, 0x121, 0x122, 0x3, 0x2, 0x2, 0x2, 0x122, 0x25, 0x3, 0x2, 0x2, 
+    0x2, 0x123, 0x121, 0x3, 0x2, 0x2, 0x2, 0x124, 0x125, 0x7, 0x30, 0x2, 
+    0x2, 0x125, 0x126, 0x5, 0x24, 0x13, 0x2, 0x126, 0x127, 0x7, 0x31, 0x2, 
+    0x2, 0x127, 0x133, 0x3, 0x2, 0x2, 0x2, 0x128, 0x129, 0x7, 0x33, 0x2, 
+    0x2, 0x129, 0x133, 0x7, 0x32, 0x2, 0x2, 0x12a, 0x133, 0x5, 0x8, 0x5, 
+    0x2, 0x12b, 0x12c, 0x7, 0x34, 0x2, 0x2, 0x12c, 0x12d, 0x5, 0x4, 0x3, 
+    0x2, 0x12d, 0x12e, 0x7, 0x32, 0x2, 0x2, 0x12e, 0x133, 0x3, 0x2, 0x2, 
+    0x2, 0x12f, 0x130, 0x5, 0x4, 0x3, 0x2, 0x130, 0x131, 0x7, 0x32, 0x2, 
+    0x2, 0x131, 0x133, 0x3, 0x2, 0x2, 0x2, 0x132, 0x124, 0x3, 0x2, 0x2, 
+    0x2, 0x132, 0x128, 0x3, 0x2, 0x2, 0x2, 0x132, 0x12a, 0x3, 0x2, 0x2, 
+    0x2, 0x132, 0x12b, 0x3, 0x2, 0x2, 0x2, 0x132, 0x12f, 0x3, 0x2, 0x2, 
+    0x2, 0x133, 0x27, 0x3, 0x2, 0x2, 0x2, 0x134, 0x138, 0x5, 0x22, 0x12, 
+    0x2, 0x135, 0x137, 0x5, 0x20, 0x11, 0x2, 0x136, 0x135, 0x3, 0x2, 0x2, 
+    0x2, 0x137, 0x13a, 0x3, 0x2, 0x2, 0x2, 0x138, 0x136, 0x3, 0x2, 0x2, 
+    0x2, 0x138, 0x139, 0x3, 0x2, 0x2, 0x2, 0x139, 0x29, 0x3, 0x2, 0x2, 0x2, 
+    0x13a, 0x138, 0x3, 0x2, 0x2, 0x2, 0x1a, 0x46, 0x6b, 0x78, 0x80, 0x89, 
+    0x8d, 0x91, 0xa5, 0xb2, 0xba, 0xbd, 0xc5, 0xce, 0xe1, 0xe5, 0xeb, 0xf1, 
+    0xfc, 0xff, 0x114, 0x11b, 0x121, 0x132, 0x138, 
   };
 
   atn::ATNDeserializer deserializer;
