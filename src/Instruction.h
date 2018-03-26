@@ -142,10 +142,9 @@ class Variable : public Expression {
         virtual void affiche() = 0;
         void setInitialise(bool i);
         bool getInitialise();
-	    void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+	    void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
     protected:
         string nom;
-        Type type;
         bool initialise;
 };
 
@@ -180,10 +179,12 @@ class AppelDeVariable : public Expression {
         AppelDeVariable();
         AppelDeVariable(string n);
         string getNom();
+        void setNom(string nom);
         virtual void affiche() = 0;
-        void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
+        void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
     protected:
         string nom;
+        Type type;
 };
 
 class AppelDeTableau : public AppelDeVariable {
@@ -217,7 +218,7 @@ class Affectation : public Expression {
         AppelDeVariable * getLValue();
         void affiche();
         Expression * getExpression();
-		void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
+		void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
     private:
         AppelDeVariable * lValue;
         Expression * expression;

@@ -141,8 +141,10 @@ void semanticErrorTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
+        
+        prog->affiche();
+        prog->resolutionPortee();
         cout << endl;
-        //prog->affiche();
     }
 }
 
@@ -203,10 +205,10 @@ int main () {
     prog->affiche();
     prog->resolutionPortee();*/
 
-    lexErrorTests();
-    syntaxErrorTests();
-    validProgramsTests();
-    //semanticErrorTests();
+    // lexErrorTests();
+    // syntaxErrorTests();
+    // validProgramsTests();
+    semanticErrorTests();
 
     return 0;
 }

@@ -48,12 +48,17 @@ void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<
     list<Instruction *>::iterator it = instructions->begin() ;
     while ( it != this->instructions->end() ) {
       
-      if ((Expression *)(*it) || (ExprBin *)(*it) || (ExprUnaire *)(*it)) {
+      if ((Expression *)(*it)) {
         
         Expression *e = (Expression *)*it;
         e->resolutionPortee(pileVariable, mapVariable, pileFonction);
         
-      } 
+      } else if ((If *)(*it))  {
+
+        // Structure *s = (Structure *)*it;
+        // s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+
+      }
 
       it++;
     }
@@ -283,40 +288,6 @@ bool Variable::getInitialise () {
 
 }
 
-void Variable::resolutionPortee(list<string> *pileVariable, map<std::string,Declaration *> *mapVariable, list<string> *pileFonction) {
- 
-    string nomVar = this->getNom();
-    bool variableFound = false;
-
-    list<string> pile = *pileVariable;
-    pile.reverse();
-    list<string>::iterator it = pile.begin() ;
-
-    while ( it != pile.end() && variableFound == false ) {
-        
-        string nom = *it;
-        int rawNom = nom.find_first_of('_');
-        nom = nom.substr(rawNom+1); 
- 
-        if(nom == nomVar) {
-            variableFound = true;
-            this->setNom(*it);
-            map<string, Declaration *>::iterator variableDec = mapVariable->find(*it);
-            if(variableDec != mapVariable->end()) {
-              this->type = variableDec->second->getType();    
-            }
-        }
- 
-        it++;
-    }
- 
-    if(variableFound == false) {
-        cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
-        exit(2);
-    }
-
-}
-
 /* Tableau */
 Tableau::Tableau(string n) : Variable(n) {
     initialise = false;
@@ -391,6 +362,44 @@ string AppelDeVariable::getNom() {
     return nom;
 }
 
+void AppelDeVariable::setNom(string nom){
+    nom = nom;
+}
+
+void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::string,Declaration *> *mapVariable, list<string> *pileFonction) {
+ 
+    string nomVar = this->getNom();
+    bool variableFound = false;
+
+    list<string> pile = *pileVariable;
+    pile.reverse();
+    list<string>::iterator it = pile.begin() ;
+
+    while ( it != pile.end() && variableFound == false ) {
+        
+        string nom = *it;
+        int rawNom = nom.find_first_of('_');
+        nom = nom.substr(rawNom+1); 
+ 
+        if(nom == nomVar) {
+            variableFound = true;
+            this->setNom(*it);
+            map<string, Declaration *>::iterator variableDec = mapVariable->find(*it);
+            if(variableDec != mapVariable->end()) {
+              this->type = variableDec->second->getType();    
+            }
+        }
+ 
+        it++;
+    }
+ 
+    if(variableFound == false) {
+        cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
+        exit(2);
+    }
+
+}
+
 /* AppelDeTableau */
 AppelDeTableau::AppelDeTableau(string n) : AppelDeVariable(n) {
 }
@@ -449,6 +458,10 @@ void Affectation::affiche() {
     lValue->affiche();
     cout << " = ";
     expression->affiche();
+}
+
+void Affectation::resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction) {
+    lValue->resolutionPortee(pileVariable, mapVariable, pileFonction);
 }
 
 /* Structure */
