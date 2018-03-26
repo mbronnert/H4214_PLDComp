@@ -121,8 +121,10 @@ void lexErrorTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-        cout << endl;
+
+        prog->resolutionPortee();
         //prog->affiche();
+        cout << endl;
     }
 }
 
@@ -142,7 +144,7 @@ void semanticErrorTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
         
-        prog->affiche();
+        //prog->affiche();
         prog->resolutionPortee();
         cout << endl;
     }
@@ -163,8 +165,11 @@ void syntaxErrorTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-        cout << endl;
+
+        prog->resolutionPortee();
         //prog->affiche();
+        cout << endl;
+        
     }
 }
 
@@ -185,7 +190,7 @@ void validProgramsTests () {
         Programme * prog = (Programme *) visitor.visit(tree);
 		
         //prog->affiche();
-        //prog->resolutionPortee();
+        prog->resolutionPortee();
 
         cout << endl;
     }
@@ -193,7 +198,7 @@ void validProgramsTests () {
 
 
 int main () {
-    /*ANTLRInputStream input ("void main() {amm(a);}");
+    /*ANTLRInputStream input ("void main() { if (a == 1) { b = 2; test(d); } else { c = 1; test2(u); } }");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
@@ -205,9 +210,9 @@ int main () {
     prog->affiche();
     prog->resolutionPortee();*/
 
-    // lexErrorTests();
-    // syntaxErrorTests();
-    // validProgramsTests();
+    lexErrorTests();
+    syntaxErrorTests();
+    validProgramsTests();
     semanticErrorTests();
 
     return 0;

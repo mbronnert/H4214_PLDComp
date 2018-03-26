@@ -48,19 +48,34 @@ void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<
     list<Instruction *>::iterator it = instructions->begin() ;
     while ( it != this->instructions->end() ) {
 		
-	  if (dynamic_cast<Structure *> (*it)) {
-        cout<<"if check"<<endl;
-        If *s = (If *)*it;
-        
-        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
-        //s->getInstruction();
+	  if (dynamic_cast<IfElse *>(*it)) {
 
-      }else if ((Expression *)(*it)) {
-        cout<<"Expression check start"<<endl;
+        IfElse *s = (IfElse *)*it; 
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b1 = (Bloc *) s->getInstruction();        
+        b1->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+        Bloc *b2 = (Bloc *) s->getInstructionElse();        
+        b2->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+
+      } else if (dynamic_cast<If *>(*it)) {
+
+        If *s = (If *)*it;   
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b = (Bloc *) s->getInstruction();       
+        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction); 
+
+      } else if (dynamic_cast<While *>(*it)) {
+
+        While *s = (While *)*it;        
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b = (Bloc *) s->getInstruction();        
+        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+
+      } else if (dynamic_cast<Expression *>(*it)) {
+
         Expression *e = (Expression *)*it;
         e->resolutionPortee(pileVariable, mapVariable, pileFonction);
-        cout<<"Expression check end"<<endl;
-        
+
       } 
 
       it++;
@@ -130,6 +145,7 @@ void AppelDeFonction::resolutionPortee(list<string> *pileVariable, map<string,De
       
     } else {
         cerr << "ERREUR! fonction <<"+nom+">> non déclarée! " << endl;
+        // exit(0);
     }
 
 }
@@ -398,7 +414,7 @@ void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::stri
  
     if(variableFound == false) {
         cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
-        exit(2);
+        // exit(0);
     }
 
 }
@@ -501,6 +517,11 @@ IfElse::IfElse() {
 
 IfElse::IfElse(Expression * e, Instruction * i, Instruction * iElse) : If(e, i) {
     instructionElse = iElse;
+    instruction = i;
+}
+
+Instruction * IfElse::getInstruction() {
+    return instruction;
 }
 
 Instruction * IfElse::getInstructionElse() {

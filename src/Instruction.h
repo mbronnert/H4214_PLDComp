@@ -248,9 +248,11 @@ class IfElse : public If {
         IfElse();
         IfElse(Expression * e, Instruction * i, Instruction * iElse);
         Instruction * getInstructionElse();
+        Instruction * getInstruction();
         void affiche();
     private:
         Instruction * instructionElse;
+        Instruction * instruction;
 };
 
 class While : public Structure {
