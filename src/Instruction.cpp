@@ -47,18 +47,21 @@ void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<
     
     list<Instruction *>::iterator it = instructions->begin() ;
     while ( it != this->instructions->end() ) {
-      
-      if ((Expression *)(*it)) {
+		
+	  if (dynamic_cast<Structure *> (*it)) {
+        cout<<"if check"<<endl;
+        If *s = (If *)*it;
         
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        //s->getInstruction();
+
+      }else if ((Expression *)(*it)) {
+        cout<<"Expression check start"<<endl;
         Expression *e = (Expression *)*it;
         e->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        cout<<"Expression check end"<<endl;
         
-      } else if ((If *)(*it))  {
-
-        // Structure *s = (Structure *)*it;
-        // s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
-
-      }
+      } 
 
       it++;
     }
