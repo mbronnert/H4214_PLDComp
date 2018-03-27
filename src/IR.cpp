@@ -31,8 +31,8 @@ void BasicBlock::gen_asm(ostream &o) {
 
 
 /* Control Flow Graph */
-CFG::CFG(DefFonction *ast) {
-
+CFG::CFG(Fonction *ast) {
+	nextBBnumber = 1;
 }
 
 CFG::~CFG() {
@@ -44,9 +44,9 @@ void CFG::add_bb(BasicBlock *bb) {
 }
 
 void CFG::gen_asm(ostream& o) {
-	for (std::vector<BasicBlock>::iterator it = bbs.begin() ; it != bbs.end(); ++it)
+	for (vector<BasicBlock*>::iterator it = bbs.begin() ; it != bbs.end(); ++it)
 	{
-		it.gen_asm(o);
+		(*it)->gen_asm(o);
 	}
 }
 
@@ -79,9 +79,5 @@ Type CFG::get_var_type(string name) {
 }
 
 string CFG::new_BB_name() {
-  
+	return "B" + to_string(nextBBnumber++); // TODO : vérifier que c'est le bon nombre
 }
-
-
-
-

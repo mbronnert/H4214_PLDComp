@@ -5,17 +5,20 @@
 #include <string>
 #include <iostream>
 #include <initializer_list>
+#include <map>
 
 // Declarations from the parser -- replace with your own
-#include "type.h"
-#include "symbole.h"
+#include "Type.h"
+//#include "symbole.h"
+#include "Fonction.h"
 class BasicBlock;
 class CFG;
-class DefFonction;
+
+using namespace std;
 
 
 class IRInstr {
- 
+
    public:
   /** The instructions themselves -- feel free to subclass instead */
   typedef enum {
@@ -25,7 +28,7 @@ class IRInstr {
     mul,
     rmem,
     wmem,
-    call, 
+    call,
     cmp_eq,
     cmp_lt,
     cmp_le
@@ -34,16 +37,16 @@ class IRInstr {
 
   IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> params);
   ~IRInstr();
-  
+
   /** Actual code generation */
   void gen_asm(ostream &o); /**< x86 assembly code generation for this IR instruction */
-  
+
  private:
   BasicBlock* bb; /**< The BB this instruction belongs to, which provides a pointer to the CFG this instruction belong to */
   Operation op;
   Type t;
   vector<string> params; /**< For 3-op instrs: d, x, y; for ldconst: d, c;  For call: label, d, params;  for wmem and rmem: choose yourself */
-  // if you subclass IRInstr, each IRInstr subclass has its parameters and the previous (very important) comment becomes useless: it would be a better design. 
+  // if you subclass IRInstr, each IRInstr subclass has its parameters and the previous (very important) comment becomes useless: it would be a better design.
 };
 
 /**  The class for a basic block */
@@ -51,13 +54,13 @@ class IRInstr {
 /* A few important comments.
    IRInstr has no jump instructions:
    assembly jumps are generated as follows in BasicBlock::gen_asm():
-     1/ a cmp_* comparison instructions, if it is the last instruction of its block, 
+     1/ a cmp_* comparison instructions, if it is the last instruction of its block,
        generates an actual assembly comparison followed by a conditional jump to the exit_false branch
        If it is not the last instruction of its block, it behaves as an arithmetic two-operand instruction (add or mult)
-     2/ BasicBlock::gen_asm() first calls IRInstr::gen_asm() on all its instructions, and then 
+     2/ BasicBlock::gen_asm() first calls IRInstr::gen_asm() on all its instructions, and then
         if  exit_true  is a  nullptr, it generates the epilogue
-        if  exit_false is not a nullptr, and the last instruction is not a cmp, it generates two conditional branches based on the value of the last variable assigned 
-        otherwise it generates an unconditional jmp to the exit_true branch 
+        if  exit_false is not a nullptr, and the last instruction is not a cmp, it generates two conditional branches based on the value of the last variable assigned
+        otherwise it generates an unconditional jmp to the exit_true branch
 */
 
 class BasicBlock {
@@ -68,14 +71,14 @@ class BasicBlock {
   void add_IRInstr(IRInstr::Operation op, Type t, vector<string> params);
 
   // No encapsulation whatsoever here. Feel free to do better.
-  BasicBlock* exit_true;  /**< pointer to the next basic block, true branch. If nullptr, return from procedure */ 
+  BasicBlock* exit_true;  /**< pointer to the next basic block, true branch. If nullptr, return from procedure */
   BasicBlock* exit_false; /**< pointer to the next basic block, false branch. If null_ptr, the basic block ends with an unconditional jump */
   string label; /**< label of the BB, also will be the label in the generated code */
   CFG* cfg; /** < the CFG where this block belongs */
   vector<IRInstr*> instrs; /** < the instructions themselves. */
  protected:
 
- 
+
 };
 
 
@@ -92,12 +95,12 @@ class BasicBlock {
  */
 class CFG {
  public:
-  CFG(DefFonction* ast);
+  CFG(Fonction* ast);
   ~CFG();
 
-  DefFonction* ast; /**< The AST this CFG comes from */
-  
-  void add_bb(BasicBlock* bb); 
+  Fonction* ast; /**< The AST this CFG comes from */
+
+  void add_bb(BasicBlock* bb);
 
   // x86 code generation: could be encapsulated in a processor class in a retargetable compiler
   void gen_asm(ostream& o);
@@ -120,7 +123,7 @@ class CFG {
   map <string, int> SymbolIndex; /**< part of the symbol table  */
   int nextFreeSymbolIndex; /**< to allocate new symbols in the symbol table */
   int nextBBnumber; /**< just for naming */
-  
+
   vector <BasicBlock*> bbs; /**< all the basic blocks of this CFG*/
 };
 
