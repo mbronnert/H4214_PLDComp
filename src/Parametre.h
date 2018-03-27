@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <list>
-
+#include "Type.h"
 #include "Instruction.h"
 
 using namespace std;

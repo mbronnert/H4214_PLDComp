@@ -63,3 +63,22 @@ list <Declaration*> * Programme::getDeclarations() {
 list <Fonction*> * Programme::getFonctions() {
 	return fonctions;
 }
+
+void Programme::resolutionPortee() {
+  
+  list<string> pileVariable;
+  list<string> pileFonction;
+  
+  int *contextGlobal = new int();
+  int contextLocal = *contextGlobal;
+  
+  list<Fonction*>::iterator it;
+  for(it=fonctions->begin(); it!=fonctions->end(); it++) {
+      
+      mapFonction.insert ( pair<string, Fonction*>((*it)->getNom(),(*it)) );
+      pileFonction.push_back((*it)->getNom());
+      (*it)->resolutionPortee(contextGlobal, &pileVariable, &mapVariable, &pileFonction);
+      
+  }
+  
+}

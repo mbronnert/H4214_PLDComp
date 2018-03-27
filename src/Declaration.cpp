@@ -15,6 +15,10 @@ Variable * Declaration::getVariable(){
 	return variable;
 }
 
+void Declaration::setNomVariable(string nom){
+	variable->setNom(nom);
+}
+
 void Declaration::affiche() {
 	cout << "declaration : ";
 	cout << typeEtiquettes[type] << " ";

@@ -4,20 +4,24 @@
 /* Instruction */
 Instruction::Instruction() {
 }
-
+Instruction::~Instruction() {
+}
 /* Break */
 Break::Break() {
 }
-
+Break::~Break() {
+}
 void Break::affiche() {
     cout << "Break";
 }
+
 
 /* Return */
 Return::Return(Expression * e) {
     expression = e;
 }
-
+Return::~Return() {}
+    
 void Return::affiche() {
     cout << "Return ";
     expression->affiche();
@@ -26,7 +30,8 @@ void Return::affiche() {
 /* Block */
 Bloc::Bloc() {
 }
-
+Bloc::~Bloc() {
+}
 Bloc::Bloc(list<Instruction*> * i) {
     instructions = i;
 }
@@ -35,23 +40,75 @@ list <Instruction*> * Bloc::getInstructions() {
   return instructions;
 }
 
+void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction) {
+    
+    int contextLocal = ++(*contextGlobal);
+    int nivPile = 0;
+    
+    list<Instruction *>::iterator it = instructions->begin() ;
+    while ( it != this->instructions->end() ) {
+		
+	  if (dynamic_cast<IfElse *>(*it)) {
+
+        IfElse *s = (IfElse *)*it; 
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b1 = (Bloc *) s->getInstruction();        
+        b1->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+        Bloc *b2 = (Bloc *) s->getInstructionElse();        
+        b2->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+
+      } else if (dynamic_cast<If *>(*it)) {
+
+        If *s = (If *)*it;   
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b = (Bloc *) s->getInstruction();       
+        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction); 
+
+      } else if (dynamic_cast<While *>(*it)) {
+
+        While *s = (While *)*it;        
+        s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
+        Bloc *b = (Bloc *) s->getInstruction();        
+        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+
+      } else if (dynamic_cast<Expression *>(*it)) {
+
+        Expression *e = (Expression *)*it;
+        e->resolutionPortee(pileVariable, mapVariable, pileFonction);
+
+      } 
+
+      it++;
+    }
+        
+    while(nivPile > 0) {
+      pileVariable->pop_back();
+      nivPile--;
+    }
+}
+
 void Bloc::affiche() {
-    //if(!instructions->empty()){
+
     for(auto i = instructions->begin(); i != instructions->end(); i++) {
         (*i)->affiche();
         cout << " ;" << endl;
     }
-    //}
+
 }
 
 /* Expression */
 Expression::Expression() {
+}
+Expression::~Expression() {
 }
 
 /* Appel De Fonction */
 AppelDeFonction::AppelDeFonction(string n, list <Expression*> * p) {
     nom = n;
     parametres = p;
+}
+
+AppelDeFonction::~AppelDeFonction() {
 }
 
 string AppelDeFonction::getNom() {
@@ -62,16 +119,47 @@ list <Expression*> * AppelDeFonction::getParametres() {
     return parametres;
 }
 
+void AppelDeFonction::resolutionPortee(list<string> *pileVariable, map<string,Declaration *> *mapVariable, list<string> *pileFonction) {
+  
+    bool fonctionFound = false;
+    
+    list<string>::iterator it = pileFonction->begin() ;
+    while ( it != pileFonction->end() && fonctionFound == false) {
+
+        if(*it == nom || nom == "putchar" || nom == "getchar") {
+          fonctionFound = true;
+        } 
+        it++;
+        
+    }
+    
+    if(fonctionFound == true) {
+        Fonction *fonction;
+      
+       list<Expression *>::iterator it = parametres->begin() ;
+       while ( it != parametres->end() ) {
+
+            (*it)->resolutionPortee(pileVariable,mapVariable,pileFonction);  
+            it++;
+        }
+      
+    } else {
+        cerr << "ERREUR! fonction <<"+nom+">> non déclarée! " << endl;
+        // exit(0);
+    }
+
+}
+
 void AppelDeFonction::affiche() {
     cout << "AppelDeFonction" << endl;
     cout << nom << "(";
-    //if(!parametres->empty()){
+
     for(auto i = parametres->begin(); i != parametres->end(); i++) {
         (*i)->affiche();
         cout << ", ";
     }
     cout << ")";
-    //}
+
 }
 
 /* Expression Binaire */
@@ -79,6 +167,9 @@ ExprBin::ExprBin(Expression * g, Expression * d, Symbole s) {
     gauche = g;
     droite = d;
     symbole = s;
+}
+
+ExprBin::~ExprBin() {
 }
 
 Expression * ExprBin::getGauche() {
@@ -93,6 +184,11 @@ Symbole ExprBin::getSymbole() {
     return symbole;
 }
 
+void ExprBin::resolutionPortee(list<string> *pileVariable, map<string,Declaration *> *mapVariable, list<string> *pileFonction) {
+    gauche->resolutionPortee(pileVariable, mapVariable, pileFonction);
+    droite->resolutionPortee(pileVariable, mapVariable, pileFonction);
+}
+
 void ExprBin::affiche() {
     gauche->affiche();
     cout << " " << symbolesEtiquettes[symbole] << " ";
@@ -105,12 +201,19 @@ ExprUnaire::ExprUnaire(Expression * e, Symbole s) {
     symbole = s;
 }
 
+ExprUnaire::~ExprUnaire() {
+}
+
 Expression * ExprUnaire::getExpression() {
     return expression;
 }
 
 Symbole ExprUnaire::getSymbole() {
     return symbole;
+}
+
+void ExprUnaire::resolutionPortee(list<string> *pileVariable, map<string,Declaration *> *mapVariable, list<string> *pileFonction) {
+  expression->resolutionPortee(pileVariable, mapVariable, pileFonction);
 }
 
 void ExprUnaire::affiche() {
@@ -142,6 +245,9 @@ void ExprUnaire::affiche() {
 Nombre::Nombre() {
 }
 
+Nombre::~Nombre() {
+}
+
 Nombre::Nombre(int v) {
     valeur = v;
 }
@@ -156,6 +262,9 @@ void Nombre::affiche() {
 
 /* Caractère */
 Caractere::Caractere() {
+}
+
+Caractere::~Caractere() {
 }
 
 Caractere::Caractere(char v) {
@@ -174,6 +283,9 @@ void Caractere::affiche() {
 Variable::Variable() {
 }
 
+Variable::~Variable() {
+}
+
 Variable::Variable(string n) {
     nom = n;
 }
@@ -182,12 +294,17 @@ string Variable::getNom() {
     return nom;
 }
 
+void Variable::setNom(string nom){
+    nom = nom;
+}
+
 void Variable::setInitialise(bool i) {
     initialise = i;
 }
 
 bool Variable::getInitialise () {
     return initialise;
+
 }
 
 /* Tableau */
@@ -264,6 +381,44 @@ string AppelDeVariable::getNom() {
     return nom;
 }
 
+void AppelDeVariable::setNom(string nom){
+    nom = nom;
+}
+
+void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::string,Declaration *> *mapVariable, list<string> *pileFonction) {
+ 
+    string nomVar = this->getNom();
+    bool variableFound = false;
+
+    list<string> pile = *pileVariable;
+    pile.reverse();
+    list<string>::iterator it = pile.begin() ;
+
+    while ( it != pile.end() && variableFound == false ) {
+        
+        string nom = *it;
+        int rawNom = nom.find_first_of('_');
+        nom = nom.substr(rawNom+1); 
+ 
+        if(nom == nomVar) {
+            variableFound = true;
+            this->setNom(*it);
+            map<string, Declaration *>::iterator variableDec = mapVariable->find(*it);
+            if(variableDec != mapVariable->end()) {
+              this->type = variableDec->second->getType();    
+            }
+        }
+ 
+        it++;
+    }
+ 
+    if(variableFound == false) {
+        cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
+        // exit(0);
+    }
+
+}
+
 /* AppelDeTableau */
 AppelDeTableau::AppelDeTableau(string n) : AppelDeVariable(n) {
 }
@@ -324,6 +479,10 @@ void Affectation::affiche() {
     expression->affiche();
 }
 
+void Affectation::resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction) {
+    lValue->resolutionPortee(pileVariable, mapVariable, pileFonction);
+}
+
 /* Structure */
 Structure::Structure() {
 }
@@ -358,6 +517,11 @@ IfElse::IfElse() {
 
 IfElse::IfElse(Expression * e, Instruction * i, Instruction * iElse) : If(e, i) {
     instructionElse = iElse;
+    instruction = i;
+}
+
+Instruction * IfElse::getInstruction() {
+    return instruction;
 }
 
 Instruction * IfElse::getInstructionElse() {

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string>
 #include <list>
+#include <map>
 
 #include "Declaration.h"
 #include "Fonction.h"
@@ -19,9 +20,16 @@ class Programme {
         void affiche();
         list <Declaration*> * getDeclarations();
         list <Fonction*> * getFonctions();
+        
+        map<string, Fonction*> getFonctionsMap();
+        map<string, Declaration*> getVariablesMap();
+        void resolutionPortee();
+        
     private:
 	    list <Declaration*> * declarations;
 	    list <Fonction*> * fonctions;
+	    map<string, Declaration*> mapVariable;
+	    map<string, Fonction*> mapFonction;
 };
 
 

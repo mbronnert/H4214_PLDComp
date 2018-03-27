@@ -57,3 +57,30 @@ list<Declaration*> * Fonction::getDeclarations() {
 Bloc * Fonction::getBloc() {
 	return bloc;
 }
+
+
+void Fonction::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction) {
+      
+    int contextLocal = ++(*contextGlobal);
+    int nivPile = 0;
+    
+    list<Declaration*>::iterator it = declarations->begin() ;
+    while ( it != declarations->end() ) {
+
+        string nomVariable = to_string(contextLocal)+"_"+(*it)->getVariable()->getNom();
+        (*it)->setNomVariable(nomVariable);
+        mapVariable->insert( pair<string,Declaration*>(nomVariable,(*it)) );
+        pileVariable->push_back(nomVariable);
+        nivPile++;
+        
+        it++;
+    }
+        
+    bloc->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
+        
+    while(nivPile > 0) {
+        pileVariable->pop_back();
+        nivPile--;
+    }
+    
+}
