@@ -79,14 +79,14 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/44_IfElseIf.c",
     baseURL + "validPrograms/46_ArrayDec.c",
     baseURL + "validPrograms/47_ArrayUse.c",
-    //baseURL + "validPrograms/49_ArrayFibo.c", TODO: Monsieur on a dit pas de for
+    //baseURL + "validPrograms/49_ArrayFibo.c",      // on ne gère pas les "for"
     baseURL + "validPrograms/50_CharConst.c",
     baseURL + "validPrograms/51_CharConstSpecial.c",
     baseURL + "validPrograms/52_Int64Dec.c",
     baseURL + "validPrograms/53_FunctionCallPutChar.c",
     baseURL + "validPrograms/54_FunctionCallCustom.c",
     baseURL + "validPrograms/55_Return.c",
-    //baseURL + "validPrograms/56_ArrayAsParam.c", TODO: for ma gueule
+    //baseURL + "validPrograms/56_ArrayAsParam.c",   // on ne gère pas les "for"
     baseURL + "validPrograms/57_VarInitialization.c",
     baseURL + "validPrograms/58_MultipleVarDeclarations.c",
     baseURL + "validPrograms/59_MixedDeclarationsInitializations.c",
@@ -143,7 +143,7 @@ void semanticErrorTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-        
+
         //prog->affiche();
         prog->resolutionPortee();
         cout << endl;
@@ -169,7 +169,7 @@ void syntaxErrorTests () {
         prog->resolutionPortee();
         //prog->affiche();
         cout << endl;
-        
+
     }
 }
 
@@ -188,7 +188,7 @@ void validProgramsTests () {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-		
+
         //prog->affiche();
         prog->resolutionPortee();
 

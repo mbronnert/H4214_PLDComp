@@ -4,7 +4,10 @@ using namespace std;
 
 /* IRInstr */
 IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> params) {
-
+	bb = bb_;
+	op = op;
+	t = t;
+	params = params;
 }
 
 IRInstr::~IRInstr() {
@@ -18,15 +21,16 @@ void IRInstr::gen_asm(ostream &o) {
 
 /* BasicBlock */
 BasicBlock::BasicBlock(CFG* cfg, string entry_label) {
-
+	cfg = cfg;
+	label = entry_label;
 }
 
 void BasicBlock::add_IRInstr(IRInstr::Operation op, Type t, vector<string> params){
-
+	instrs.push_back(new IRInstr(this, op, t, params));
 }
 
 void BasicBlock::gen_asm(ostream &o) {
-	string chaine;
+	/*string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
 	for(std::vector<IRInstr>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
@@ -43,13 +47,15 @@ void BasicBlock::gen_asm(ostream &o) {
 				o << chaine << endl;
 			}
 		}
-	}
+	}*/
 }
 
 
 /* Control Flow Graph */
-CFG::CFG(Fonction *ast) {
+CFG::CFG(Fonction * ast) {
+	ast = ast;
 	nextBBnumber = 1;
+	nextFreeSymbolIndex = 0;
 }
 
 CFG::~CFG() {
@@ -57,7 +63,7 @@ CFG::~CFG() {
 }
 
 void CFG::add_bb(BasicBlock *bb) {
-
+	bbs.push_back(bb);
 }
 
 void CFG::gen_asm(ostream& o) {
@@ -84,19 +90,30 @@ void CFG::gen_asm_epilogue(ostream& o) {
 }
 
 void CFG::add_to_symbol_table(string name, Type t) {
-
+	SymbolType.insert(make_pair(name, t));
+	SymbolIndex.insert(make_pair(name, nextFreeSymbolIndex));
+	nextFreeSymbolIndex++;
 }
 
 string CFG::create_new_tempvar(Type t) {
-
+	//TODO : pas compris ce que ça fait
 }
 
 int CFG::get_var_index(string name) {
-
+	for (auto it = SymbolIndex.begin() ; it!=SymbolIndex.end() ; it++) {
+		if (it->first == name) {
+			return it->second;
+		}
+	}
+	return -1;
 }
 
 Type CFG::get_var_type(string name) {
-
+	for (auto it = SymbolType.begin() ; it!=SymbolType.end() ; it++) {
+		if (it->first == name) {
+			return it->second;
+		}
+	}
 }
 
 string CFG::new_BB_name() {

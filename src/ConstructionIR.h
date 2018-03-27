@@ -20,6 +20,10 @@ public:
     void analyseProgramme(Programme * programme);
     void analyseFonction(Fonction * fonction);
     void analyseBloc(Bloc * bloc);
+    void analyseDeclaration(Declaration * declaration);
+    string expressionToIR(Expression * expression);
+    void analyseExprBin(ExprBin * expression);
+
 private:
     list <CFG*> * listeCFG;
     CFG * currentCFG;

@@ -233,28 +233,24 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
         string type = ctx->getText();
         if (type=="char")
-        return (Type) CHAR;
+            return (Type) CHAR;
         else if (type=="int32_t")
-        return (Type) INT32;
-        else if (type=="int64_t")
-        return (Type) INT64;
+            return (Type) INT32;
         else
-        return false; // TODO: cas d'erreur
+            return (Type) INT64;
     }
 
     antlrcpp::Any visitType_function(PLDCOMPParser::Type_functionContext *ctx) override {
         string type = ctx->getText();
 
         if (type=="char")
-        return (Type) CHAR;
+            return (Type) CHAR;
         else if (type=="int32_t")
-        return (Type) INT32;
+            return (Type) INT32;
         else if (type=="int64_t")
-        return (Type) INT64;
-        else if (type=="void")
-        return (Type) VOID;
+            return (Type) INT64;
         else
-        return false;
+            return (Type) VOID;
     }
 
     antlrcpp::Any visitIf(PLDCOMPParser::IfContext *ctx) override {
