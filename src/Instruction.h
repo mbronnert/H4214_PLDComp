@@ -105,7 +105,7 @@ class Caractere : public Expression {
         void affiche();
         int getValeur();
     private:
-        int valeur;
+        char valeur;
 };
 
 class Variable : public Expression {
