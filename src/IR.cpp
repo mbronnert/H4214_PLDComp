@@ -25,6 +25,10 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, Type t, vector<string> param
 
 }
 
+void BasicBlock::gen_asm(ostream &o) {
+
+}
+
 
 /* Control Flow Graph */
 CFG::CFG(DefFonction *ast) {
@@ -40,38 +44,41 @@ void CFG::add_bb(BasicBlock *bb) {
 }
 
 void CFG::gen_asm(ostream& o) {
+	for (std::vector<BasicBlock>::iterator it = bbs.begin() ; it != bbs.end(); ++it)
+	{
+		it.gen_asm(o);
+	}
+}
+
+string CFG::IR_reg_to_asm(string reg) {
 
 }
 
-string IR_reg_to_asm(string reg) {
+void CFG::gen_asm_prologue(ostream& o) {
 
 }
 
-void gen_asm_prologue(ostream& o) {
+void CFG::gen_asm_epilogue(ostream& o) {
 
 }
 
-void gen_asm_epilogue(ostream& o) {
+void CFG::add_to_symbol_table(string name, Type t) {
 
 }
 
-void add_to_symbol_table(string name, Type t) {
+string CFG::create_new_tempvar(Type t) {
 
 }
 
-string create_new_tempvar(Type t) {
+int CFG::get_var_index(string name) {
 
 }
 
-int get_var_index(string name) {
+Type CFG::get_var_type(string name) {
 
 }
 
-Type get_var_type(string name) {
-
-}
-
-string new_BB_name() {
+string CFG::new_BB_name() {
   
 }
 
