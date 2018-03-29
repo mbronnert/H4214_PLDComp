@@ -14,10 +14,11 @@
 
 using namespace std;
 
+enum TypeNoeud { BREAK=0, RETURN=1, EXPR=2, EXPRBIN=3, EXPRUNAIRE=4, APPELFONC=5, DECLARATION=6, AFFECTATION=7, VARIABLE=8, NOMBRE=9, CARACTERE=10, APPELVAR=11, IF=12, IFELSE=13, WHILE=14, BLOC=15 };
+
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, PAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PPEXP, MMEXP, EXPPP, EXPMM, XOREQ, OREQ, ANDEQ, MODEQ, DIVEQ, MULTEQ, MOINSEQ, ADDEQ, INVERT, NEGATION, COMMA };
 
-const string symbolesEtiquettes[] = { "+", "*", "-", "/", "%", "()", "<", "≤", ">", "≥", "!", "==", "!=", "&&", "||", "&", "|", "^",
-                                    "<<", ">>", "=", "++", "--", "++", "--", "|=", "&=", "%=", "/=", "*=", "-=", "+=", "!", "!", ","};
+const string symbolesEtiquettes[] = { "+", "*", "-", "/", "%", "()", "<", "≤", ">", "≥", "!", "==", "!=", "&&", "||", "&", "|", "^", "<<", ">>", "=", "++", "--", "++", "--", "|=", "&=", "%=", "/=", "*=", "-=", "+=", "!", "!", ","};
 
 const string typeEtiquettes[] =  { "char", "int32_t", "int64_t", "void" };
 
@@ -28,6 +29,7 @@ class Instruction {
         Instruction();
         ~Instruction() ;
         virtual void affiche() = 0;
+        virtual TypeNoeud typeNoeud() = 0;
 };
 
 
@@ -36,6 +38,7 @@ class Break : public Instruction {
         Break();
         ~Break();
         void affiche();
+        TypeNoeud typeNoeud();
 };
 
 class Return : public Instruction {
@@ -43,6 +46,7 @@ class Return : public Instruction {
         Return(Expression * e);
         ~Return();
         void affiche();
+        TypeNoeud typeNoeud();
     private:
         Expression * expression;
 };
@@ -55,6 +59,7 @@ class Bloc : public Instruction {
         list <Instruction*> * getInstructions();
         void resolutionPortee(int *contextGlobal,list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
         void affiche();
+        TypeNoeud typeNoeud();
       private:
         list <Instruction*> * instructions;
 };
@@ -65,6 +70,11 @@ class Expression : public Instruction {
         ~Expression();
         virtual void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction)=0;
         virtual void affiche() = 0;
+        virtual void typage() = 0;
+        Type getType();
+        virtual TypeNoeud typeNoeud() = 0;
+    protected:
+        Type type;
 };
 
 class AppelDeFonction : public Expression {
@@ -75,6 +85,8 @@ class AppelDeFonction : public Expression {
         void affiche();
         list <Expression*> * getParametres();
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+        TypeNoeud typeNoeud();
+        void typage(){};
     private:
         string nom;
         list <Expression*> * parametres;
@@ -85,10 +97,12 @@ class ExprBin : public Expression {
         ExprBin(Expression * g, Expression * d, Symbole s);
         ~ExprBin();
         void affiche();
+        void typage();
         Expression * getGauche();
         Expression * getDroite();
         Symbole getSymbole();
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+        TypeNoeud typeNoeud();
     private:
         Expression * gauche;
         Expression * droite;
@@ -100,9 +114,11 @@ class ExprUnaire : public Expression {
         ExprUnaire(Expression * e, Symbole s);
         ~ExprUnaire();
         void affiche();
+        void typage();
         Expression * getExpression();
         Symbole getSymbole();
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+        TypeNoeud typeNoeud();
     private:
         Expression * expression; //TODO: c'est pas plutot une variable ?
         Symbole symbole;
@@ -116,6 +132,8 @@ class Nombre : public Expression {
         void affiche();
         int getValeur();
 	    void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
+        TypeNoeud typeNoeud();
+        void typage(){};
     private:
         int valeur;
 };
@@ -128,6 +146,8 @@ class Caractere : public Expression {
         void affiche();
         int getValeur();
 	    void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
+        TypeNoeud typeNoeud();
+        void typage(){};
     private:
         char valeur;
 };
@@ -143,6 +163,8 @@ class Variable : public Expression {
         void setInitialise(bool i);
         bool getInitialise();
 	    void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction){};
+        TypeNoeud typeNoeud();
+        void typage(){};
     protected:
         string nom;
         bool initialise;
@@ -182,6 +204,8 @@ class AppelDeVariable : public Expression {
         void setNom(string nom);
         virtual void affiche() = 0;
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+        TypeNoeud typeNoeud();
+        void typage(){};
     protected:
         string nom;
         Type type;
@@ -219,6 +243,8 @@ class Affectation : public Expression {
         void affiche();
         Expression * getExpression();
 		void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
+        TypeNoeud typeNoeud();
+        void typage(){};
     private:
         AppelDeVariable * lValue;
         Expression * expression;
@@ -228,6 +254,7 @@ class Structure : public Instruction {
     public:
         Structure();
         virtual void affiche() = 0;
+        virtual TypeNoeud typeNoeud() = 0;
     private:
 };
 
@@ -238,6 +265,7 @@ class If : public Structure {
         Expression * getCondition();
         Instruction * getInstruction();
         void affiche();
+        TypeNoeud typeNoeud();
     protected:
         Expression * condition;
         Instruction * instruction;
@@ -250,6 +278,7 @@ class IfElse : public If {
         Instruction * getInstructionElse();
         Instruction * getInstruction();
         void affiche();
+        TypeNoeud typeNoeud();
     private:
         Instruction * instructionElse;
         Instruction * instruction;
@@ -262,6 +291,7 @@ class While : public Structure {
         Expression * getCondition();
         Instruction * getInstruction();
         void affiche();
+        TypeNoeud typeNoeud();
     private:
         Expression * condition;
         Instruction * instruction;

@@ -5,8 +5,15 @@ ConstructionIR::ConstructionIR(list <CFG*> * l, BasicBlock * b) {
     currentBB = b;
 }
 
+ConstructionIR::~ConstructionIR(){
+
+}
+
 void ConstructionIR::analyseProgramme(Programme * programme) {
     // TODO : faire les déclarations
+    for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
+        analyseDeclaration((Declaration *)(*it));
+    }
 
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
         CFG * cfg = new CFG(*it);
@@ -37,13 +44,42 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
 
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        // TypeNoeud typeNoeud = (*it)->getTypeNoeud();
-        // switch (typeNoeud) {
-        //     case TypeNoeud::exprBin :
-        //         analyseExprBin((ExprBin *)(*it));
-        //         break;
-        //     // TODO: autres cas
-        // }
+        TypeNoeud typeNoeud = (*it)->typeNoeud();
+        switch (typeNoeud) {
+            case TypeNoeud::EXPRBIN :
+                analyseExprBin((ExprBin *)(*it));
+                break;
+            case TypeNoeud::RETURN :
+                break;
+            case TypeNoeud::BREAK :
+                break;
+            case TypeNoeud::EXPR :
+                break;
+            case TypeNoeud::EXPRUNAIRE :
+                break;
+            case TypeNoeud::APPELFONC :
+                break;
+            case TypeNoeud::DECLARATION :
+                break;
+            case TypeNoeud::AFFECTATION :
+                break;
+            case TypeNoeud::VARIABLE :
+                break;
+            case TypeNoeud::NOMBRE :
+                break;
+            case TypeNoeud::CARACTERE :
+                break;
+            case TypeNoeud::APPELVAR :
+                break;
+            case TypeNoeud::IF :
+                break;
+            case TypeNoeud::IFELSE :
+                break;
+            case TypeNoeud::WHILE :
+                break;
+            case TypeNoeud::BLOC :
+                break;
+        }
     }
 }
 
@@ -52,13 +88,42 @@ void ConstructionIR::analyseDeclaration(Declaration * declaration) {
 }
 
 string ConstructionIR::expressionToIR(Expression * expression) {
-    // TypeNoeud typeNoeud = expression->getTypeNoeud();
-    // switch (typeNoeud) {
-    //     case TypeNoeud::exprBin :
-    //         analyseExprBin((ExprBin *) expression);
-    //         break;
-    //     // TODO: autres cas
-    // }
+    TypeNoeud typeNoeud = expression->typeNoeud();
+    switch (typeNoeud) {
+        case TypeNoeud::EXPRBIN :
+            analyseExprBin((ExprBin *) expression);
+            break;
+        case TypeNoeud::EXPRUNAIRE :
+            break;
+        case TypeNoeud::EXPR :
+            break;
+        case TypeNoeud::APPELFONC :
+            break;
+        case TypeNoeud::DECLARATION :
+            break;
+        case TypeNoeud::AFFECTATION :
+            break;
+        case TypeNoeud::VARIABLE :
+            break;
+        case TypeNoeud::NOMBRE :
+            break;
+        case TypeNoeud::CARACTERE :
+            break;
+        case TypeNoeud::APPELVAR :
+            break;
+        case TypeNoeud::IF :
+            break;
+        case TypeNoeud::IFELSE :
+            break;
+        case TypeNoeud::WHILE :
+            break;
+        case TypeNoeud::BLOC :
+            break;
+        case TypeNoeud::RETURN :
+            break;
+        case TypeNoeud::BREAK :
+            break;
+    }
 }
 
 void ConstructionIR::analyseExprBin(ExprBin * expression) {

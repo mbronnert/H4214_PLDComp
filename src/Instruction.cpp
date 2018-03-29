@@ -15,6 +15,9 @@ void Break::affiche() {
     cout << "Break";
 }
 
+TypeNoeud Break::typeNoeud() {
+    return TypeNoeud::BREAK;
+}
 
 /* Return */
 Return::Return(Expression * e) {
@@ -25,6 +28,10 @@ Return::~Return() {}
 void Return::affiche() {
     cout << "Return ";
     expression->affiche();
+}
+
+TypeNoeud Return::typeNoeud() {
+    return TypeNoeud::RETURN;
 }
 
 /* Block */
@@ -96,10 +103,18 @@ void Bloc::affiche() {
 
 }
 
+TypeNoeud Bloc::typeNoeud() {
+    return TypeNoeud::BLOC;
+}
+
 /* Expression */
 Expression::Expression() {
 }
 Expression::~Expression() {
+}
+
+Type Expression::getType() {
+    return type;
 }
 
 /* Appel De Fonction */
@@ -162,6 +177,10 @@ void AppelDeFonction::affiche() {
 
 }
 
+TypeNoeud AppelDeFonction::typeNoeud() {
+    return TypeNoeud::APPELFONC;
+}
+
 /* Expression Binaire */
 ExprBin::ExprBin(Expression * g, Expression * d, Symbole s) {
     gauche = g;
@@ -193,6 +212,57 @@ void ExprBin::affiche() {
     gauche->affiche();
     cout << " " << symbolesEtiquettes[symbole] << " ";
     droite->affiche();
+}
+
+TypeNoeud ExprBin::typeNoeud() {
+    return TypeNoeud::EXPRBIN;
+}
+
+void ExprBin::typage() {
+    gauche->typage();
+    droite->typage();
+      
+    Type typeGauche = gauche->getType();
+    Type typeDroite = droite->getType();  
+    Type typeExpr;
+      
+    if(symbole == EQUAL) {
+        typeExpr = typeDroite;
+        
+    } else if(symbole == ADD || symbole == MULT || symbole == MOINS || symbole == DIV || symbole == MOD || symbole == ADDEQ || symbole == MULTEQ || symbole == MOINSEQ || symbole == DIVEQ || symbole == MODEQ) {
+        
+        if(typeGauche == INT64 && typeDroite == INT64) {
+            typeExpr = INT64;
+
+        } else if((typeGauche == INT64 && typeDroite == INT32) || (typeGauche == INT32 && typeDroite == INT64)) {
+            typeExpr = INT64;
+
+        } else if((typeGauche == INT64 && typeDroite == CHAR) || (typeGauche == CHAR && typeDroite == INT64)) {
+            typeExpr = INT64;
+
+        } else if(typeGauche == INT32 && typeDroite == INT32) {
+            typeExpr = INT32;
+
+        } else if((typeGauche == CHAR && typeDroite == INT32) || (typeGauche == INT32 && typeDroite == CHAR)) {
+            typeExpr = INT32;
+
+        } else if(typeGauche == CHAR && typeDroite == CHAR) {
+            typeExpr = CHAR;
+
+        } 
+        
+    } else if(symbole == ANDB || symbole == ORB || symbole == EQUALB || symbole == INF || symbole == INFS || symbole == SUP || symbole == SUPS || symbole == ANDEQ || symbole == OREQ || symbole == DIFF) {
+        typeExpr = INT32;
+        
+    } else if(symbole == AND || symbole == OR || symbole == POW) {
+        typeExpr = INT64;
+      
+    } else if(symbole == DECG || symbole == DECD) {
+        typeExpr = typeGauche;
+        
+    }
+      
+    this->type = typeExpr;
 }
 
 /* Expression unaire */
@@ -241,6 +311,15 @@ void ExprUnaire::affiche() {
     //
 }
 
+void ExprUnaire::typage() {
+    expression->typage();
+    this->type = expression->getType();
+}
+
+TypeNoeud ExprUnaire::typeNoeud() {
+    return TypeNoeud::EXPRUNAIRE;
+}
+
 /* Nombre */
 Nombre::Nombre() {
 }
@@ -260,6 +339,10 @@ void Nombre::affiche() {
     cout << valeur;
 }
 
+TypeNoeud Nombre::typeNoeud() {
+    return TypeNoeud::NOMBRE;
+}
+
 /* Caractère */
 Caractere::Caractere() {
 }
@@ -277,6 +360,10 @@ int Caractere::getValeur() {
 
 void Caractere::affiche() {
     cout << "Caractere : " << valeur;
+}
+
+TypeNoeud Caractere::typeNoeud() {
+    return TypeNoeud::CARACTERE;
 }
 
 /* Variable */
@@ -305,6 +392,10 @@ void Variable::setInitialise(bool i) {
 bool Variable::getInitialise () {
     return initialise;
 
+}
+
+TypeNoeud Variable::typeNoeud() {
+    return TypeNoeud::VARIABLE;
 }
 
 /* Tableau */
@@ -419,6 +510,10 @@ void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::stri
 
 }
 
+TypeNoeud AppelDeVariable::typeNoeud() {
+    return TypeNoeud::APPELVAR;
+}
+
 /* AppelDeTableau */
 AppelDeTableau::AppelDeTableau(string n) : AppelDeVariable(n) {
 }
@@ -483,6 +578,10 @@ void Affectation::resolutionPortee(list<string> *pileVariable, map<string, Decla
     lValue->resolutionPortee(pileVariable, mapVariable, pileFonction);
 }
 
+TypeNoeud Affectation::typeNoeud() {
+    return TypeNoeud::AFFECTATION;
+}
+
 /* Structure */
 Structure::Structure() {
 }
@@ -512,6 +611,10 @@ void If::affiche() {
     cout << endl;
 }
 
+TypeNoeud If::typeNoeud() {
+    return TypeNoeud::IF;
+}
+
 IfElse::IfElse() {
 }
 
@@ -532,6 +635,10 @@ void IfElse::affiche() {
     cout << "else ";
     instructionElse->affiche();
     cout << endl;
+}
+
+TypeNoeud IfElse::typeNoeud() {
+    return TypeNoeud::IFELSE;
 }
 
 /* WHILE */
@@ -557,4 +664,8 @@ void While::affiche() {
     cout << ") ";
     instruction->affiche();
     cout << endl;
+}
+
+TypeNoeud While::typeNoeud() {
+    return TypeNoeud::WHILE;
 }
