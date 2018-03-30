@@ -16,7 +16,39 @@ IRInstr::~IRInstr() {
 
 void IRInstr::gen_asm(ostream &o) {
 	string chaine;
-	//switch()
+	switch(op){
+		case ldconst:
+			break;
+		case add:
+			chaine = "movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "addq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "movq %rax, "+to_string(this->bb->cfg->get_var_index(params[0])) +"(%rbp)";
+			o << chaine << endl;
+			break;
+		case sub:
+			break;
+		case mul:
+			break;
+		case rmem:
+			break;
+		case wmem:
+			break;
+		case call:
+			break;
+		case cmp_eq:
+			break;
+		case cmp_lt:
+			break;
+		case cmp_le:
+			break;
+		case ret:
+			break;
+		case copy:
+			break;
+		
+	}
 }
 
 
@@ -69,10 +101,12 @@ void CFG::add_bb(BasicBlock *bb) {
 
 
 void CFG::gen_asm(ostream& o) {
+	gen_asm_prologue(o);
 	for (vector<BasicBlock*>::iterator it = bbs.begin() ; it != bbs.end(); ++it)
 	{
 		(*it)->gen_asm(o);
 	}
+	gen_asm_epilogue(o);
 }
 
 string CFG::IR_reg_to_asm(string reg) {
