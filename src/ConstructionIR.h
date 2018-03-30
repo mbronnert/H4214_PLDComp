@@ -31,7 +31,6 @@ public:
 private:
     list <CFG*> * listeCFG;
     CFG * currentCFG;
-    BasicBlock * currentBB;
 };
 
 #endif

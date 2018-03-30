@@ -2,17 +2,11 @@
 
 ConstructionIR::ConstructionIR(list <CFG*> * l, BasicBlock * b) {
     listeCFG = l;
-    currentBB = b;
-}
-
-ConstructionIR::~ConstructionIR(){
-
+    currentCFG->currentBB = b;
 }
 
 void ConstructionIR::analyseProgramme(Programme * programme) {
-    for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
-        analyseDeclaration((Declaration *)(*it));
-    }
+    // TODO : faire les déclarations
 
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
         CFG * cfg = new CFG(*it);
@@ -34,95 +28,23 @@ void ConstructionIR::analyseFonction(Fonction * fonction) {
     // Analyse du bloc
     BasicBlock * prologue = new BasicBlock (currentCFG, fonction->getNom());
     currentCFG->add_bb(prologue);
-    currentBB = prologue;
+    currentCFG->currentBB = prologue;
     analyseBloc(fonction->getBloc());
 
 }
 
 void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
+
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        
-        TypeNoeud typeInstr = (*it)->typeNoeud();
-        switch (typeInstr) {
-            case TypeNoeud::APPELFONC :
-                analyseAppelDeFonction((AppelDeFonction *)(*it));
-                break;
-            case TypeNoeud::AFFECTATION :
-                analyseAffectation((Affectation *)(*it));
-                break;
-            case TypeNoeud::RETURN :
-                analyseReturn((Return *)(*it));
-                break;
-            case TypeNoeud::EXPRBIN :
-                break;
-            case TypeNoeud::EXPRUNAIRE :
-                break;
-            case TypeNoeud::EXPR :
-                break;
-            case TypeNoeud::DECLARATION :
-                break;
-            case TypeNoeud::VARIABLE :
-                break;
-            case TypeNoeud::NOMBRE :
-                break;
-            case TypeNoeud::CARACTERE :
-                break;
-            case TypeNoeud::APPELVAR :
-                break;
-            case TypeNoeud::IF :
-                break;
-            case TypeNoeud::IFELSE :
-                break;
-            case TypeNoeud::WHILE :
-                break;
-            case TypeNoeud::BLOC :
-                break;
-            case TypeNoeud::BREAK :
-                break;
-
-        }
+        // TypeNoeud typeNoeud = (*it)->typeNoeud();
+        // switch (typeNoeud) {
+        //     case TypeNoeud::exprBin :
+        //         analyseExprBin((ExprBin *)(*it));
+        //         break;
+        //     // TODO: autres cas
+        // }
     }
-}
-
-void ConstructionIR::analyseAffectation(Affectation * affectation) {  
-    Expression* expression = affectation->getExpression();
-    string resultatAffectation;
-    vector<string> params;
-    string nomVariable = affectation->getNomVariable();
-    resultatAffectation = expressionToIR(expression);
-    params.push_back(resultatAffectation);
-    params.push_back(nomVariable);
-    currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
-
-}
-
-void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
-    list<Expression*> * parametres = appelDeFonction->getParametres();
-    if(parametres) {
-        TypeNoeud typeInstr;
-        vector<string> listParametre;
-        listParametre.push_back(appelDeFonction->getNom());
-
-        for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
-            string nom;
-            nom = expressionToIR(*it);
-            listParametre.push_back(nom);
-        }
-
-        currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);   
-    }
-}
-
-void ConstructionIR::analyseReturn(Return * retour) {
-    Expression* expression = retour->getReturnExpression();
-    TypeNoeud typeInstr;
-    string resultatReturn;
-    vector<string> params;
-    typeInstr = expression->typeNoeud();
-    resultatReturn = expressionToIR(expression);
-    params.push_back(resultatReturn);
-    currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
 }
 
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
@@ -130,42 +52,30 @@ void ConstructionIR::analyseDeclaration(Declaration * declaration) {
 }
 
 string ConstructionIR::expressionToIR(Expression * expression) {
+    string chaine;
     TypeNoeud typeNoeud = expression->typeNoeud();
+    Nombre * nombre;
+    Caractere * caractere;
+    Variable * variable;
     switch (typeNoeud) {
         case TypeNoeud::EXPRBIN :
             analyseExprBin((ExprBin *) expression);
             break;
-        case TypeNoeud::EXPRUNAIRE :
-            break;
-        case TypeNoeud::EXPR :
-            break;
-        case TypeNoeud::APPELFONC :
-            break;
-        case TypeNoeud::DECLARATION :
-            break;
-        case TypeNoeud::AFFECTATION :
-            break;
-        case TypeNoeud::VARIABLE :
-            break;
         case TypeNoeud::NOMBRE :
+            nombre = (Nombre *) expression;
+            chaine = to_string(nombre->getValeur());
             break;
         case TypeNoeud::CARACTERE :
+            caractere = (Caractere *) expression;
+            chaine = to_string(caractere->getValeur());
             break;
-        case TypeNoeud::APPELVAR :
+        case TypeNoeud::VARIABLE :
+            variable = (Variable *) expression;
+            chaine = variable->getNom(); // TODO : vérifier que c'est bien le nom de la variable qu'on veut
             break;
-        case TypeNoeud::IF :
-            break;
-        case TypeNoeud::IFELSE :
-            break;
-        case TypeNoeud::WHILE :
-            break;
-        case TypeNoeud::BLOC :
-            break;
-        case TypeNoeud::RETURN :
-            break;
-        case TypeNoeud::BREAK :
-            break;
+            //TODO : tous les autres types
     }
+    return chaine;
 }
 
 void ConstructionIR::analyseExprBin(ExprBin * expression) {
@@ -176,22 +86,24 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
 
     resultatGauche = expressionToIR(expression->getGauche());
     resultatDroite = expressionToIR(expression->getDroite());
-    // TODO : il faut ajouter le "d" du commentaire des params
+    expression->typage();
+    string tempVar = currentCFG->create_new_tempvar(expression->getType());
 
+    params.push_back(tempVar);
     params.push_back(resultatGauche);
     params.push_back(resultatDroite);
 
     switch (expression->getSymbole()) {
         case ADD:
-        currentBB->add_IRInstr(IRInstr::Operation::add, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::add, Type::INT64, params);
         break;
         case MULT:
-        currentBB->add_IRInstr(IRInstr::Operation::mul, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::mul, Type::INT64, params);
         break;
         case MOINS:
-        currentBB->add_IRInstr(IRInstr::Operation::sub, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::sub, Type::INT64, params);
         break;
-        case DIV: //TODO : ajouter les autres types d'opération
+        case DIV:
         break;
         case MOD:
         break;
