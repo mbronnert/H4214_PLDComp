@@ -16,7 +16,7 @@ IRInstr::~IRInstr() {
 
 void IRInstr::gen_asm(ostream &o) {
 	string chaine;
-	switch()
+	//switch()
 }
 
 
@@ -31,7 +31,7 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, Type t, vector<string> param
 }
 
 void BasicBlock::gen_asm(ostream &o) {
-	/*string chaine;
+	string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
 	for(std::vector<IRInstr>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
@@ -40,15 +40,15 @@ void BasicBlock::gen_asm(ostream &o) {
 			if(exit_true == nullptr){
 				return;
 			}
-			if(exit_false != nullptr){
+			/*if(exit_false != nullptr){
 				//jouer sur les flags en fonction du type de comparaison
 				chaine = "" + exit_true.label;
 				o << chaine << endl;
 				chaine = "" + exit_false.label;
 				o << chaine << endl;
-			}
+			}*/
 		}
-	}*/
+	}
 }
 
 
@@ -66,6 +66,7 @@ CFG::~CFG() {
 void CFG::add_bb(BasicBlock *bb) {
 	bbs.push_back(bb);
 }
+
 
 void CFG::gen_asm(ostream& o) {
 	for (vector<BasicBlock*>::iterator it = bbs.begin() ; it != bbs.end(); ++it)
