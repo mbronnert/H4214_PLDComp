@@ -131,6 +131,7 @@ class CFG {
   map <string, int> SymbolIndex; /**< part of the symbol table  */
   int nextFreeSymbolIndex; /**< to allocate new symbols in the symbol table */
   int nextBBnumber; /**< just for naming */
+  int nextTempvar;
 
   vector <BasicBlock*> bbs; /**< all the basic blocks of this CFG*/
 };

@@ -57,6 +57,7 @@ CFG::CFG(Fonction * ast) {
 	ast = ast;
 	nextBBnumber = 1;
 	nextFreeSymbolIndex = 0;
+	nextTempvar = 0;
 }
 
 CFG::~CFG() {
@@ -108,7 +109,9 @@ void CFG::add_to_symbol_table(string name, Type t) {
 }
 
 string CFG::create_new_tempvar(Type t) {
-	//TODO : pas compris ce que ça fait
+	add_to_symbol_table("temp"+to_string(nextTempvar), t);
+	return "temp"+to_string(nextTempvar++);
+	//TODO : vérifier
 }
 
 int CFG::get_var_index(string name) {

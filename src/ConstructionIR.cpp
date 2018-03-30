@@ -37,7 +37,7 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
 
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        // TypeNoeud typeNoeud = (*it)->getTypeNoeud();
+        // TypeNoeud typeNoeud = (*it)->typeNoeud();
         // switch (typeNoeud) {
         //     case TypeNoeud::exprBin :
         //         analyseExprBin((ExprBin *)(*it));
@@ -52,13 +52,30 @@ void ConstructionIR::analyseDeclaration(Declaration * declaration) {
 }
 
 string ConstructionIR::expressionToIR(Expression * expression) {
-    // TypeNoeud typeNoeud = expression->getTypeNoeud();
-    // switch (typeNoeud) {
-    //     case TypeNoeud::exprBin :
-    //         analyseExprBin((ExprBin *) expression);
-    //         break;
-    //     // TODO: autres cas
-    // }
+    string chaine;
+    TypeNoeud typeNoeud = expression->typeNoeud();
+    Nombre * nombre;
+    Caractere * caractere;
+    Variable * variable;
+    switch (typeNoeud) {
+        case TypeNoeud::EXPRBIN :
+            analyseExprBin((ExprBin *) expression);
+            break;
+        case TypeNoeud::NOMBRE :
+            nombre = (Nombre *) expression;
+            chaine = to_string(nombre->getValeur());
+            break;
+        case TypeNoeud::CARACTERE :
+            caractere = (Caractere *) expression;
+            chaine = to_string(caractere->getValeur());
+            break;
+        case TypeNoeud::VARIABLE :
+            variable = (Variable *) expression;
+            chaine = variable->getNom(); // TODO : vérifier que c'est bien le nom de la variable qu'on veut
+            break;
+            //TODO : tous les autres types
+    }
+    return chaine;
 }
 
 void ConstructionIR::analyseExprBin(ExprBin * expression) {
@@ -70,9 +87,9 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
     resultatGauche = expressionToIR(expression->getGauche());
     resultatDroite = expressionToIR(expression->getDroite());
     expression->typage();
-    currentCFG->create_new_tempvar(expression->getType());
-    // TODO : il faut ajouter le "d" du commentaire des params
+    string tempVar = currentCFG->create_new_tempvar(expression->getType());
 
+    params.push_back(tempVar);
     params.push_back(resultatGauche);
     params.push_back(resultatDroite);
 
