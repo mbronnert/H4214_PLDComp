@@ -21,8 +21,12 @@ public:
     void analyseFonction(Fonction * fonction);
     void analyseBloc(Bloc * bloc);
     void analyseDeclaration(Declaration * declaration);
-    string expressionToIR(Expression * expression);
     void analyseExprBin(ExprBin * expression);
+    void analyseAffectation(Affectation * affectation);
+    void analyseAppelDeFonction(AppelDeFonction * appelDeFonction);
+    void analyseReturn(Return * retour);
+
+    string expressionToIR(Expression * expression);
 
 private:
     list <CFG*> * listeCFG;

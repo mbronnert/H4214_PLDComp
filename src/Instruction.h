@@ -14,7 +14,7 @@
 
 using namespace std;
 
-enum TypeNoeud { BREAK=0, RETURN=1, EXPR=2, EXPRBIN=3, EXPRUNAIRE=4, APPELFONC=5, DECLARATION=6, AFFECTATION=7, VARIABLE=8, NOMBRE=9, CARACTERE=10, APPELVAR=11, IF=12, IFELSE=13, WHILE=14, BLOC=15 };
+enum TypeNoeud { BREAK, RETURN, EXPR, EXPRBIN, EXPRUNAIRE, APPELFONC, DECLARATION, AFFECTATION, VARIABLE, NOMBRE, CARACTERE, APPELVAR, IF, IFELSE, WHILE, BLOC };
 
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, PAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PPEXP, MMEXP, EXPPP, EXPMM, XOREQ, OREQ, ANDEQ, MODEQ, DIVEQ, MULTEQ, MOINSEQ, ADDEQ, INVERT, NEGATION, COMMA };
 
@@ -45,6 +45,7 @@ class Return : public Instruction {
     public:
         Return(Expression * e);
         ~Return();
+        Expression * getReturnExpression();
         void affiche();
         TypeNoeud typeNoeud();
     private:
@@ -242,6 +243,7 @@ class Affectation : public Expression {
         AppelDeVariable * getLValue();
         void affiche();
         Expression * getExpression();
+        string getNomVariable();
 		void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
         TypeNoeud typeNoeud();
         void typage(){};
