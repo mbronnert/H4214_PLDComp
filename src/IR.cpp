@@ -15,7 +15,8 @@ IRInstr::~IRInstr() {
 }
 
 void IRInstr::gen_asm(ostream &o) {
-
+	string chaine;
+	switch()
 }
 
 
@@ -30,7 +31,7 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, Type t, vector<string> param
 }
 
 void BasicBlock::gen_asm(ostream &o) {
-	/*string chaine;
+	string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
 	for(std::vector<IRInstr>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
@@ -47,7 +48,7 @@ void BasicBlock::gen_asm(ostream &o) {
 				o << chaine << endl;
 			}
 		}
-	}*/
+	}
 }
 
 
@@ -78,10 +79,20 @@ string CFG::IR_reg_to_asm(string reg) {
 	//assignation tailles variables
 }
 
+//On push le base pointeur et on adapte le stack pointeur à la taille des variables
 void CFG::gen_asm_prologue(ostream& o) {
-
+	string chaine = "_" + ast->getNom() + ":";
+	o<< chaine << endl;
+	chaine = "pushq %rbp";
+	o<< chaine << endl;
+	chaine = "movq	%rsp, %rbp";
+	o<< chaine << endl;
+	int tailleMax = 8*(SymbolIndex.size()+1);
+	chaine = "subq $"+to_string(tailleMax)+", %rsp";
+	o<< chaine << endl;
 }
 
+//On remet le base pointeur et le stack pointeur au niveau de la fonction d'avant
 void CFG::gen_asm_epilogue(ostream& o) {
 	string chaine = "leave";
 	o << chaine << endl;
