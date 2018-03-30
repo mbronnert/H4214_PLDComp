@@ -16,6 +16,12 @@ class CFG;
 
 using namespace std;
 
+/*
+ * Code assembleur:
+ * jle = jump si less or equal
+ * jne = jump si not equal
+ * jmp saut non conditionnel
+ * */
 
 class IRInstr {
 
@@ -26,12 +32,12 @@ class IRInstr {
     add,
     sub,
     mul,
-    rmem,
-    wmem,
+    rmem,   //read mem
+    wmem,	//write mem
     call,
-    cmp_eq,
-    cmp_lt,
-    cmp_le,
+    cmp_eq, //compare equal
+    cmp_lt, //compare less than
+    cmp_le,  //compare less or equal
     ret,
     copy
   } Operation;
