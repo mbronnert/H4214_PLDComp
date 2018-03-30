@@ -6,6 +6,7 @@ Instruction::Instruction() {
 }
 Instruction::~Instruction() {
 }
+
 /* Break */
 Break::Break() {
 }
@@ -32,6 +33,10 @@ void Return::affiche() {
 
 TypeNoeud Return::typeNoeud() {
     return TypeNoeud::RETURN;
+}
+
+Expression * Return::getReturnExpression() {
+    return expression;
 }
 
 /* Block */
@@ -566,6 +571,10 @@ AppelDeVariable * Affectation::getLValue() {
 
 Expression * Affectation::getExpression() {
     return expression;
+}
+
+string Affectation::getNomVariable() {
+    return lValue->getNom();
 }
 
 void Affectation::affiche() {

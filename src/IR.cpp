@@ -31,7 +31,7 @@ void BasicBlock::add_IRInstr(IRInstr::Operation op, Type t, vector<string> param
 }
 
 void BasicBlock::gen_asm(ostream &o) {
-	string chaine;
+	/*string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
 	for(std::vector<IRInstr>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
@@ -48,7 +48,7 @@ void BasicBlock::gen_asm(ostream &o) {
 				o << chaine << endl;
 			}
 		}
-	}
+	}*/
 }
 
 

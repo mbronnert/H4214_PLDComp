@@ -37,7 +37,9 @@ class IRInstr {
     call,
     cmp_eq, //compare equal
     cmp_lt, //compare less than
-    cmp_le  //compare less or equal
+    cmp_le,  //compare less or equal
+    ret,
+    copy
   } Operation;
 
 

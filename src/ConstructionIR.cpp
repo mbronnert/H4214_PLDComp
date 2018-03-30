@@ -10,7 +10,6 @@ ConstructionIR::~ConstructionIR(){
 }
 
 void ConstructionIR::analyseProgramme(Programme * programme) {
-    // TODO : faire les déclarations
     for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
         analyseDeclaration((Declaration *)(*it));
     }
@@ -42,26 +41,26 @@ void ConstructionIR::analyseFonction(Fonction * fonction) {
 
 void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
-
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        TypeNoeud typeNoeud = (*it)->typeNoeud();
-        switch (typeNoeud) {
-            case TypeNoeud::EXPRBIN :
-                analyseExprBin((ExprBin *)(*it));
+        
+        TypeNoeud typeInstr = (*it)->typeNoeud();
+        switch (typeInstr) {
+            case TypeNoeud::APPELFONC :
+                analyseAppelDeFonction((AppelDeFonction *)(*it));
+                break;
+            case TypeNoeud::AFFECTATION :
+                analyseAffectation((Affectation *)(*it));
                 break;
             case TypeNoeud::RETURN :
+                analyseReturn((Return *)(*it));
                 break;
-            case TypeNoeud::BREAK :
-                break;
-            case TypeNoeud::EXPR :
+            case TypeNoeud::EXPRBIN :
                 break;
             case TypeNoeud::EXPRUNAIRE :
                 break;
-            case TypeNoeud::APPELFONC :
+            case TypeNoeud::EXPR :
                 break;
             case TypeNoeud::DECLARATION :
-                break;
-            case TypeNoeud::AFFECTATION :
                 break;
             case TypeNoeud::VARIABLE :
                 break;
@@ -79,8 +78,51 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
                 break;
             case TypeNoeud::BLOC :
                 break;
+            case TypeNoeud::BREAK :
+                break;
+
         }
     }
+}
+
+void ConstructionIR::analyseAffectation(Affectation * affectation) {  
+    Expression* expression = affectation->getExpression();
+    string resultatAffectation;
+    vector<string> params;
+    string nomVariable = affectation->getNomVariable();
+    resultatAffectation = expressionToIR(expression);
+    params.push_back(resultatAffectation);
+    params.push_back(nomVariable);
+    currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
+
+}
+
+void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
+    list<Expression*> * parametres = appelDeFonction->getParametres();
+    if(parametres) {
+        TypeNoeud typeInstr;
+        vector<string> listParametre;
+        listParametre.push_back(appelDeFonction->getNom());
+
+        for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
+            string nom;
+            nom = expressionToIR(*it);
+            listParametre.push_back(nom);
+        }
+
+        currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);   
+    }
+}
+
+void ConstructionIR::analyseReturn(Return * retour) {
+    Expression* expression = retour->getReturnExpression();
+    TypeNoeud typeInstr;
+    string resultatReturn;
+    vector<string> params;
+    typeInstr = expression->typeNoeud();
+    resultatReturn = expressionToIR(expression);
+    params.push_back(resultatReturn);
+    currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
 }
 
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
