@@ -118,7 +118,7 @@ class CFG {
 
   // basic block management
   string new_BB_name();
-  BasicBlock* current_bb;
+  BasicBlock* currentBB;
 
  protected:
   map <string, Type> SymbolType; /**< part of the symbol table  */
