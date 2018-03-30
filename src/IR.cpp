@@ -34,8 +34,8 @@ void BasicBlock::gen_asm(ostream &o) {
 	string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
-	for(std::vector<IRInstr>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
-		it.gen_asm(o);
+	for(vector<IRInstr*>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
+		(*it)->gen_asm(o);
 		if(it==instrs.end()){
 			if(exit_true == nullptr){
 				return;
