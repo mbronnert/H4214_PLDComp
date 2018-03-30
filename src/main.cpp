@@ -10,6 +10,7 @@
 
 #include "Visitor.h"
 #include "Programme.h"
+#include "ConstructionIR.h"
 
 using namespace antlr4;
 using namespace std;
@@ -198,17 +199,20 @@ void validProgramsTests () {
 
 
 int main () {
-    /*ANTLRInputStream input ("void main() { if (a == 1) { b = 2; test(d); } else { c = 1; test2(u); } }");
+    /*ANTLRInputStream input ("void main() { }");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
+    ConstructionIR constr;
+
     tree::ParseTree * tree = parser.programme();
     Visitor visitor;
 
     Programme * prog = (Programme *) visitor.visit(tree);
 
     prog->affiche();
-    prog->resolutionPortee();*/
+    prog->resolutionPortee();
+    constr.analyseProgramme(prog);*/
 
     lexErrorTests();
     syntaxErrorTests();

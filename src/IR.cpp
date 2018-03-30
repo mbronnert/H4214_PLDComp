@@ -86,9 +86,9 @@ void BasicBlock::gen_asm(ostream &o) {
 
 /* Control Flow Graph */
 CFG::CFG(Fonction * ast) {
-	ast = ast;
+	this->ast = ast;
 	nextBBnumber = 1;
-	nextFreeSymbolIndex = 0;
+	nextFreeSymbolIndex = -8;
 	nextTempvar = 0;
 }
 

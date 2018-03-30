@@ -14,8 +14,10 @@ using namespace std;
 
 class ConstructionIR {
 public:
+    ConstructionIR();
     ConstructionIR(list <CFG*> * l, BasicBlock * b);
     ~ConstructionIR();
+    void startASM();
 
     void analyseProgramme(Programme * programme);
     void analyseFonction(Fonction * fonction);

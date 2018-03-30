@@ -1,21 +1,51 @@
 #include "ConstructionIR.h"
+#include <fstream>
 
 ConstructionIR::ConstructionIR(list <CFG*> * l, BasicBlock * b) {
     listeCFG = l;
     currentCFG->currentBB = b;
 }
 
+ConstructionIR::ConstructionIR() {
+
+}
+
+ConstructionIR::~ConstructionIR() {
+
+}
+
 void ConstructionIR::analyseProgramme(Programme * programme) {
     // TODO : faire les déclarations
+    cout << "analyse programme start declaration" <<endl;
+    for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
+        analyseDeclaration((Declaration *)(*it));
+    }
+    cout << "analyse programme start fonction" <<endl;
 
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
         CFG * cfg = new CFG(*it);
+        cout << "finish CFG1" <<endl;
         listeCFG->push_back(cfg);
+        cout << "finish CFG2" <<endl;
         currentCFG = cfg;
-        analyseFonction(*it);
+        cout << "finish CFG3" <<endl;
+        analyseFonction((Fonction *)*it);
     }
+    cout << "analyse programme end" <<endl;
+    startASM();
 }
 
+void ConstructionIR::startASM() {   
+    cout << "startASM" <<endl;
+    ofstream outfile ("main.s", ofstream::binary);
+    outfile<<".text"<<endl;
+    outfile<<".global main"<<endl;
+    for(list<CFG*>::iterator it= listeCFG->begin() ; it != listeCFG->end() ; it++)
+    {
+        (*it)->gen_asm(outfile);
+    }
+    outfile.close();
+}
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
     //TODO : paramètres
@@ -37,14 +67,88 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
 
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        // TypeNoeud typeNoeud = (*it)->typeNoeud();
-        // switch (typeNoeud) {
-        //     case TypeNoeud::exprBin :
-        //         analyseExprBin((ExprBin *)(*it));
-        //         break;
-        //     // TODO: autres cas
-        // }
+        TypeNoeud typeInstr = (*it)->typeNoeud();
+        switch (typeInstr) {
+            case TypeNoeud::APPELFONC :
+                analyseAppelDeFonction((AppelDeFonction *)(*it));
+                break;
+            case TypeNoeud::AFFECTATION :
+                analyseAffectation((Affectation *)(*it));
+                break;
+            case TypeNoeud::RETURN :
+                analyseReturn((Return *)(*it));
+                break;
+            case TypeNoeud::IF :
+                // TODO
+                break;
+            case TypeNoeud::IFELSE :
+                // TODO
+                break;
+            case TypeNoeud::WHILE :
+                // TODO
+                break;
+            case TypeNoeud::EXPRBIN :
+                break;
+            case TypeNoeud::EXPRUNAIRE :
+                break;
+            case TypeNoeud::EXPR :
+                break;
+            case TypeNoeud::DECLARATION :
+                break;
+            case TypeNoeud::VARIABLE :
+                break;
+            case TypeNoeud::NOMBRE :
+                break;
+            case TypeNoeud::CARACTERE :
+                break;
+            case TypeNoeud::APPELVAR :
+                break;
+            case TypeNoeud::BLOC :
+                break;
+            case TypeNoeud::BREAK :
+                break;
+        }
     }
+}
+
+void ConstructionIR::analyseAffectation(Affectation * affectation) {  
+    Expression* expression = affectation->getExpression();
+    string resultatAffectation;
+    vector<string> params;
+    string nomVariable = affectation->getNomVariable();
+    resultatAffectation = expressionToIR(expression);
+    params.push_back(resultatAffectation);
+    params.push_back(nomVariable);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::INT64, params);
+
+}
+
+void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
+    list<Expression*> * parametres = appelDeFonction->getParametres();
+    if(parametres) {
+        TypeNoeud typeInstr;
+        vector<string> listParametre;
+        listParametre.push_back(appelDeFonction->getNom());
+
+        for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
+            string nom;
+            nom = expressionToIR(*it);
+            listParametre.push_back(nom);
+        }
+
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);   
+    }
+}
+
+void ConstructionIR::analyseReturn(Return * retour) {
+    Expression* expression = retour->getReturnExpression();
+    TypeNoeud typeInstr;
+    string resultatReturn;
+    vector<string> params;
+    typeInstr = expression->typeNoeud();
+    resultatReturn = expressionToIR(expression);
+    params.push_back(resultatReturn);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
 }
 
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
