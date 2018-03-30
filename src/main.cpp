@@ -199,7 +199,7 @@ void validProgramsTests () {
 
 
 int main () {
-    /*ANTLRInputStream input ("void main() { }");
+    ANTLRInputStream input ("void main() {char a;char b;char c; a='M'; b=1+a+1; c=b+1; putchar(b); putchar(c); putchar('\n');}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
@@ -212,12 +212,12 @@ int main () {
 
     prog->affiche();
     prog->resolutionPortee();
-    constr.analyseProgramme(prog);*/
+    constr.analyseProgramme(prog);
 
-    lexErrorTests();
-    syntaxErrorTests();
-    validProgramsTests();
-    semanticErrorTests();
+    // lexErrorTests();
+    // syntaxErrorTests();
+    // validProgramsTests();
+    // semanticErrorTests();
 
     return 0;
 }

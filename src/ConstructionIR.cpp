@@ -11,6 +11,11 @@ ConstructionIR::ConstructionIR() {
 }
 
 ConstructionIR::~ConstructionIR() {
+    for (list<CFG*>::iterator it = listeCFG->begin(); it != listeCFG->end(); it++)
+    {
+        delete *it;
+    }
+    listeCFG->clear();
 
 }
 
@@ -23,12 +28,11 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
     cout << "analyse programme start fonction" <<endl;
 
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
-        CFG * cfg = new CFG(*it);
-        cout << "finish CFG1" <<endl;
+        CFG* cfg = new CFG(*it);
+        
+        this->listeCFG=new list<CFG*>[3600];
         listeCFG->push_back(cfg);
-        cout << "finish CFG2" <<endl;
         currentCFG = cfg;
-        cout << "finish CFG3" <<endl;
         analyseFonction((Fonction *)*it);
     }
     cout << "analyse programme end" <<endl;
@@ -45,6 +49,7 @@ void ConstructionIR::startASM() {
         (*it)->gen_asm(outfile);
     }
     outfile.close();
+    cout<<"Fichier assembleur généré"<<endl;
 }
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
@@ -112,6 +117,7 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
 }
 
 void ConstructionIR::analyseAffectation(Affectation * affectation) {  
+    cout<<"appel affectation"<<endl;
     Expression* expression = affectation->getExpression();
     string resultatAffectation;
     vector<string> params;
@@ -124,6 +130,7 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
 }
 
 void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
+    cout<<"appel fonction"<<endl;
     list<Expression*> * parametres = appelDeFonction->getParametres();
     if(parametres) {
         TypeNoeud typeInstr;
@@ -141,6 +148,7 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
 }
 
 void ConstructionIR::analyseReturn(Return * retour) {
+    cout<<"appel return"<<endl;
     Expression* expression = retour->getReturnExpression();
     TypeNoeud typeInstr;
     string resultatReturn;
@@ -152,6 +160,7 @@ void ConstructionIR::analyseReturn(Return * retour) {
 }
 
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
+    cout<<"appel declaration"<<endl;
     currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
 }
 
@@ -183,6 +192,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
 }
 
 void ConstructionIR::analyseExprBin(ExprBin * expression) {
+    cout<<"appel exprbin"<<endl;
     string resultat;
     string resultatGauche;
     string resultatDroite;
