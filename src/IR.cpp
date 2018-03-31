@@ -14,6 +14,10 @@ IRInstr::~IRInstr() {
 
 }
 
+int IRInstr::getOperation(){
+	return op;
+}
+
 void IRInstr::gen_asm(ostream &o) {
 	string chaine;
 	switch(op){
@@ -85,19 +89,40 @@ void IRInstr::gen_asm(ostream &o) {
 			}
 			chaine = "	call	"+to_string(this->bb->cfg->get_var_index(params[0]));
 			o << chaine << endl;
-			if(stoi(param[1])!=0){
+			if(stoi(params[1])!=0){
 				chaine = "	movq	%rax, "+to_string(this->bb->cfg->get_var_index(params[1])) +"(%rbp)";
 				o << chaine << endl;
 			}
 			break;
 			
 		case cmp_eq:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 			
 		case cmp_lt:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 			
 		case cmp_le:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
+			break;
+		
+		case cmp_gt:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
+			break;
+		
+		case cmp_ge:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
+			break;
+		
+		case cmp_diff:
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 			
 		case ret:
@@ -130,16 +155,23 @@ void BasicBlock::gen_asm(ostream &o) {
 	for(vector<IRInstr*>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
 		(*it)->gen_asm(o);
 		if(it==instrs.end()){
-			if(exit_true == nullptr){
-				return;
+			if(exit_true != nullptr && exit_false != nullptr){
+				if((*it)->getOperation()==8){
+					chaine ="	jne	."+ exit_false->label;
+				}else if((*it)->getOperation()==9){
+					chaine ="	jge	."+ exit_false->label;
+				}else if((*it)->getOperation()==10){
+					chaine ="	jg	."+ exit_false->label;
+				}else if((*it)->getOperation()==11){
+					chaine ="	jle	."+ exit_false->label;
+				}else if((*it)->getOperation()==12){
+					chaine ="	jl	."+ exit_false->label;
+				}
+				else if((*it)->getOperation()==12){
+					chaine ="	je	."+ exit_false->label;
+				}
+				o<<chaine<<endl;
 			}
-			/*if(exit_false != nullptr){
-				//jouer sur les flags en fonction du type de comparaison
-				chaine = "" + exit_true.label;
-				o << chaine << endl;
-				chaine = "" + exit_false.label;
-				o << chaine << endl;
-			}*/
 		}
 	}
 }

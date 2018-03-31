@@ -20,6 +20,8 @@ using namespace std;
  * Code assembleur:
  * jle = jump si less or equal
  * jne = jump si not equal
+ * je= jump si equal
+ * jge = jump si plus grand ou equal
  * jmp saut non conditionnel
  * Noms des registres:
  * %rbp et %rsp sont les base et stack pointeurs (définissent l'espace mémoire d'une fonction)
@@ -39,16 +41,19 @@ class IRInstr {
     rmem,   //read mem
     wmem,	//write mem
     call,
-    cmp_eq, //compare equal
+    cmp_eq, //compare equal   ATTENTION, SI AJOUT D'OPERATION METTEZ APRES LES CMP SVP
     cmp_lt, //compare less than
-    cmp_le,  //compare less or equal
+    cmp_le, //compare less or equal
+    cmp_gt, //compare greater than
+    cmp_ge, //compare greater or equal
+    cmp_diff, //compare diff
     ret,
     copy
   } Operation;
 
-
   IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> params);
   ~IRInstr();
+  int getOperation();
 
   /** Actual code generation */
   void gen_asm(ostream &o); /**< x86 assembly code generation for this IR instruction */
