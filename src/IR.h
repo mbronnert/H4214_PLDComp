@@ -21,6 +21,10 @@ using namespace std;
  * jle = jump si less or equal
  * jne = jump si not equal
  * jmp saut non conditionnel
+ * Noms des registres:
+ * %rbp et %rsp sont les base et stack pointeurs (définissent l'espace mémoire d'une fonction)
+ * %rax est la return value (utilisée aussi pour toute opération intermédiaire)
+ * %rdi, %rsi, %rdx, %rcx, %r8 et %r9 sont les paramètres de fonction
  * */
 
 class IRInstr {
