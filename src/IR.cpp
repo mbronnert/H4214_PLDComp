@@ -24,7 +24,7 @@ void IRInstr::gen_asm(ostream &o) {
 		case ldconst:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
 			break;
-			
+
 		case add:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
@@ -33,7 +33,7 @@ void IRInstr::gen_asm(ostream &o) {
 			chaine = "	movq 	%rax, "+to_string(this->bb->cfg->get_var_index(params[0])) +"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case sub:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
@@ -42,7 +42,7 @@ void IRInstr::gen_asm(ostream &o) {
 			chaine = "	movq 	%rax, "+to_string(this->bb->cfg->get_var_index(params[0])) +"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case mul:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
@@ -51,13 +51,13 @@ void IRInstr::gen_asm(ostream &o) {
 			chaine = "	movq	%rax, "+to_string(this->bb->cfg->get_var_index(params[0])) +"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case rmem:
 			break;
-			
+
 		case wmem:
 			break;
-			
+
 		case call:
 		//TODO Faut-il récupérérer les paramètres dans le prologue de la fonction appelée?
 			if(params.size()>8){
@@ -94,46 +94,46 @@ void IRInstr::gen_asm(ostream &o) {
 				o << chaine << endl;
 			}
 			break;
-			
+
 		case cmp_eq:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case cmp_lt:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case cmp_le:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-		
+
 		case cmp_gt:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-		
+
 		case cmp_ge:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-		
+
 		case cmp_diff:
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), " + to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)";
 			o << chaine << endl;
 			break;
-			
+
 		case ret:
 		//TODO Gérer le cas où le param est en dur dans le code
 			chaine = "	movq	"+to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
-			
+
 		case copy:
 			break;
-		
+
 	}
 }
 
@@ -206,6 +206,7 @@ void CFG::gen_asm(ostream& o) {
 string CFG::IR_reg_to_asm(string reg) {
 	//string chaine = NomFonction;
 	//assignation tailles variables
+	return ""; // TODO: à virer, c'est juste pour les warning
 }
 
 //On push le base pointeur et on adapte le stack pointeur à la taille des variables

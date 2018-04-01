@@ -29,7 +29,7 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
 
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
         CFG* cfg = new CFG(*it);
-        
+
         this->listeCFG=new list<CFG*>[3600];
         listeCFG->push_back(cfg);
         currentCFG = cfg;
@@ -39,7 +39,7 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
     startASM();
 }
 
-void ConstructionIR::startASM() {   
+void ConstructionIR::startASM() {
     cout << "startASM" <<endl;
     ofstream outfile ("main.s", ofstream::binary);
     outfile<<".text"<<endl;
@@ -72,59 +72,97 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
     list <Instruction*> * instructions = bloc->getInstructions();
 
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
-        TypeNoeud typeInstr = (*it)->typeNoeud();
-        switch (typeInstr) {
-            case TypeNoeud::APPELFONC :
-                analyseAppelDeFonction((AppelDeFonction *)(*it));
-                break;
-            case TypeNoeud::AFFECTATION :
-                analyseAffectation((Affectation *)(*it));
-                break;
-            case TypeNoeud::RETURN :
-                analyseReturn((Return *)(*it));
-                break;
-            case TypeNoeud::IF :
-                // TODO
-                break;
-            case TypeNoeud::IFELSE :
-                // TODO
-                break;
-            case TypeNoeud::WHILE :
-                // TODO
-                break;
-            case TypeNoeud::EXPRBIN :
-                break;
-            case TypeNoeud::EXPRUNAIRE :
-                break;
-            case TypeNoeud::EXPR :
-                break;
-            case TypeNoeud::DECLARATION :
-                break;
-            case TypeNoeud::VARIABLE :
-                break;
-            case TypeNoeud::NOMBRE :
-                break;
-            case TypeNoeud::CARACTERE :
-                break;
-            case TypeNoeud::APPELVAR :
-                break;
-            case TypeNoeud::BLOC :
-                break;
-            case TypeNoeud::BREAK :
-                break;
-        }
+        analyseInstruction(*it);
     }
 }
 
-void ConstructionIR::analyseAffectation(Affectation * affectation) {  
+void ConstructionIR::analyseDeclaration(Declaration * declaration) {
+    cout<<"appel declaration"<<endl;
+    currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
+}
+
+void ConstructionIR::analyseInstruction(Instruction * instruction) {
+    TypeNoeud typeInstr = instruction->typeNoeud(); // TODO : il faut pas faire un typage() avant ?
+    switch (typeInstr) { // TODO : est ce qu'il y a moyen de faire un case Expression : analyseExpression() ? vu que c'est une classe virtual je suis pas sure (la ça duplique le code c'est pas top)
+        case TypeNoeud::APPELFONC :
+            analyseAppelDeFonction((AppelDeFonction *) instruction);
+            break;
+        case TypeNoeud::AFFECTATION :
+            analyseAffectation((Affectation *) instruction);
+            break;
+        case TypeNoeud::RETURN :
+            analyseReturn((Return *) instruction);
+            break;
+        case TypeNoeud::IF :
+            analyseIf((If *) instruction);
+            break;
+        case TypeNoeud::IFELSE :
+            analyseIfElse((IfElse *) instruction);
+            break;
+        case TypeNoeud::WHILE :
+            // TODO
+            break;
+        case TypeNoeud::EXPRBIN :
+            analyseExprBin((ExprBin *) instruction);
+            break;
+        case TypeNoeud::EXPRUNAIRE :
+            break;
+        case TypeNoeud::EXPR :
+            break;
+        case TypeNoeud::VARIABLE :
+            break;
+        case TypeNoeud::NOMBRE :
+            break;
+        case TypeNoeud::CARACTERE :
+            break;
+        case TypeNoeud::APPELVAR :
+            break;
+        case TypeNoeud::BLOC :
+            analyseBloc((Bloc *) instruction);
+            break;
+        case TypeNoeud::BREAK :
+            break;
+        default:
+            cout << "Erreur : on devrait pas passer ici" << endl;
+    }
+}
+
+void ConstructionIR::analyseExpression(Expression * expression) {
+    TypeNoeud typeInstr = expression->typeNoeud(); // TODO : il faut pas faire un typage() avant ?
+    switch (typeInstr) {
+        case TypeNoeud::APPELFONC :
+            analyseAppelDeFonction((AppelDeFonction *) expression);
+            break;
+        case TypeNoeud::AFFECTATION :
+            analyseAffectation((Affectation *) expression);
+            break;
+        case TypeNoeud::EXPRBIN :
+            analyseExprBin((ExprBin *) expression);
+            break;
+        case TypeNoeud::EXPRUNAIRE :
+            break;
+        case TypeNoeud::VARIABLE :
+            break;
+        case TypeNoeud::NOMBRE :
+            break;
+        case TypeNoeud::CARACTERE :
+            break;
+        case TypeNoeud::APPELVAR :
+            break;
+        default:
+            cout << "Erreur : on devrait pas passer ici" << endl;
+    }
+}
+
+void ConstructionIR::analyseAffectation(Affectation * affectation) {
     cout<<"appel affectation"<<endl;
-    Expression* expression = affectation->getExpression();
+    Expression * expression = affectation->getExpression();
     string resultatAffectation;
     vector<string> params;
     string nomVariable = affectation->getNomVariable();
     resultatAffectation = expressionToIR(expression);
     params.push_back(resultatAffectation);
-    params.push_back(nomVariable);
+    params.push_back(nomVariable); // TODO: faut pas inverser l'ordre des 2 params ?
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::INT64, params);
 
 }
@@ -143,7 +181,7 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
             listParametre.push_back(nom);
         }
 
-        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);   
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);
     }
 }
 
@@ -159,9 +197,55 @@ void ConstructionIR::analyseReturn(Return * retour) {
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
 }
 
-void ConstructionIR::analyseDeclaration(Declaration * declaration) {
-    cout<<"appel declaration"<<endl;
-    currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
+void ConstructionIR::analyseIf(If * i) {
+    analyseExpression(i->getCondition());
+    BasicBlock * trueBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    BasicBlock * falseBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->currentBB->exit_true = trueBranch;
+    currentCFG->currentBB->exit_false = falseBranch;
+    currentCFG->add_bb(trueBranch);
+    currentCFG->add_bb(falseBranch); //TODO : peut être à mettre après l'analyse de l'instruction du IF
+
+    currentCFG->currentBB = trueBranch;
+    analyseInstruction(i->getInstruction());
+    currentCFG->currentBB = falseBranch;
+}
+
+void ConstructionIR::analyseIfElse(IfElse * i) {
+    analyseExpression(i->getCondition());
+    BasicBlock * trueBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    BasicBlock * falseBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->currentBB->exit_true = trueBranch;
+    currentCFG->currentBB->exit_false = falseBranch;
+    currentCFG->add_bb(trueBranch);
+    currentCFG->add_bb(falseBranch); //TODO : peut être à mettre après l'analyse de l'instruction du IF
+
+    currentCFG->currentBB = trueBranch;
+    analyseInstruction(i->getInstruction());
+    currentCFG->currentBB = falseBranch;
+    analyseInstruction(i->getInstructionElse());
+}
+
+void ConstructionIR::analyseWhile(While * w) {
+    BasicBlock * whileBloc = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->add_bb(whileBloc);
+    currentCFG->currentBB->exit_true = whileBloc;
+
+    currentCFG->currentBB = whileBloc;
+    analyseExpression(w->getCondition());
+
+    BasicBlock * trueBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->add_bb(trueBranch);
+    trueBranch->exit_true = currentCFG->currentBB;
+    currentCFG->currentBB->exit_true = trueBranch;
+
+    BasicBlock * falseBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->add_bb(falseBranch);
+    currentCFG->currentBB->exit_false = falseBranch;
+
+    currentCFG->currentBB = trueBranch;
+    analyseInstruction(w->getInstruction());
+    currentCFG->currentBB = falseBranch;
 }
 
 string ConstructionIR::expressionToIR(Expression * expression) {
@@ -187,6 +271,8 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             chaine = variable->getNom(); // TODO : vérifier que c'est bien le nom de la variable qu'on veut
             break;
             //TODO : tous les autres types
+        default:
+            cout << "Erreur : on devrait pas passer ici" << endl;
     }
     return chaine;
 }
