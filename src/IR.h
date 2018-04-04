@@ -51,7 +51,7 @@ class IRInstr {
     copy
   } Operation;
 
-  IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> params);
+  IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> p);
   ~IRInstr();
   int getOperation();
 
@@ -130,6 +130,7 @@ class CFG {
   string create_new_tempvar(Type t);
   int get_var_index(string name);
   Type get_var_type(string name);
+  map<string, int> * getSymbole();
 
   // basic block management
   string new_BB_name();
