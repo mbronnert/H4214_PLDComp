@@ -91,9 +91,9 @@ void IRInstr::gen_asm(ostream &o) {
 			}
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
-				chaine = "	call	"+to_string(params[0]);
+				chaine = "	call	"+params[0];
 			}else{
-				chaine = "	call	_"+to_string(this->bb->cfg->get_var_index(params[0]));
+				chaine = "	call	"+params[0];
 			}
 			o << chaine << endl;
 			//Pas de if pour l'instant (on affecte toujours le retour à une variable temporaire)
@@ -194,7 +194,7 @@ void BasicBlock::gen_asm(ostream &o) {
 				}else if((*it)->getOperation()==12){
 					chaine ="	jl	."+ exit_false->label;
 				}
-				else if((*it)->getOperation()==12){
+				else if((*it)->getOperation()==13){
 					chaine ="	je	."+ exit_false->label;
 				}
 				o<<chaine<<endl;
@@ -238,6 +238,7 @@ string CFG::IR_reg_to_asm(string reg) {
 
 //On push le base pointeur et on adapte le stack pointeur à la taille des variables
 void CFG::gen_asm_prologue(ostream& o) {
+	//TODO string chaine = ast->getNom() + ":";
 	string chaine = "_" + ast->getNom() + ":";
 	o<< chaine << endl;
 	chaine = "	pushq	%rbp";
