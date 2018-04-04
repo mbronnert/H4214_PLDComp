@@ -22,7 +22,8 @@ void IRInstr::gen_asm(ostream &o) {
 	string chaine;
 	switch(op){
 		case ldconst:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
+			chaine = "	movq	 $"+ to_string(this->bb->cfg->get_var_index(params[1]))+"," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 
 		case add:
@@ -137,6 +138,8 @@ void IRInstr::gen_asm(ostream &o) {
 			break;
 
 		case copy:
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 
 	}
