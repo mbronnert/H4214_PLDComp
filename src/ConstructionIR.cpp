@@ -80,7 +80,7 @@ void ConstructionIR::analyseDeclaration(Declaration * declaration) {
 }
 
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
-    TypeNoeud typeInstr = instruction->typeNoeud(); // TODO : il faut pas faire un typage() avant ?
+    TypeNoeud typeInstr = instruction->typeNoeud();
     switch (typeInstr) { // TODO : est ce qu'il y a moyen de faire un case Expression : analyseExpression() ? vu que c'est une classe virtual je suis pas sure (la ça duplique le code c'est pas top)
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) instruction);
@@ -165,7 +165,7 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     resultatAffectation = expressionToIR(expression);
     params.push_back(resultatAffectation);
     params.push_back(nomVariable); // TODO: faut pas inverser l'ordre des 2 params ?
-    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::INT64, params);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
 }
 
@@ -189,14 +189,11 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
 
 void ConstructionIR::analyseReturn(Return * retour) {
     cout<<"appel return"<<endl;
-    Expression* expression = retour->getReturnExpression();
-    TypeNoeud typeInstr;
-    string resultatReturn;
+    Expression * expression = retour->getReturnExpression();
     vector<string> params;
-    typeInstr = expression->typeNoeud();
-    resultatReturn = expressionToIR(expression);
-    params.push_back(resultatReturn);
-    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
+    params.push_back(expressionToIR(expression));
+    expression->typage();
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, expression->getType(), params);
 }
 
 void ConstructionIR::analyseIf(If * i) {
@@ -255,7 +252,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
     TypeNoeud typeNoeud = expression->typeNoeud();
     Nombre * nombre;
     Caractere * caractere;
-    Variable * variable;
+    AppelDeVariable * variable;
     vector<string> params;
     switch (typeNoeud) {
         case TypeNoeud::EXPRBIN :
@@ -276,8 +273,12 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::CHAR, params);
             break;
         case TypeNoeud::APPELVARSIMPLE :
-            variable = (VariableSimple *) expression;
-            chaine = variable->getNom(); // TODO : vérifier que c'est bien le nom de la variable qu'on veut
+            variable = (AppelDeVariableSimple *) expression;
+            chaine = variable->getNom();
+            break;
+        case TypeNoeud::APPELTABLEAU :
+            variable = (AppelDeTableau *) expression;
+            chaine = variable->getNom();
             break;
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) expression);
@@ -306,13 +307,13 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
 
     switch (expression->getSymbole()) {
         case ADD:
-        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::add, Type::INT64, params); //TODO: type ?
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::add, expression->getType(), params);
         break;
         case MULT:
-        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::mul, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::mul, expression->getType(), params);
         break;
         case MOINS:
-        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::sub, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::sub, expression->getType(), params);
         break;
         case DIV:
         break;
@@ -321,18 +322,24 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
         // case PAR:
         // break;
         case INFS:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_lt, expression->getType(), params);
         break;
         case INF:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_le, expression->getType(), params);
         break;
         case SUPS:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_gt, expression->getType(), params);
         break;
         case SUP:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_ge, expression->getType(), params);
         break;
         // case NON: //unaire
         // break;
         case EQUALB:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_eq, expression->getType(), params);
         break;
         case DIFF:
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_diff, expression->getType(), params);
         break;
         case ANDB:
         break;

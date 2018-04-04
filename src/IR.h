@@ -36,7 +36,7 @@ const string opEtiquette[]= {
     "rmem",   //read mem
     "wmem",	//write mem
     "call",
-    "cmp_eq", //compare equal   ATTENTION, SI AJOUT D'OPERATION METTEZ APRES LES CMP SVP
+    "cmp_eq", //compare equal
     "cmp_lt", //compare less than
     "cmp_le", //compare less or equal
     "cmp_gt", //compare greater than
@@ -44,7 +44,6 @@ const string opEtiquette[]= {
     "cmp_diff", //compare diff
     "ret",
     "copy"
-
   };
 
 class IRInstr {
