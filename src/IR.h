@@ -44,7 +44,9 @@ const string opEtiquette[]= {
     "cmp_diff", //compare diff
     "ret",
     "copy"
+
   };
+
 class IRInstr {
 
    public:

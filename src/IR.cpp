@@ -20,6 +20,7 @@ int IRInstr::getOperation(){
 
 void IRInstr::gen_asm(ostream &o) {
 	string chaine;
+	cout << opEtiquette[op] <<endl;
 	switch(op){
 		case ldconst:
 			chaine = "	movq	 $"+ to_string(this->bb->cfg->get_var_index(params[1]))+"," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
