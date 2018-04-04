@@ -3,9 +3,9 @@
 using namespace std;
 
 /* IRInstr */
-IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> p) {
+IRInstr::IRInstr(BasicBlock *bb_, Operation o, Type t, vector <string> p) {
 	bb = bb_;
-	op = op;
+	op = o;
 	t = t;
 	params = p;
 }

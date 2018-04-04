@@ -45,7 +45,7 @@ const string opEtiquette[] = {
     "cmp_diff", //compare diff
     "ret",
     "copy"
-  }; 
+  };
 
 class IRInstr {
 
@@ -69,7 +69,7 @@ class IRInstr {
     copy
   } Operation;
 
-  IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> p);
+  IRInstr(BasicBlock* bb_, Operation o, Type t, vector<string> p);
   ~IRInstr();
   int getOperation();
 
