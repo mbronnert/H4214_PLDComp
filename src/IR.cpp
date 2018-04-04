@@ -3,11 +3,11 @@
 using namespace std;
 
 /* IRInstr */
-IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> params) {
+IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> p) {
 	bb = bb_;
 	op = op;
 	t = t;
-	params = params;
+	params = p;
 }
 
 IRInstr::~IRInstr() {
@@ -23,6 +23,7 @@ void IRInstr::gen_asm(ostream &o) {
 	switch(op){
 		case ldconst:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp)," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
+			o << chaine << endl;
 			break;
 
 		case add:
@@ -144,8 +145,8 @@ void IRInstr::gen_asm(ostream &o) {
 
 
 /* BasicBlock */
-BasicBlock::BasicBlock(CFG* cfg, string entry_label) {
-	cfg = cfg;
+BasicBlock::BasicBlock(CFG* c, string entry_label) {
+	cfg = c;
 	label = entry_label;
 }
 
@@ -157,8 +158,19 @@ void BasicBlock::gen_asm(ostream &o) {
 	string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
+	cout << "map" << endl;
+	map<string, int> *myMap = cfg->getSymbole();
+	cout << "for: " << myMap << endl;
+	cout << "map size: " << myMap->size() << endl;
+	for(auto it = myMap->begin() ; it != myMap->end(); ++it){
+		cout<< "in for" <<endl;
+		cout<< (*it).first <<endl;
+		cout<< (*it).second <<endl;
+	}
+	cout << "between for" << endl;
 	for(vector<IRInstr*>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
 		(*it)->gen_asm(o);
+		cout << "here" <<endl;
 		if(it==instrs.end()){
 			if(exit_true != nullptr && exit_false != nullptr){
 				if((*it)->getOperation()==8){
@@ -183,7 +195,7 @@ void BasicBlock::gen_asm(ostream &o) {
 
 
 /* Control Flow Graph */
-CFG::CFG(Fonction * ast) {
+CFG::CFG(Fonction * ast) : SymbolIndex() {
 	this->ast = ast;
 	nextBBnumber = 1;
 	nextFreeSymbolIndex = -8;
@@ -245,6 +257,10 @@ string CFG::create_new_tempvar(Type t) {
 	add_to_symbol_table("temp"+to_string(nextTempvar), t);
 	return "temp"+to_string(nextTempvar++);
 	//TODO : vérifier
+}
+
+map<string, int> * CFG::getSymbole() {
+	return &SymbolIndex;
 }
 
 int CFG::get_var_index(string name) {
