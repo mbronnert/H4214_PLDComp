@@ -87,12 +87,18 @@ void IRInstr::gen_asm(ostream &o) {
 					}
 				}
 			}
-			chaine = "	call	"+to_string(this->bb->cfg->get_var_index(params[0]));
+			//Putchar et Getchar géré séparemment (pas de _)
+			if(to_string(this->bb->cfg->get_var_index(params[0])).compare("getchar")==0 || to_string(this->bb->cfg->get_var_index(params[0])).compare("putchar")==0){
+				chaine = "	call	"+to_string(this->bb->cfg->get_var_index(params[0]));
+			}else{
+				chaine = "	call	_"+to_string(this->bb->cfg->get_var_index(params[0]));
+			}
 			o << chaine << endl;
-			if(stoi(params[1])!=0){
+			//Pas de if pour l'instant (on affecte toujours le retour à une variable temporaire)
+			//if(stoi(params[1])!=0){
 				chaine = "	movq	%rax, "+to_string(this->bb->cfg->get_var_index(params[1])) +"(%rbp)";
 				o << chaine << endl;
-			}
+			//}
 			break;
 
 		case cmp_eq:
@@ -126,7 +132,6 @@ void IRInstr::gen_asm(ostream &o) {
 			break;
 
 		case ret:
-		//TODO Gérer le cas où le param est en dur dans le code
 			chaine = "	movq	"+to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
