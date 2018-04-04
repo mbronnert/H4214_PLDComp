@@ -14,7 +14,7 @@
 
 using namespace std;
 
-enum TypeNoeud { BREAK, RETURN, EXPR, EXPRBIN, EXPRUNAIRE, APPELFONC, DECLARATION, AFFECTATION, VARIABLE, NOMBRE, CARACTERE, APPELVAR, IF, IFELSE, WHILE, BLOC };
+enum TypeNoeud { BREAK, RETURN, EXPR, EXPRBIN, EXPRUNAIRE, APPELFONC, DECLARATION, AFFECTATION, VARIABLE, NOMBRE, CARACTERE, APPELVARSIMPLE, APPELTABLEAU, IF, IFELSE, WHILE, BLOC };
 
 enum Symbole {ADD, MULT, MOINS, DIV, MOD, PAR, INFS, INF, SUPS, SUP, NON, EQUALB, DIFF, ANDB, ORB, AND, OR, POW, DECG, DECD, EQUAL, PPEXP, MMEXP, EXPPP, EXPMM, XOREQ, OREQ, ANDEQ, MODEQ, DIVEQ, MULTEQ, MOINSEQ, ADDEQ, INVERT, NEGATION, COMMA };
 
@@ -205,7 +205,6 @@ class AppelDeVariable : public Expression {
         void setNom(string nom);
         virtual void affiche() = 0;
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
-        TypeNoeud typeNoeud();
         void typage(){};
     protected:
         string nom;
@@ -219,6 +218,8 @@ class AppelDeTableau : public AppelDeVariable {
         list <Nombre*> * getTabNombres();
         list <Caractere*> * getTabCaracteres();
         void affiche();
+        TypeNoeud typeNoeud();
+        void typage(){};
       private:
         list <Nombre*> * tabNombres;
         list <Caractere*> * tabCaracteres;
@@ -231,11 +232,12 @@ class AppelDeVariableSimple : public AppelDeVariable {
         Nombre * getNombre();
         Caractere * getCaractere();
         void affiche();
+        TypeNoeud typeNoeud();
+        void typage(){};
       private:
         Nombre * nombre;
         Caractere * caractere;
 };
-
 
 class Affectation : public Expression {
     public:

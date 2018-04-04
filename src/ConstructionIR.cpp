@@ -7,7 +7,6 @@ ConstructionIR::ConstructionIR(list <CFG*> * l, BasicBlock * b) {
 }
 
 ConstructionIR::ConstructionIR() {
-
 }
 
 ConstructionIR::~ConstructionIR() {
@@ -16,7 +15,6 @@ ConstructionIR::~ConstructionIR() {
         delete *it;
     }
     listeCFG->clear();
-
 }
 
 void ConstructionIR::analyseProgramme(Programme * programme) {
@@ -115,7 +113,9 @@ void ConstructionIR::analyseInstruction(Instruction * instruction) {
             break;
         case TypeNoeud::CARACTERE :
             break;
-        case TypeNoeud::APPELVAR :
+        case TypeNoeud::APPELVARSIMPLE :
+            break;
+        case TypeNoeud::APPELTABLEAU :
             break;
         case TypeNoeud::BLOC :
             analyseBloc((Bloc *) instruction);
@@ -147,7 +147,9 @@ void ConstructionIR::analyseExpression(Expression * expression) {
             break;
         case TypeNoeud::CARACTERE :
             break;
-        case TypeNoeud::APPELVAR :
+        case TypeNoeud::APPELVARSIMPLE :
+            break;
+        case TypeNoeud::APPELTABLEAU :
             break;
         default:
             cout << "Erreur : on devrait pas passer ici" << endl;
@@ -266,10 +268,12 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             caractere = (Caractere *) expression;
             chaine = to_string(caractere->getValeur());
             break;
-        case TypeNoeud::VARIABLE :
-            variable = (Variable *) expression;
+        case TypeNoeud::APPELVARSIMPLE :
+            variable = (VariableSimple *) expression;
             chaine = variable->getNom(); // TODO : vérifier que c'est bien le nom de la variable qu'on veut
             break;
+        case TypeNoeud::APPELFONC :
+            analyseAppelDeFonction((AppelDeFonction *) expression);
             //TODO : tous les autres types
         default:
             cout << "Erreur : on devrait pas passer ici" << endl;
