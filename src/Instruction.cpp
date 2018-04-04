@@ -25,7 +25,7 @@ Return::Return(Expression * e) {
     expression = e;
 }
 Return::~Return() {}
-    
+
 void Return::affiche() {
     cout << "Return ";
     expression->affiche();
@@ -53,34 +53,34 @@ list <Instruction*> * Bloc::getInstructions() {
 }
 
 void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction) {
-    
+
     int contextLocal = ++(*contextGlobal);
     int nivPile = 0;
-    
+
     list<Instruction *>::iterator it = instructions->begin() ;
     while ( it != this->instructions->end() ) {
-		
+
 	  if (dynamic_cast<IfElse *>(*it)) {
 
-        IfElse *s = (IfElse *)*it; 
+        IfElse *s = (IfElse *)*it;
         s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
-        Bloc *b1 = (Bloc *) s->getInstruction();        
+        Bloc *b1 = (Bloc *) s->getInstruction();
         b1->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
-        Bloc *b2 = (Bloc *) s->getInstructionElse();        
+        Bloc *b2 = (Bloc *) s->getInstructionElse();
         b2->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
 
       } else if (dynamic_cast<If *>(*it)) {
 
-        If *s = (If *)*it;   
+        If *s = (If *)*it;
         s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
-        Bloc *b = (Bloc *) s->getInstruction();       
-        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction); 
+        Bloc *b = (Bloc *) s->getInstruction();
+        b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
 
       } else if (dynamic_cast<While *>(*it)) {
 
-        While *s = (While *)*it;        
+        While *s = (While *)*it;
         s->getCondition()->resolutionPortee(pileVariable, mapVariable, pileFonction);
-        Bloc *b = (Bloc *) s->getInstruction();        
+        Bloc *b = (Bloc *) s->getInstruction();
         b->resolutionPortee(contextGlobal, pileVariable, mapVariable, pileFonction);
 
       } else if (dynamic_cast<Expression *>(*it)) {
@@ -88,11 +88,11 @@ void Bloc::resolutionPortee(int *contextGlobal, list<string> *pileVariable, map<
         Expression *e = (Expression *)*it;
         e->resolutionPortee(pileVariable, mapVariable, pileFonction);
 
-      } 
+      }
 
       it++;
     }
-        
+
     while(nivPile > 0) {
       pileVariable->pop_back();
       nivPile--;
@@ -140,29 +140,29 @@ list <Expression*> * AppelDeFonction::getParametres() {
 }
 
 void AppelDeFonction::resolutionPortee(list<string> *pileVariable, map<string,Declaration *> *mapVariable, list<string> *pileFonction) {
-  
+
     bool fonctionFound = false;
-    
+
     list<string>::iterator it = pileFonction->begin() ;
     while ( it != pileFonction->end() && fonctionFound == false) {
 
         if(*it == nom || nom == "putchar" || nom == "getchar") {
           fonctionFound = true;
-        } 
+        }
         it++;
-        
+
     }
-    
+
     if(fonctionFound == true) {
         Fonction *fonction;
-      
+
        list<Expression *>::iterator it = parametres->begin() ;
        while ( it != parametres->end() ) {
 
-            (*it)->resolutionPortee(pileVariable,mapVariable,pileFonction);  
+            (*it)->resolutionPortee(pileVariable,mapVariable,pileFonction);
             it++;
         }
-      
+
     } else {
         cerr << "ERREUR! fonction <<"+nom+">> non déclarée! " << endl;
         // exit(0);
@@ -226,16 +226,16 @@ TypeNoeud ExprBin::typeNoeud() {
 void ExprBin::typage() {
     gauche->typage();
     droite->typage();
-      
+
     Type typeGauche = gauche->getType();
-    Type typeDroite = droite->getType();  
+    Type typeDroite = droite->getType();
     Type typeExpr;
-      
+
     if(symbole == EQUAL) {
         typeExpr = typeDroite;
-        
+
     } else if(symbole == ADD || symbole == MULT || symbole == MOINS || symbole == DIV || symbole == MOD || symbole == ADDEQ || symbole == MULTEQ || symbole == MOINSEQ || symbole == DIVEQ || symbole == MODEQ) {
-        
+
         if(typeGauche == INT64 && typeDroite == INT64) {
             typeExpr = INT64;
 
@@ -254,19 +254,19 @@ void ExprBin::typage() {
         } else if(typeGauche == CHAR && typeDroite == CHAR) {
             typeExpr = CHAR;
 
-        } 
-        
+        }
+
     } else if(symbole == ANDB || symbole == ORB || symbole == EQUALB || symbole == INF || symbole == INFS || symbole == SUP || symbole == SUPS || symbole == ANDEQ || symbole == OREQ || symbole == DIFF) {
         typeExpr = INT32;
-        
+
     } else if(symbole == AND || symbole == OR || symbole == POW) {
         typeExpr = INT64;
-      
+
     } else if(symbole == DECG || symbole == DECD) {
         typeExpr = typeGauche;
-        
+
     }
-      
+
     this->type = typeExpr;
 }
 
@@ -482,7 +482,7 @@ void AppelDeVariable::setNom(string nom){
 }
 
 void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::string,Declaration *> *mapVariable, list<string> *pileFonction) {
- 
+
     string nomVar = this->getNom();
     bool variableFound = false;
 
@@ -491,23 +491,23 @@ void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::stri
     list<string>::iterator it = pile.begin() ;
 
     while ( it != pile.end() && variableFound == false ) {
-        
+
         string nom = *it;
         int rawNom = nom.find_first_of('_');
-        nom = nom.substr(rawNom+1); 
- 
+        nom = nom.substr(rawNom+1);
+
         if(nom == nomVar) {
             variableFound = true;
             this->setNom(*it);
             map<string, Declaration *>::iterator variableDec = mapVariable->find(*it);
             if(variableDec != mapVariable->end()) {
-              this->type = variableDec->second->getType();    
+              this->type = variableDec->second->getType();
             }
         }
- 
+
         it++;
     }
- 
+
     if(variableFound == false) {
         cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
         // exit(0);
@@ -515,9 +515,6 @@ void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::stri
 
 }
 
-TypeNoeud AppelDeVariable::typeNoeud() {
-    return TypeNoeud::APPELVAR;
-}
 
 /* AppelDeTableau */
 AppelDeTableau::AppelDeTableau(string n) : AppelDeVariable(n) {
@@ -543,6 +540,10 @@ void AppelDeTableau::affiche() {
     cout << "]";
 }
 
+TypeNoeud AppelDeTableau::typeNoeud() {
+    return TypeNoeud::APPELTABLEAU;
+}
+
 /* AppelDeVariable Simple */
 AppelDeVariableSimple::AppelDeVariableSimple(string n) : AppelDeVariable(n) {
 }
@@ -557,6 +558,10 @@ Caractere * AppelDeVariableSimple::getCaractere(){
 
 void AppelDeVariableSimple::affiche() {
     cout << nom;
+}
+
+TypeNoeud AppelDeVariableSimple::typeNoeud() {
+    return TypeNoeud::APPELVARSIMPLE;
 }
 
 /* Affectation */
