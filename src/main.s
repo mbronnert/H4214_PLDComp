@@ -7,6 +7,7 @@ _main:
 main:
 	movq	 $1,-8(%rbp)
 	movq	 $2,-16(%rbp)
+	cmp		-24(%rbp), %rax
 B1:
 	movq	 $39,-32(%rbp)
 	call	putchar

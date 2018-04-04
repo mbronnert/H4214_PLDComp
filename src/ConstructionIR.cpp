@@ -189,14 +189,11 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
 
 void ConstructionIR::analyseReturn(Return * retour) {
     cout<<"appel return"<<endl;
-    Expression* expression = retour->getReturnExpression();
-    TypeNoeud typeInstr;
-    string resultatReturn;
+    Expression * expression = retour->getReturnExpression();
     vector<string> params;
-    typeInstr = expression->typeNoeud();
-    resultatReturn = expressionToIR(expression);
-    params.push_back(resultatReturn);
-    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, Type::INT64, params);
+    params.push_back(expressionToIR(expression));
+    expression->typage();
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, expression->getType(), params);
 }
 
 void ConstructionIR::analyseIf(If * i) {
