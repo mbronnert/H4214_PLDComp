@@ -256,17 +256,24 @@ string ConstructionIR::expressionToIR(Expression * expression) {
     Nombre * nombre;
     Caractere * caractere;
     Variable * variable;
+    vector<string> params;
     switch (typeNoeud) {
         case TypeNoeud::EXPRBIN :
             analyseExprBin((ExprBin *) expression);
             break;
         case TypeNoeud::NOMBRE :
             nombre = (Nombre *) expression;
-            chaine = to_string(nombre->getValeur());
+            chaine = currentCFG->create_new_tempvar(INT64);
+            params.push_back(chaine);
+            params.push_back(to_string(nombre->getValeur()));
+            currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::INT64, params);
             break;
         case TypeNoeud::CARACTERE :
             caractere = (Caractere *) expression;
-            chaine = to_string(caractere->getValeur());
+            chaine = currentCFG->create_new_tempvar(CHAR);
+            params.push_back(chaine);
+            params.push_back(to_string(caractere->getValeur()));
+            currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::CHAR, params);
             break;
         case TypeNoeud::APPELVARSIMPLE :
             variable = (VariableSimple *) expression;
@@ -299,7 +306,7 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
 
     switch (expression->getSymbole()) {
         case ADD:
-        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::add, Type::INT64, params);
+        currentCFG->currentBB->add_IRInstr(IRInstr::Operation::add, Type::INT64, params); //TODO: type ?
         break;
         case MULT:
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::mul, Type::INT64, params);

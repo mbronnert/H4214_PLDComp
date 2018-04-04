@@ -250,7 +250,7 @@ void CFG::gen_asm_epilogue(ostream& o) {
 void CFG::add_to_symbol_table(string name, Type t) {
 	SymbolType.insert(make_pair(name, t));
 	SymbolIndex.insert(make_pair(name, nextFreeSymbolIndex));
-	nextFreeSymbolIndex++;
+	nextFreeSymbolIndex = nextFreeSymbolIndex + 8;
 }
 
 string CFG::create_new_tempvar(Type t) {

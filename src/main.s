@@ -3,6 +3,7 @@
 _main:
 	pushq	%rbp
 	movq	%rsp, %rbp
+<<<<<<< HEAD
 	subq	$56, %rsp
 main:
 	movq	-8(%rbp),-1(%rbp)
@@ -13,3 +14,7 @@ main:
 	movq	-6(%rbp),-1(%rbp)
 	leave
 	ret
+=======
+	subq	$96, %rsp
+main:
+>>>>>>> 577e0769b3a0a289781943debfe584716e148032
