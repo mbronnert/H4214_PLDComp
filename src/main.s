@@ -3,21 +3,20 @@
 _main:
 	pushq	%rbp
 	movq	%rsp, %rbp
-	subq	$96, %rsp
+	subq	$56, %rsp
 main:
-	movq	 $-1,16(%rbp)
-	movq	 $-8,16(%rbp)
-	movq	 $-1,24(%rbp)
-	movq	 $24,32(%rbp)
-	movq	 $-1,40(%rbp)
-	movq	 $-1,48(%rbp)
-	movq	 $0,-1(%rbp)
-	movq	 $-1,56(%rbp)
-	movq	 $0,64(%rbp)
-	movq	 $8,-1(%rbp)
-	movq	 $0,-1(%rbp)
-	movq	 $8,-1(%rbp)
-	movq	 $-1,72(%rbp)
-	movq	 $72,-1(%rbp)
+	movq	 $1,-8(%rbp)
+	movq	 $2,-16(%rbp)
+B1:
+	movq	 $39,-32(%rbp)
+	call	putchar
+	movq	%rax, -32(%rbp)
+B2:
+	movq	 $39,-40(%rbp)
+	call	putchar
+	movq	%rax, -40(%rbp)
+	movq	 $39,-48(%rbp)
+	call	putchar
+	movq	%rax, -48(%rbp)
 	leave
 	ret

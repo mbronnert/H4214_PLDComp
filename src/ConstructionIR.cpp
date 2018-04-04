@@ -165,7 +165,7 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     resultatAffectation = expressionToIR(expression);
     params.push_back(resultatAffectation);
     params.push_back(nomVariable); // TODO: faut pas inverser l'ordre des 2 params ?
-    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::INT64, params);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
 }
 

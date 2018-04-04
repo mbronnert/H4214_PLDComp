@@ -3,10 +3,10 @@
 using namespace std;
 
 /* IRInstr */
-IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> p) {
+IRInstr::IRInstr(BasicBlock *bb_, Operation o, Type type, vector <string> p) {
 	bb = bb_;
-	op = op;
-	t = t;
+	op = o;
+	t = type;
 	params = p;
 }
 
@@ -23,7 +23,7 @@ void IRInstr::gen_asm(ostream &o) {
 	cout << opEtiquette[op] <<endl;
 	switch(op){
 		case ldconst:
-			chaine = "	movq	 $"+ to_string(this->bb->cfg->get_var_index(params[1]))+"," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
+			chaine = "	movq	 $"+ params[1]+"," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
 			o << chaine << endl;
 			break;
 
@@ -90,10 +90,10 @@ void IRInstr::gen_asm(ostream &o) {
 				}
 			}
 			//Putchar et Getchar géré séparemment (pas de _)
-			if(to_string(this->bb->cfg->get_var_index(params[0])).compare("getchar")==0 || to_string(this->bb->cfg->get_var_index(params[0])).compare("putchar")==0){
-				chaine = "	call	"+to_string(this->bb->cfg->get_var_index(params[0]));
+			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
+				chaine = "	call	"+params[0];
 			}else{
-				chaine = "	call	_"+to_string(this->bb->cfg->get_var_index(params[0]));
+				chaine = "	call	_"+params[0];
 			}
 			o << chaine << endl;
 			//Pas de if pour l'instant (on affecte toujours le retour à une variable temporaire)
@@ -253,7 +253,7 @@ void CFG::gen_asm_epilogue(ostream& o) {
 void CFG::add_to_symbol_table(string name, Type t) {
 	SymbolType.insert(make_pair(name, t));
 	SymbolIndex.insert(make_pair(name, nextFreeSymbolIndex));
-	nextFreeSymbolIndex = nextFreeSymbolIndex + 8;
+	nextFreeSymbolIndex = nextFreeSymbolIndex - 8;
 }
 
 string CFG::create_new_tempvar(Type t) {
@@ -281,6 +281,7 @@ Type CFG::get_var_type(string name) {
 			return it->second;
 		}
 	}
+	return NONE;
 }
 
 string CFG::new_BB_name() {
