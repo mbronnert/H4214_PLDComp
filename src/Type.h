@@ -2,7 +2,7 @@
 #define Type_h
 
 
-enum Type {CHAR, INT32, INT64, VOID};
+enum Type {CHAR, INT32, INT64, VOID, NONE};
 
 
 #endif

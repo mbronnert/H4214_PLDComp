@@ -199,7 +199,7 @@ void validProgramsTests () {
 
 
 int main () {
-    ANTLRInputStream input ("void main() {char a;char b;char c; a='M'; b=1+a+1; c=b+1; putchar(b); putchar(c); putchar('\n');}");
+    ANTLRInputStream input ("void main(void){ if(1<2)  { putchar('V'); } else  { putchar('F'); } putchar('\n'); }");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
