@@ -3,10 +3,10 @@
 using namespace std;
 
 /* IRInstr */
-IRInstr::IRInstr(BasicBlock *bb_, Operation op, Type t, vector <string> p) {
+IRInstr::IRInstr(BasicBlock *bb_, Operation o, Type type, vector <string> p) {
 	bb = bb_;
-	op = op;
-	t = t;
+	op = o;
+	t = type;
 	params = p;
 }
 

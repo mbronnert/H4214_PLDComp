@@ -28,7 +28,23 @@ using namespace std;
  * %rax est la return value (utilisée aussi pour toute opération intermédiaire)
  * %rdi, %rsi, %rdx, %rcx, %r8 et %r9 sont les paramètres de fonction
  * */
-
+const string opEtiquette[]= {
+    "ldconst",
+    "add",
+    "sub",
+    "mul",
+    "rmem",   //read mem
+    "wmem",	//write mem
+    "call",
+    "cmp_eq", //compare equal   ATTENTION, SI AJOUT D'OPERATION METTEZ APRES LES CMP SVP
+    "cmp_lt", //compare less than
+    "cmp_le", //compare less or equal
+    "cmp_gt", //compare greater than
+    "cmp_ge", //compare greater or equal
+    "cmp_diff", //compare diff
+    "ret",
+    "copy"
+  };
 class IRInstr {
 
    public:
@@ -51,7 +67,7 @@ class IRInstr {
     copy
   } Operation;
 
-  IRInstr(BasicBlock* bb_, Operation op, Type t, vector<string> p);
+  IRInstr(BasicBlock* bb_, Operation o, Type type, vector<string> p);
   ~IRInstr();
   int getOperation();
 
