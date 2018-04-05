@@ -27,6 +27,7 @@ public:
     void analyseInstruction(Instruction * instruction);
     void analyseExpression(Expression * expression);
     string analyseExprBin(ExprBin * expression);
+    string analyseExprUnaire(ExprUnaire * expression);
     void analyseAffectation(Affectation * affectation);
     void analyseAppelDeFonction(AppelDeFonction * appelDeFonction);
     void analyseReturn(Return * retour);

@@ -16,6 +16,7 @@ using namespace antlr4;
 using namespace std;
 
 string baseURL = "../Tests/FrontEndTests/";
+string backEndTestUrl = "../Tests/BackEndTests/";
 
 vector<string> lexErrorFiles = {
     baseURL + "LexError/01_LexError_InvalidCharInStream.c",
@@ -93,7 +94,16 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/59_MixedDeclarationsInitializations.c",
 };
 
-
+vector<string> backEndFiles = {
+    // backEndTestUrl + "1_decls.c",
+    // backEndTestUrl + "1_empty.c",
+    backEndTestUrl + "2_putchar.c",
+    // backEndTestUrl + "3_variables.c",
+    // backEndTestUrl + "4-VarConstAddCall.c",
+    // backEndTestUrl + "5-IfThenElse.c",
+    // backEndTestUrl + "6-While.c",
+    // backEndTestUrl + "7-testWhileAndVariables.c",
+};
 
 
 
@@ -197,27 +207,52 @@ void validProgramsTests () {
     }
 }
 
+void backEndTests() {
+    cout << endl << endl << "/////////////// BACK END TESTS ////////////////" << endl << endl;
+    for (int i=0 ; i<backEndFiles.size() ; i++) {
+        cout << backEndFiles[i] << endl;
+
+        ifstream file(backEndFiles[i]);
+        string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
+        ANTLRInputStream input (content);
+        PLDCOMPLexer lexer (&input);
+        CommonTokenStream token (&lexer);
+        PLDCOMPParser parser (&token);
+        tree::ParseTree * tree = parser.programme();
+        ConstructionIR constr;
+
+        Visitor visitor;
+        Programme * prog = (Programme *) visitor.visit(tree);
+        prog->resolutionPortee();
+
+        constr.analyseProgramme(prog);
+
+        cout << endl;
+
+    }
+}
 
 int main () {
-    ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void) {\r\nchar a;\r\nchar b = 'K';\r\nputchar('K');\r\na=b+1;\r\n}");
-    PLDCOMPLexer lexer (&input);
-    CommonTokenStream token (&lexer);
-    PLDCOMPParser parser (&token);
-    ConstructionIR constr;
-
-    tree::ParseTree * tree = parser.programme();
-    Visitor visitor;
-
-    Programme * prog = (Programme *) visitor.visit(tree);
-
-    prog->affiche();
-    prog->resolutionPortee();
-    constr.analyseProgramme(prog);
+    // ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void) {\r\nchar a;\r\nchar b;\r\nchar c;\r\na='M';\r\nb=1+a+1;\r\nc=b+1;\r\nputchar(b);\r\nputchar(c);\r\nputchar('\n');\r\n}");
+    // PLDCOMPLexer lexer (&input);
+    // CommonTokenStream token (&lexer);
+    // PLDCOMPParser parser (&token);
+    // ConstructionIR constr;
+    //
+    // tree::ParseTree * tree = parser.programme();
+    // Visitor visitor;
+    //
+    // Programme * prog = (Programme *) visitor.visit(tree);
+    //
+    // prog->affiche();
+    // prog->resolutionPortee();
+    // constr.analyseProgramme(prog);
 
     // lexErrorTests();
     // syntaxErrorTests();
     // validProgramsTests();
     // semanticErrorTests();
+    backEndTests();
 
     return 0;
 }

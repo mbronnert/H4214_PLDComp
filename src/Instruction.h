@@ -121,7 +121,7 @@ class ExprUnaire : public Expression {
         void resolutionPortee(list<string> *pileVariable, map<string, Declaration*> *mapVariable, list<string> *pileFonction);
         TypeNoeud typeNoeud();
     private:
-        Expression * expression; //TODO: c'est pas plutot une variable ?
+        Expression * expression;
         Symbole symbole;
 };
 

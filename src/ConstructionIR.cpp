@@ -404,3 +404,49 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
     }
     return tempVar;
 }
+
+string ConstructionIR::analyseExprUnaire(ExprUnaire * expression) {
+    cout<<"appel exprunaire"<<endl;
+    string resultat;
+
+    switch (expression->getSymbole()) {
+        case PAR:
+        resultat = expressionToIR(expression->getExpression());
+        break;
+        case NON:
+        break;
+        case EQUAL:
+        break;
+        case PPEXP:
+        break;
+        case MMEXP:
+        break;
+        case EXPPP:
+        break;
+        case EXPMM:
+        break;
+        case XOREQ:
+        break;
+        case OREQ:
+        break;
+        case ANDEQ:
+        break;
+        case MODEQ:
+        break;
+        case DIVEQ:
+        break;
+        case MULTEQ:
+        break;
+        case MOINSEQ:
+        break;
+        case ADDEQ:
+        break;
+        case INVERT:
+        break;
+        case NEGATION:
+        break;
+        default:
+        break;
+    }
+    return resultat;
+}
