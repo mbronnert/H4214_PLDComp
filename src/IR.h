@@ -42,6 +42,7 @@ const string opEtiquette[]= {
     "cmp_gt", //compare greater than
     "cmp_ge", //compare greater or equal
     "cmp_diff", //compare diff
+    "jmp", //saut
     "ret",
     "copy"
   };
@@ -64,6 +65,7 @@ class IRInstr {
     cmp_gt, //compare greater than
     cmp_ge, //compare greater or equal
     cmp_diff, //compare diff
+    jmp,
     ret,
     copy
   } Operation;

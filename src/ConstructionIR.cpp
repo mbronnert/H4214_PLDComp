@@ -252,6 +252,9 @@ void ConstructionIR::analyseWhile(While * w) {
 
     currentCFG->currentBB = trueBranch;
     analyseInstruction(w->getInstruction());
+    vector<string> params;
+    params.push_back(whileBloc->label);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::jmp, NONE, params);
     currentCFG->currentBB = falseBranch;
 }
 
