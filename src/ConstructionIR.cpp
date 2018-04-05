@@ -41,8 +41,8 @@ void ConstructionIR::startASM() {
     cout << "startASM" <<endl;
     ofstream outfile ("main.s", ofstream::binary);
     outfile<<".text"<<endl;
-    outfile<<".global main"<<endl;
-    for(list<CFG*>::iterator it= listeCFG->begin() ; it != listeCFG->end() ; it++)
+    outfile<<".global _main"<<endl;
+    for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++)
     {
         (*it)->gen_asm(outfile);
     }
@@ -98,7 +98,7 @@ void ConstructionIR::analyseInstruction(Instruction * instruction) {
             analyseIfElse((IfElse *) instruction);
             break;
         case TypeNoeud::WHILE :
-            // TODO
+            analyseWhile((While *) instruction);
             break;
         case TypeNoeud::EXPRBIN :
             analyseExprBin((ExprBin *) instruction);
@@ -269,6 +269,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             caractere = (Caractere *) expression;
             chaine = currentCFG->create_new_tempvar(CHAR);
             params.push_back(chaine);
+            cout << "LAAAAAA"<< to_string(caractere->getValeur()) << endl;
             params.push_back(to_string(caractere->getValeur()));
             currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::CHAR, params);
             break;

@@ -92,7 +92,7 @@ void IRInstr::gen_asm(ostream &o) {
 			}
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
-				chaine = "	call	"+params[0];
+				chaine = "	call	_"+params[0];
 			}else{
 				//TODO chaine = "	call	"+params[0];
 				chaine = "	call	_"+params[0];

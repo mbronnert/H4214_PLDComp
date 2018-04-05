@@ -164,7 +164,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *ctx) override {
-        return (Expression *) new Caractere((char) ctx->CHAR()->getText()[0]);
+        return (Expression *) new Caractere((char) ctx->CHAR()->getText()[1]);
     }
 
     antlrcpp::Any visitAppelDeFonction(PLDCOMPParser::AppelDeFonctionContext *ctx) override {
@@ -227,7 +227,7 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitConstanteCar(PLDCOMPParser::ConstanteCarContext *ctx) override {
-        return (Caractere *) new Caractere((char) ctx->CHAR()->getText()[0]);
+        return (Caractere *) new Caractere((char) ctx->CHAR()->getText()[1]);
     }
 
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
@@ -280,7 +280,7 @@ class Visitor : public PLDCOMPBaseVisitor {
         auto l = ctx->CHAR();
 
         for(auto i=l.begin() ; i!=l.end() ; i++) {
-            caracteres->push_back((Caractere*) new Caractere((char) (*i)->getText()[0]));
+            caracteres->push_back((Caractere*) new Caractere((char) (*i)->getText()[1]));
         }
         return (list<Caractere*> *) caracteres;
 
