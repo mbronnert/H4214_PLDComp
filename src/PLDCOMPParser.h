@@ -636,11 +636,33 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  ExpressionCaractereContext : public ExpParentheseContext {
+  public:
+    ExpressionCaractereContext(ExpParentheseContext *ctx);
+
+    antlr4::tree::TerminalNode *CHAR();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  ParentheseContext : public ExpParentheseContext {
   public:
     ParentheseContext(ExpParentheseContext *ctx);
 
     ExpContext *exp();
+    virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
+    virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  ExpressionLvalueContext : public ExpParentheseContext {
+  public:
+    ExpressionLvalueContext(ExpParentheseContext *ctx);
+
+    LvalueContext *lvalue();
     virtual void enterRule(antlr4::tree::ParseTreeListener *listener) override;
     virtual void exitRule(antlr4::tree::ParseTreeListener *listener) override;
 

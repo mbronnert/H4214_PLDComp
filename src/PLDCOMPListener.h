@@ -158,6 +158,12 @@ public:
   virtual void enterExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) = 0;
   virtual void exitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) = 0;
 
+  virtual void enterExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext *ctx) = 0;
+  virtual void exitExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext *ctx) = 0;
+
+  virtual void enterExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext *ctx) = 0;
+  virtual void exitExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext *ctx) = 0;
+
   virtual void enterVariable(PLDCOMPParser::VariableContext *ctx) = 0;
   virtual void exitVariable(PLDCOMPParser::VariableContext *ctx) = 0;
 

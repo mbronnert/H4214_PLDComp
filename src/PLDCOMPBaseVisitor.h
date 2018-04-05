@@ -207,6 +207,14 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *ctx) override {
     return visitChildren(ctx);
   }

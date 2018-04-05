@@ -160,6 +160,12 @@ public:
   virtual void enterExpressionNombre(PLDCOMPParser::ExpressionNombreContext * /*ctx*/) override { }
   virtual void exitExpressionNombre(PLDCOMPParser::ExpressionNombreContext * /*ctx*/) override { }
 
+  virtual void enterExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext * /*ctx*/) override { }
+  virtual void exitExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext * /*ctx*/) override { }
+
+  virtual void enterExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext * /*ctx*/) override { }
+  virtual void exitExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext * /*ctx*/) override { }
+
   virtual void enterVariable(PLDCOMPParser::VariableContext * /*ctx*/) override { }
   virtual void exitVariable(PLDCOMPParser::VariableContext * /*ctx*/) override { }
 

@@ -115,6 +115,10 @@ public:
 
     virtual antlrcpp::Any visitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *context) = 0;
 
+    virtual antlrcpp::Any visitExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext *context) = 0;
+
     virtual antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *context) = 0;
 
     virtual antlrcpp::Any visitTableau(PLDCOMPParser::TableauContext *context) = 0;

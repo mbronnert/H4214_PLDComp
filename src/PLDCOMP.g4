@@ -56,6 +56,8 @@ expPrioritaire : expPrioritaire opPrioritaire expParenthese # operateurBinairePr
 
 expParenthese : '(' exp ')' # parenthese
                 | NOMBRE # expressionNombre
+                | CHAR # expressionCaractere
+                | lvalue # expressionLvalue
                 ;
 
 lvalue : NOMVAR # variable
