@@ -179,11 +179,12 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
 void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
     cout<<"appel fonction"<<endl;
     list<Expression*> * parametres = appelDeFonction->getParametres();
+    string tempVar ;
     if(parametres) {
         TypeNoeud typeInstr;
         vector<string> listParametre;
         listParametre.push_back(appelDeFonction->getNom());
-        string tempVar = currentCFG->create_new_tempvar(CHAR);
+        tempVar = currentCFG->create_new_tempvar(CHAR);
         listParametre.push_back(tempVar);
         for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
             string nom;
@@ -312,7 +313,6 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
     resultatDroite = expressionToIR(expression->getDroite());
     expression->typage();
     string tempVar = currentCFG->create_new_tempvar(expression->getType());
-
     params.push_back(tempVar);
     params.push_back(resultatGauche);
     params.push_back(resultatDroite);

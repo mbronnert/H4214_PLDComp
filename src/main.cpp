@@ -97,10 +97,10 @@ vector<string> validProgramsFiles = {
 vector<string> backEndFiles = {
     // backEndTestUrl + "1_decls.c",
     // backEndTestUrl + "1_empty.c",
-    backEndTestUrl + "2_putchar.c",
+    // backEndTestUrl + "2_putchar.c",
     // backEndTestUrl + "3_variables.c",
     // backEndTestUrl + "4-VarConstAddCall.c",
-    // backEndTestUrl + "5-IfThenElse.c",
+    backEndTestUrl + "5-IfThenElse.c",
     // backEndTestUrl + "6-While.c",
     // backEndTestUrl + "7-testWhileAndVariables.c",
 };
@@ -233,20 +233,20 @@ void backEndTests() {
 }
 
 int main () {
-    // ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void) {\r\nchar a;\r\nchar b;\r\nchar c;\r\na='M';\r\nb=1+a+1;\r\nc=b+1;\r\nputchar(b);\r\nputchar(c);\r\nputchar('\n');\r\n}");
-    // PLDCOMPLexer lexer (&input);
-    // CommonTokenStream token (&lexer);
-    // PLDCOMPParser parser (&token);
-    // ConstructionIR constr;
-    //
-    // tree::ParseTree * tree = parser.programme();
-    // Visitor visitor;
-    //
-    // Programme * prog = (Programme *) visitor.visit(tree);
-    //
-    // prog->affiche();
-    // prog->resolutionPortee();
-    // constr.analyseProgramme(prog);
+    /*ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void) {\r\nchar a;\r\na='M';\r\nputchar(a);\r\nputchar('O');\r\nputchar('K');\r\nputchar(' ');\r\n}");
+    PLDCOMPLexer lexer (&input);
+    CommonTokenStream token (&lexer);
+    PLDCOMPParser parser (&token);
+    ConstructionIR constr;
+    
+    tree::ParseTree * tree = parser.programme();
+    Visitor visitor;
+    
+    Programme * prog = (Programme *) visitor.visit(tree);
+    
+    prog->affiche();
+    prog->resolutionPortee();
+    constr.analyseProgramme(prog);*/
 
     // lexErrorTests();
     // syntaxErrorTests();

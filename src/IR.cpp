@@ -256,7 +256,9 @@ void CFG::gen_asm_prologue(ostream& o) {
 	o<< chaine << endl;
 	chaine = "	movq	%rsp, %rbp";
 	o<< chaine << endl;
-	int tailleMax = 8*(SymbolIndex.size()+1);
+	int tailleMax;
+	if(SymbolIndex.size()%2 == 0) tailleMax = 8*(SymbolIndex.size());
+    else tailleMax = 8*(SymbolIndex.size()+1);
 	chaine = "	subq	$"+to_string(tailleMax)+", %rsp";
 	o<< chaine << endl;
 }
@@ -277,7 +279,8 @@ void CFG::add_to_symbol_table(string name, Type t) {
 
 string CFG::create_new_tempvar(Type t) {
 	add_to_symbol_table("temp"+to_string(nextTempvar), t);
-	return "temp"+to_string(nextTempvar++);
+	nextTempvar++;
+	return "temp"+to_string(nextTempvar-1);
 	//TODO : vérifier
 }
 
@@ -286,7 +289,7 @@ map<string, int> * CFG::getSymbole() {
 }
 
 int CFG::get_var_index(string name) {
-	for (auto it = SymbolIndex.begin() ; it!=SymbolIndex.end() ; it++) {
+	for (auto it = SymbolIndex.begin() ; it!=SymbolIndex.end(); it++) {
 		if (it->first == name) {
 			return it->second;
 		}
@@ -304,5 +307,6 @@ Type CFG::get_var_type(string name) {
 }
 
 string CFG::new_BB_name() {
-	return "B" + to_string(nextBBnumber++); // TODO : vérifier que c'est le bon nombre
+	nextBBnumber++;
+	return "B" + to_string(nextBBnumber-1); // TODO : vérifier que c'est le bon nombre
 }
