@@ -231,6 +231,7 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
     analyseInstruction(i->getInstruction());
     currentCFG->currentBB = falseBranch;
     analyseInstruction(i->getInstructionElse());
+    //TODO Bloc suivant le else ???
 }
 
 void ConstructionIR::analyseWhile(While * w) {

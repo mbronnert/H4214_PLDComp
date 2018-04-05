@@ -199,7 +199,7 @@ void validProgramsTests () {
 
 
 int main () {
-    ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void){\r\nint64_t i;\r\ni=0;\r\nwhile(i<5){\r\nputchar('V');\r\ni=i+1;\r\n}\r\nputchar('\n');\r\n}");
+    ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void){\r\nint64_t i;\r\ni=0;\r\nif(i<5){\r\nputchar('V');\r\ni=i+1;\r\n}\r\nputchar('\n');\r\n}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
     PLDCOMPParser parser (&token);
