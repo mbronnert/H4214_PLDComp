@@ -16,17 +16,23 @@
 class  PLDCOMPBaseListener : public PLDCOMPListener {
 public:
 
+  virtual void enterMult(PLDCOMPParser::MultContext * /*ctx*/) override { }
+  virtual void exitMult(PLDCOMPParser::MultContext * /*ctx*/) override { }
+
+  virtual void enterDiv(PLDCOMPParser::DivContext * /*ctx*/) override { }
+  virtual void exitDiv(PLDCOMPParser::DivContext * /*ctx*/) override { }
+
+  virtual void enterAndb(PLDCOMPParser::AndbContext * /*ctx*/) override { }
+  virtual void exitAndb(PLDCOMPParser::AndbContext * /*ctx*/) override { }
+
   virtual void enterAdd(PLDCOMPParser::AddContext * /*ctx*/) override { }
   virtual void exitAdd(PLDCOMPParser::AddContext * /*ctx*/) override { }
 
   virtual void enterMoins(PLDCOMPParser::MoinsContext * /*ctx*/) override { }
   virtual void exitMoins(PLDCOMPParser::MoinsContext * /*ctx*/) override { }
 
-  virtual void enterMult(PLDCOMPParser::MultContext * /*ctx*/) override { }
-  virtual void exitMult(PLDCOMPParser::MultContext * /*ctx*/) override { }
-
-  virtual void enterDiv(PLDCOMPParser::DivContext * /*ctx*/) override { }
-  virtual void exitDiv(PLDCOMPParser::DivContext * /*ctx*/) override { }
+  virtual void enterOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
+  virtual void exitOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
 
   virtual void enterMod(PLDCOMPParser::ModContext * /*ctx*/) override { }
   virtual void exitMod(PLDCOMPParser::ModContext * /*ctx*/) override { }
@@ -91,12 +97,6 @@ public:
   virtual void enterDiff(PLDCOMPParser::DiffContext * /*ctx*/) override { }
   virtual void exitDiff(PLDCOMPParser::DiffContext * /*ctx*/) override { }
 
-  virtual void enterAndb(PLDCOMPParser::AndbContext * /*ctx*/) override { }
-  virtual void exitAndb(PLDCOMPParser::AndbContext * /*ctx*/) override { }
-
-  virtual void enterOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
-  virtual void exitOrb(PLDCOMPParser::OrbContext * /*ctx*/) override { }
-
   virtual void enterComma(PLDCOMPParser::CommaContext * /*ctx*/) override { }
   virtual void exitComma(PLDCOMPParser::CommaContext * /*ctx*/) override { }
 
@@ -118,8 +118,11 @@ public:
   virtual void enterConstanteNombre(PLDCOMPParser::ConstanteNombreContext * /*ctx*/) override { }
   virtual void exitConstanteNombre(PLDCOMPParser::ConstanteNombreContext * /*ctx*/) override { }
 
-  virtual void enterParenthese(PLDCOMPParser::ParentheseContext * /*ctx*/) override { }
-  virtual void exitParenthese(PLDCOMPParser::ParentheseContext * /*ctx*/) override { }
+  virtual void enterOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext * /*ctx*/) override { }
+  virtual void exitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext * /*ctx*/) override { }
+
+  virtual void enterExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext * /*ctx*/) override { }
+  virtual void exitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext * /*ctx*/) override { }
 
   virtual void enterNon(PLDCOMPParser::NonContext * /*ctx*/) override { }
   virtual void exitNon(PLDCOMPParser::NonContext * /*ctx*/) override { }
@@ -136,9 +139,6 @@ public:
   virtual void enterAffectation(PLDCOMPParser::AffectationContext * /*ctx*/) override { }
   virtual void exitAffectation(PLDCOMPParser::AffectationContext * /*ctx*/) override { }
 
-  virtual void enterOperateurBinaire(PLDCOMPParser::OperateurBinaireContext * /*ctx*/) override { }
-  virtual void exitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext * /*ctx*/) override { }
-
   virtual void enterAppelPutchar(PLDCOMPParser::AppelPutcharContext * /*ctx*/) override { }
   virtual void exitAppelPutchar(PLDCOMPParser::AppelPutcharContext * /*ctx*/) override { }
 
@@ -147,6 +147,18 @@ public:
 
   virtual void enterExpmm(PLDCOMPParser::ExpmmContext * /*ctx*/) override { }
   virtual void exitExpmm(PLDCOMPParser::ExpmmContext * /*ctx*/) override { }
+
+  virtual void enterExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext * /*ctx*/) override { }
+  virtual void exitExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext * /*ctx*/) override { }
+
+  virtual void enterOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext * /*ctx*/) override { }
+  virtual void exitOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext * /*ctx*/) override { }
+
+  virtual void enterParenthese(PLDCOMPParser::ParentheseContext * /*ctx*/) override { }
+  virtual void exitParenthese(PLDCOMPParser::ParentheseContext * /*ctx*/) override { }
+
+  virtual void enterExpressionNombre(PLDCOMPParser::ExpressionNombreContext * /*ctx*/) override { }
+  virtual void exitExpressionNombre(PLDCOMPParser::ExpressionNombreContext * /*ctx*/) override { }
 
   virtual void enterVariable(PLDCOMPParser::VariableContext * /*ctx*/) override { }
   virtual void exitVariable(PLDCOMPParser::VariableContext * /*ctx*/) override { }

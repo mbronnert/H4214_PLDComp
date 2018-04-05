@@ -38,7 +38,7 @@ void IRInstr::gen_asm(ostream &o) {
 		case sub:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = 	"subq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	subq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			chaine = "	movq 	%rax, "+to_string(this->bb->cfg->get_var_index(params[0])) +"(%rbp)";
 			o << chaine << endl;

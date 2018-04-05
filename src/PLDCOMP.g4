@@ -1,37 +1,39 @@
 grammar PLDCOMP;
 
-op : '+'    # add
-          | '-'   # moins
-          | '*'   # mult
+opPrioritaire : '*'   # mult
           | '/'   # div
-          | '%'   # mod
-          | '^'   # pow
-          | '&'   # and
-          | '|'   # or
-          | '='   # equal
-          | '+='   # addeq
-          | '-='   # moinseq
-          | '*='   # multeq
-          | '/='   # diveq
-          | '%='   # modeq
-          | '&='   # andeq
-          | '|='   # oreq
-          | '^='   # xoreq
-          | '<'   # infs
-          | '<='  # inf
-          | '>'   # sups
-          | '>='  # sup
-          | '<<'  # decg
-          | '>>'  # decd
-          | '=='  # equalb
-          | '!='  # diff
           | '&&'  # andb
-          | '||'  # orb
-          | ','	# comma
           ;
 
-exp : exp op exp  # operateurBinaire
-            | '(' exp ')' # parenthese        
+opSecondaire : '+'    # add
+                | '-'   # moins
+                | '||'  # orb
+                | '%'   # mod
+                | '^'   # pow
+                | '&'   # and
+                | '|'   # or
+                | '='   # equal
+                | '+='   # addeq
+                | '-='   # moinseq
+                | '*='   # multeq
+                | '/='   # diveq
+                | '%='   # modeq
+                | '&='   # andeq
+                | '|='   # oreq
+                | '^='   # xoreq
+                | '<'   # infs
+                | '<='  # inf
+                | '>'   # sups
+                | '>='  # sup
+                | '<<'  # decg
+                | '>>'  # decd
+                | '=='  # equalb
+                | '!='  # diff
+                | ','	# comma
+                ;
+
+exp : exp opSecondaire expPrioritaire # operateurBinaireSecondaire
+            | expPrioritaire # expressionPrioritaire
             | '!' exp  # non
             | '-' exp  # negation
             | '~' exp  # invert
@@ -48,6 +50,14 @@ exp : exp op exp  # operateurBinaire
             | 'getchar' '(' ')' # appelGetchar
             ;
 
+expPrioritaire : expPrioritaire opPrioritaire expParenthese # operateurBinairePrioritaire
+                | expParenthese # expressionParenthese
+                ;
+
+expParenthese : '(' exp ')' # parenthese
+                | NOMBRE # expressionNombre
+                ;
+
 lvalue : NOMVAR # variable
         | NOMVAR '[' exp ']' # tableau
         ;
@@ -61,7 +71,7 @@ constante : NOMBRE # constanteNb
 
 type_variable : 'char' | 'int32_t' | 'int64_t' ;
 
-type_function : 'char' | 'int32_t' | 'int64_t' | 'void' ; 
+type_function : 'char' | 'int32_t' | 'int64_t' | 'void' ;
 
 if_statement : 'if' '(' exp ')' instruction #if
               | 'if' '(' exp ')' instruction 'else' instruction #ifElse
@@ -119,12 +129,3 @@ COMMENT: '/*' . *? '*/'-> skip ;
 LINECOMMENT: '//' ~[\r\n]* -> skip;
 WS : [ \t\r\n]+ -> skip ;
 INCLUDE : '#' ~[\r\n]* -> skip;
-
-
-
-
-
-
-
-
-

@@ -14,17 +14,23 @@
 class  PLDCOMPListener : public antlr4::tree::ParseTreeListener {
 public:
 
+  virtual void enterMult(PLDCOMPParser::MultContext *ctx) = 0;
+  virtual void exitMult(PLDCOMPParser::MultContext *ctx) = 0;
+
+  virtual void enterDiv(PLDCOMPParser::DivContext *ctx) = 0;
+  virtual void exitDiv(PLDCOMPParser::DivContext *ctx) = 0;
+
+  virtual void enterAndb(PLDCOMPParser::AndbContext *ctx) = 0;
+  virtual void exitAndb(PLDCOMPParser::AndbContext *ctx) = 0;
+
   virtual void enterAdd(PLDCOMPParser::AddContext *ctx) = 0;
   virtual void exitAdd(PLDCOMPParser::AddContext *ctx) = 0;
 
   virtual void enterMoins(PLDCOMPParser::MoinsContext *ctx) = 0;
   virtual void exitMoins(PLDCOMPParser::MoinsContext *ctx) = 0;
 
-  virtual void enterMult(PLDCOMPParser::MultContext *ctx) = 0;
-  virtual void exitMult(PLDCOMPParser::MultContext *ctx) = 0;
-
-  virtual void enterDiv(PLDCOMPParser::DivContext *ctx) = 0;
-  virtual void exitDiv(PLDCOMPParser::DivContext *ctx) = 0;
+  virtual void enterOrb(PLDCOMPParser::OrbContext *ctx) = 0;
+  virtual void exitOrb(PLDCOMPParser::OrbContext *ctx) = 0;
 
   virtual void enterMod(PLDCOMPParser::ModContext *ctx) = 0;
   virtual void exitMod(PLDCOMPParser::ModContext *ctx) = 0;
@@ -89,12 +95,6 @@ public:
   virtual void enterDiff(PLDCOMPParser::DiffContext *ctx) = 0;
   virtual void exitDiff(PLDCOMPParser::DiffContext *ctx) = 0;
 
-  virtual void enterAndb(PLDCOMPParser::AndbContext *ctx) = 0;
-  virtual void exitAndb(PLDCOMPParser::AndbContext *ctx) = 0;
-
-  virtual void enterOrb(PLDCOMPParser::OrbContext *ctx) = 0;
-  virtual void exitOrb(PLDCOMPParser::OrbContext *ctx) = 0;
-
   virtual void enterComma(PLDCOMPParser::CommaContext *ctx) = 0;
   virtual void exitComma(PLDCOMPParser::CommaContext *ctx) = 0;
 
@@ -116,8 +116,11 @@ public:
   virtual void enterConstanteNombre(PLDCOMPParser::ConstanteNombreContext *ctx) = 0;
   virtual void exitConstanteNombre(PLDCOMPParser::ConstanteNombreContext *ctx) = 0;
 
-  virtual void enterParenthese(PLDCOMPParser::ParentheseContext *ctx) = 0;
-  virtual void exitParenthese(PLDCOMPParser::ParentheseContext *ctx) = 0;
+  virtual void enterOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) = 0;
+  virtual void exitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) = 0;
+
+  virtual void enterExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) = 0;
+  virtual void exitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) = 0;
 
   virtual void enterNon(PLDCOMPParser::NonContext *ctx) = 0;
   virtual void exitNon(PLDCOMPParser::NonContext *ctx) = 0;
@@ -134,9 +137,6 @@ public:
   virtual void enterAffectation(PLDCOMPParser::AffectationContext *ctx) = 0;
   virtual void exitAffectation(PLDCOMPParser::AffectationContext *ctx) = 0;
 
-  virtual void enterOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) = 0;
-  virtual void exitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) = 0;
-
   virtual void enterAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) = 0;
   virtual void exitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) = 0;
 
@@ -145,6 +145,18 @@ public:
 
   virtual void enterExpmm(PLDCOMPParser::ExpmmContext *ctx) = 0;
   virtual void exitExpmm(PLDCOMPParser::ExpmmContext *ctx) = 0;
+
+  virtual void enterExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext *ctx) = 0;
+  virtual void exitExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext *ctx) = 0;
+
+  virtual void enterOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext *ctx) = 0;
+  virtual void exitOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext *ctx) = 0;
+
+  virtual void enterParenthese(PLDCOMPParser::ParentheseContext *ctx) = 0;
+  virtual void exitParenthese(PLDCOMPParser::ParentheseContext *ctx) = 0;
+
+  virtual void enterExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) = 0;
+  virtual void exitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) = 0;
 
   virtual void enterVariable(PLDCOMPParser::VariableContext *ctx) = 0;
   virtual void exitVariable(PLDCOMPParser::VariableContext *ctx) = 0;

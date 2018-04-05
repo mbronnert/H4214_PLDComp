@@ -15,6 +15,18 @@
 class  PLDCOMPBaseVisitor : public PLDCOMPVisitor {
 public:
 
+  virtual antlrcpp::Any visitMult(PLDCOMPParser::MultContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitDiv(PLDCOMPParser::DivContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitAndb(PLDCOMPParser::AndbContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitAdd(PLDCOMPParser::AddContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -23,11 +35,7 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitMult(PLDCOMPParser::MultContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitDiv(PLDCOMPParser::DivContext *ctx) override {
+  virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -115,14 +123,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitAndb(PLDCOMPParser::AndbContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -151,7 +151,11 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitParenthese(PLDCOMPParser::ParentheseContext *ctx) override {
+  virtual antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -175,10 +179,6 @@ public:
     return visitChildren(ctx);
   }
 
-  virtual antlrcpp::Any visitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
   virtual antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -188,6 +188,22 @@ public:
   }
 
   virtual antlrcpp::Any visitExpmm(PLDCOMPParser::ExpmmContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitParenthese(PLDCOMPParser::ParentheseContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) override {
     return visitChildren(ctx);
   }
 

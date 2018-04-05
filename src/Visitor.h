@@ -186,8 +186,24 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Expression *) new Affectation((AppelDeVariable *) visit(ctx->lvalue()), (Expression *) visit(ctx->exp()));
     }
 
-    antlrcpp::Any visitOperateurBinaire(PLDCOMPParser::OperateurBinaireContext *ctx) override {
-        return (Expression *) new ExprBin ((Expression *) visit(ctx->exp(0)), (Expression *) visit(ctx->exp(1)), (Symbole) visit(ctx->op()));
+    antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) override {
+      return (Expression *) new ExprBin ((Expression *) visit(ctx->exp()), (Expression *) visit(ctx->expPrioritaire()), (Symbole) visit(ctx->opSecondaire()));
+    }
+
+    antlrcpp::Any visitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) override {
+      return (Expression *) visit(ctx->expPrioritaire());
+    }
+
+    antlrcpp::Any visitExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext *ctx) override {
+      return (Expression *) visit(ctx->expParenthese());
+    }
+
+    antlrcpp::Any visitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *ctx) override {
+        return (Expression *) new Nombre((int) stoi(ctx->NOMBRE()->getText()));
+    }
+
+    antlrcpp::Any visitOperateurBinairePrioritaire(PLDCOMPParser::OperateurBinairePrioritaireContext *ctx) override {
+        return (Expression *) new ExprBin ((Expression *) visit(ctx->expPrioritaire()), (Expression *) visit(ctx->expParenthese()), (Symbole) visit(ctx->opPrioritaire()));
     }
 
     antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *ctx) override {
