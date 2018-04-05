@@ -1,33 +1,27 @@
 .text
 .global _main
-_fact:
-	pushq	%rbp
-	movq	%rsp, %rbp
-	subq	$48, %rsp
-fact:
-	movq	 $1,-8(%rbp)
-	movq	-1(%rbp), %rax
-	cmp		-16(%rbp), %rax
-B1:
-	movq	 $1,-24(%rbp)
-	movq	-24(%rbp), %rax
-B2:
-	movq	 $1,-32(%rbp)
-	movq	-1(%rbp), %rax
-subq	-32(%rbp), %rax
-	movq 	%rax, -40(%rbp)
-	call	_fact
-	movq	%rax, -40(%rbp)
-	movq	-1(%rbp), %rax
-	leave
-	ret
 _main:
 	pushq	%rbp
 	movq	%rsp, %rbp
-	subq	$16, %rsp
+	subq	$80, %rsp
 main:
-	movq	 $5,-8(%rbp)
-	call	_fact
-	movq	%rax, -8(%rbp)
+	movq	 $77,-16(%rbp)
+	movq	-16(%rbp), %rax
+	movq	 %rax, -8(%rbp)
+	movl	-8(%rbp), %edi
+	call	_putchar
+	movq	%rax, -24(%rbp)
+	movq	 $79,-40(%rbp)
+	movl	-40(%rbp), %edi
+	call	_putchar
+	movq	%rax, -32(%rbp)
+	movq	 $75,-56(%rbp)
+	movl	-56(%rbp), %edi
+	call	_putchar
+	movq	%rax, -48(%rbp)
+	movq	 $32,-72(%rbp)
+	movl	-72(%rbp), %edi
+	call	_putchar
+	movq	%rax, -64(%rbp)
 	leave
 	ret

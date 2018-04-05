@@ -64,7 +64,7 @@ void IRInstr::gen_asm(ostream &o) {
 			if(params.size()>8){
 				cerr<<"Veuillez passer moins de 7 paramètres svp"<<endl;
 			}
-			if(params.size()>2){
+			if(params.size()>2 && params[0].compare("getchar")!=0 && params[0].compare("putchar")!=0){
 				chaine = "	movq	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %rdi";
 				o << chaine << endl;
 				if(params.size()>3){
@@ -90,9 +90,10 @@ void IRInstr::gen_asm(ostream &o) {
 			}
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
+				chaine = "	movl	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %edi";
+				o<< chaine << endl;
 				chaine = "	call	_"+params[0];
 			}else{
-				//TODO chaine = "	call	"+params[0];
 				chaine = "	call	_"+params[0];
 			}
 			o << chaine << endl;
