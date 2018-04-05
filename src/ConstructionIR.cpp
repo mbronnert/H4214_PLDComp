@@ -77,6 +77,7 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
     cout<<"appel declaration"<<endl;
     currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
+    cout << "GET INDEX" << currentCFG->get_var_index(declaration->getVariable()->getNom()) << endl;;
 }
 
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
@@ -162,9 +163,10 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     string resultatAffectation;
     vector<string> params;
     string nomVariable = affectation->getNomVariable();
+    cout << "Nom vraiable : " << nomVariable << endl;
     resultatAffectation = expressionToIR(expression);
-    params.push_back(resultatAffectation);
     params.push_back(nomVariable); // TODO: faut pas inverser l'ordre des 2 params ?
+    params.push_back(resultatAffectation);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
 }
@@ -256,7 +258,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
     vector<string> params;
     switch (typeNoeud) {
         case TypeNoeud::EXPRBIN :
-            analyseExprBin((ExprBin *) expression);
+            chaine = analyseExprBin((ExprBin *) expression);
             break;
         case TypeNoeud::NOMBRE :
             nombre = (Nombre *) expression;
@@ -269,7 +271,6 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             caractere = (Caractere *) expression;
             chaine = currentCFG->create_new_tempvar(CHAR);
             params.push_back(chaine);
-            cout << "LAAAAAA"<< to_string(caractere->getValeur()) << endl;
             params.push_back(to_string(caractere->getValeur()));
             currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ldconst, Type::CHAR, params);
             break;
@@ -290,7 +291,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
     return chaine;
 }
 
-void ConstructionIR::analyseExprBin(ExprBin * expression) {
+string ConstructionIR::analyseExprBin(ExprBin * expression) {
     cout<<"appel exprbin"<<endl;
     string resultat;
     string resultatGauche;
@@ -391,4 +392,5 @@ void ConstructionIR::analyseExprBin(ExprBin * expression) {
         default:
         break;
     }
+    return tempVar;
 }

@@ -20,11 +20,9 @@ int IRInstr::getOperation(){
 
 void IRInstr::gen_asm(ostream &o) {
 	string chaine;
-	cout << opEtiquette[op] <<endl;
 	switch(op){
 		case ldconst:
 			chaine = "	movq	 $"+ params[1]+"," + to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
-
 			o << chaine << endl;
 			break;
 
@@ -107,36 +105,42 @@ void IRInstr::gen_asm(ostream &o) {
 
 		case cmp_eq:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_lt:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_le:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_gt:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_ge:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_diff:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+				o << chaine << endl;
 			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
@@ -148,6 +152,7 @@ void IRInstr::gen_asm(ostream &o) {
 
 		case copy:
 			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			o << chaine << endl;
 			chaine = "	movq	 %rax, "+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp)";
 			o << chaine << endl;
 			break;
@@ -170,19 +175,9 @@ void BasicBlock::gen_asm(ostream &o) {
 	string chaine;
 	chaine = label +":";
 	o<< chaine << endl;
-	cout << "map" << endl;
 	map<string, int> *myMap = cfg->getSymbole();
-	cout << "for: " << myMap << endl;
-	cout << "map size: " << myMap->size() << endl;
-	for(auto it = myMap->begin() ; it != myMap->end(); ++it){
-		cout<< "in for" <<endl;
-		cout<< (*it).first <<endl;
-		cout<< (*it).second <<endl;
-	}
-	cout << "between for" << endl;
 	for(vector<IRInstr*>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
 		(*it)->gen_asm(o);
-		cout << "here" <<endl;
 		if(it==instrs.end()){
 			if(exit_true != nullptr && exit_false != nullptr){
 				if((*it)->getOperation()==8){
