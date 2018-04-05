@@ -64,7 +64,7 @@ void IRInstr::gen_asm(ostream &o) {
 			if(params.size()>8){
 				cerr<<"Veuillez passer moins de 7 paramètres svp"<<endl;
 			}
-			if(params.size()>2){
+			if(params.size()>2 && params[0].compare("getchar")!=0 && params[0].compare("putchar")!=0){
 				chaine = "	movq	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %rdi";
 				o << chaine << endl;
 				if(params.size()>3){
@@ -90,9 +90,10 @@ void IRInstr::gen_asm(ostream &o) {
 			}
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
+				chaine = "	movl	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %edi";
+				o<< chaine << endl;
 				chaine = "	call	_"+params[0];
 			}else{
-				//TODO chaine = "	call	"+params[0];
 				chaine = "	call	_"+params[0];
 			}
 			o << chaine << endl;
@@ -104,44 +105,49 @@ void IRInstr::gen_asm(ostream &o) {
 			break;
 
 		case cmp_eq:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_lt:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_le:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_gt:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_ge:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_diff:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
-				o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[0]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			o << chaine << endl;
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			o << chaine << endl;
+			break;
+
+		case jmp:
+			chaine = "	jmp		"+ params[0];
 			o << chaine << endl;
 			break;
 
@@ -176,27 +182,34 @@ void BasicBlock::gen_asm(ostream &o) {
 	chaine = label +":";
 	o<< chaine << endl;
 	map<string, int> *myMap = cfg->getSymbole();
+	int compteur = 1;
 	for(vector<IRInstr*>::iterator it = instrs.begin() ; it != instrs.end(); ++it){
 		(*it)->gen_asm(o);
-		if(it==instrs.end()){
+		if(compteur==instrs.size()){
 			if(exit_true != nullptr && exit_false != nullptr){
-				if((*it)->getOperation()==8){
-					chaine ="	jne	."+ exit_false->label;
+				if((*it)->getOperation()==7){
+					chaine ="	jne	 "+ exit_false->label;
+					o<<chaine<<endl;
+				}else if((*it)->getOperation()==8){
+					chaine ="	jge	 "+ exit_false->label;
+					o<<chaine<<endl;
 				}else if((*it)->getOperation()==9){
-					chaine ="	jge	."+ exit_false->label;
+					chaine ="	jg	 "+ exit_false->label;
+					o<<chaine<<endl;
 				}else if((*it)->getOperation()==10){
-					chaine ="	jg	."+ exit_false->label;
+					chaine ="	jle	 "+ exit_false->label;
+					o<<chaine<<endl;
 				}else if((*it)->getOperation()==11){
-					chaine ="	jle	."+ exit_false->label;
-				}else if((*it)->getOperation()==12){
-					chaine ="	jl	."+ exit_false->label;
+					chaine ="	jl	 "+ exit_false->label;
+					o<<chaine<<endl;
 				}
-				else if((*it)->getOperation()==13){
-					chaine ="	je	."+ exit_false->label;
+				else if((*it)->getOperation()==12){
+					chaine ="	je	 "+ exit_false->label;
+					o<<chaine<<endl;
 				}
-				o<<chaine<<endl;
 			}
 		}
+		compteur++;
 	}
 }
 
@@ -224,6 +237,7 @@ void CFG::gen_asm(ostream& o) {
 	{
 		(*it)->gen_asm(o);
 	}
+	cout<<"Nb bloc: "<<bbs.size()<<endl;
 	gen_asm_epilogue(o);
 }
 

@@ -28,7 +28,7 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
     this->listeCFG=new list<CFG*>[3600];
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
         cout << "check fct start" <<endl;
-        cfg = new CFG(*it);    
+        cfg = new CFG(*it);
         listeCFG->push_back(cfg);
         currentCFG = cfg;
         analyseFonction((Fonction *)*it);
@@ -57,7 +57,7 @@ void ConstructionIR::startASM() {
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
     //TODO : paramètres
-    
+
     // Ajout des déclaration à la table des symboles
     for (auto it=fonction->getDeclarations()->begin() ; it != fonction->getDeclarations()->end() ; it++) {
         analyseDeclaration((Declaration *)(*it));
@@ -183,7 +183,8 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
         TypeNoeud typeInstr;
         vector<string> listParametre;
         listParametre.push_back(appelDeFonction->getNom());
-
+        string tempVar = currentCFG->create_new_tempvar(CHAR);
+        listParametre.push_back(tempVar);
         for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
             string nom;
             nom = expressionToIR(*it);
@@ -230,6 +231,7 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
     analyseInstruction(i->getInstruction());
     currentCFG->currentBB = falseBranch;
     analyseInstruction(i->getInstructionElse());
+    //TODO Bloc suivant le else ???
 }
 
 void ConstructionIR::analyseWhile(While * w) {
@@ -251,6 +253,9 @@ void ConstructionIR::analyseWhile(While * w) {
 
     currentCFG->currentBB = trueBranch;
     analyseInstruction(w->getInstruction());
+    vector<string> params;
+    params.push_back(whileBloc->label);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::jmp, NONE, params);
     currentCFG->currentBB = falseBranch;
 }
 
