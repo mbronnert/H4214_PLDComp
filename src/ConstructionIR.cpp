@@ -24,14 +24,16 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
         analyseDeclaration((Declaration *)(*it));
     }
     cout << "analyse programme start fonction" <<endl;
-
+    CFG* cfg;
+    this->listeCFG=new list<CFG*>[3600];
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
-        CFG* cfg = new CFG(*it);
-
-        this->listeCFG=new list<CFG*>[3600];
+        cout << "check fct start" <<endl;
+        cfg = new CFG(*it);    
         listeCFG->push_back(cfg);
         currentCFG = cfg;
         analyseFonction((Fonction *)*it);
+        cout << "check fct end" <<endl;
+
     }
     cout << "analyse programme end" <<endl;
     startASM();
@@ -43,7 +45,10 @@ void ConstructionIR::startASM() {
     outfile<<".text"<<endl;
     outfile<<".global _main"<<endl;
     for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++)
+
     {
+        cout << "asm" <<endl;
+
         (*it)->gen_asm(outfile);
     }
     outfile.close();
@@ -52,7 +57,7 @@ void ConstructionIR::startASM() {
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
     //TODO : paramètres
-
+    
     // Ajout des déclaration à la table des symboles
     for (auto it=fonction->getDeclarations()->begin() ; it != fonction->getDeclarations()->end() ; it++) {
         analyseDeclaration((Declaration *)(*it));
