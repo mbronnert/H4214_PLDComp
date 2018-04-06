@@ -18,9 +18,9 @@ public:
     ConstructionIR();
     ConstructionIR(list <CFG*> * l, BasicBlock * b);
     ~ConstructionIR();
-    void startASM();
+    void startASM(string fileName);
 
-    void analyseProgramme(Programme * programme);
+    void analyseProgramme(Programme * programme, string fileName);
     void analyseFonction(Fonction * fonction);
     void analyseBloc(Bloc * bloc);
     void analyseDeclaration(Declaration * declaration);

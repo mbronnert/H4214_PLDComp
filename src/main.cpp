@@ -95,18 +95,17 @@ vector<string> validProgramsFiles = {
 };
 
 vector<string> backEndFiles = {
-    // backEndTestUrl + "1_decls.c",
-    // backEndTestUrl + "1_empty.c",
-    // backEndTestUrl + "2_putchar.c",
-    // backEndTestUrl + "3_variables.c",
-    // backEndTestUrl + "4-VarConstAddCall.c",
-    // backEndTestUrl + "5-IfThenElse.c",
-    // backEndTestUrl + "6-While.c",
-    // backEndTestUrl + "7-testWhileAndVariables.c",
-    // backEndTestUrl + "8-Return.c",
-    backEndTestUrl + "9-lvalueGenerale.c"
-    // backEndTestUrl + "10-appel6.c"
-
+    backEndTestUrl + "1_decls",
+    backEndTestUrl + "1_empty",
+    backEndTestUrl + "2_putchar",
+    backEndTestUrl + "3_variables",
+    backEndTestUrl + "4-VarConstAddCall",
+    backEndTestUrl + "5-IfThenElse",
+    backEndTestUrl + "6-While",
+    backEndTestUrl + "7-testWhileAndVariables",
+    backEndTestUrl + "8-Return",
+    backEndTestUrl + "9-lvalueGenerale",
+    backEndTestUrl + "10-appel6"
 };
 
 
@@ -216,7 +215,7 @@ void backEndTests() {
     for (int i=0 ; i<backEndFiles.size() ; i++) {
         cout << backEndFiles[i] << endl;
 
-        ifstream file(backEndFiles[i]);
+        ifstream file(backEndFiles[i] + ".c");
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
         ANTLRInputStream input (content);
         PLDCOMPLexer lexer (&input);
@@ -229,7 +228,7 @@ void backEndTests() {
         Programme * prog = (Programme *) visitor.visit(tree);
         prog->resolutionPortee();
 
-        constr.analyseProgramme(prog);
+        constr.analyseProgramme(prog, backEndFiles[i]);
 
         cout << endl;
 

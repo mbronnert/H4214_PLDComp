@@ -17,7 +17,7 @@ ConstructionIR::~ConstructionIR() {
     listeCFG->clear();
 }
 
-void ConstructionIR::analyseProgramme(Programme * programme) {
+void ConstructionIR::analyseProgramme(Programme * programme, string fileName) {
     // TODO : faire les déclarations
     cout << "analyse programme start declaration" <<endl;
     for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
@@ -36,12 +36,12 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
 
     }
     cout << "analyse programme end" <<endl;
-    startASM();
+    startASM(fileName);
 }
 
-void ConstructionIR::startASM() {
+void ConstructionIR::startASM(string fileName) {
     cout << "startASM" <<endl;
-    ofstream outfile ("main.s", ofstream::binary);
+    ofstream outfile (fileName + ".s", ofstream::binary);
     outfile<<".text"<<endl;
     outfile<<".global _main"<<endl;
     for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++)
@@ -96,7 +96,7 @@ void ConstructionIR::analyseParametre(Parametre * parametre) {
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
     TypeNoeud typeInstr = instruction->typeNoeud();
     cout << "INSTRUCTION : " << typeInstr << endl;
-    switch (typeInstr) { // TODO : est ce qu'il y a moyen de faire un case Expression : analyseExpression() ? vu que c'est une classe virtual je suis pas sure (la ça duplique le code c'est pas top)
+    switch (typeInstr) {
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) instruction);
             break;
@@ -144,7 +144,7 @@ void ConstructionIR::analyseInstruction(Instruction * instruction) {
 }
 
 void ConstructionIR::analyseExpression(Expression * expression) {
-    TypeNoeud typeInstr = expression->typeNoeud(); // TODO : il faut pas faire un typage() avant ?
+    TypeNoeud typeInstr = expression->typeNoeud();
     switch (typeInstr) {
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) expression);
@@ -226,7 +226,7 @@ void ConstructionIR::analyseIf(If * i) {
     currentCFG->currentBB->exit_true = trueBranch;
     currentCFG->currentBB->exit_false = falseBranch;
     currentCFG->add_bb(trueBranch);
-    currentCFG->add_bb(falseBranch); //TODO : peut être à mettre après l'analyse de l'instruction du IF
+    currentCFG->add_bb(falseBranch);
 
     currentCFG->currentBB = trueBranch;
     analyseInstruction(i->getInstruction());
@@ -240,7 +240,7 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
     currentCFG->currentBB->exit_true = trueBranch;
     currentCFG->currentBB->exit_false = falseBranch;
     currentCFG->add_bb(trueBranch);
-    currentCFG->add_bb(falseBranch); //TODO : peut être à mettre après l'analyse de l'instruction du IF
+    currentCFG->add_bb(falseBranch);
 
     BasicBlock * nextBloc = new BasicBlock (currentCFG, currentCFG->new_BB_name());
     currentCFG->add_bb(nextBloc);
@@ -258,7 +258,7 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
 
     currentCFG->currentBB = nextBloc;
 
-    //TODO Bloc suivant le else ???
+
 }
 
 void ConstructionIR::analyseWhile(While * w) {
