@@ -1,5 +1,6 @@
 .text
 .global _main
+<<<<<<< HEAD
 _toto:
 	pushq	%rbp
 	movq	%rsp, %rbp
@@ -22,16 +23,23 @@ main:
 	movq	 $65,-16(%rbp)
 	movq	-16(%rbp), %rax
 	movq	 %rax, -8(%rbp)
+=======
+_fib:
+	pushq	%rbp
+	movq	%rsp, %rbp
+	subq	$32, %rsp
+fib:
+	movq	 $1,-8(%rbp)
+	movq	-1(%rbp), %rax
+	cmp		-8(%rbp), %rax
+	jne	 B2
+>>>>>>> 7546de58418e97f37090452a50e0d7caa413e52e
 B1:
-	movq	 $90,-24(%rbp)
-	movq	 $1,-32(%rbp)
+	movq	 $35,-24(%rbp)
 	movq	-24(%rbp), %rax
-	addq	-32(%rbp), %rax
-	movq 	%rax, -40(%rbp)
-	movq	-8(%rbp), %rax
-	cmp		-40(%rbp), %rax
-	jge	 B3
+	jmp		B3
 B2:
+<<<<<<< HEAD
 	movl	-8(%rbp), %edi
 	call	_putchar
 	movq	%rax, -56(%rbp)
@@ -87,5 +95,27 @@ B3:
 	call	_putchar
 	movq	%rax, -128(%rbp)
 B2:
+=======
+	movq	 $36,-32(%rbp)
+	movq	-32(%rbp), %rax
+B3:
+	leave
+	ret
+_main:
+	pushq	%rbp
+	movq	%rsp, %rbp
+	subq	$32, %rsp
+main:
+	movl	-1(%rbp), %edi
+	call	_putchar
+	movq	%rax, -8(%rbp)
+	movq	 $2,-32(%rbp)
+	movq	-32(%rbp), %rdi
+	call	_fib
+	movq	%rax, -24(%rbp)
+	movl	-1(%rbp), %edi
+	call	_putchar
+	movq	%rax, -16(%rbp)
+>>>>>>> 7546de58418e97f37090452a50e0d7caa413e52e
 	leave
 	ret
