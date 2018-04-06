@@ -52,18 +52,18 @@ Nous avons conçu un makefile pour exécuter les options suivantes :
 # Implemented Features
 
 Voici le sous-ensemble du langage C qui est reconnu par notre compilateur : 
-  -- Uniquement les types char, int32_t et int64_t.
-  -- Tableaux à une dimension.
-  -- Initialisation d’une variable possible lors de sa déclaration.
-  -- Déclaration multiple de variables.
-  -- Déclaration de variables globales en début de programme.
-  -- Déclaration et définition de fonctions (type retour void possible)
-  -- Structures de contrôle if, else et while.
-  -- Structure de bloc avec { et }.
-  -- Tous les opérateurs du langage C, y compris l’affectation.
-  -- Déclarations de variables uniquement en début de fonction.
-  -- Les fonctions putchar et getchar comme entrées-sorties.
-  -- Les directives commençant par # en début de programme sont acceptées mais ignorées.
+  - Uniquement les types char, int32_t et int64_t.
+  - Tableaux à une dimension.
+  - Initialisation d’une variable possible lors de sa déclaration.
+  - Déclaration multiple de variables.
+  - Déclaration de variables globales en début de programme.
+  - Déclaration et définition de fonctions (type retour void possible)
+  - Structures de contrôle if, else et while.
+  - Structure de bloc avec { et }.
+  - Tous les opérateurs du langage C, y compris l’affectation.
+  - Déclarations de variables uniquement en début de fonction.
+  - Les fonctions putchar et getchar comme entrées-sorties.
+  - Les directives commençant par # en début de programme sont acceptées mais ignorées.
 
 ## FrontEnd:
   - Analyse lexicale du code à compiler.
