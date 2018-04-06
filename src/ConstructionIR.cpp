@@ -231,11 +231,15 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
 
     BasicBlock * nextBloc = new BasicBlock (currentCFG, currentCFG->new_BB_name());
     currentCFG->add_bb(nextBloc);
-    trueBranch->exit_false = nextBloc;
-    falseBranch->exit_false = nextBloc;
+    trueBranch->exit_true = nextBloc;
+    falseBranch->exit_true = nextBloc;
 
     currentCFG->currentBB = trueBranch;
     analyseInstruction(i->getInstruction());
+    vector<string> params;
+    params.push_back(nextBloc->label);
+    currentCFG->currentBB->add_IRInstr(IRInstr::Operation::jmp, NONE, params);
+
     currentCFG->currentBB = falseBranch;
     analyseInstruction(i->getInstructionElse());
 

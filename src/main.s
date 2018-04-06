@@ -15,6 +15,7 @@ B1:
 	movl	-40(%rbp), %edi
 	call	_putchar
 	movq	%rax, -32(%rbp)
+	jmp		B3
 B2:
 	movq	 $70,-56(%rbp)
 	movl	-56(%rbp), %edi
