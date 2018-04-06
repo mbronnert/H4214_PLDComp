@@ -100,9 +100,10 @@ vector<string> backEndFiles = {
     // backEndTestUrl + "2_putchar.c",
     // backEndTestUrl + "3_variables.c",
     // backEndTestUrl + "4-VarConstAddCall.c",
-     backEndTestUrl + "5-IfThenElse.c",
+    // backEndTestUrl + "5-IfThenElse.c",
     // backEndTestUrl + "6-While.c",
-    //backEndTestUrl + "7-testWhileAndVariables.c",
+     backEndTestUrl + "7-testWhileAndVariables.c",
+    // backEndTestUrl + "11-putchar2.c",
 };
 
 

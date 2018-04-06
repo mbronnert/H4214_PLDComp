@@ -82,11 +82,11 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
     cout<<"appel declaration"<<endl;
     currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
-    cout << "GET INDEX" << currentCFG->get_var_index(declaration->getVariable()->getNom()) << endl;;
 }
 
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
     TypeNoeud typeInstr = instruction->typeNoeud();
+    cout << "INSTRUCTION : " << typeInstr << endl;
     switch (typeInstr) { // TODO : est ce qu'il y a moyen de faire un case Expression : analyseExpression() ? vu que c'est une classe virtual je suis pas sure (la ça duplique le code c'est pas top)
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) instruction);
@@ -110,6 +110,7 @@ void ConstructionIR::analyseInstruction(Instruction * instruction) {
             analyseExprBin((ExprBin *) instruction);
             break;
         case TypeNoeud::EXPRUNAIRE :
+            analyseExprUnaire((ExprUnaire *) instruction);
             break;
         case TypeNoeud::EXPR :
             break;
@@ -129,7 +130,7 @@ void ConstructionIR::analyseInstruction(Instruction * instruction) {
         case TypeNoeud::BREAK :
             break;
         default:
-            cout << "Erreur : on devrait pas passer ici" << endl;
+            cout << "Erreur : on devrait pas passer ici (analyseInstruction)" << endl;
     }
 }
 
@@ -146,6 +147,7 @@ void ConstructionIR::analyseExpression(Expression * expression) {
             analyseExprBin((ExprBin *) expression);
             break;
         case TypeNoeud::EXPRUNAIRE :
+            analyseExprUnaire((ExprUnaire *) expression);
             break;
         case TypeNoeud::VARIABLE :
             break;
@@ -158,7 +160,7 @@ void ConstructionIR::analyseExpression(Expression * expression) {
         case TypeNoeud::APPELTABLEAU :
             break;
         default:
-            cout << "Erreur : on devrait pas passer ici" << endl;
+            cout << "Erreur : on devrait pas passer ici (analyseExpression)" << endl;
     }
 }
 
@@ -284,6 +286,9 @@ string ConstructionIR::expressionToIR(Expression * expression) {
         case TypeNoeud::EXPRBIN :
             chaine = analyseExprBin((ExprBin *) expression);
             break;
+        case TypeNoeud::EXPRUNAIRE :
+            chaine = analyseExprUnaire((ExprUnaire *) expression);
+            break;
         case TypeNoeud::NOMBRE :
             nombre = (Nombre *) expression;
             chaine = currentCFG->create_new_tempvar(INT64);
@@ -308,9 +313,9 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             break;
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) expression);
-            //TODO : tous les autres types
+            break;
         default:
-            cout << "Erreur : on devrait pas passer ici" << endl;
+            cout << "Erreur : on devrait pas passer ici (expressionToIR)" << endl;
     }
     return chaine;
 }
@@ -344,8 +349,6 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
         break;
         case MOD:
         break;
-        // case PAR:
-        // break;
         case INFS:
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_lt, expression->getType(), params);
         break;
@@ -358,8 +361,6 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
         case SUP:
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_ge, expression->getType(), params);
         break;
-        // case NON: //unaire
-        // break;
         case EQUALB:
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::cmp_eq, expression->getType(), params);
         break;
@@ -380,36 +381,6 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
         break;
         case DECD:
         break;
-        // case EQUAL: // unaire
-        // break;
-        // case PPEXP:
-        // break;
-        // case MMEXP:
-        // break;
-        // case EXPPP:
-        // break;
-        // case EXPMM:
-        // break;
-        // case XOREQ:
-        // break;
-        // case OREQ:
-        // break;
-        // case ANDEQ:
-        // break;
-        // case MODEQ:
-        // break;
-        // case DIVEQ:
-        // break;
-        // case MULTEQ:
-        // break;
-        // case MOINSEQ:
-        // break;
-        // case ADDEQ:
-        // break;
-        // case INVERT:
-        // break;
-        // case NEGATION:
-        // break;
         case COMMA:
         break;
         default:
@@ -425,6 +396,7 @@ string ConstructionIR::analyseExprUnaire(ExprUnaire * expression) {
     switch (expression->getSymbole()) {
         case PAR:
         resultat = expressionToIR(expression->getExpression());
+        cout << "RES UNAIRE " << resultat;
         break;
         case NON:
         break;
