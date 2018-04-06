@@ -1,0 +1,11 @@
+Ceci est le ReadMe de l'hexanome H4214 pour le PLDCOMP
+
+Voici ce qui est gere par notre frontend et backend:
+
+FrontEnd :
+  Lexique de notre grammaire (cf.Compte Rendu FrontEnd)
+  Les for ne sont pas acceptes
+  La verification de portee des variables est faite
+  Le typage des noeuds est realise
+
+BackEnd
