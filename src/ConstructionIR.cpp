@@ -17,7 +17,7 @@ ConstructionIR::~ConstructionIR() {
     listeCFG->clear();
 }
 
-void ConstructionIR::analyseProgramme(Programme * programme) {
+void ConstructionIR::analyseProgramme(Programme * programme, string fileName) {
     // TODO : faire les déclarations
     cout << "analyse programme start declaration" <<endl;
     for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
@@ -36,12 +36,12 @@ void ConstructionIR::analyseProgramme(Programme * programme) {
 
     }
     cout << "analyse programme end" <<endl;
-    startASM();
+    startASM(fileName);
 }
 
-void ConstructionIR::startASM() {
+void ConstructionIR::startASM(string fileName) {
     cout << "startASM" <<endl;
-    ofstream outfile ("main.s", ofstream::binary);
+    ofstream outfile (fileName + ".s", ofstream::binary);
     outfile<<".text"<<endl;
     outfile<<".global _main"<<endl;
     for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++)
@@ -258,7 +258,7 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
 
     currentCFG->currentBB = nextBloc;
 
-    //TODO Bloc suivant le else ???
+
 }
 
 void ConstructionIR::analyseWhile(While * w) {
