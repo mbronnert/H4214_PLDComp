@@ -170,7 +170,7 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     string nomVariable = affectation->getNomVariable();
     cout << "Nom vraiable : " << nomVariable << endl;
     resultatAffectation = expressionToIR(expression);
-    params.push_back(nomVariable); 
+    params.push_back(nomVariable);
     params.push_back(resultatAffectation);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
@@ -229,10 +229,18 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
     currentCFG->add_bb(trueBranch);
     currentCFG->add_bb(falseBranch); //TODO : peut être à mettre après l'analyse de l'instruction du IF
 
+    BasicBlock * nextBloc = new BasicBlock (currentCFG, currentCFG->new_BB_name());
+    currentCFG->add_bb(nextBloc);
+    trueBranch->exit_false = nextBloc;
+    falseBranch->exit_false = nextBloc;
+
     currentCFG->currentBB = trueBranch;
     analyseInstruction(i->getInstruction());
     currentCFG->currentBB = falseBranch;
     analyseInstruction(i->getInstructionElse());
+
+    currentCFG->currentBB = nextBloc;
+
     //TODO Bloc suivant le else ???
 }
 

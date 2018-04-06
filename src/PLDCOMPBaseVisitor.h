@@ -15,6 +15,10 @@
 class  PLDCOMPBaseVisitor : public PLDCOMPVisitor {
 public:
 
+  virtual antlrcpp::Any visitPow(PLDCOMPParser::PowContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitMult(PLDCOMPParser::MultContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -27,6 +31,10 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitMod(PLDCOMPParser::ModContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitAdd(PLDCOMPParser::AddContext *ctx) override {
     return visitChildren(ctx);
   }
@@ -35,15 +43,11 @@ public:
     return visitChildren(ctx);
   }
 
+  virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
   virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitMod(PLDCOMPParser::ModContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitPow(PLDCOMPParser::PowContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -52,10 +56,6 @@ public:
   }
 
   virtual antlrcpp::Any visitOr(PLDCOMPParser::OrContext *ctx) override {
-    return visitChildren(ctx);
-  }
-
-  virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *ctx) override {
     return visitChildren(ctx);
   }
 
@@ -124,6 +124,14 @@ public:
   }
 
   virtual antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitExpressionSecondaire(PLDCOMPParser::ExpressionSecondaireContext *ctx) override {
+    return visitChildren(ctx);
+  }
+
+  virtual antlrcpp::Any visitOperateurBinaireTertiaire(PLDCOMPParser::OperateurBinaireTertiaireContext *ctx) override {
     return visitChildren(ctx);
   }
 

@@ -19,27 +19,27 @@ public:
   /**
    * Visit parse trees produced by PLDCOMPParser.
    */
+    virtual antlrcpp::Any visitPow(PLDCOMPParser::PowContext *context) = 0;
+
     virtual antlrcpp::Any visitMult(PLDCOMPParser::MultContext *context) = 0;
 
     virtual antlrcpp::Any visitDiv(PLDCOMPParser::DivContext *context) = 0;
 
     virtual antlrcpp::Any visitAndb(PLDCOMPParser::AndbContext *context) = 0;
 
+    virtual antlrcpp::Any visitMod(PLDCOMPParser::ModContext *context) = 0;
+
     virtual antlrcpp::Any visitAdd(PLDCOMPParser::AddContext *context) = 0;
 
     virtual antlrcpp::Any visitMoins(PLDCOMPParser::MoinsContext *context) = 0;
 
+    virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *context) = 0;
+
     virtual antlrcpp::Any visitOrb(PLDCOMPParser::OrbContext *context) = 0;
-
-    virtual antlrcpp::Any visitMod(PLDCOMPParser::ModContext *context) = 0;
-
-    virtual antlrcpp::Any visitPow(PLDCOMPParser::PowContext *context) = 0;
 
     virtual antlrcpp::Any visitAnd(PLDCOMPParser::AndContext *context) = 0;
 
     virtual antlrcpp::Any visitOr(PLDCOMPParser::OrContext *context) = 0;
-
-    virtual antlrcpp::Any visitEqual(PLDCOMPParser::EqualContext *context) = 0;
 
     virtual antlrcpp::Any visitAddeq(PLDCOMPParser::AddeqContext *context) = 0;
 
@@ -74,6 +74,10 @@ public:
     virtual antlrcpp::Any visitDiff(PLDCOMPParser::DiffContext *context) = 0;
 
     virtual antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpressionSecondaire(PLDCOMPParser::ExpressionSecondaireContext *context) = 0;
+
+    virtual antlrcpp::Any visitOperateurBinaireTertiaire(PLDCOMPParser::OperateurBinaireTertiaireContext *context) = 0;
 
     virtual antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *context) = 0;
 

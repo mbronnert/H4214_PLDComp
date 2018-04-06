@@ -197,8 +197,16 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Expression *) new Affectation((AppelDeVariable *) visit(ctx->lvalue()), (Expression *) visit(ctx->exp()));
     }
 
+    antlrcpp::Any visitExpressionSecondaire(PLDCOMPParser::ExpressionSecondaireContext *ctx) override {
+        return (Expression *) visit(ctx->expSecondaire());
+    }
+
+    antlrcpp::Any visitOperateurBinaireTertiaire(PLDCOMPParser::OperateurBinaireTertiaireContext *ctx) override {
+        return (Expression *) new ExprBin ((Expression *) visit(ctx->exp()), (Expression *) visit(ctx->expSecondaire()), (Symbole) visit(ctx->opTertiaire()));
+    }
+
     antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) override {
-      return (Expression *) new ExprBin ((Expression *) visit(ctx->exp()), (Expression *) visit(ctx->expPrioritaire()), (Symbole) visit(ctx->opSecondaire()));
+      return (Expression *) new ExprBin ((Expression *) visit(ctx->expSecondaire()), (Expression *) visit(ctx->expPrioritaire()), (Symbole) visit(ctx->opSecondaire()));
     }
 
     antlrcpp::Any visitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) override {

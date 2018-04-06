@@ -25,13 +25,14 @@ public:
   };
 
   enum {
-    RuleOpPrioritaire = 0, RuleOpSecondaire = 1, RuleExp = 2, RuleExpPrioritaire = 3, 
-    RuleExpParenthese = 4, RuleLvalue = 5, RuleStructure = 6, RuleConstante = 7, 
-    RuleType_variable = 8, RuleType_function = 9, RuleIf_statement = 10, 
-    RuleWhile_statement = 11, RuleVal = 12, RuleDeclaration_type = 13, RuleEntier = 14, 
-    RuleDeclaration_int_generale = 15, RuleDeclaration_char_generale = 16, 
-    RuleParam = 17, RuleFonction = 18, RuleDeclaration_variables = 19, RuleBloc = 20, 
-    RuleInstruction = 21, RuleProgramme = 22
+    RuleOpPrioritaire = 0, RuleOpSecondaire = 1, RuleOpTertiaire = 2, RuleExp = 3, 
+    RuleExpSecondaire = 4, RuleExpPrioritaire = 5, RuleExpParenthese = 6, 
+    RuleLvalue = 7, RuleStructure = 8, RuleConstante = 9, RuleType_variable = 10, 
+    RuleType_function = 11, RuleIf_statement = 12, RuleWhile_statement = 13, 
+    RuleVal = 14, RuleDeclaration_type = 15, RuleEntier = 16, RuleDeclaration_int_generale = 17, 
+    RuleDeclaration_char_generale = 18, RuleParam = 19, RuleFonction = 20, 
+    RuleDeclaration_variables = 21, RuleBloc = 22, RuleInstruction = 23, 
+    RuleProgramme = 24
   };
 
   PLDCOMPParser(antlr4::TokenStream *input);
@@ -46,7 +47,9 @@ public:
 
   class OpPrioritaireContext;
   class OpSecondaireContext;
+  class OpTertiaireContext;
   class ExpContext;
+  class ExpSecondaireContext;
   class ExpPrioritaireContext;
   class ExpParentheseContext;
   class LvalueContext;
@@ -95,9 +98,23 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
+  class  ModContext : public OpPrioritaireContext {
+  public:
+    ModContext(OpPrioritaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
   class  AndbContext : public OpPrioritaireContext {
   public:
     AndbContext(OpPrioritaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  PowContext : public OpPrioritaireContext {
+  public:
+    PowContext(OpPrioritaireContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -117,142 +134,9 @@ public:
    
   };
 
-  class  ModContext : public OpSecondaireContext {
-  public:
-    ModContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  InfsContext : public OpSecondaireContext {
-  public:
-    InfsContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  AddeqContext : public OpSecondaireContext {
-  public:
-    AddeqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  XoreqContext : public OpSecondaireContext {
-  public:
-    XoreqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  AndeqContext : public OpSecondaireContext {
-  public:
-    AndeqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  DecgContext : public OpSecondaireContext {
-  public:
-    DecgContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  DecdContext : public OpSecondaireContext {
-  public:
-    DecdContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  DiveqContext : public OpSecondaireContext {
-  public:
-    DiveqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  SupContext : public OpSecondaireContext {
-  public:
-    SupContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  SupsContext : public OpSecondaireContext {
-  public:
-    SupsContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  MoinseqContext : public OpSecondaireContext {
-  public:
-    MoinseqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  AndContext : public OpSecondaireContext {
-  public:
-    AndContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  PowContext : public OpSecondaireContext {
-  public:
-    PowContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  ModeqContext : public OpSecondaireContext {
-  public:
-    ModeqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  OrbContext : public OpSecondaireContext {
-  public:
-    OrbContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   class  AddContext : public OpSecondaireContext {
   public:
     AddContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  InfContext : public OpSecondaireContext {
-  public:
-    InfContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  OrContext : public OpSecondaireContext {
-  public:
-    OrContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  EqualbContext : public OpSecondaireContext {
-  public:
-    EqualbContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  DiffContext : public OpSecondaireContext {
-  public:
-    DiffContext(OpSecondaireContext *ctx);
 
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
@@ -264,13 +148,6 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  CommaContext : public OpSecondaireContext {
-  public:
-    CommaContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   class  MoinsContext : public OpSecondaireContext {
   public:
     MoinsContext(OpSecondaireContext *ctx);
@@ -278,21 +155,162 @@ public:
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  OreqContext : public OpSecondaireContext {
-  public:
-    OreqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
-  class  MulteqContext : public OpSecondaireContext {
-  public:
-    MulteqContext(OpSecondaireContext *ctx);
-
-    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
-  };
-
   OpSecondaireContext* opSecondaire();
+
+  class  OpTertiaireContext : public antlr4::ParserRuleContext {
+  public:
+    OpTertiaireContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+   
+    OpTertiaireContext() : antlr4::ParserRuleContext() { }
+    void copyFrom(OpTertiaireContext *context);
+    using antlr4::ParserRuleContext::copyFrom;
+
+    virtual size_t getRuleIndex() const override;
+
+   
+  };
+
+  class  InfContext : public OpTertiaireContext {
+  public:
+    InfContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  OrContext : public OpTertiaireContext {
+  public:
+    OrContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  InfsContext : public OpTertiaireContext {
+  public:
+    InfsContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  EqualbContext : public OpTertiaireContext {
+  public:
+    EqualbContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  AddeqContext : public OpTertiaireContext {
+  public:
+    AddeqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  XoreqContext : public OpTertiaireContext {
+  public:
+    XoreqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  AndeqContext : public OpTertiaireContext {
+  public:
+    AndeqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  DiffContext : public OpTertiaireContext {
+  public:
+    DiffContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  DecgContext : public OpTertiaireContext {
+  public:
+    DecgContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  DecdContext : public OpTertiaireContext {
+  public:
+    DecdContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  DiveqContext : public OpTertiaireContext {
+  public:
+    DiveqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  SupContext : public OpTertiaireContext {
+  public:
+    SupContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  CommaContext : public OpTertiaireContext {
+  public:
+    CommaContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  SupsContext : public OpTertiaireContext {
+  public:
+    SupsContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  MoinseqContext : public OpTertiaireContext {
+  public:
+    MoinseqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  AndContext : public OpTertiaireContext {
+  public:
+    AndContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  OreqContext : public OpTertiaireContext {
+  public:
+    OreqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  ModeqContext : public OpTertiaireContext {
+  public:
+    ModeqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  OrbContext : public OpTertiaireContext {
+  public:
+    OrbContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  MulteqContext : public OpTertiaireContext {
+  public:
+    MulteqContext(OpTertiaireContext *ctx);
+
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  OpTertiaireContext* opTertiaire();
 
   class  ExpContext : public antlr4::ParserRuleContext {
   public:
@@ -307,26 +325,59 @@ public:
    
   };
 
-  class  OperateurBinaireSecondaireContext : public ExpContext {
+  class  ExpressionSecondaireContext : public ExpContext {
   public:
-    OperateurBinaireSecondaireContext(ExpContext *ctx);
+    ExpressionSecondaireContext(ExpContext *ctx);
 
-    ExpContext *exp();
-    OpSecondaireContext *opSecondaire();
-    ExpPrioritaireContext *expPrioritaire();
+    ExpSecondaireContext *expSecondaire();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
-  class  ExpressionPrioritaireContext : public ExpContext {
+  class  OperateurBinaireTertiaireContext : public ExpContext {
   public:
-    ExpressionPrioritaireContext(ExpContext *ctx);
+    OperateurBinaireTertiaireContext(ExpContext *ctx);
 
-    ExpPrioritaireContext *expPrioritaire();
+    ExpContext *exp();
+    OpTertiaireContext *opTertiaire();
+    ExpSecondaireContext *expSecondaire();
     virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
   };
 
   ExpContext* exp();
   ExpContext* exp(int precedence);
+  class  ExpSecondaireContext : public antlr4::ParserRuleContext {
+  public:
+    ExpSecondaireContext(antlr4::ParserRuleContext *parent, size_t invokingState);
+   
+    ExpSecondaireContext() : antlr4::ParserRuleContext() { }
+    void copyFrom(ExpSecondaireContext *context);
+    using antlr4::ParserRuleContext::copyFrom;
+
+    virtual size_t getRuleIndex() const override;
+
+   
+  };
+
+  class  OperateurBinaireSecondaireContext : public ExpSecondaireContext {
+  public:
+    OperateurBinaireSecondaireContext(ExpSecondaireContext *ctx);
+
+    ExpSecondaireContext *expSecondaire();
+    OpSecondaireContext *opSecondaire();
+    ExpPrioritaireContext *expPrioritaire();
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  class  ExpressionPrioritaireContext : public ExpSecondaireContext {
+  public:
+    ExpressionPrioritaireContext(ExpSecondaireContext *ctx);
+
+    ExpPrioritaireContext *expPrioritaire();
+    virtual antlrcpp::Any accept(antlr4::tree::ParseTreeVisitor *visitor) override;
+  };
+
+  ExpSecondaireContext* expSecondaire();
+  ExpSecondaireContext* expSecondaire(int precedence);
   class  ExpPrioritaireContext : public antlr4::ParserRuleContext {
   public:
     ExpPrioritaireContext(antlr4::ParserRuleContext *parent, size_t invokingState);
@@ -1031,6 +1082,7 @@ public:
 
   virtual bool sempred(antlr4::RuleContext *_localctx, size_t ruleIndex, size_t predicateIndex) override;
   bool expSempred(ExpContext *_localctx, size_t predicateIndex);
+  bool expSecondaireSempred(ExpSecondaireContext *_localctx, size_t predicateIndex);
   bool expPrioritaireSempred(ExpPrioritaireContext *_localctx, size_t predicateIndex);
 
 private:
