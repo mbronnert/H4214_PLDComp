@@ -164,7 +164,18 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *ctx) override {
-        return (Expression *) new Caractere((char) ctx->CHAR()->getText()[1]);
+        char c = (char) ctx->CHAR()->getText()[1];
+        if (c == '\\') {
+            cout << ctx->CHAR()->getText() << endl;
+            if (ctx->CHAR()->getText() == "\'\\n\'") {
+                c = '\n';
+            } else if (ctx->CHAR()->getText() == "\'\\r\'") {
+                c = '\r';
+            } else if (ctx->CHAR()->getText() == "\'\\t\'") {
+                c = '\t';
+            }
+        }
+        return (Expression *) new Caractere((char) c);
     }
 
     antlrcpp::Any visitAppelDeFonction(PLDCOMPParser::AppelDeFonctionContext *ctx) override {
@@ -186,8 +197,16 @@ class Visitor : public PLDCOMPBaseVisitor {
         return (Expression *) new Affectation((AppelDeVariable *) visit(ctx->lvalue()), (Expression *) visit(ctx->exp()));
     }
 
+    antlrcpp::Any visitExpressionSecondaire(PLDCOMPParser::ExpressionSecondaireContext *ctx) override {
+        return (Expression *) visit(ctx->expSecondaire());
+    }
+
+    antlrcpp::Any visitOperateurBinaireTertiaire(PLDCOMPParser::OperateurBinaireTertiaireContext *ctx) override {
+        return (Expression *) new ExprBin ((Expression *) visit(ctx->exp()), (Expression *) visit(ctx->expSecondaire()), (Symbole) visit(ctx->opTertiaire()));
+    }
+
     antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *ctx) override {
-      return (Expression *) new ExprBin ((Expression *) visit(ctx->exp()), (Expression *) visit(ctx->expPrioritaire()), (Symbole) visit(ctx->opSecondaire()));
+      return (Expression *) new ExprBin ((Expression *) visit(ctx->expSecondaire()), (Expression *) visit(ctx->expPrioritaire()), (Symbole) visit(ctx->opSecondaire()));
     }
 
     antlrcpp::Any visitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *ctx) override {
@@ -239,7 +258,17 @@ class Visitor : public PLDCOMPBaseVisitor {
     }
 
     antlrcpp::Any visitConstanteCar(PLDCOMPParser::ConstanteCarContext *ctx) override {
-        return (Caractere *) new Caractere((char) ctx->CHAR()->getText()[1]);
+        char c = (char) ctx->CHAR()->getText()[1];
+        if (c == '\\') {
+            if (ctx->CHAR()->getText() == "\'\\n\'") {
+                c = '\n';
+            } else if (ctx->CHAR()->getText() == "\'\\r\'") {
+                c = '\r';
+            } else if (ctx->CHAR()->getText() == "\'\\t\'") {
+                c = '\t';
+            }
+        }
+        return (Caractere *) new Caractere((char) c);
     }
 
     antlrcpp::Any visitType_variable(PLDCOMPParser::Type_variableContext *ctx) override {
@@ -292,7 +321,18 @@ class Visitor : public PLDCOMPBaseVisitor {
         auto l = ctx->CHAR();
 
         for(auto i=l.begin() ; i!=l.end() ; i++) {
-            caracteres->push_back((Caractere*) new Caractere((char) (*i)->getText()[1]));
+            char c = (char) (*i)->getText()[1];
+            if (c == '\\') {
+                cout << (*i)->getText() << endl;
+                if ((*i)->getText() == "\'\\n\'") {
+                    c = '\n';
+                } else if ((*i)->getText() == "\'\\r\'") {
+                    c = '\r';
+                } else if ((*i)->getText() == "\'\\t\'") {
+                    c = '\t';
+                }
+            }
+            caracteres->push_back((Caractere*) new Caractere((char) c));
         }
         return (list<Caractere*> *) caracteres;
 

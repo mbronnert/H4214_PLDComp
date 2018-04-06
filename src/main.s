@@ -4,6 +4,7 @@ _toto:
 	pushq	%rbp
 	movq	%rsp, %rbp
 	subq	$96, %rsp
+<<<<<<< HEAD
 	movq    %rdi, -8(%rbp)
 	movq    %rsi, -16(%rbp)
 	movq    %rdx, -24(%rbp)
@@ -16,6 +17,28 @@ toto:
 	movq 	%rax, -64(%rbp)
 	movq	-64(%rbp), %rax
 	addq	-24(%rbp), %rax
+=======
+main:
+	movq	 $65,-16(%rbp)
+	movq	-16(%rbp), %rax
+	movq	 %rax, -8(%rbp)
+B1:
+	movq	 $90,-24(%rbp)
+	movq	 $1,-32(%rbp)
+	movq	-24(%rbp), %rax
+	addq	-32(%rbp), %rax
+	movq 	%rax, -40(%rbp)
+	movq	-8(%rbp), %rax
+	cmp		-40(%rbp), %rax
+	jge	 B3
+B2:
+	movl	-8(%rbp), %edi
+	call	_putchar
+	movq	%rax, -56(%rbp)
+	movq	 $1,-64(%rbp)
+	movq	-8(%rbp), %rax
+	addq	-64(%rbp), %rax
+>>>>>>> 7b6976277cf6aa2dc3b5ff75448bcf74f46b7631
 	movq 	%rax, -72(%rbp)
 	movq	-72(%rbp), %rax
 	addq	-32(%rbp), %rax
@@ -47,6 +70,7 @@ main:
 	movq	%rax, -16(%rbp)
 	movq	-16(%rbp), %rax
 	movq	 %rax, -8(%rbp)
+<<<<<<< HEAD
 	movq	 $21,-112(%rbp)
 	movq	-8(%rbp), %rax
 	cmp		-112(%rbp), %rax
@@ -54,6 +78,12 @@ main:
 B1:
 	movq	 $79,-136(%rbp)
 	movl	-136(%rbp), %edi
+=======
+	jmp		B1
+B3:
+	movq	 $10,-88(%rbp)
+	movl	-88(%rbp), %edi
+>>>>>>> 7b6976277cf6aa2dc3b5ff75448bcf74f46b7631
 	call	_putchar
 	movq	%rax, -128(%rbp)
 B2:

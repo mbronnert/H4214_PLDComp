@@ -1,18 +1,20 @@
 grammar PLDCOMP;
 
-opPrioritaire : '*'   # mult
+opPrioritaire : '^'   # pow
+          | '*'   # mult
           | '/'   # div
           | '&&'  # andb
+          | '%'   # mod
           ;
 
 opSecondaire : '+'    # add
                 | '-'   # moins
-                | '||'  # orb
-                | '%'   # mod
-                | '^'   # pow
+                | '='   # equal
+      ;
+
+opTertiaire : '||'  # orb
                 | '&'   # and
                 | '|'   # or
-                | '='   # equal
                 | '+='   # addeq
                 | '-='   # moinseq
                 | '*='   # multeq
@@ -31,8 +33,11 @@ opSecondaire : '+'    # add
                 | '!='  # diff
                 | ','	# comma
                 ;
+exp : exp opTertiaire expSecondaire # operateurBinaireTertiaire
+    | expSecondaire # expressionSecondaire
+    ;
 
-exp : exp opSecondaire expPrioritaire # operateurBinaireSecondaire
+expSecondaire : expSecondaire opSecondaire expPrioritaire # operateurBinaireSecondaire
             | expPrioritaire # expressionPrioritaire
             ;
 
