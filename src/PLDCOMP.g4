@@ -34,20 +34,6 @@ opSecondaire : '+'    # add
 
 exp : exp opSecondaire expPrioritaire # operateurBinaireSecondaire
             | expPrioritaire # expressionPrioritaire
-            | '!' exp  # non
-            | '-' exp  # negation
-            | '~' exp  # invert
-            | lvalue '++' # exppp
-            | lvalue '--' # expmm
-            | '++' lvalue # ppexp
-            | '--' lvalue # mmexp
-            | lvalue '=' exp # affectation
-            | NOMBRE # constanteNombre
-            | CHAR # constanteCaractere
-            | lvalue # expLvalue
-            | NOMVAR '(' exp (',' exp )* ')' # appelDeFonction
-            | 'putchar' '(' exp ')' # appelPutchar
-            | 'getchar' '(' ')' # appelGetchar
             ;
 
 expPrioritaire : expPrioritaire opPrioritaire expParenthese # operateurBinairePrioritaire
@@ -55,9 +41,20 @@ expPrioritaire : expPrioritaire opPrioritaire expParenthese # operateurBinairePr
                 ;
 
 expParenthese : '(' exp ')' # parenthese
-                | NOMBRE # expressionNombre
-                | CHAR # expressionCaractere
-                | lvalue # expressionLvalue
+                | '!' exp  # non
+                | '-' exp  # negation
+                | '~' exp  # invert
+                | lvalue '++' # exppp
+                | lvalue '--' # expmm
+                | '++' lvalue # ppexp
+                | '--' lvalue # mmexp
+                | lvalue '=' exp # affectation
+                | NOMBRE # constanteNombre
+                | CHAR # constanteCaractere
+                | lvalue # expLvalue
+                | NOMVAR '(' exp (',' exp )* ')' # appelDeFonction
+                | 'putchar' '(' exp ')' # appelPutchar
+                | 'getchar' '(' ')' # appelGetchar
                 ;
 
 lvalue : NOMVAR # variable

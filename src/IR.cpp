@@ -91,6 +91,8 @@ void IRInstr::gen_asm(ostream &o) {
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
 				chaine = "	movl	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %edi";
+				cout << " erf "<< params[2] <<endl;
+				cout << " index "<< this->bb->cfg->get_var_index(params[2]) <<endl;
 				o<< chaine << endl;
 				chaine = "	call	_"+params[0];
 			}else{
@@ -105,44 +107,44 @@ void IRInstr::gen_asm(ostream &o) {
 			break;
 
 		case cmp_eq:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_lt:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_le:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_gt:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_ge:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 
 		case cmp_diff:
-			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
+			chaine = "	movq	"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
 			o << chaine << endl;
-			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[1]))+"(%rbp), %rax";
+			chaine = "	cmp		"+ to_string(this->bb->cfg->get_var_index(params[2]))+"(%rbp), %rax";
 			o << chaine << endl;
 			break;
 

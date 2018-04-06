@@ -5,5 +5,5 @@ gen/
 antlr4-cpp-runtime-4/
 antlr/
 Tests/
-src/main.s
-src/main.O
+main.s
+main.O

@@ -75,37 +75,9 @@ public:
 
     virtual antlrcpp::Any visitComma(PLDCOMPParser::CommaContext *context) = 0;
 
-    virtual antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *context) = 0;
-
-    virtual antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *context) = 0;
-
-    virtual antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *context) = 0;
-
-    virtual antlrcpp::Any visitInvert(PLDCOMPParser::InvertContext *context) = 0;
-
-    virtual antlrcpp::Any visitAppelGetchar(PLDCOMPParser::AppelGetcharContext *context) = 0;
-
-    virtual antlrcpp::Any visitConstanteNombre(PLDCOMPParser::ConstanteNombreContext *context) = 0;
-
     virtual antlrcpp::Any visitOperateurBinaireSecondaire(PLDCOMPParser::OperateurBinaireSecondaireContext *context) = 0;
 
     virtual antlrcpp::Any visitExpressionPrioritaire(PLDCOMPParser::ExpressionPrioritaireContext *context) = 0;
-
-    virtual antlrcpp::Any visitNon(PLDCOMPParser::NonContext *context) = 0;
-
-    virtual antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *context) = 0;
-
-    virtual antlrcpp::Any visitAppelDeFonction(PLDCOMPParser::AppelDeFonctionContext *context) = 0;
-
-    virtual antlrcpp::Any visitMmexp(PLDCOMPParser::MmexpContext *context) = 0;
-
-    virtual antlrcpp::Any visitAffectation(PLDCOMPParser::AffectationContext *context) = 0;
-
-    virtual antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *context) = 0;
-
-    virtual antlrcpp::Any visitExppp(PLDCOMPParser::ExpppContext *context) = 0;
-
-    virtual antlrcpp::Any visitExpmm(PLDCOMPParser::ExpmmContext *context) = 0;
 
     virtual antlrcpp::Any visitExpressionParenthese(PLDCOMPParser::ExpressionParentheseContext *context) = 0;
 
@@ -113,11 +85,33 @@ public:
 
     virtual antlrcpp::Any visitParenthese(PLDCOMPParser::ParentheseContext *context) = 0;
 
-    virtual antlrcpp::Any visitExpressionNombre(PLDCOMPParser::ExpressionNombreContext *context) = 0;
+    virtual antlrcpp::Any visitNon(PLDCOMPParser::NonContext *context) = 0;
 
-    virtual antlrcpp::Any visitExpressionCaractere(PLDCOMPParser::ExpressionCaractereContext *context) = 0;
+    virtual antlrcpp::Any visitNegation(PLDCOMPParser::NegationContext *context) = 0;
 
-    virtual antlrcpp::Any visitExpressionLvalue(PLDCOMPParser::ExpressionLvalueContext *context) = 0;
+    virtual antlrcpp::Any visitInvert(PLDCOMPParser::InvertContext *context) = 0;
+
+    virtual antlrcpp::Any visitExppp(PLDCOMPParser::ExpppContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpmm(PLDCOMPParser::ExpmmContext *context) = 0;
+
+    virtual antlrcpp::Any visitPpexp(PLDCOMPParser::PpexpContext *context) = 0;
+
+    virtual antlrcpp::Any visitMmexp(PLDCOMPParser::MmexpContext *context) = 0;
+
+    virtual antlrcpp::Any visitAffectation(PLDCOMPParser::AffectationContext *context) = 0;
+
+    virtual antlrcpp::Any visitConstanteNombre(PLDCOMPParser::ConstanteNombreContext *context) = 0;
+
+    virtual antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *context) = 0;
+
+    virtual antlrcpp::Any visitExpLvalue(PLDCOMPParser::ExpLvalueContext *context) = 0;
+
+    virtual antlrcpp::Any visitAppelDeFonction(PLDCOMPParser::AppelDeFonctionContext *context) = 0;
+
+    virtual antlrcpp::Any visitAppelPutchar(PLDCOMPParser::AppelPutcharContext *context) = 0;
+
+    virtual antlrcpp::Any visitAppelGetchar(PLDCOMPParser::AppelGetcharContext *context) = 0;
 
     virtual antlrcpp::Any visitVariable(PLDCOMPParser::VariableContext *context) = 0;
 

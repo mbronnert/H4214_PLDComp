@@ -170,7 +170,7 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     string nomVariable = affectation->getNomVariable();
     cout << "Nom vraiable : " << nomVariable << endl;
     resultatAffectation = expressionToIR(expression);
-    params.push_back(nomVariable); // TODO: faut pas inverser l'ordre des 2 params ?
+    params.push_back(nomVariable); 
     params.push_back(resultatAffectation);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
@@ -190,6 +190,7 @@ void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
             string nom;
             nom = expressionToIR(*it);
             listParametre.push_back(nom);
+            cout<< nom <<endl;
         }
 
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);
