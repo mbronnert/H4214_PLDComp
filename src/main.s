@@ -3,26 +3,34 @@
 _main:
 	pushq	%rbp
 	movq	%rsp, %rbp
-	subq	$80, %rsp
+	subq	$96, %rsp
 main:
-	movq	 $1,-8(%rbp)
-	movq	 $2,-16(%rbp)
+	movq	 $65,-16(%rbp)
 	movq	-16(%rbp), %rax
-	cmp		-8(%rbp), %rax
-	jge	 B2
+	movq	 %rax, -8(%rbp)
 B1:
-	movq	 $86,-40(%rbp)
-	movl	-40(%rbp), %edi
-	call	_putchar
-	movq	%rax, -32(%rbp)
+	movq	 $90,-24(%rbp)
+	movq	-8(%rbp), %rax
+	cmp		-24(%rbp), %rax
+	movq	 $1,-40(%rbp)
+	movq	-32(%rbp), %rax
+	addq	-40(%rbp), %rax
+	movq 	%rax, -48(%rbp)
 B2:
-	movq	 $70,-56(%rbp)
-	movl	-56(%rbp), %edi
+	movl	-8(%rbp), %edi
 	call	_putchar
-	movq	%rax, -48(%rbp)
-	movq	 $92,-72(%rbp)
-	movl	-72(%rbp), %edi
+	movq	%rax, -56(%rbp)
+	movq	 $1,-64(%rbp)
+	movq	-8(%rbp), %rax
+	addq	-64(%rbp), %rax
+	movq 	%rax, -72(%rbp)
+	movq	-72(%rbp), %rax
+	movq	 %rax, -8(%rbp)
+	jmp		B1
+B3:
+	movq	 $92,-88(%rbp)
+	movl	-88(%rbp), %edi
 	call	_putchar
-	movq	%rax, -64(%rbp)
+	movq	%rax, -80(%rbp)
 	leave
 	ret
