@@ -56,7 +56,10 @@ void ConstructionIR::startASM() {
 }
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
-    //TODO : paramètres
+    // Paramètres
+    for (auto it=fonction->getParametres()->begin() ; it != fonction->getParametres()->end() ; it++) {
+        analyseParametre((Parametre *)(*it));
+    }
 
     // Ajout des déclaration à la table des symboles
     for (auto it=fonction->getDeclarations()->begin() ; it != fonction->getDeclarations()->end() ; it++) {
@@ -82,7 +85,13 @@ void ConstructionIR::analyseBloc(Bloc * bloc) {
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
     cout<<"appel declaration"<<endl;
     currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
-    cout << "GET INDEX" << currentCFG->get_var_index(declaration->getVariable()->getNom()) << endl;;
+    cout << "GET INDEX" << currentCFG->get_var_index(declaration->getVariable()->getNom()) << endl;
+}
+
+void ConstructionIR::analyseParametre(Parametre * parametre) {
+    cout<<"appel parametre"<<endl;
+    currentCFG->add_to_symbol_table(parametre->getNom(), parametre->getType());
+    currentCFG->add_parametre(parametre->getNom());
 }
 
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
@@ -171,30 +180,35 @@ void ConstructionIR::analyseAffectation(Affectation * affectation) {
     cout << "Nom vraiable : " << nomVariable << endl;
     resultatAffectation = expressionToIR(expression);
     params.push_back(nomVariable); 
+    cout << "param1 : " << nomVariable <<endl;
+    cout << "res1 : " << resultatAffectation <<endl;
+
     params.push_back(resultatAffectation);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
 
 }
 
-void ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
+string ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
     cout<<"appel fonction"<<endl;
-    list<Expression*> * parametres = appelDeFonction->getParametres();
+    list<Expression*> * parame = appelDeFonction->getParametres();
+    cout<<"taille parame: " << parame->size() << endl;
     string tempVar ;
-    if(parametres) {
+    if(parame) {
         TypeNoeud typeInstr;
         vector<string> listParametre;
         listParametre.push_back(appelDeFonction->getNom());
         tempVar = currentCFG->create_new_tempvar(CHAR);
         listParametre.push_back(tempVar);
-        for(list<Expression*>::iterator it= parametres->begin() ; it != parametres->end() ; it++) {
+        for(list<Expression*>::iterator it= parame->begin() ; it != parame->end() ; it++) {
             string nom;
             nom = expressionToIR(*it);
             listParametre.push_back(nom);
-            cout<< nom <<endl;
+            cout<<"Nom param " <<nom <<endl;
         }
 
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);
     }
+    return tempVar;
 }
 
 void ConstructionIR::analyseReturn(Return * retour) {
@@ -295,7 +309,8 @@ string ConstructionIR::expressionToIR(Expression * expression) {
             chaine = variable->getNom();
             break;
         case TypeNoeud::APPELFONC :
-            analyseAppelDeFonction((AppelDeFonction *) expression);
+            chaine = analyseAppelDeFonction((AppelDeFonction *) expression);
+            break;
             //TODO : tous les autres types
         default:
             cout << "Erreur : on devrait pas passer ici" << endl;

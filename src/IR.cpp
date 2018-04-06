@@ -61,6 +61,7 @@ void IRInstr::gen_asm(ostream &o) {
 
 		case call:
 		//TODO Faut-il récupérérer les paramètres dans le prologue de la fonction appelée?
+		cout << "taille param "<<params.size()<< endl;
 			if(params.size()>8){
 				cerr<<"Veuillez passer moins de 7 paramètres svp"<<endl;
 			}
@@ -91,8 +92,6 @@ void IRInstr::gen_asm(ostream &o) {
 			//Putchar et Getchar géré séparemment (pas de _)
 			if(params[0].compare("getchar")==0 || params[0].compare("putchar")==0){
 				chaine = "	movl	"+to_string(this->bb->cfg->get_var_index(params[2])) +"(%rbp), %edi";
-				cout << " erf "<< params[2] <<endl;
-				cout << " index "<< this->bb->cfg->get_var_index(params[2]) <<endl;
 				o<< chaine << endl;
 				chaine = "	call	_"+params[0];
 			}else{
@@ -232,6 +231,10 @@ void CFG::add_bb(BasicBlock *bb) {
 	bbs.push_back(bb);
 }
 
+void CFG::add_parametre(string p) {
+	parametres.push_back(p);
+}
+
 
 void CFG::gen_asm(ostream& o) {
 	gen_asm_prologue(o);
@@ -263,6 +266,12 @@ void CFG::gen_asm_prologue(ostream& o) {
     else tailleMax = 8*(SymbolIndex.size()+1);
 	chaine = "	subq	$"+to_string(tailleMax)+", %rsp";
 	o<< chaine << endl;
+	int compteur =0;
+	for(vector<string>::iterator it = parametres.begin() ; it != parametres.end(); ++it){
+		chaine ="	movq    "+registreEtiquette[compteur]+", " +to_string(get_var_index(*it))+"(%rbp)";
+		o << chaine << endl;
+		compteur++;
+	}
 }
 
 //On remet le base pointeur et le stack pointeur au niveau de la fonction d'avant
@@ -297,6 +306,10 @@ int CFG::get_var_index(string name) {
 		}
 	}
 	return -1;
+}
+
+vector<string> CFG::get_Parametres(){
+	return parametres;
 }
 
 Type CFG::get_var_type(string name) {

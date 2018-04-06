@@ -29,7 +29,8 @@ public:
     string analyseExprBin(ExprBin * expression);
     string analyseExprUnaire(ExprUnaire * expression);
     void analyseAffectation(Affectation * affectation);
-    void analyseAppelDeFonction(AppelDeFonction * appelDeFonction);
+    string analyseAppelDeFonction(AppelDeFonction * appelDeFonction);
+    void analyseParametre(Parametre * parametre);
     void analyseReturn(Return * retour);
     void analyseIf(If * i);
     void analyseIfElse(IfElse * i);

@@ -28,6 +28,15 @@ using namespace std;
  * %rax est la return value (utilisée aussi pour toute opération intermédiaire)
  * %rdi, %rsi, %rdx, %rcx, %r8 et %r9 sont les paramètres de fonction
  * */
+const string registreEtiquette[]= {
+    "%rdi", 
+    "%rsi", 
+    "%rdx", 
+    "%rcx",
+    "%r8",
+    "%r9"
+  };
+
 const string opEtiquette[]= {
     "ldconst",
     "add",
@@ -137,6 +146,7 @@ class CFG {
   Fonction* ast; /**< The AST this CFG comes from */
 
   void add_bb(BasicBlock* bb);
+  void add_parametre(string p);
 
   // x86 code generation: could be encapsulated in a processor class in a retargetable compiler
   void gen_asm(ostream& o);
@@ -150,6 +160,7 @@ class CFG {
   int get_var_index(string name);
   Type get_var_type(string name);
   map<string, int> * getSymbole();
+  vector<string> get_Parametres();
 
   // basic block management
   string new_BB_name();
@@ -161,6 +172,7 @@ class CFG {
   int nextFreeSymbolIndex; /**< to allocate new symbols in the symbol table */
   int nextBBnumber; /**< just for naming */
   int nextTempvar;
+  vector<string> parametres;
 
   vector <BasicBlock*> bbs; /**< all the basic blocks of this CFG*/
 };
