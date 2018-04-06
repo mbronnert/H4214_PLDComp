@@ -2,6 +2,7 @@
 #include <stdio.h>
 
 void function(char a) {
+   char a;
    putchar(a);
 }
    

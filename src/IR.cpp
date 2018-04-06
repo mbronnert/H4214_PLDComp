@@ -60,8 +60,6 @@ void IRInstr::gen_asm(ostream &o) {
 			break;
 
 		case call:
-		//TODO Faut-il récupérérer les paramètres dans le prologue de la fonction appelée?
-		cout << "taille param "<<params.size()<< endl;
 			if(params.size()>8){
 				cerr<<"Veuillez passer moins de 7 paramètres svp"<<endl;
 			}
@@ -242,19 +240,16 @@ void CFG::gen_asm(ostream& o) {
 	{
 		(*it)->gen_asm(o);
 	}
-	cout<<"Nb bloc: "<<bbs.size()<<endl;
 	gen_asm_epilogue(o);
 }
 
 string CFG::IR_reg_to_asm(string reg) {
-	//string chaine = NomFonction;
-	//assignation tailles variables
-	return ""; // TODO: à virer, c'est juste pour les warning
+	return ""; 
 }
 
 //On push le base pointeur et on adapte le stack pointeur à la taille des variables
 void CFG::gen_asm_prologue(ostream& o) {
-	//TODO string chaine = ast->getNom() + ":";
+	// string chaine = ast->getNom() + ":"; //TODO: UNCOMMENT FOR LINUX
 	string chaine = "_" + ast->getNom() + ":";
 	o<< chaine << endl;
 	chaine = "	pushq	%rbp";
@@ -292,7 +287,6 @@ string CFG::create_new_tempvar(Type t) {
 	add_to_symbol_table("temp"+to_string(nextTempvar), t);
 	nextTempvar++;
 	return "temp"+to_string(nextTempvar-1);
-	//TODO : vérifier
 }
 
 map<string, int> * CFG::getSymbole() {
@@ -323,5 +317,5 @@ Type CFG::get_var_type(string name) {
 
 string CFG::new_BB_name() {
 	nextBBnumber++;
-	return "B" + to_string(nextBBnumber-1); // TODO : vérifier que c'est le bon nombre
+	return "B" + to_string(nextBBnumber-1); 
 }

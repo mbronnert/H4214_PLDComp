@@ -24,7 +24,8 @@ vector<string> lexErrorFiles = {
 };
 
 vector<string> semanticErrorFiles = {
-    baseURL + "SemanticError/01_MissingVarDeclaration.c"
+    baseURL + "SemanticError/01_MissingVarDeclaration.c",
+    baseURL + "SemanticError/02_MissingFuncDeclaration.c"
 };
 
 vector<string> syntaxErrorFiles = {
@@ -81,14 +82,14 @@ vector<string> validProgramsFiles = {
     baseURL + "validPrograms/44_IfElseIf.c",
     baseURL + "validPrograms/46_ArrayDec.c",
     baseURL + "validPrograms/47_ArrayUse.c",
-    //baseURL + "validPrograms/49_ArrayFibo.c",      // on ne gère pas les "for"
+    // baseURL + "validPrograms/49_ArrayFibo.c",      // On ne gère pas les "for"
     baseURL + "validPrograms/50_CharConst.c",
     baseURL + "validPrograms/51_CharConstSpecial.c",
     baseURL + "validPrograms/52_Int64Dec.c",
     baseURL + "validPrograms/53_FunctionCallPutChar.c",
     baseURL + "validPrograms/54_FunctionCallCustom.c",
     baseURL + "validPrograms/55_Return.c",
-    //baseURL + "validPrograms/56_ArrayAsParam.c",   // on ne gère pas les "for"
+    // baseURL + "validPrograms/56_ArrayAsParam.c",   // On ne gère pas les "for"
     baseURL + "validPrograms/57_VarInitialization.c",
     baseURL + "validPrograms/58_MultipleVarDeclarations.c",
     baseURL + "validPrograms/59_MixedDeclarationsInitializations.c",
@@ -105,10 +106,11 @@ vector<string> backEndFiles = {
     backEndTestUrl + "7-testWhileAndVariables",
     backEndTestUrl + "8-Return",
     backEndTestUrl + "9-lvalueGenerale",
-    backEndTestUrl + "10-appel6"
+    backEndTestUrl + "10-appel6Argument",
+    backEndTestUrl + "11-checkPriority",
+    backEndTestUrl + "12-testParenthese",
+    backEndTestUrl + "13-factorielleRecursive"
 };
-
-
 
 tree::ParseTree * treeInitialization (string cppCode) {
     ANTLRInputStream input (cppCode);
@@ -120,9 +122,9 @@ tree::ParseTree * treeInitialization (string cppCode) {
 }
 
 void lexErrorTests () {
-    cout << endl << endl << "/////////////// TESTS DU LEXER ////////////////" << endl << endl;
+    cout << endl << "\033[1;32m[ TESTS DU LEXER ]\033[0m\n" << endl;
     for (int i=0 ; i<lexErrorFiles.size() ; i++) {
-        cout << "Fichier : " << lexErrorFiles[i] << endl;
+        cout << "\033[4;36mFichier :" << lexErrorFiles[i] << "\033[0m\n";
 
         ifstream file(lexErrorFiles[i]);
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
@@ -137,15 +139,15 @@ void lexErrorTests () {
         Programme * prog = (Programme *) visitor.visit(tree);
 
         prog->resolutionPortee();
-        //prog->affiche();
-        cout << endl;
+        // prog->affiche();
+        // cout << endl;
     }
 }
 
 void semanticErrorTests () {
-    cout << endl << endl << "/////////////// TESTS SÉMANTIQUES ////////////////" << endl << endl;
+    cout << endl << "\033[1;32m[ TESTS SÉMANTIQUES ]\033[0m\n" << endl;
     for (int i=0 ; i<semanticErrorFiles.size() ; i++) {
-        cout << semanticErrorFiles[i] << endl;
+        cout << "\033[4;36mFichier :" << semanticErrorFiles[i] << "\033[0m\n";
 
         ifstream file(semanticErrorFiles[i]);
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
@@ -158,16 +160,16 @@ void semanticErrorTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
 
-        //prog->affiche();
+        // prog->affiche();
         prog->resolutionPortee();
-        cout << endl;
+        // cout << endl;
     }
 }
 
 void syntaxErrorTests () {
-    cout << endl << endl << "/////////////// TESTS DE SYNTAXE ////////////////" << endl << endl;
+    cout << endl << "\033[1;32m[ TESTS DE SYNTAXE ]\033[0m\n" << endl;
     for (int i=0 ; i<syntaxErrorFiles.size() ; i++) {
-        cout << syntaxErrorFiles[i] << endl;
+        cout << "\033[4;36mFichier :" << syntaxErrorFiles[i] << "\033[0m\n";
 
         ifstream file(syntaxErrorFiles[i]);
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
@@ -181,16 +183,16 @@ void syntaxErrorTests () {
         Programme * prog = (Programme *) visitor.visit(tree);
 
         prog->resolutionPortee();
-        //prog->affiche();
-        cout << endl;
+        // prog->affiche();
+        // cout << endl;
 
     }
 }
 
 void validProgramsTests () {
-    cout << endl << endl << "/////////////// TESTS DE CODES VALIDES ////////////////" << endl << endl;
+    cout << endl << "\033[1;32m[ TESTS DE CODES VALIDES ]\033[0m\n" << endl;
     for (int i=0 ; i<validProgramsFiles.size() ; i++) {
-        cout << validProgramsFiles[i] << endl;
+        cout << "\033[4;36mFichier :" << validProgramsFiles[i] << "\033[0m\n";
 
         ifstream file(validProgramsFiles[i]);
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
@@ -203,17 +205,16 @@ void validProgramsTests () {
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
 
-        //prog->affiche();
+        // prog->affiche();
         prog->resolutionPortee();
-
-        cout << endl;
+        // cout << endl;
     }
 }
 
 void backEndTests() {
-    cout << endl << endl << "/////////////// BACK END TESTS ////////////////" << endl << endl;
+    cout << endl << "\033[1;32m[ BACK END TESTS ]\033[0m\n" << endl;
     for (int i=0 ; i<backEndFiles.size() ; i++) {
-        cout << backEndFiles[i] << endl;
+        cout << "\033[4;36mFichier :" << backEndFiles[i] << "\033[0m\n";
 
         ifstream file(backEndFiles[i] + ".c");
         string content((istreambuf_iterator<char>(file)), (istreambuf_iterator<char>()));
@@ -226,7 +227,7 @@ void backEndTests() {
 
         Visitor visitor;
         Programme * prog = (Programme *) visitor.visit(tree);
-        prog->resolutionPortee();
+        // prog->resolutionPortee();
 
         constr.analyseProgramme(prog, backEndFiles[i]);
 
@@ -236,6 +237,7 @@ void backEndTests() {
 }
 
 int main () {
+    // Partie pour tester en Input
     /*ANTLRInputStream input ("#include<inttypes.h>\r\nvoid main(void) {\r\nchar a;\r\na='M';\r\nputchar(a);\r\nputchar('O');\r\nputchar('K');\r\nputchar(' ');\r\n}");
     PLDCOMPLexer lexer (&input);
     CommonTokenStream token (&lexer);
@@ -251,10 +253,10 @@ int main () {
     prog->resolutionPortee();
     constr.analyseProgramme(prog);*/
 
-    // lexErrorTests();
-    // syntaxErrorTests();
-    // validProgramsTests();
-    // semanticErrorTests();
+    lexErrorTests();
+    syntaxErrorTests();
+    validProgramsTests();
+    semanticErrorTests();
     backEndTests();
 
     return 0;

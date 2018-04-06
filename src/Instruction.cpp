@@ -164,8 +164,7 @@ void AppelDeFonction::resolutionPortee(list<string> *pileVariable, map<string,De
         }
 
     } else {
-        cerr << "ERREUR! fonction <<"+nom+">> non déclarée! " << endl;
-        // exit(0);
+        cerr << "\033[1;31mERREUR! fonction <<"+nom+">> non déclarée! \033[0m\n";
     }
 
 }
@@ -509,8 +508,7 @@ void AppelDeVariable::resolutionPortee(list<string> *pileVariable, map<std::stri
     }
 
     if(variableFound == false) {
-        cerr << "ERREUR! variable <<"+nomVar+">> non déclarée! " << endl;
-        // exit(0);
+        cerr << "\033[1;31mERREUR! variable <<"+nomVar+">> non déclarée! \033[0m\n";
     }
 
 }

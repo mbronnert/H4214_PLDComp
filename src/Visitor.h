@@ -166,7 +166,6 @@ class Visitor : public PLDCOMPBaseVisitor {
     antlrcpp::Any visitConstanteCaractere(PLDCOMPParser::ConstanteCaractereContext *ctx) override {
         char c = (char) ctx->CHAR()->getText()[1];
         if (c == '\\') {
-            cout << ctx->CHAR()->getText() << endl;
             if (ctx->CHAR()->getText() == "\'\\n\'") {
                 c = '\n';
             } else if (ctx->CHAR()->getText() == "\'\\r\'") {
@@ -323,7 +322,6 @@ class Visitor : public PLDCOMPBaseVisitor {
         for(auto i=l.begin() ; i!=l.end() ; i++) {
             char c = (char) (*i)->getText()[1];
             if (c == '\\') {
-                cout << (*i)->getText() << endl;
                 if ((*i)->getText() == "\'\\n\'") {
                     c = '\n';
                 } else if ((*i)->getText() == "\'\\r\'") {

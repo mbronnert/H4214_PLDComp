@@ -18,44 +18,35 @@ ConstructionIR::~ConstructionIR() {
 }
 
 void ConstructionIR::analyseProgramme(Programme * programme, string fileName) {
-    // TODO : faire les déclarations
-    cout << "analyse programme start declaration" <<endl;
+    cout << "analyseProgramme start" <<endl;
     for (auto it=programme->getDeclarations()->begin() ; it != programme->getDeclarations()->end() ; it++) {
         analyseDeclaration((Declaration *)(*it));
     }
-    cout << "analyse programme start fonction" <<endl;
     CFG* cfg;
     this->listeCFG=new list<CFG*>[3600];
     for (auto it=programme->getFonctions()->begin() ; it != programme->getFonctions()->end() ; it++) {
-        cout << "check fct start" <<endl;
         cfg = new CFG(*it);
         listeCFG->push_back(cfg);
         currentCFG = cfg;
         analyseFonction((Fonction *)*it);
-        cout << "check fct end" <<endl;
-
     }
-    cout << "analyse programme end" <<endl;
+    cout << "analyseProgramme end" <<endl;
     startASM(fileName);
 }
 
 void ConstructionIR::startASM(string fileName) {
-    cout << "startASM" <<endl;
     ofstream outfile (fileName + ".s", ofstream::binary);
     outfile<<".text"<<endl;
     outfile<<".global _main"<<endl;
-    for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++)
-
-    {
-        cout << "asm" <<endl;
-
+    for(list<CFG*>::iterator it = listeCFG->begin() ; it != listeCFG->end() ; it++){
         (*it)->gen_asm(outfile);
     }
     outfile.close();
-    cout<<"Fichier assembleur généré"<<endl;
+    cout<<"\033[21;32m[FICHIER ASSEMBLEUR GÉNÉRÉ]\033[0m\n"<<endl;
 }
 
 void ConstructionIR::analyseFonction(Fonction * fonction) {
+    cout << "analyseFonction start" <<endl;
     // Paramètres
     for (auto it=fonction->getParametres()->begin() ; it != fonction->getParametres()->end() ; it++) {
         analyseParametre((Parametre *)(*it));
@@ -71,31 +62,35 @@ void ConstructionIR::analyseFonction(Fonction * fonction) {
     currentCFG->add_bb(prologue);
     currentCFG->currentBB = prologue;
     analyseBloc(fonction->getBloc());
+    cout << "analyseFonction end" <<endl;
 
 }
 
 void ConstructionIR::analyseBloc(Bloc * bloc) {
+    cout << "analyseBloc start" <<endl;
     list <Instruction*> * instructions = bloc->getInstructions();
 
     for (auto it=instructions->begin() ; it!=instructions->end() ; it++) {
         analyseInstruction(*it);
     }
+    cout << "analyseBloc end" <<endl;
 }
 
 void ConstructionIR::analyseDeclaration(Declaration * declaration) {
-    cout<<"appel declaration"<<endl;
+    cout<<"analyseDeclaration start"<<endl;
     currentCFG->add_to_symbol_table(declaration->getVariable()->getNom(), declaration->getType());
+    cout << "analyseDeclaration end" <<endl;
 }
 
 void ConstructionIR::analyseParametre(Parametre * parametre) {
-    cout<<"appel parametre"<<endl;
+    cout<<"analyseParametre start"<<endl;
     currentCFG->add_to_symbol_table(parametre->getNom(), parametre->getType());
     currentCFG->add_parametre(parametre->getNom());
+    cout<<"analyseParametre end"<<endl;
 }
 
 void ConstructionIR::analyseInstruction(Instruction * instruction) {
     TypeNoeud typeInstr = instruction->typeNoeud();
-    cout << "INSTRUCTION : " << typeInstr << endl;
     switch (typeInstr) {
         case TypeNoeud::APPELFONC :
             analyseAppelDeFonction((AppelDeFonction *) instruction);
@@ -174,23 +169,21 @@ void ConstructionIR::analyseExpression(Expression * expression) {
 }
 
 void ConstructionIR::analyseAffectation(Affectation * affectation) {
-    cout<<"appel affectation"<<endl;
+    cout<<"analyseAffectation start"<<endl;
     Expression * expression = affectation->getExpression();
     string resultatAffectation;
     vector<string> params;
     string nomVariable = affectation->getNomVariable();
-    cout << "Nom vraiable : " << nomVariable << endl;
     resultatAffectation = expressionToIR(expression);
     params.push_back(nomVariable);
     params.push_back(resultatAffectation);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::copy, Type::INT64, params);
-
+    cout<<"analyseAffectation end"<<endl;
 }
 
 string ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction) {
-    cout<<"appel fonction"<<endl;
+    cout<<"analyseAppelDeFonction start"<<endl;
     list<Expression*> * parame = appelDeFonction->getParametres();
-    cout<<"taille parame: " << parame->size() << endl;
     string tempVar ;
     if(parame) {
         TypeNoeud typeInstr;
@@ -202,24 +195,26 @@ string ConstructionIR::analyseAppelDeFonction(AppelDeFonction * appelDeFonction)
             string nom;
             nom = expressionToIR(*it);
             listParametre.push_back(nom);
-            cout<<"Nom param " <<nom <<endl;
         }
 
         currentCFG->currentBB->add_IRInstr(IRInstr::Operation::call, Type::CHAR, listParametre);
     }
+    cout<<"analyseAppelDeFonction end"<<endl;
     return tempVar;
 }
 
 void ConstructionIR::analyseReturn(Return * retour) {
-    cout<<"appel return"<<endl;
+    cout<<"analyseReturn start"<<endl;
     Expression * expression = retour->getReturnExpression();
     vector<string> params;
     params.push_back(expressionToIR(expression));
     expression->typage();
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::ret, expression->getType(), params);
+    cout<<"analyseReturn end"<<endl;
 }
 
 void ConstructionIR::analyseIf(If * i) {
+    cout<<"analyseIf start"<<endl;
     analyseExpression(i->getCondition());
     BasicBlock * trueBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
     BasicBlock * falseBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
@@ -231,9 +226,11 @@ void ConstructionIR::analyseIf(If * i) {
     currentCFG->currentBB = trueBranch;
     analyseInstruction(i->getInstruction());
     currentCFG->currentBB = falseBranch;
+    cout<<"analyseIf end"<<endl;
 }
 
 void ConstructionIR::analyseIfElse(IfElse * i) {
+    cout<<"analyseIfElse start"<<endl;
     analyseExpression(i->getCondition());
     BasicBlock * trueBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
     BasicBlock * falseBranch = new BasicBlock (currentCFG, currentCFG->new_BB_name());
@@ -257,11 +254,12 @@ void ConstructionIR::analyseIfElse(IfElse * i) {
     analyseInstruction(i->getInstructionElse());
 
     currentCFG->currentBB = nextBloc;
-
+    cout<<"analyseIfElse end"<<endl;
 
 }
 
 void ConstructionIR::analyseWhile(While * w) {
+    cout<<"analyseWhile start"<<endl;
     BasicBlock * whileBloc = new BasicBlock (currentCFG, currentCFG->new_BB_name());
     currentCFG->add_bb(whileBloc);
     currentCFG->currentBB->exit_true = whileBloc;
@@ -284,6 +282,7 @@ void ConstructionIR::analyseWhile(While * w) {
     params.push_back(whileBloc->label);
     currentCFG->currentBB->add_IRInstr(IRInstr::Operation::jmp, NONE, params);
     currentCFG->currentBB = falseBranch;
+    cout<<"analyseWhile end"<<endl;
 }
 
 string ConstructionIR::expressionToIR(Expression * expression) {
@@ -325,7 +324,6 @@ string ConstructionIR::expressionToIR(Expression * expression) {
         case TypeNoeud::APPELFONC :
             chaine = analyseAppelDeFonction((AppelDeFonction *) expression);
             break;
-            //TODO : tous les autres types
         default:
             cout << "Erreur : on devrait pas passer ici (expressionToIR)" << endl;
     }
@@ -333,7 +331,7 @@ string ConstructionIR::expressionToIR(Expression * expression) {
 }
 
 string ConstructionIR::analyseExprBin(ExprBin * expression) {
-    cout<<"appel exprbin"<<endl;
+    cout<<"analyseExprBin start"<<endl;
     string resultat;
     string resultatGauche;
     string resultatDroite;
@@ -398,17 +396,17 @@ string ConstructionIR::analyseExprBin(ExprBin * expression) {
         default:
         break;
     }
+    cout<<"analyseExprBin end"<<endl;
     return tempVar;
 }
 
 string ConstructionIR::analyseExprUnaire(ExprUnaire * expression) {
-    cout<<"appel exprunaire"<<endl;
+    cout<<"analyseExprUnaire start"<<endl;
     string resultat;
 
     switch (expression->getSymbole()) {
         case PAR:
         resultat = expressionToIR(expression->getExpression());
-        cout << "RES UNAIRE " << resultat;
         break;
         case NON:
         break;
@@ -445,5 +443,6 @@ string ConstructionIR::analyseExprUnaire(ExprUnaire * expression) {
         default:
         break;
     }
+    cout<<"analyseExprUnaire end"<<endl;
     return resultat;
 }
