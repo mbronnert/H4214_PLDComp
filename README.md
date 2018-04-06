@@ -6,12 +6,12 @@ ainsi qu'en BackEnd.
 # Authors
 
 H4214
-BOUZAABIA Mohamed
-BRONNERT Mathilde
-EL GHISSASSI Ghita
-GRACIA Yohan
-RAHOUI Ayoub
-ZERHOUDI Saber
+- BOUZAABIA Mohamed
+- BRONNERT Mathilde
+- EL GHISSASSI Ghita
+- GRACIA Yohan
+- RAHOUI Ayoub
+- ZERHOUDI Saber
 
 # Instructions
 
@@ -43,6 +43,7 @@ Nous avons conçu un makefile pour exécuter les options suivantes :
        testfront      Cette option va effectuer les tests de LexError, SemanticError, SyntaxError et validPrograms
        testback       Cette option va effectuer les tests Backends et génére le code assembleur sur le même dossier
        testfile       Cette option vous permet de tester un nouveau code .c, de générer l'assembleur et de l'exécuter
+       adapt          Permet d'adapter le code à l'OS (MacOS/Linux)
        clean          Permet de clean et rm les fichiers bin et object
        grammar        Permet de générer les fichier antlr4 depuis la grammaire PLDCOMP.g4
 ```
