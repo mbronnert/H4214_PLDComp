@@ -2,7 +2,5 @@ exe
 .DS_Store
 .idea/
 gen/
-antlr4-cpp-runtime-4/
-antlr/
 main.s
 main.O
