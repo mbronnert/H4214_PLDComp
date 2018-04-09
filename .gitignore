@@ -4,6 +4,5 @@ exe
 gen/
 antlr4-cpp-runtime-4/
 antlr/
-Tests/
 main.s
 main.O
